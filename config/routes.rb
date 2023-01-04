@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :teams
+  resources :rikishis, only: [:index, :show]
+  resources :users, only: [:index, :show, :create]
+
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  get "/me", to: "users#show"
+  post "/signup", to: "users#create"
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
