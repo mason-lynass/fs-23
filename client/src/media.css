@@ -1,0 +1,46 @@
+@media screen and (max-width: 1000px) {
+
+    p {
+        font-size: 14px;
+    }
+
+    #FSTeam h2 {
+        font-size: 20px;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    #RLargeTop p {
+        font-size: 12px;
+    }
+    
+    #AllRikishiFlex {
+        flex-flow: row nowrap;
+    }
+
+    #Makuuchi, #Juryo {
+        width: 48%;
+    }
+
+    .RLFlex {
+        flex-flow: column nowrap;
+        height: 1000px;
+    }
+
+    .SmallCard {
+        flex-flow: row nowrap;
+        height: 60px;
+        width: 300px;
+    }
+
+    .SmallCard h3{
+        width: 80px;
+    }
+
+
+
+
+
+}
