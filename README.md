@@ -1,15 +1,26 @@
 # README
 
 some things you'll probably need to do to use this on your local:
+
 bundle install
+
 npm install
+
 npm install --prefix client
+
 rails db stuff - migrate, seed, etc.
+
 (let me know if there's anything else you had to do?)
 
+
+
 then you can run:
+
 rails s - to start the server
+
 npm start --prefix client - to start the node client
+
+
 
 start from localhost:4000
 
