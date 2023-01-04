@@ -15,12 +15,13 @@
     #RLargeTop p {
         font-size: 12px;
     }
-    
+
     #AllRikishiFlex {
         flex-flow: row nowrap;
     }
 
-    #Makuuchi, #Juryo {
+    #Makuuchi,
+    #Juryo {
         width: 48%;
     }
 
@@ -35,12 +36,462 @@
         width: 300px;
     }
 
-    .SmallCard h3{
+    .SmallCard h3 {
         width: 80px;
     }
 
 
 
 
+
+}
+
+@media screen and (max-width: 600px) {
+
+    /* this stuff is in the same order as in index.css */
+
+    #HeaderTop #SiteTitle {
+        padding: 5px 40px;
+        font-size: 20px;
+    }
+
+    #HeaderTop {
+        margin: 10px;
+    }
+
+    #HeaderTop a,
+    #NavBar a {
+        font-size: 12px;
+    }
+
+    #NavBar a {
+        width: 40%;
+    }
+
+    #NavBar {
+        display: flex;
+        flex-flow: row wrap;
+        text-align: center;
+        gap: 5px;
+        margin: 0;
+      }
+
+      #HomepageText p {
+        font-size: 14px;
+      }
+
+      #takanoshoFootball {
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      #LoginFlex {
+        margin: 40px 20px;
+      }
+
+      #LFFlex {
+        width: 100%;
+      }
+
+      #LoginForm {
+        padding: 20px;
+      }
+      
+      .LoginLine {
+        width: 100%;
+        margin: 15px auto;
+        font-size: 14px;
+        gap: 20px;
+      }
+      
+      .loginLine input {
+        font-size: 16px;
+      }
+
+      #SignupFlex {
+        width: 100%;
+      }
+      
+      .SignupLine {
+        width: 100%;
+        margin: 15px auto;
+        font-size: 14px;
+        height: 30px;
+        text-align: left;
+      }
+      
+      .SignupLine input {
+        font-size: 16px;
+      }
+      
+      #SignupFlex button {
+        display: block;
+        margin: 40px auto 10px auto;
+        height: 35px;
+        width: 120px;
+        font-size: 20px;
+      }
+
+      #AccountLogin {
+        text-align: center;
+        margin: 50px auto;
+        width: 80%;
+        padding: 10px;
+        font-size: 20px;
+        border: 1px solid black;
+        background-color: white;
+      }
+
+      #AccountPage {
+        width: 80%;
+        margin: 20px auto;
+      }
+
+      #AccountPage h3 {
+        font-size: 16px;
+      }
+
+      #AccountTeam {
+        width: 90%;
+        margin: 0px auto;
+        padding: 5px;
+      }
+
+      .AccountOneRikishi {
+        width: 80%;
+        margin: 10px auto;
+        background-color: white;
+        padding: 0px 20px;
+        border: 1px solid black;
+        border-radius: 50px;
+      }
+
+      .AccountOneRikishi img {
+        height: 40px;
+      }
+      
+      .AORrank {
+        width: 70px;
+      }
+      
+      .AORshikona {
+        width: 150px;
+      }
+      
+      .AORscore {
+        width: 30px;
+      }
+
+      #Redraft {
+        gap: 15px;
+      }
+
+      #Redraft h4 {
+        width: 240px;
+        font-size: 12px;
+      }
+
+      #Redraft button {
+        height: 40px;
+        font-size: 14px;
+      }
+
+      #RulesTopFlex {
+        margin: 20px 10px;
+        gap: 10px;
+      }
+
+      #RulesTopFlex p {
+        font-size: 12px;
+      }
+
+      #RulesTopFlex h2, h3 {
+        font-size: 16px;
+      }
+      
+      #RulesText, #ScoringFacts {
+        width: 95%;
+        padding: 0 10px;
+      }
+
+      #HowItWorks li {
+        margin: 0 auto;
+        font-size: 12px;
+      }
+
+      #HWFlex {
+        flex-flow: row wrap;
+        margin: -10px 10px;
+      }
+
+      #Scoring li {
+        font-size: 12px;
+        width: 90%;
+        margin: 0;
+      }
+
+      #ScoringFacts h3 {
+        font-size: 14px;
+      }
+
+      #ScoringFlex {
+        flex-flow: row wrap;
+      }
+
+      #Kotomitsuki {
+        display: block;
+        width: 100%;
+        border: 5px ridge gold;
+      }
+
+      #MoreFacts {
+        margin: 20px auto;
+        width: 90%;
+        padding: 10px 10px;
+        border: 2px ridge black;
+        border-radius: 40px;
+      }
+
+      #MoreFacts p {
+        font-size: 12px;
+      }
+
+      #DraftAD {
+        height: 90px;
+      }
+
+      #DraftTopFlex {
+        flex-flow: row nowrap;
+        gap: 5px;
+        margin: 5px;
+      }
+
+      #FSTeam {
+        padding: 5px;
+      }
+
+      #FSTeam h2 {
+        margin: 5px;
+        font-size: 14px;
+      }
+
+      #FSFlex {
+        display: grid;
+        grid-template-columns: 48% 48%;
+        gap: 4%;
+        margin: auto;
+      }
+
+      #FSTeamTable, #FSRikishi {
+        width: 110px;
+      }
+
+      #FSTeamTable p, #FSRikishi p {
+        font-size: 12px;
+        height: 16px;
+        margin: 10px;
+      }
+
+      #warning {
+        margin: 5px;
+        font-size: 10px;
+      }
+
+      .RLarge {
+        width: 100%;
+      }
+
+      .RLarge h2 {
+        font-size: 14px;
+      }
+
+      /* .card-title {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+      } */
+      
+      .card-title h1 {
+        font-size: 16px;
+        margin: 5px;
+      }
+
+      #RLargeImage {
+        width: 50px;
+        margin: 5px;
+      }
+      
+      #AddRikishiButton {
+        font-size: 12px;
+        margin: 5px auto;
+        padding: 5px;
+      }
+      
+      .content p {
+        margin: 5px auto;
+        font-size: 9px;
+      }
+
+      #DraftFilters {
+        height: 25px;
+        width: 95%;
+        margin: 0px auto;
+        padding: 5px;
+        font-size: 12px;
+      }
+
+      #DraftFilters p {
+        font-size: 9px;
+      }
+
+      #DraftFilters input {
+        width: 100px;
+      }
+
+      #DraftSearch {
+        align-items: center;
+        gap: 5px;
+      }
+
+      #AllRikishiFlex {
+        width: 100%;
+      }
+
+      #Makuuchi,
+    #Juryo {
+        width: 48%;
+        margin: 10px 5px;
+        height: auto;
+    }
+
+      .SmallCard {
+        flex-flow: row nowrap;
+        height: 40px;
+        width: 150px;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: white;
+        padding: 5px;
+        margin: 5px; 
+      }
+
+      .SmallCard h3 {
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .SmallCard h3, .SmallCard p {
+        margin: 5px;
+      }
+
+      .resultsContainer {
+        margin: 20px 5px;
+      }
+
+      .teamsTop h2, .teamsTop h3, .teamsTop p, .oneTeam h2, .oneTeam h3, .oneTeam p {
+        font-size: 8px;
+        width: 40px;
+      }
+
+      #teamsContainer {
+        max-height: 700px;
+        min-height: 100px;
+        width: 100%;
+        overflow: scroll;
+      }
+
+      .oneTeam h2, .total {
+        width: 40px;
+      }
+
+      .oneTeam p {
+        font-size: 6.5px;
+        width: 40px;
+        margin: 5px auto;
+      }
+
+      #DBTop {
+        margin: 10px;
+        height: 60px;
+      }
+
+      #DBTopSpace, #DBViewState {
+        width: 90px;
+        font-size: 11px;
+      }
+
+      #DBTitle {
+        width: 150px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      #DBContainer {
+        width: 100%;
+      }
+
+      #DBTable {
+        margin: 10px 5px;
+        height: 800px;
+        border: 3px ridge goldenrod;
+      }
+
+      #DBTableColumns, .DBOneRikishi {
+        height: 35px;
+        width: 100%;
+        min-width: 300px;
+      }
+
+      #DBTableColumns p{
+        font-size: 5.5px;
+      }
+
+    .DBOneRikishi p {
+        font-size: 6px;
+      }
+
+      .DBImage {
+        width: 30px;
+      }
+      
+      .DBCurrent, .DBHighest {
+        width: 18px;
+        text-align: center;
+      }
+      
+      .DBShikona {
+        width: 60px;
+      }
+      
+      .DBHeya {
+        width: 60px;
+      }
+      
+      .DBAge, .DBWeight, .DBHeight {
+        width: 35px;
+      }
+      
+      .DBYusho, .DBKinboshi, .DBSansho {
+        width: 35px;
+      }
+      
+      .DBBasho {
+        width: 50px;
+        text-align: center;
+      }
+      
+      .DBAvg {
+        width: 60px;
+        font-weight: 800;
+      }
+      
+      .DBCol {
+        color: black;
+      }
+      
+      .DBStatsActive {
+        color: red;
+      }
 
 }

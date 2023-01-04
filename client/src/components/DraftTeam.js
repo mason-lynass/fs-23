@@ -69,13 +69,13 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, teams, setTeams, tach
             <h2>Build your Fantasy Sumo team</h2>
             <div id="FSFlex">
                 <div id="FSTeamTable">
-                    <p>One sanyaku rikishi:</p>
-                    <p>One rikishi M1-M4:</p>
-                    <p>One rikishi M5-M8:</p>
-                    <p>One rikishi M9-M12:</p>
-                    <p>One rikishi M13-M17:</p>
-                    <p>One extra rikishi any rank:</p>
-                    <p>One Juryo rikishi:</p>
+                    <p>Sanyaku:</p>
+                    <p>M1-M4:</p>
+                    <p>M5-M8:</p>
+                    <p>M9-M12:</p>
+                    <p>M13-M16:</p>
+                    <p>extra (any rank):</p>
+                    <p>Juryo:</p>
                 </div>
                 <div id="FSRikishi">
                     <p>{userTeam.r1} {userTeam.r1 !== "" ? <button id="r1" onClick={handleXButton}>x</button> : null}</p>

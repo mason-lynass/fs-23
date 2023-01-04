@@ -88,7 +88,7 @@ function FSStats({ dbRikishi }) {
         <div id="DBTable">
             <div id="DBTableColumns">
                 <p className='DBImage DBCol' id="reset" onClick={rFSDefault}>reset</p>
-                <p className='DBCurrent DBCol'>highest rank</p>
+                {/* <p className='DBCurrent DBCol'>highest rank</p> */}
                 <p className='DBShikona DBCol'>shikona</p>
                 <p className='DBAvg DBCol' id="average" onClick={rFSByAverageScore}>avg FS score</p>
                 <p className='DBBasho DBCol' id="0" onClick={rFSByBasho}>2021.01</p>

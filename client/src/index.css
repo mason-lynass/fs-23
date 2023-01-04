@@ -305,7 +305,6 @@ body {
   margin: 0;
 }
 
-
 #Kotomitsuki {
   display: block;
   width: 400px;
@@ -491,8 +490,7 @@ body {
   border-radius: 120px;
   background-color: white;
   padding: 5px;
-  margin: 10px;
-  
+  margin: 10px; 
 }
 
 .smallImage {
@@ -530,6 +528,7 @@ body {
 
 .teamsTop p {
   width: 100px;
+  margin: 5px auto;
 }
 
 #teamsContainer {
