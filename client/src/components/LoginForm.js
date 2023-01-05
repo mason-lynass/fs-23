@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-function LoginForm ({setUser, clap}) {
-    
+function LoginForm({ setUser, clap }) {
+
     const navigate = useNavigate()
 
     const [username, setUsername] = useState("")
@@ -15,8 +15,8 @@ function LoginForm ({setUser, clap}) {
         setIsLoading(true)
         fetch("/login", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({username, password})
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
         }).then(r => {
             setIsLoading(false)
             if (r.ok) {
@@ -27,26 +27,25 @@ function LoginForm ({setUser, clap}) {
                 r.json().then(err => setErrors(err.errors))
             }
         })
-
     }
 
     return (
         <div id="LFFlex">
             <form id="LoginForm" onSubmit={handleLoginSubmit}>
-            <h2 style={{textAlign: "center"}}>Log In</h2>
+                <h2 style={{ textAlign: "center" }}>Log In</h2>
                 <div className="LoginLine">
                     <label>Username:</label>
-                    <input 
-                        type="text" 
-                        value={username} 
-                        onChange={(e) => setUsername(e.target.value)}/>
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)} />
                 </div>
                 <div className="LoginLine">
                     <label>Password:</label>
-                    <input 
+                    <input
                         type="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}/>
+                        onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <button id="LoginSubmit" type="submit">
                     {isLoading ? "Loading..." : "Login"}

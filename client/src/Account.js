@@ -1,12 +1,9 @@
-// import { useEffect, useState } from "react";
 import LoginForm from "./components/LoginForm";
 import { useNavigate } from "react-router-dom";
 
 function Account({ user, setUser, rikishi, clap }) {
 
     const navigate = useNavigate()
-
-    console.log(user)
 
     function handleDeleteTeam() {
         const toDelete = user.teams.find(e => e.basho === 2023.1).id
@@ -40,7 +37,7 @@ function Account({ user, setUser, rikishi, clap }) {
                 <div id="AccountTeam">
                     {actualTeam.map((obj) =>
                         <div className="AccountOneRikishi" key={obj.id}>
-                            <img src={obj.image_url} alt=""/>
+                            <img src={obj.image_url} alt="" />
                             <h3 className="AORrank">{obj.current_rank}</h3>
                             <h3 className="AORshikona">{obj.shikona}</h3>
                             <h3 className="AORscore">{obj.FS_20226 !== null ? obj.FS_20226 : "0"}</h3>

@@ -518,7 +518,7 @@ body {
   border-bottom: 3px solid black;
   text-align: center;
   height: 40px;
-  margin: 0;
+  padding: 5px 0;
 }
 
 .teamsTop h2 {
@@ -528,7 +528,7 @@ body {
 
 .teamsTop p {
   width: 100px;
-  margin: 5px auto;
+  margin: 0;
 }
 
 #teamsContainer {

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 function SignupForm({ setUser, clap }) {
 
     const navigate = useNavigate()
-    // const refreshPage = () => { navigate(0) }
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -29,11 +28,10 @@ function SignupForm({ setUser, clap }) {
             if (r.ok) {
                 r.json().then((user) => {
                     setUser(user)
-                    console.log("hmmmm")
                     clap()
                     navigate("/")
                 })
-                
+
             } else {
                 r.json().then(err => setErrors(err.errors))
             }
@@ -97,7 +95,7 @@ function SignupForm({ setUser, clap }) {
     return (
         <div id="SignupFlex">
             <form id="SignupForm" onSubmit={handleSignupSubmit}>
-                <h2 style={{textAlign: "center"}}>Sign Up</h2>
+                <h2 style={{ textAlign: "center" }}>Sign Up</h2>
                 <div className="SignupLine">
                     <label>
                         Username:

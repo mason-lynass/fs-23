@@ -13,7 +13,6 @@ function Results({ rikishi }) {
             .then(r => r.json())
             .then(teams => {
                 setTeams(teams)
-                // console.log(teams)
                 setTeamsLoaded(true)
             })
     }, [])
@@ -22,7 +21,6 @@ function Results({ rikishi }) {
         setResultsRikishi(rikishi)
         if (rikishi.length > 0) {
             setRikishiLoaded(true)
-            // console.log("did it")
         }
     }, [rikishi])
 
@@ -54,7 +52,7 @@ function Results({ rikishi }) {
 
         console.log(allTeamsAsObjects)
 
-        // const teamsHiToLo = allTeamsAsObjects.sort((a, b) => b.scoreSum - a.scoreSum)
+        const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
         // function somethingElse() {
         //     return (
@@ -82,7 +80,7 @@ function Results({ rikishi }) {
                             <h3 className="total">Total:</h3>
                         </div>
                         <div id="teamsContainer">
-                            {allTeamsAsObjects.map((team) => {
+                            {teamsHiToLo.map((team) => {
                                 return (
                                     <OneTeam team={team} key={team.id} rikishi={rikishi} />
                                 )

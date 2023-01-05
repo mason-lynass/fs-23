@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom"
 
 function Draft({ user, setUser, rikishi, tachiai, clap }) {
 
-    // const [isLoaded, setIsLoaded] = useState(false)
     const navigate = useNavigate()
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [clickedRikishi, setClickedRikishi] = useState("")
@@ -34,10 +33,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
         if (rikishi.length > 0) {
             setRikishiLoaded(true)
         }
-        // console.log("this")
     }, [rikishi])
-
-    // console.log(MRikishi)
 
     function onRFilter(e) {
         if (e.target.value === "All") {
@@ -59,7 +55,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
             const newRikishi = rikishi.filter(rikishi => (rikishi.current_rank === "M13" || rikishi.current_rank === "M14" || rikishi.current_rank === "M15" || rikishi.current_rank === "M16"))
             setMRikishi(newRikishi)
         }
-
     }
 
     function onSearch(e) {
@@ -82,13 +77,40 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
         setClickedRikishi(r)
     }
 
-    // function handleLoginClick() {
-    //     navigate("/login")
-    // }
-
     function goToTeam() {
         tachiai()
         navigate("/account")
+    }
+
+    if (userTeam.r1 !== "" && userTeam.r6 !== "") {
+        document.querySelectorAll(`#Y, #O, #S, #K`).forEach(e => e.classList.add("greyed"))
+    } else {
+        document.querySelectorAll(`#Y, #O, #S, #K`).forEach(e => e.classList.remove("greyed"))
+    }
+    if (userTeam.r2 !== "" && userTeam.r6 !== "") {
+        document.querySelectorAll(`#M1, #M2, #M3, #M4`).forEach(e => e.classList.add("greyed"))
+    } else {
+        document.querySelectorAll(`#M1, #M2, #M3, #M4`).forEach(e => e.classList.remove("greyed"))
+    }
+    if (userTeam.r3 !== "" && userTeam.r6 !== "") {
+        document.querySelectorAll(`#M5, #M6, #M7, #M8`).forEach(e => e.classList.add("greyed"))
+    } else {
+        document.querySelectorAll(`#M5, #M6, #M7, #M8`).forEach(e => e.classList.remove("greyed"))
+    }
+    if (userTeam.r4 !== "" && userTeam.r6 !== "") {
+        document.querySelectorAll(`#M9, #M10, #M11, #M12`).forEach(e => e.classList.add("greyed"))
+    } else {
+        document.querySelectorAll(`#M9, #M10, #M11, #M12`).forEach(e => e.classList.remove("greyed"))
+    }
+    if (userTeam.r5 !== "" && userTeam.r6 !== "") {
+        document.querySelectorAll(`#M13, #M14, #M15, #M16`).forEach(e => e.classList.add("greyed"))
+    } else {
+        document.querySelectorAll(`#M13, #M14, #M15, #M16`).forEach(e => e.classList.remove("greyed"))
+    }
+    if (userTeam.r7 !== "" && userTeam.r6 !== "") {
+        document.querySelectorAll(`#J`).forEach(e => e.classList.add("greyed"))
+    } else {
+        document.querySelectorAll(`#J`).forEach(e => e.classList.remove("greyed"))
     }
 
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
@@ -138,7 +160,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
                         <RikishiList
-                            // this needs to filter just makuuchi rikishi
                             rikishi={MakuuchiRikishi}
                             handleCardClick={handleCardClick}
                         />
@@ -146,7 +167,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
                     <div id="Juryo">
                         <h2>- Juryo -</h2>
                         <RikishiList
-                            // this needs to filter just makuuchi rikishi
                             rikishi={JuryoRikishi}
                             handleCardClick={handleCardClick}
                         />
@@ -183,7 +203,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
                         />
                     </div>
                 </div>
-
         )
     }
 
