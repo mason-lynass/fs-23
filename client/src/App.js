@@ -30,7 +30,7 @@ function App() {
 
   const [clap] = useSound(Clap)
   const [hyoshigi] = useSound(Hyoshigi)
-  const [tachiai] = useSound(Hakkeyoi)
+  const [tachiai] = useSound(Hakkeyoi, { volume: 0.5 })
 
   useEffect(() => {
     // auto-login
