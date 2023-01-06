@@ -3,6 +3,13 @@ body {
   font-family: "Nunito Sans";
 }
 
+button {
+  background-color: white;
+  border: 2px solid rgb(184, 2, 2);
+  border-radius: 20px;
+  height: 30px;
+}
+
 #HeaderTop #SiteTitle {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(184, 2, 2), rgb(184, 2, 2), rgb(184, 2, 2), rgba(255, 255, 255, 0));
   margin: 10px auto;
@@ -34,12 +41,15 @@ body {
   margin: 10px 3%;
 }
 
-#HeaderTop a, #NavBar a {
+#HeaderTop a,
+#NavBar a {
   text-decoration: none;
   color: black;
 }
 
-#navLogin, #navAccount, #NavBar a {
+#navLogin,
+#navAccount,
+#NavBar a {
   border: 1px solid black;
   background-color: white;
   padding: 5px 10px;
@@ -257,8 +267,12 @@ body {
 }
 
 #Redraft button {
-  height: 40px;
+  height: 50px;
   font-size: 20px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(184, 2, 2);
+  border: 2px solid black;
 }
 
 /* Rules & Scoring */
@@ -271,7 +285,8 @@ body {
   gap: 10px;
 }
 
-#RulesText, #ScoringFacts {
+#RulesText,
+#ScoringFacts {
   width: 800px;
   text-align: center;
   background-color: white;
@@ -311,6 +326,16 @@ body {
   border: 5px ridge gold;
 }
 
+#Terminology {
+  margin: 20px auto;
+  text-align: center;
+  background-color: white;
+  width: 400px;
+  padding: 5px 20px;
+  border: 3px ridge black;
+  border-radius: 100px;
+}
+
 #MoreFacts {
   margin: 50px auto;
   text-align: center;
@@ -323,7 +348,8 @@ body {
 
 /* for the Draft */
 
-#DraftLogin, #DraftAD {
+#DraftLogin,
+#DraftAD {
   background-color: white;
   text-align: center;
   margin: 80px auto;
@@ -336,8 +362,8 @@ body {
 }
 
 #DraftAD {
-  width: 200px;
-  height: 120px;
+  width: 240px;
+  padding: 0 20px 20px 20px;
 }
 
 #DraftTopFlex {
@@ -369,7 +395,8 @@ body {
   margin: auto;
 }
 
-#FSTeamTable, #FSRikishi {
+#FSTeamTable,
+#FSRikishi {
   width: 200px;
   display: block;
   margin: 0 auto;
@@ -452,14 +479,16 @@ body {
   text-align: center;
 }
 
-#Makuuchi, #Juryo {
+#Makuuchi,
+#Juryo {
   display: block;
   width: 100%;
   margin: 10px 20px;
   background-color: rgb(229, 202, 133);
 }
 
-#Makuuchi h2, #Juryo h2 {
+#Makuuchi h2,
+#Juryo h2 {
   margin: 10px;
 }
 
@@ -470,7 +499,8 @@ body {
   overflow: scroll;
 }
 
-.SmallCard h3, .SmallCard p {
+.SmallCard h3,
+.SmallCard p {
   margin: 5px auto;
 }
 
@@ -490,7 +520,7 @@ body {
   border-radius: 120px;
   background-color: white;
   padding: 5px;
-  margin: 10px; 
+  margin: 10px;
 }
 
 .smallImage {
@@ -586,6 +616,7 @@ body {
 
 #DBViewState {
   width: 120px;
+  border: 2px solid black;
 }
 
 #DBContainer {
@@ -605,7 +636,8 @@ body {
   overflow: scroll;
 }
 
-#DBTableColumns, .DBOneRikishi {
+#DBTableColumns,
+.DBOneRikishi {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
@@ -630,7 +662,8 @@ body {
   width: 60px;
 }
 
-.DBCurrent, .DBHighest {
+.DBCurrent,
+.DBHighest {
   width: 40px;
   text-align: center;
 }
@@ -643,11 +676,15 @@ body {
   width: 100px;
 }
 
-.DBAge, .DBWeight, .DBHeight {
+.DBAge,
+.DBWeight,
+.DBHeight {
   width: 40px;
 }
 
-.DBYusho, .DBKinboshi, .DBSansho {
+.DBYusho,
+.DBKinboshi,
+.DBSansho {
   width: 40px;
 }
 
@@ -669,5 +706,54 @@ body {
   color: red;
 }
 
+/* for the Terminology page */
 
+#termBorder {
+  margin: 30px;
+}
 
+#termContainer {
+  background-color: white;
+  border: 5px ridge goldenrod;
+  margin: 20px auto;
+  padding: 0 30px;
+  max-width: 1000px;
+}
+
+#termContainer hr {
+  width: 240px;
+  margin: 40px auto;
+}
+
+#termContainer h2,
+#formore {
+  text-align: center;
+}
+
+.oneTerm {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  align-items: top;
+  margin: 10px auto;
+  max-width: 800px;
+}
+
+.oneTerm h4,
+.oneTerm p {
+  margin: 10px 3px;
+}
+
+.oneTerm h4 {
+  min-width: 100px;
+}
+
+.termDef {
+  max-width: 600px;
+}
+
+#formore {
+  font-size: 12px;
+  width: 400px;
+  margin: 0 auto 40px auto;
+}

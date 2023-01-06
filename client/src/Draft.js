@@ -114,14 +114,14 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
     }
 
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
-    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo")
+    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
     const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J")
 
     function renderAlreadyDrafted() {
         // console.log('already drafted')
         return (
             <div id="DraftAD">
-                <p>you already have a team, silly!</p>
+                <p>You already have a team, silly!</p>
                 <button onClick={goToTeam}>check out your team</button>
             </div>
         )

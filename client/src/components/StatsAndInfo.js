@@ -12,6 +12,13 @@ function StatsAndInfo({ dbRikishi }) {
         return Math.abs(age_dt.getUTCFullYear() - 1970)
     }
 
+    function calculate_age_order(dob) {
+        const birthdate = new Date(dob)
+        const diff_ms = Date.now() - birthdate.getTime();
+        const age_dt = new Date(diff_ms)
+        return age_dt
+    }
+
     function setHighlight(target) {
         const columns = document.querySelectorAll(".DBCol")
         columns.forEach((col) => {
@@ -38,7 +45,7 @@ function StatsAndInfo({ dbRikishi }) {
         return aRank - bRank
     })
     const heyaSort = [...dbRikishi].sort((a, b) => a.heya.localeCompare(b.heya))
-    const ageSort = [...dbRikishi].sort((a, b) => calculate_age(b.birthdate) - calculate_age(a.birthdate))
+    const ageSort = [...dbRikishi].sort((a, b) => calculate_age_order(b.birthdate) - calculate_age_order(a.birthdate))
     const heightSort = [...dbRikishi].sort((a, b) => b.height - a.height)
     const weightSort = [...dbRikishi].sort((a, b) => b.weight - a.weight)
     const yushoSort = [...dbRikishi].sort((a, b) => b.yusho - a.yusho)
@@ -86,7 +93,7 @@ function StatsAndInfo({ dbRikishi }) {
     return (
         <div id="DBTable">
             <div id="DBTableColumns">
-                <p className='DBImage DBCol' id="default" onClick={handleSortState}>(reset)</p>
+                <p className='DBImage DBCol' id="reset"></p>
                 <p className='DBCurrent DBCol' id="default" onClick={handleSortState}>current rank</p>
                 <p className='DBShikona DBCol' id="shikona" onClick={handleSortState}>shikona</p>
                 <p className='DBHighest DBCol' id="highest" onClick={handleSortState}>highest rank</p>

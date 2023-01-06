@@ -19,6 +19,7 @@ import Draft from './Draft';
 import Results from './Results';
 import Database from './Database';
 import Account from './Account';
+import Terminology from './Terminology';
 
 
 
@@ -75,6 +76,10 @@ function App() {
         <Route
           path="/rules"
           element={<Rules />}
+        />
+        <Route
+          path="/terminology"
+          element={<Terminology />}
         />
         <Route
           path="/draft"

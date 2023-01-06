@@ -72,8 +72,8 @@ function FSStats({ dbRikishi }) {
     return (
         <div id="DBTable">
             <div id="DBTableColumns">
-                <p className='DBImage DBCol' id="default" onClick={handleViewState}>(reset)</p>
-                <p className='DBShikona DBCol'>shikona</p>
+                <p className='DBImage DBCol'></p>
+                <p className='DBShikona DBCol' id="default" onClick={handleViewState}>shikona</p>
                 <p className='DBAvg DBCol' id="average" onClick={handleViewState}>avg FS score</p>
                 <p className='DBBasho DBCol' id="0" onClick={handleViewState}>2021.01</p>
                 <p className='DBBasho DBCol' id="1" onClick={handleViewState}>2021.03</p>
