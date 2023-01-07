@@ -10,6 +10,14 @@ button {
   height: 30px;
 }
 
+#hello {
+  width: 600px;
+  background-color: white;
+  border: 2px solid black;
+  margin: 20px auto;
+  padding: 10px 20px;
+}
+
 #HeaderTop #SiteTitle {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(184, 2, 2), rgb(184, 2, 2), rgb(184, 2, 2), rgba(255, 255, 255, 0));
   margin: 10px auto;
