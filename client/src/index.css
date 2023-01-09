@@ -230,6 +230,10 @@ button {
 
 #AccountTeam {
   border: 5px ridge goldenrod;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
   width: 800px;
   margin: 0px auto;
   padding: 10px;
@@ -260,6 +264,22 @@ button {
 
 .AORscore {
   width: 30px;
+}
+
+#ATTotal {
+  background-color: white;
+  border: 10px ridge rgb(184, 2, 2);
+  padding: 10px 40px;
+}
+
+#ATTotal h1 {
+  font-size: 60px;
+  margin: 0px;
+}
+
+#ATTotal h2 {
+  font-size: 40px;
+  margin: 0px;
 }
 
 #Redraft {
@@ -415,6 +435,7 @@ button {
 }
 
 #FSRikishi button {
+  font-size: 10px;
   height: 18px;
   width: 18px;
   padding: 0px;
@@ -432,6 +453,7 @@ button {
   font-size: 20px;
   margin: 20px auto;
   padding: 5px 20px;
+  height: 40px;
 }
 
 .content p {
@@ -597,6 +619,52 @@ button {
 
 .total {
   width: 50px;
+}
+
+#RRContainer {
+  margin: 0 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 20px;
+}
+
+#MRR, #JRR {
+  background-color: antiquewhite;
+  margin: 0 auto;
+  border: 7px ridge goldenrod;
+  width: 350px;
+  height: 500px;
+  overflow: scroll;
+}
+
+#MRRTitles, #JRRTitles, .oneRR {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+#RRMakuuchi, #RRJuryo {
+  text-align: center;
+  margin: 5px;
+}
+
+#MRRTitles, #JRRTitles {
+  border-bottom: 3px solid black;
+}
+
+.RRShikona {
+  width: 220px;
+}
+
+.RRPoints {
+  width: 130px;
+}
+
+#RRContainer h2 {
+  margin: 3px;
+  font-size: 16px;
 }
 
 /* for the Database */

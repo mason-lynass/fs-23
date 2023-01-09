@@ -5,7 +5,7 @@ function Homepage() {
     return (
         <div>
             <div id="hello">
-                <p>The tournament starts on January 8th! It snuck up on me this time. I'll be updating the site daily to keep track of scores, but I'm still learning on the fly so there might be some delay. Stick with me for this basho and everything should be smooth by the next tournament. Thanks for playing!</p>
+                <p>The tournament started on January 8th! It snuck up on me this time. I'll be updating the site daily to keep track of scores, but I'm still learning on the fly so there might be some delay. Stick with me for this basho and everything should be smooth by the next tournament. Thanks for playing!</p>
             </div>
             <div id="HomepageFlex">
                 <div id="HomepageText">

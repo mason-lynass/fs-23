@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_053042) do
     t.integer "gino_sho"
     t.integer "kinboshi"
     t.integer "FS_20226"
+    t.integer "FS_20231"
     t.integer "FS_history", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

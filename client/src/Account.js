@@ -31,23 +31,32 @@ function Account({ user, setUser, rikishi, clap }) {
         const actualTeam = rikishi.filter((r) => CTRikishiStrings.includes(r.shikona))
         console.log(actualTeam)
 
+        const indivPoints = actualTeam.map((r) => r.FS_20231)
+        const totalPoints = indivPoints.reduce((a, b) => a + b, 0)
+
         return (
             <div>
                 <h3>Here's your team for the January tournament:</h3>
                 <div id="AccountTeam">
-                    {actualTeam.map((obj) =>
-                        <div className="AccountOneRikishi" key={obj.id}>
-                            <img src={obj.image_url} alt="" />
-                            <h3 className="AORrank">{obj.current_rank}</h3>
-                            <h3 className="AORshikona">{obj.shikona}</h3>
-                            <h3 className="AORscore">{obj.FS_20226 !== null ? obj.FS_20226 : "0"}</h3>
-                        </div>
-                    )}
+                    <div id="ATRikishi">
+                        {actualTeam.map((obj) =>
+                            <div className="AccountOneRikishi" key={obj.id}>
+                                <img src={obj.image_url} alt="" />
+                                <h3 className="AORrank">{obj.current_rank}</h3>
+                                <h3 className="AORshikona">{obj.shikona}</h3>
+                                <h3 className="AORscore">{obj.FS_20231 !== null ? obj.FS_20231 : "0"}</h3>
+                            </div>
+                        )}
+                    </div>
+                    <div id="ATTotal">
+                        <h1>{totalPoints}</h1>
+                        <h2>points</h2>
+                    </div>
                 </div>
-                <div id="Redraft">
+                {/* <div id="Redraft">
                     <h4>If you need to redraft before the tournament starts, if someone is injured or you've changed your mind: </h4>
                     <button onClick={handleDeleteTeam}>DELETE TEAM</button>
-                </div>
+                </div> */}
             </div>
         )
     }

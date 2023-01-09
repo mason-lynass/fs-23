@@ -206,10 +206,17 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
         )
     }
 
+    // turn this back on when it's time to draft (it's not right now)
+    // return (
+    //     (rikishiLoaded === true) ?
+    //         areYouLoggedIn()
+    //         : <p>loading...</p>
+    // )
+
     return (
-        (rikishiLoaded === true) ?
-            areYouLoggedIn()
-            : <p>loading...</p>
+        <div id="hello">
+            <p>The tournament started on January 8th! It snuck up on me this time. Since the tournament has already started, it's too late to draft for this tournament. Feel free to follow along with the action on the Results page, and check back towards the end of February to draft for the March tournament.</p>
+        </div>
     )
 }
 

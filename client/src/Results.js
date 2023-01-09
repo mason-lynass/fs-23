@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import OneTeam from "./components/OneTeam"
+import RikishiResults from "./components/RikishiResults"
 
 function Results({ rikishi }) {
 
@@ -40,7 +41,7 @@ function Results({ rikishi }) {
                 return resultsRikishi.filter((r) => r.shikona === tR)[0]
             })
 
-            const ROScores = newRikishiObjects.map((r) => r.FS_20226)
+            const ROScores = newRikishiObjects.map((r) => r.FS_20231)
 
             let scoreSum = 0
             for (const item of ROScores) { scoreSum += item }
@@ -59,7 +60,7 @@ function Results({ rikishi }) {
 
                 <div>
                     <div id="hello">
-                        <p>The tournament starts on January 8th! It snuck up on me this time. I'll be updating the site daily to keep track of scores, but I'm still learning on the fly so there might be some delay. Stick with me for this basho and everything should be smooth by the next tournament. Thanks for playing!</p>
+                        <p>The tournament started on January 8th! It snuck up on me this time. I'll be updating the site daily to keep track of scores, but I'm still learning on the fly so there might be some delay. Stick with me for this basho and everything should be smooth by the next tournament. Thanks for playing!</p>
                     </div>
                     <div className='resultsContainer'>
                         <div className='teamsTop'>
@@ -81,6 +82,7 @@ function Results({ rikishi }) {
                             })}
                         </div>
                     </div>
+                    <RikishiResults rikishi={rikishi}/>
                 </div>
 
         )

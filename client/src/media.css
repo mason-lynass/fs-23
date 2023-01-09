@@ -40,7 +40,10 @@
         width: 80px;
     }
 
-
+    #RRContainer {
+      display: flex;
+      flex-flow: row wrap;
+    }
 
 
 
@@ -49,6 +52,14 @@
 @media screen and (max-width: 600px) {
 
     /* this stuff is in the same order as in index.css */
+
+    #hello {
+      width: 300px;
+    }
+
+    #hello p {
+      font-size: 10px;
+    }
 
     #HeaderTop #SiteTitle {
         padding: 5px 40px;
