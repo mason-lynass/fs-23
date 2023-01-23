@@ -215,7 +215,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
 
     return (
         <div id="hello">
-            <p>The tournament started on January 8th! It snuck up on me this time. Since the tournament has already started, it's too late to draft for this tournament. Feel free to follow along with the action on the Results page, and check back towards the end of February to draft for the March tournament.</p>
+            <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p>
         </div>
     )
 }

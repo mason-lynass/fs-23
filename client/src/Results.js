@@ -25,6 +25,8 @@ function Results({ rikishi }) {
         }
     }, [rikishi])
 
+    console.log(resultsRikishi[0])
+
     function renderTeams() {
 
         const allTeamsAsObjects = teams.map((team) => {
@@ -60,7 +62,9 @@ function Results({ rikishi }) {
 
                 <div>
                     <div id="hello">
-                        <p>The tournament started on January 8th! It snuck up on me this time. I'll be updating the site daily to keep track of scores, but I'm still learning on the fly so there might be some delay. Stick with me for this basho and everything should be smooth by the next tournament. Thanks for playing!</p>
+                        <p>Congratulations to <h2>heavenhouse666</h2> for your win in the Hatsu 2023 Fantasy Sumo Tournament!</p>
+                        <p>All scores on the Results page are final,<br></br> and they'll be available until the next draft is live.</p>
+                        <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p>
                     </div>
                     <div className='resultsContainer'>
                         <div className='teamsTop'>
@@ -82,7 +86,7 @@ function Results({ rikishi }) {
                             })}
                         </div>
                     </div>
-                    <RikishiResults rikishi={rikishi}/>
+                    <RikishiResults rikishi={rikishi} />
                 </div>
 
         )
