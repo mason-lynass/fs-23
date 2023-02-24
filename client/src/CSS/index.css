@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: "Nunito Sans";
+}
+
+button {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 20px;
+  height: 30px;
+}
+
+#hello {
+  width: 500px;
+  background-color: white;
+  border: 2px solid black;
+  margin: 20px auto;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+#BI {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: .35;
+}

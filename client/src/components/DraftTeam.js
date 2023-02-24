@@ -61,13 +61,34 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, teams, setTeams, tach
                     <p>Juryo:</p>
                 </div>
                 <div id="FSRikishi">
-                    <p>{userTeam.r1} {userTeam.r1 !== "" ? <button id="r1" onClick={handleXButton}>x</button> : null}</p>
-                    <p>{userTeam.r2} {userTeam.r2 !== "" ? <button id="r2" onClick={handleXButton}>x</button> : null}</p>
-                    <p>{userTeam.r3} {userTeam.r3 !== "" ? <button id="r3" onClick={handleXButton}>x</button> : null}</p>
-                    <p>{userTeam.r4} {userTeam.r4 !== "" ? <button id="r4" onClick={handleXButton}>x</button> : null}</p>
-                    <p>{userTeam.r5} {userTeam.r5 !== "" ? <button id="r5" onClick={handleXButton}>x</button> : null}</p>
-                    <p>{userTeam.r6} {userTeam.r6 !== "" ? <button id="r6" onClick={handleXButton}>x</button> : null}</p>
-                    <p>{userTeam.r7} {userTeam.r7 !== "" ? <button id="r7" onClick={handleXButton}>x</button> : null}</p>
+                    <div>
+                        <p>{userTeam.r1} </p>
+                        {userTeam.r1 !== "" ? <button id="r1" onClick={handleXButton}>X</button> : null}
+                    </div>
+                    <div>
+                    <p>{userTeam.r2}</p> {userTeam.r2 !== "" ? <button id="r2" onClick={handleXButton}>X</button> : null}
+                    </div>
+                    <div>
+                    <p>{userTeam.r3}</p> {userTeam.r3 !== "" ? <button id="r3" onClick={handleXButton}>X</button> : null}
+                    </div>
+                    <div>
+                    <p>{userTeam.r4}</p> {userTeam.r4 !== "" ? <button id="r4" onClick={handleXButton}>X</button> : null}
+                    </div>
+                    <div>
+                    <p>{userTeam.r5}</p> {userTeam.r5 !== "" ? <button id="r5" onClick={handleXButton}>X</button> : null}
+                    </div>
+                    <div>
+                    <p>{userTeam.r6}</p> {userTeam.r6 !== "" ? <button id="r6" onClick={handleXButton}>X</button> : null}
+                    </div>
+                    <div>
+                    <p>{userTeam.r7}</p> {userTeam.r7 !== "" ? <button id="r7" onClick={handleXButton}>X</button> : null}   
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>
             </div>
             <div>

@@ -1,0 +1,93 @@
+/* for the Login */
+
+#LoginFlex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 10%;
+    gap: 20px;
+  }
+  
+  #LFFlex {
+    display: flex;
+    justify-content: center;
+    width: 450px;
+    margin: 0 auto;
+  }
+  
+  #LoginForm {
+    border: 1px solid black;
+    padding: 20px 50px;
+    background-color: white;
+  }
+  
+  .LoginLine {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 15px auto;
+    font-size: 20px;
+    height: 30px;
+  }
+  
+  .loginLine input {
+    font-size: 18px;
+  }
+  
+  #LoginSubmit {
+    display: block;
+    margin: 40px auto 10px auto;
+    height: 35px;
+    width: 120px;
+    font-size: 20px;
+  }
+  
+  #signup {
+    width: 500px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  #signup button {
+    height: 35px;
+    width: 100px;
+    font-size: 18px;
+  }
+
+@media screen and (max-width: 600px) {
+  
+    #LoginFlex {
+      margin: 10px 20px;
+    }
+  
+    #LFFlex {
+      width: 100%;
+    }
+  
+    #LoginForm {
+      padding: 10px 20px;
+    }
+  
+    .LoginLine {
+      width: 100%;
+      margin: 5px auto;
+      font-size: 14px;
+      gap: 20px;
+    }
+  
+    .loginLine input {
+      font-size: 16px;
+    }
+
+    h2 {
+      margin: 10px;
+    }
+
+    #LoginSubmit{
+      margin: 20px auto 10px auto;
+    }
+
+  }

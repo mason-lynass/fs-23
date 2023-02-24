@@ -1,0 +1,53 @@
+/* Homepage */
+
+#HomepageFlex {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 50px 5%;
+    gap: 40px;
+  }
+  
+  #HomepageText {
+    text-align: center;
+    margin: auto;
+    width: 660px;
+    font-size: 22px;
+    background-color: white;
+    padding: 20px;
+    border: 2px solid black;
+  }
+  
+  #takanoshoFootball {
+    width: 600px;
+    border: 5px ridge goldenrod;
+    margin: 0 auto;
+  }
+
+@media screen and (max-width: 600px) {
+  #hello {
+    width: 270px;
+    margin: 10px auto;
+  }
+
+  #hello p {
+    font-size: 10px;
+  }
+
+  #hello h2 {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  #HomepageFlex {
+    margin: 20px 5%;
+  }
+
+  #HomepageText p {
+    font-size: 14px;
+  }
+
+  #takanoshoFootball {
+    width: 95%;
+    margin: 0 auto;
+  }
+}

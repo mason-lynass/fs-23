@@ -1,3 +1,4 @@
+import "./CSS/draft.css"
 import { useEffect, useState } from "react"
 import DraftTeam from "./components/DraftTeam"
 import RikishiList from "./components/RikishiList"
@@ -144,7 +145,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
                         <label>Search:</label>
                         <input onChange={onSearch} value={search} type="text" name="search"></input>
                     </div>
-                    <p>OR filter Makuuchi rikishi:</p>
+                    <p id='orFilter'>OR filter Makuuchi rikishi:</p>
                     <div id="DFSelect">
                         <select defaultValue="All" onChange={onRFilter}>
                             <option value="All" >All Makuuchi</option>
@@ -207,17 +208,17 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         areYouLoggedIn()
-    //         : <p>loading...</p>
-    // )
-
     return (
-        <div id="hello">
-            <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p>
-        </div>
+        (rikishiLoaded === true) ?
+            areYouLoggedIn()
+            : <p>loading...</p>
     )
+
+    // return (
+    //     <div id="hello">
+    //         <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p>
+    //     </div>
+    // )
 }
 
 export default Draft

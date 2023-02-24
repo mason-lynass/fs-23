@@ -1,3 +1,4 @@
+import "./CSS/results.css"
 import { useEffect, useState } from "react"
 import OneTeam from "./components/OneTeam"
 import RikishiResults from "./components/RikishiResults"

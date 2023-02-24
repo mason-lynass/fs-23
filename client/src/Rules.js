@@ -1,3 +1,4 @@
+import "./CSS/rules.css"
 import Kotomitsuki from "./images/kotomitsuki.png"
 import { Link } from "react-router-dom"
 
@@ -28,14 +29,14 @@ function Rules() {
                                 </ul>
                             </div>
                             <div>
-                                <p style={{ width: "360px" }}>You won't be able to replace rikishi on your squad in the event of injury or any other absence. <br></br><br></br>Let's hope everybody stays healthy!</p>
+                                <p id="healthy">You won't be able to replace rikishi on your squad in the event of injury or any other absence. <br></br><br></br>Let's hope everybody stays healthy!</p>
                             </div>
                         </div>
                     </div>
                     <div id="Scoring">
                         <h3>Scoring:</h3>
                         <p>Wrestlers will earn one point for each match they win over the 15 days of the tournament.</p>
-                        <p>Bonus points are awarded for wins against a sanyaku opponent -<br></br> one bonus point for each rank difference:</p>
+                        <p>Bonus points are awarded for wins against a sanyaku opponent - one bonus point for each rank difference:</p>
                         <ul>
                             <li>Maegashira earn 1 bonus point for beating a Komusubi, 2 - Sekiwake, 3 - Ozeki, 4 - Yokozuna</li>
                             <li>Komusubi earn 1 bonus point for beating a Sekiwake, 2 - Ozeki, 3 - Yokozuna</li>
@@ -66,7 +67,7 @@ function Rules() {
             <div id="MoreFacts">
                 <p>Daieisho set the high bar for active rikishi in January 2021, earning 43 points in his Yusho winning effort.</p>
                 <p>Right now, the active leader in Fantasy Sumo points per basho is Wakatakakage, with 12.67 points</p>
-                <p>Asashoryu is the all-time leader in average points per basho,<br></br> but Hakuho set the all-time total points record at 1399 at the end of his much longer career.</p>
+                <p>Asashoryu is the all-time leader in average points per basho, but Hakuho set the all-time total points record at 1399 at the end of his much longer career.</p>
                 <p>You can find Fantasy Sumo records going back 20 years and all kinds of other info about wrestlers on the <Link to="/database">Database page</Link>.</p>
             </div>
         </div>

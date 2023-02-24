@@ -1,3 +1,5 @@
+import "./CSS/account.css"
+import "./CSS/media.css"
 import LoginForm from "./components/LoginForm";
 import { useNavigate } from "react-router-dom";
 
@@ -53,10 +55,10 @@ function Account({ user, setUser, rikishi, clap }) {
                         <h2>points</h2>
                     </div>
                 </div>
-                {/* <div id="Redraft">
+                <div id="Redraft">
                     <h4>If you need to redraft before the tournament starts, if someone is injured or you've changed your mind: </h4>
                     <button onClick={handleDeleteTeam}>DELETE TEAM</button>
-                </div> */}
+                </div>
             </div>
         )
     }

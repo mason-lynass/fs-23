@@ -2,7 +2,7 @@ import { useState } from "react"
 import FSStatsRikishi from "./FSStatsRikishi"
 
 function FSStats({ dbRikishi }) {
-    
+
     const [viewState, setViewState] = useState('default')
 
     function setHighlight(target) {
@@ -36,6 +36,7 @@ function FSStats({ dbRikishi }) {
     const sort9 = [...dbRikishi].sort((a, b) => b.FS_history[9] - a.FS_history[9])
     const sort10 = [...dbRikishi].sort((a, b) => b.FS_history[10] - a.FS_history[10])
     const sort11 = [...dbRikishi].sort((a, b) => b.FS_history[11] - a.FS_history[11])
+    const sort12 = [...dbRikishi].sort((a, b) => b.FS_history[12] - a.FS_history[12])
 
     function FSRikishiSwitch() {
         if (viewState === 'default') {
@@ -66,28 +67,34 @@ function FSStats({ dbRikishi }) {
             return <FSStatsRikishi rikishi={sort10} />
         } else if (viewState === '11') {
             return <FSStatsRikishi rikishi={sort11} />
+        } else if (viewState === '12') {
+            return <FSStatsRikishi rikishi={sort12} />
         }
     }
 
     return (
         <div id="DBTable">
             <div id="DBTableColumns">
-                <p className='DBImage DBCol'></p>
+                <p className='DBImage DBCol'> </p>
                 <p className='DBShikona DBCol' id="default" onClick={handleViewState}>shikona</p>
-                <p className='DBAvg DBCol' id="average" onClick={handleViewState}>avg FS score</p>
-                <p className='DBBasho DBCol' id="0" onClick={handleViewState}>2021.01</p>
-                <p className='DBBasho DBCol' id="1" onClick={handleViewState}>2021.03</p>
-                <p className='DBBasho DBCol' id="2" onClick={handleViewState}>2021.05</p>
-                <p className='DBBasho DBCol' id="3" onClick={handleViewState}>2021.07</p>
-                <p className='DBBasho DBCol' id="4" onClick={handleViewState}>2021.09</p>
-                <p className='DBBasho DBCol' id="5" onClick={handleViewState}>2021.11</p>
-                <p className='DBBasho DBCol' id="6" onClick={handleViewState}>2022.01</p>
-                <p className='DBBasho DBCol' id="7" onClick={handleViewState}>2022.03</p>
-                <p className='DBBasho DBCol' id="8" onClick={handleViewState}>2022.05</p>
-                <p className='DBBasho DBCol' id="9" onClick={handleViewState}>2022.07</p>
-                <p className='DBBasho DBCol' id="10" onClick={handleViewState}>2022.09</p>
-                <p className='DBBasho DBCol' id="11" onClick={handleViewState}>2022.11</p>
+                <div className="DBScores">
+                    <p className='DBAvg DBCol' id="average" onClick={handleViewState}>avg FS score</p>
+                    <p className='DBBasho DBCol' id="12" onClick={handleViewState}>2023.01</p>
+                    <p className='DBBasho DBCol' id="11" onClick={handleViewState}>2022.11</p>
+                    <p className='DBBasho DBCol' id="10" onClick={handleViewState}>2022.09</p>
+                    <p className='DBBasho DBCol' id="9" onClick={handleViewState}>2022.07</p>
+                    <p className='DBBasho DBCol' id="8" onClick={handleViewState}>2022.05</p>
+                    <p className='DBBasho DBCol' id="7" onClick={handleViewState}>2022.03</p>
+                    <p className='DBBasho DBCol' id="6" onClick={handleViewState}>2022.01</p>
+                    <p className='DBBasho DBCol' id="5" onClick={handleViewState}>2021.11</p>
+                    <p className='DBBasho DBCol' id="4" onClick={handleViewState}>2021.09</p>
+                    <p className='DBBasho DBCol' id="3" onClick={handleViewState}>2021.07</p>
+                    <p className='DBBasho DBCol' id="2" onClick={handleViewState}>2021.05</p>
+                    <p className='DBBasho DBCol' id="1" onClick={handleViewState}>2021.03</p>
+                    <p className='DBBasho DBCol' id="0" onClick={handleViewState}>2021.01</p>
+                </div>
             </div>
+            <hr id="hrFSStats"></hr>
             <div id="DBAllRikishi">
                 {FSRikishiSwitch()}
             </div>

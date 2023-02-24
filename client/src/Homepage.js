@@ -1,3 +1,4 @@
+import "./CSS/homepage.css"
 import { Link } from "react-router-dom"
 import takanoshoFootball from './images/takanosho_football.jpeg'
 

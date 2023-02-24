@@ -56,21 +56,25 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
     return (
         <div className="RLarge">
             {clickedRikishi ?
-                <div className="content"
-                // onClick={() => handleCardClick(rikishi)}
-                >
-                    <div className="card-title">
-                        <h1>{rikishi.shikona}</h1>
-                        <img id="RLargeImage" src={rikishi.image_url} alt={rikishi.shikona}></img>
+                <div>
+                    <div className="content"
+                    // onClick={() => handleCardClick(rikishi)}
+                    >
+                        <div className="card-title">
+                            <h1>{rikishi.shikona}</h1>
+                            <img id="RLargeImage" src={rikishi.image_url} alt={rikishi.shikona}></img>
+                        </div>
+                        <div>
+                            <p>Age: {calculate_age(rikishi.birthdate)} - {rikishi.heya} stable</p>
+                            <p>Height: {rikishi.height} cm | Weight {rikishi.weight} kg</p>
+                            <p>current rank: {rikishi.current_rank} | highest rank: {rikishi.highest_rank}</p>
+                            <p>career stats: Yusho: {rikishi.yusho} | special prizes: {totalSansho} | Kinboshi: {rikishi.kinboshi}</p>
+                            <p>FS points last basho: {rikishi.FS_20226 !== null ? rikishi.FS_20226 : "N/A"}</p>
+
+                        </div>
                     </div>
-                    <p>Age: {calculate_age(rikishi.birthdate)} - {rikishi.heya} stable</p>
-                    <p>Height: {rikishi.height} cm | Weight {rikishi.weight} kg</p>
-                    <p>current rank: {rikishi.current_rank} | highest rank: {rikishi.highest_rank}</p>
-                    <p>career stats: Yusho: {rikishi.yusho} | special prizes: {totalSansho} | Kinboshi: {rikishi.kinboshi}</p>
-                    <p>FS points last basho: {rikishi.FS_20226 !== null ? rikishi.FS_20226 : "N/A"}</p>
                     <button id="AddRikishiButton" onClick={() => handleAddToTeam(rikishi)}>Add {rikishi.shikona} to your squad</button>
                 </div>
-
                 :
                 <div id="RLargeTop">
                     <h2>click on a wrestler</h2>

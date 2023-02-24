@@ -1,3 +1,5 @@
+import "./CSS/terms.css"
+
 function Terminology() {
 
     return (

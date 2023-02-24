@@ -1,3 +1,4 @@
+import "./CSS/database.css"
 import { useEffect, useState } from 'react'
 import StatsAndInfo from './components/StatsAndInfo'
 import FSStats from './components/FSStats'

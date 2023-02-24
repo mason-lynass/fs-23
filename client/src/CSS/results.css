@@ -1,0 +1,152 @@
+/* for Results */
+
+.resultsContainer {
+    background-color: antiquewhite;
+    border: 7px ridge goldenrod;
+    margin: 20px 40px;
+  }
+  
+  .teamsTop {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 3px solid black;
+    text-align: center;
+    height: 40px;
+    padding: 5px 0;
+  }
+  
+  .teamsTop h2 {
+    font-size: 20px;
+    width: 120px;
+  }
+  
+  .teamsTop p {
+    width: 100px;
+    margin: 0;
+  }
+  
+  #teamsContainer {
+    max-height: 700px;
+    min-height: 100px;
+    overflow: scroll;
+  }
+  
+  .oneTeam {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+  
+  .oneTeam h2 {
+    font-size: 20px;
+    width: 120px;
+    overflow: scroll;
+  }
+  
+  .oneTeam p {
+    width: 100px;
+    margin: 5px auto;
+  }
+  
+  .total {
+    width: 50px;
+  }
+  
+  #RRContainer {
+    margin: 0 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+  }
+  
+  #MRR, #JRR {
+    background-color: antiquewhite;
+    margin: 0 auto;
+    border: 7px ridge goldenrod;
+    width: 350px;
+    height: 500px;
+    overflow: scroll;
+  }
+  
+  #MRRTitles, #JRRTitles, .oneRR {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+  }
+  
+  #RRMakuuchi, #RRJuryo {
+    text-align: center;
+    margin: 5px;
+  }
+  
+  #MRRTitles, #JRRTitles {
+    border-bottom: 3px solid black;
+  }
+  
+  .RRShikona {
+    width: 220px;
+  }
+  
+  .RRPoints {
+    width: 130px;
+  }
+  
+  #RRContainer h2 {
+    margin: 3px;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .resultsContainer {
+      margin: 20px 5px;
+    }
+  
+    .teamsTop h2,
+    .teamsTop h3,
+    .teamsTop p,
+    .oneTeam h2,
+    .oneTeam h3,
+    .oneTeam p {
+      font-size: 8px;
+      width: 40px;
+    }
+  
+    #teamsContainer {
+      max-height: 700px;
+      min-height: 100px;
+      width: 100%;
+      overflow: scroll;
+    }
+  
+    .oneTeam h2,
+    .total {
+      width: 40px;
+    }
+  
+    .oneTeam p {
+      font-size: 6.5px;
+      width: 40px;
+      margin: 5px auto;
+    }
+
+    #RRContainer {
+      margin: 0 10px;
+      gap: 10px;
+    }
+
+    #RRContainer h3, #RRContainer h2 {
+      font-size: 12px;
+    }
+
+    #MRR, #JRR, .resultsContainer {
+      border: 4px ridge goldenrod;
+    }
+  }

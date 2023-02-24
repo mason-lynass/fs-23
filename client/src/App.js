@@ -1,5 +1,5 @@
-import './index.css';
-import './media.css';
+import './CSS/index.css';
+import './CSS/media.css';
 
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom"

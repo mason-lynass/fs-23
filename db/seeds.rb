@@ -54,7 +54,7 @@ Takakeisho = Rikishi.create(
     height: 175,
     weight: 165,
     birthdate: 19960805,
-    yusho: 1,
+    yusho: 3,
     shukun_sho: 3,
     kanto_sho: 2,
     gino_sho: 2,

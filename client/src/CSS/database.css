@@ -1,0 +1,213 @@
+/* for the Database */
+
+#DBTop {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 40px;
+    height: 60px;
+  }
+  
+  #DBTitle {
+    width: 300px;
+    background-color: antiquewhite;
+    text-align: center;
+    border: 3px solid goldenrod;
+    border-radius: 10px;
+  }
+  
+  #DBTopSpace {
+    width: 120px;
+  }
+  
+  #DBViewState {
+    width: 120px;
+    border: 2px solid black;
+  }
+  
+  #DBContainer {
+    max-width: 1300px;
+    margin: auto;
+  }
+  
+  #DBTable {
+    background-color: rgba(250, 235, 213, 0.85);
+    border: 7px ridge goldenrod;
+    margin: 20px 20px;
+    height: 800px;
+    overflow-x: scroll;
+  }
+
+  #hrFSStats {
+    display: inline-block;
+    width: 670px;
+  }
+
+  #hrStats {
+    display: inline-block;
+    width: 495px;
+  }
+  
+  #DBAllRikishi {
+    height: 740px;
+  }
+  
+  #DBTableColumns,
+  .DBOneRikishi {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    text-align: center;
+    min-width: 750px;
+  }
+  
+  #DBTableColumns {
+    height: 57px;
+  }
+  
+  #DBTableColumns p {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  .DBImage {
+    width: 60px;
+  }
+  
+  .DBCurrent,
+  .DBHighest {
+    width: 40px;
+    text-align: center;
+  }
+  
+  .DBShikona {
+    width: 120px;
+  }
+  
+  .DBHeya {
+    width: 100px;
+  }
+  
+  .DBAge,
+  .DBWeight,
+  .DBHeight {
+    width: 40px;
+  }
+  
+  .DBYusho,
+  .DBKinboshi,
+  .DBSansho {
+    width: 40px;
+  }
+  
+  .DBBasho {
+    width: 50px;
+    text-align: center;
+  }
+  
+  .DBAvg {
+    width: 60px;
+    font-weight: 800;
+  }
+  
+  .DBCol {
+    color: black;
+  }
+  
+  .DBStatsActive {
+    color: red;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    #DBTop {
+      margin: 10px;
+      height: 60px;
+    }
+  
+    #DBTopSpace,
+    #DBViewState {
+      width: 75px;
+      font-size: 8px;
+      height: 20px;
+    }
+  
+    #DBTitle {
+      width: 150px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  
+    #DBContainer {
+      width: 100%;
+    }
+  
+    #DBTable {
+      margin: 10px auto;
+      width: 95%;
+      height: 72vh;
+      border: 3px ridge goldenrod;
+    }
+  
+    #DBTableColumns,
+    .DBOneRikishi {
+      justify-content: left;
+      height: 35px;
+      min-width: 300px;
+    }
+  
+    #DBTableColumns p, .DBOneRikishi p {
+      font-size: 8px;
+      flex-shrink: 0;
+    }
+  
+    .DBImage {
+      width: 35px;
+      height: 35px;
+    }
+
+    .DBScores {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+  
+    .DBCurrent,
+    .DBHighest {
+      width: 25px;
+      text-align: center;
+    }
+  
+    .DBShikona {
+      width: 60px;
+    }
+  
+    .DBHeya {
+      width: 60px;
+    }
+  
+    .DBAge,
+    .DBWeight,
+    .DBHeight {
+      width: 35px;
+    }
+  
+    .DBYusho,
+    .DBKinboshi,
+    .DBSansho {
+      width: 35px;
+    }
+  
+    .DBBasho {
+      text-align: center;
+      width: 40px;
+    }
+  
+    .DBAvg {
+      width: 50px;
+      font-weight: 800;
+    }
+  
+  }

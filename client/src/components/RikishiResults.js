@@ -13,19 +13,23 @@ function RikishiResults({ rikishi }) {
     return (
         <div id="RRContainer">
             <div id="MRR">
-                <h3 id="RRMakuuchi">Makuuchi</h3>
-                <div id="MRRTitles">
-                    <h2 className="RRShikona">Shikona</h2>
-                    <h2 className="RRPoints">FS Points</h2>
-                </div>
+                <section className="RRtop">
+                    <h3 id="RRMakuuchi">Makuuchi</h3>
+                    <div id="MRRTitles">
+                        <h2 className="RRShikona">Shikona</h2>
+                        <h2 className="RRPoints">FS Points</h2>
+                    </div>
+                </section>
                 <MResults MRikishi={MRikishi} />
             </div>
             <div id="JRR">
-                <h3 id="RRJuryo">Juryo</h3>
-                <div id="JRRTitles">
-                    <h2 className="RRShikona">Shikona</h2>
-                    <h2 className="RRPoints">FS Points</h2>
-                </div>
+                <section className="RRtop">
+                    <h3 id="RRJuryo">Juryo</h3>
+                    <div id="JRRTitles">
+                        <h2 className="RRShikona">Shikona</h2>
+                        <h2 className="RRPoints">FS Points</h2>
+                    </div>
+                </section>
                 <JResults JRikishi={JRikishi} />
             </div>
         </div>

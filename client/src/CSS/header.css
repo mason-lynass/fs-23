@@ -1,0 +1,77 @@
+/* Header */
+
+#HeaderTop {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 3%;
+  }
+  
+  #HeaderTop a,
+  #NavBar a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  #navLogin,
+  #navAccount,
+  #NavBar a {
+    border: 1px solid black;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 30px;
+  }
+  
+  #NavBar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  #HeaderTop #SiteTitle {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(184, 2, 2), rgb(184, 2, 2), rgb(184, 2, 2), rgba(255, 255, 255, 0));
+    margin: 10px auto;
+    padding: 5px 100px;
+    color: white;
+    text-align: center;
+  
+  }
+  
+  #FullTop {
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(150, 75, 0, 0));
+    margin-top: -10px;
+  }
+
+  @media screen and (max-width: 600px) {
+    #HeaderTop #SiteTitle {
+      padding: 5px 40px;
+      font-size: 20px;
+    }
+
+    #HeaderTop #SiteTitle {
+      margin-bottom: 5px;
+    }
+  
+    #HeaderTop {
+      margin: 0 10px;
+    }
+  
+    #HeaderTop a,
+    #NavBar a {
+      font-size: 12px;
+    }
+  
+    #NavBar a {
+      width: 40%;
+    }
+  
+    #NavBar {
+      display: flex;
+      flex-flow: row wrap;
+      text-align: center;
+      gap: 5px;
+      margin: 0;
+    }
+  }
