@@ -22,7 +22,6 @@
 #     kanto_sho: ,
 #     gino_sho: ,
 #     kinboshi: ,
-#     FS_20226: ,
 #     FS_history: []
 # )
 
@@ -40,8 +39,6 @@ Terunofuji = Rikishi.create(
     kanto_sho: 3,
     gino_sho: 3,
     kinboshi: 0,
-    FS_20226: 0,
-    FS_20231: 0,
     FS_history: [18,25,17,14,18,20,11,3,17,11,5,nil]
 )
 
@@ -59,8 +56,6 @@ Takakeisho = Rikishi.create(
     kanto_sho: 2,
     gino_sho: 2,
     kinboshi: 3,
-    FS_20226: 12,
-    FS_20231: 0,
     FS_history: [2,10,12,1,8,12,1,8,8,12,10,12]
 )
 
@@ -78,8 +73,6 @@ Wakatakakage = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 4,
     kinboshi: 0,
-    FS_20226: 8,
-    FS_20231: 0,
     FS_history: [nil,23,25,8,11,10,12,23,12,9,18,8]
 )
 
@@ -97,8 +90,6 @@ Hoshoryu = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 2,
     kinboshi: 0,
-    FS_20226: 17,
-    FS_20231: 0,
     FS_history: [9,8,15,19,9,8,16,11,12,9,10,17]
 )
 
@@ -116,8 +107,6 @@ Takayasu = Rikishi.create(
     kanto_sho: 6,
     gino_sho: 2,
     kinboshi: 5,
-    FS_20226: 29,
-    FS_20231: 0,
     FS_history: [10,15,11,7,7,6,nil,24,9,nil,25,29]
 )
 
@@ -135,8 +124,6 @@ Shodai = Rikishi.create(
     kanto_sho: 6,
     gino_sho: 0,
     kinboshi: 1,
-    FS_20226: 6,
-    FS_20231: 0,
     FS_history: [11,7,9,8,8,9,6,9,5,11,4,6]
 )
 
@@ -154,8 +141,6 @@ Kiribayama = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 11,
-    FS_20231: 0,
     FS_history: [8,11,9,11,21,6,8,16,19,15,17,11]
 )
 
@@ -173,8 +158,6 @@ Kotonowaka = Rikishi.create(
     kanto_sho: 3,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 16,
-    FS_20231: 0,
     FS_history: [10,6,7,17,6,6,18,22,22,15,19,16]
 )
 
@@ -192,8 +175,6 @@ Meisei = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 17,
-    FS_20231: 0,
     FS_history: [8,24,13,10,10,8,12,2,8,10,18,17]
 )
 
@@ -210,9 +191,7 @@ Wakamotoharu = Rikishi.create(
     shukun_sho: 0,
     kanto_sho: 0,
     gino_sho: 0,
-    kinboshi: 0, 
-    FS_20226: 14,
-    FS_20231: 0,
+    kinboshi: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,9,9,9,4,15,14]
 )
 
@@ -230,8 +209,6 @@ Tobizaru = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 1,
-    FS_20226: 12,
-    FS_20231: 0,
     FS_history: [6,11,7,7,7,7,6,9,7,8,26,12]
 )
 
@@ -249,8 +226,6 @@ Daieisho = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 1,
     kinboshi: 3,
-    FS_20226: 10,
-    FS_20231: 0,
     FS_history: [43,13,9,6,22,14,9,16,25,6,9,10]
 )
 
@@ -268,8 +243,6 @@ Mitakeumi = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 3,
     kinboshi: 2,
-    FS_20226: 6,
-    FS_20231: 0,
     FS_history: [15,10,15,8,9,12,26,11,6,2,4,6]
 )
 
@@ -287,8 +260,6 @@ Tamawashi = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 1,
     kinboshi: 7,
-    FS_20226: 8,
-    FS_20231: 0,
     FS_history: [11,5,7,11,9,9,17,15,20,9,40,8]
 )
 
@@ -306,8 +277,6 @@ Abi = Rikishi.create(
     kanto_sho: 4,
     gino_sho: 0,
     kinboshi: 3,
-    FS_20226: 26,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,20,23,9,9,16,nil,26]
 )
 
@@ -325,8 +294,6 @@ Midorifuji = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 1,
     kinboshi: 0,
-    FS_20226: 13,
-    FS_20231: 0,
     FS_history: [14,5,nil,nil,nil,nil,nil,nil,9,11,15,13]
 )
 
@@ -344,8 +311,6 @@ Nishikifuji = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 11,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,15,10,11]
 )
 
@@ -363,8 +328,6 @@ Sadanoumi = Rikishi.create(
     kanto_sho: 2,
     gino_sho: 0,
     kinboshi: 1,
-    FS_20226: 12,
-    FS_20231: 0,
     FS_history: [5,nil,nil,nil,nil,9,8,6,17,7,14,12]
 )
 
@@ -382,8 +345,6 @@ Ryuden = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 1,
     kinboshi: 0,
-    FS_20226: 10,
-    FS_20231: 0,
     FS_history: [4,6,nil,nil,nil,nil,nil,nil,nil,nil,11,10]
 )
 
@@ -401,8 +362,6 @@ Nishikigi = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 1,
-    FS_20226: 8,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,8,8,9,8]
 )
 
@@ -420,8 +379,6 @@ Hokutofuji = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 2,
     kinboshi: 7,
-    FS_20226: 10,
-    FS_20231: 0,
     FS_history: [10,18,12,10,7,12,9,14,11,6,10,10]
 )
 
@@ -439,8 +396,6 @@ Myogiryu = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 6,
     kinboshi: 6,
-    FS_20226: 8,
-    FS_20231: 0,
     FS_history: [8,9,12,5,22,2,5,7,6,9,8,8]
 )
 
@@ -458,8 +413,6 @@ Ichinojo = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 8,
-    FS_20226: 8,
-    FS_20231: 0,
     FS_history: [9,7,11,20,14,5,14,19,nil,38,10,8]
 )
 
@@ -477,8 +430,6 @@ Ura = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 1,
     kinboshi: 2,
-    FS_20226: 4,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,10,7,16,14,7,12,11,19,4]
 )
 
@@ -496,8 +447,6 @@ Onosho = Rikishi.create(
     kanto_sho: 3,
     gino_sho: 0,
     kinboshi: 2,
-    FS_20226: 10,
-    FS_20231: 0,
     FS_history: [17,6,8,8,15,9,17,9,2,10,5,10]
 )
 
@@ -515,8 +464,6 @@ Oho = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 12,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,7,nil,6,8,7,12]
 )
 
@@ -534,8 +481,6 @@ Takanosho = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 1,
-    FS_20226: 7,
-    FS_20231: 0,
     FS_history: [9,8,5,11,10,22,8,6,28,4,8,7]
 )
 
@@ -553,8 +498,6 @@ Endo = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 4,
     kinboshi: 6,
-    FS_20226: 7,
-    FS_20231: 0,
     FS_history: [11,5,22,4,11,15,10,11,11,3,10,7]
 )
 
@@ -572,8 +515,6 @@ Aoiyama = Rikishi.create(
     kanto_sho: 3,
     gino_sho: 1,
     kinboshi: 1,
-    FS_20226: 7,
-    FS_20231: 0,
     FS_history: [6,17,4,7,7,4,8,7,10,8,6,7]
 )
 
@@ -591,8 +532,6 @@ Hiradoumi = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 10,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,7,10]
 )
 
@@ -610,8 +549,6 @@ Chiyoshoma = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 7,
-    FS_20231: 0,
     FS_history: [nil,8,8,8,6,8,4,5,6,7,9,7]
 )
 
@@ -629,8 +566,6 @@ Tochinoshin = Rikishi.create(
     kanto_sho: 6,
     gino_sho: 3,
     kinboshi: 2,
-    FS_20226: 6,
-    FS_20231: 0,
     FS_history: [4,7,5,7,7,6,7,9,8,7,8,6]
 )
 
@@ -648,8 +583,6 @@ Kagayaki = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 9,
-    FS_20231: 0,
     FS_history: [8,6,6,7,7,5,nil,7,6,nil,nil,9]
 )
 
@@ -667,8 +600,6 @@ Okinoumi = Rikishi.create(
     kanto_sho: 4,
     gino_sho: 0,
     kinboshi: 4,
-    FS_20226: 8,
-    FS_20231: 0,
     FS_history: [8,3,9,5,12,11,7,5,9,4,6,8]
 )
 
@@ -686,8 +617,6 @@ Kotoshoho = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 7,
-    FS_20231: 0,
     FS_history: [2,1,nil,nil,nil,nil,nil,9,6,5,7,7]
 )
 
@@ -705,8 +634,6 @@ Kotoeko = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 7,
-    FS_20231: 0,
     FS_history: [6,8,9,2,8,3,8,9,6,5,6,7]
 )
 
@@ -724,8 +651,6 @@ Ichiyamamoto = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 7,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,8,4,nil,5,8,8,6,6,7]
 )
 
@@ -743,8 +668,6 @@ Azumaryu = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 7,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,5,nil,nil,7]
 )
 
@@ -762,8 +685,6 @@ Tsurugisho = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,9,4,8,5,nil,6,nil,nil,5,5,nil]
 )
 
@@ -781,8 +702,6 @@ Mitoryu = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,5,nil]
 )
 
@@ -800,8 +719,6 @@ Takarafuji = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 3,
-    FS_20226: 3,
-    FS_20231: 0,
     FS_history: [16,4,7,8,8,7,10,8,4,9,5,3]
 )
 
@@ -819,8 +736,6 @@ Chiyomaru = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,8,6,8,8,7,5,nil,6,nil,nil]
 )
 
@@ -840,8 +755,6 @@ Akua = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [5,nil,5,nil,nil,9,4,4,nil,nil,nil,nil]
 )
 
@@ -859,8 +772,6 @@ Bushozan = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -878,8 +789,6 @@ Hokuseiho = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -897,8 +806,6 @@ Daiamami = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,7,4,nil,nil,nil,nil,nil,2,nil,nil]
 )
 
@@ -916,8 +823,6 @@ Atamifuji = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 4,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,4]
 )
 
@@ -935,8 +840,6 @@ Oshoma = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -954,8 +857,6 @@ Tohakuryu = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -973,8 +874,6 @@ Enho = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 1,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -992,8 +891,6 @@ Kinbozan = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1011,8 +908,6 @@ Kotokuzan = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,7,2,nil,nil,nil]
 )
 
@@ -1030,8 +925,6 @@ Churanoumi = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1049,8 +942,6 @@ Daishoho = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1068,8 +959,6 @@ Chiyonokuni = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,8,0,7,9,9,4,5,nil,nil,nil,nil]
 )
 
@@ -1087,8 +976,6 @@ Tochimusashi = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1106,8 +993,6 @@ Shimanoumi = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [9,6,7,8,8,5,5,8,7,1,nil,nil]
 )
 
@@ -1125,8 +1010,6 @@ Kitanowaka = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1144,8 +1027,6 @@ Roga = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1163,8 +1044,6 @@ Hidenoumi = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,10,5,7,7,8,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1182,8 +1061,6 @@ Gonoyama = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1201,8 +1078,6 @@ Terutsuyoshi = Rikishi.create(
     kanto_sho: 1,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: 0,
-    FS_20231: 0,
     FS_history: [7,8,nil,8,5,7,7,8,5,6,6,0]
 )
 
@@ -1220,8 +1095,6 @@ Chiyosakae = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1239,8 +1112,6 @@ Shimazuumi = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1258,8 +1129,6 @@ Takakento = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1277,8 +1146,6 @@ Asanoyama = Rikishi.create(
     kanto_sho: 3,
     gino_sho: 1,
     kinboshi: 1,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [11,10,7,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1296,8 +1163,6 @@ Shonannoumi = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1315,8 +1180,6 @@ Kaisho = Rikishi.create(
     kanto_sho: 0,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1334,8 +1197,6 @@ Tsushimanada = Rikishi.create(
     kanto_sho:0 ,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1353,8 +1214,6 @@ Hakuyozan = Rikishi.create(
     kanto_sho:0 ,
     gino_sho: 0,
     kinboshi: 0,
-    FS_20226: nil,
-    FS_20231: 0,
     FS_history: [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
 )
 
@@ -1372,7 +1231,6 @@ Hakuyozan = Rikishi.create(
 #     kanto_sho: 1,
 #     gino_sho: 0,
 #     kinboshi: 1,
-#     FS_20226: nil,
 #     FS_history: [3,nil,nil,7,4,nil,nil,nil,nil,nil,nil,nil]
 # )
 

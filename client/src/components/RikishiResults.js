@@ -3,7 +3,7 @@ import JResults from "./JResults"
 
 function RikishiResults({ rikishi }) {
 
-    console.log(rikishi)
+    // console.log(rikishi)
 
     const MRikishi = [...rikishi].filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji").sort((a, b) => b.FS_20231 - a.FS_20231)
     const JRikishi = [...rikishi].filter(rikishi => rikishi.current_rank === "J").sort((a, b) => b.FS_20231 - a.FS_20231)

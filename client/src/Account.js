@@ -8,7 +8,8 @@ function Account({ user, setUser, rikishi, clap }) {
     const navigate = useNavigate()
 
     function handleDeleteTeam() {
-        const toDelete = user.teams.find(e => e.basho === 2023.1).id
+        // change this every basho
+        const toDelete = user.teams.find(e => e.basho === 2023.3).id
         fetch(`/teams/${toDelete}`, { method: "DELETE" })
             .then((r) => {
                 if (r.ok) {
@@ -27,13 +28,12 @@ function Account({ user, setUser, rikishi, clap }) {
     function isString(value) { return typeof value === "string" }
 
     function currentBashoTeam() {
-
-        const currentTeam = user.teams.find(e => e.basho === 2023.1)
+        // change this every basho
+        const currentTeam = user.teams.find(e => e.basho === 2023.3)
         const CTRikishiStrings = Object.values(currentTeam).filter((isString))
         const actualTeam = rikishi.filter((r) => CTRikishiStrings.includes(r.shikona))
-        console.log(actualTeam)
 
-        const indivPoints = actualTeam.map((r) => r.FS_20231)
+        const indivPoints = actualTeam.map((r) => r.FS_20233)
         const totalPoints = indivPoints.reduce((a, b) => a + b, 0)
 
         return (
@@ -46,7 +46,8 @@ function Account({ user, setUser, rikishi, clap }) {
                                 <img src={obj.image_url} alt="" />
                                 <h3 className="AORrank">{obj.current_rank}</h3>
                                 <h3 className="AORshikona">{obj.shikona}</h3>
-                                <h3 className="AORscore">{obj.FS_20231 !== null ? obj.FS_20231 : "0"}</h3>
+                                {/* change this every basho */}
+                                <h3 className="AORscore">{obj.FS_20233 !== null ? obj.FS_20233 : "0"}</h3>
                             </div>
                         )}
                     </div>
@@ -64,7 +65,8 @@ function Account({ user, setUser, rikishi, clap }) {
     }
 
     function renderCurrentBashoTeam() {
-        if (user.teams.length === 0) {
+        // change this every basho
+        if (user.teams.find(e => e.basho === 2023.3) === undefined) {
             return (
                 <p id="NoTeam">You haven't drafted a team yet for the upcoming tournament</p>
             )

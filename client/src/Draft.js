@@ -25,7 +25,8 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
         r6: "",
         r7: "",
         user_id: "",
-        basho: 2023.1
+        // change this every basho
+        basho: 2023.3
     })
 
     useEffect(() => {
@@ -35,6 +36,8 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
             setRikishiLoaded(true)
         }
     }, [rikishi])
+
+    console.log(MRikishi)
 
     function onRFilter(e) {
         if (e.target.value === "All") {
@@ -179,7 +182,8 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
 
     function ADCheck() {
         return (
-            (user.teams.some(e => e.basho === 2023.1)) ?
+            // change this every basho
+            (user.teams.some(e => e.basho === 2023.3)) ?
                 renderAlreadyDrafted()
                 :
                 renderDraftPage()

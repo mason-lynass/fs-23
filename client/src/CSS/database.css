@@ -41,12 +41,12 @@
 
   #hrFSStats {
     display: inline-block;
-    width: 670px;
+    width: 100%;
   }
 
   #hrStats {
     display: inline-block;
-    width: 495px;
+    width: 100%;
   }
   
   #DBAllRikishi {
@@ -102,6 +102,12 @@
   .DBSansho {
     width: 40px;
   }
+
+  .DBScores {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+  }
   
   .DBBasho {
     width: 50px;
@@ -122,6 +128,16 @@
   }
 
   @media screen and (max-width: 600px) {
+
+    #hrFSStats {
+      display: inline-block;
+      width: 670px;
+    }
+  
+    #hrStats {
+      display: inline-block;
+      width: 495px;
+    }
 
     #DBTop {
       margin: 10px;
@@ -167,11 +183,6 @@
     .DBImage {
       width: 35px;
       height: 35px;
-    }
-
-    .DBScores {
-      display: flex;
-      flex-flow: row nowrap;
     }
   
     .DBCurrent,

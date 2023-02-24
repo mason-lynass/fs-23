@@ -21,9 +21,6 @@ import Database from './Database';
 import Account from './Account';
 import Terminology from './Terminology';
 
-
-
-
 function App() {
 
   const [user, setUser] = useState(null)

@@ -14,7 +14,9 @@ function Results({ rikishi }) {
         fetch("/teams")
             .then(r => r.json())
             .then(teams => {
-                setTeams(teams)
+                // change this every basho
+                const currentTeams = teams.filter((team) => team.basho === 2023.3)
+                setTeams(currentTeams)
                 setTeamsLoaded(true)
             })
     }, [])
@@ -25,8 +27,6 @@ function Results({ rikishi }) {
             setRikishiLoaded(true)
         }
     }, [rikishi])
-
-    console.log(resultsRikishi[0])
 
     function renderTeams() {
 
@@ -44,7 +44,8 @@ function Results({ rikishi }) {
                 return resultsRikishi.filter((r) => r.shikona === tR)[0]
             })
 
-            const ROScores = newRikishiObjects.map((r) => r.FS_20231)
+            // change this every basho
+            const ROScores = newRikishiObjects.map((r) => r.FS_20233)
 
             let scoreSum = 0
             for (const item of ROScores) { scoreSum += item }

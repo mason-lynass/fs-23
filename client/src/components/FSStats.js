@@ -77,22 +77,22 @@ function FSStats({ dbRikishi }) {
             <div id="DBTableColumns">
                 <p className='DBImage DBCol'> </p>
                 <p className='DBShikona DBCol' id="default" onClick={handleViewState}>shikona</p>
-                <div className="DBScores">
+                {/* <div className="DBScores"> */}
                     <p className='DBAvg DBCol' id="average" onClick={handleViewState}>avg FS score</p>
-                    <p className='DBBasho DBCol' id="12" onClick={handleViewState}>2023.01</p>
-                    <p className='DBBasho DBCol' id="11" onClick={handleViewState}>2022.11</p>
-                    <p className='DBBasho DBCol' id="10" onClick={handleViewState}>2022.09</p>
-                    <p className='DBBasho DBCol' id="9" onClick={handleViewState}>2022.07</p>
-                    <p className='DBBasho DBCol' id="8" onClick={handleViewState}>2022.05</p>
-                    <p className='DBBasho DBCol' id="7" onClick={handleViewState}>2022.03</p>
-                    <p className='DBBasho DBCol' id="6" onClick={handleViewState}>2022.01</p>
-                    <p className='DBBasho DBCol' id="5" onClick={handleViewState}>2021.11</p>
-                    <p className='DBBasho DBCol' id="4" onClick={handleViewState}>2021.09</p>
-                    <p className='DBBasho DBCol' id="3" onClick={handleViewState}>2021.07</p>
-                    <p className='DBBasho DBCol' id="2" onClick={handleViewState}>2021.05</p>
-                    <p className='DBBasho DBCol' id="1" onClick={handleViewState}>2021.03</p>
-                    <p className='DBBasho DBCol' id="0" onClick={handleViewState}>2021.01</p>
-                </div>
+                    <p className='DBBasho DBCol' id="12" onClick={handleViewState}>2023 01</p>
+                    <p className='DBBasho DBCol' id="11" onClick={handleViewState}>2022 11</p>
+                    <p className='DBBasho DBCol' id="10" onClick={handleViewState}>2022 09</p>
+                    <p className='DBBasho DBCol' id="9" onClick={handleViewState}>2022 07</p>
+                    <p className='DBBasho DBCol' id="8" onClick={handleViewState}>2022 05</p>
+                    <p className='DBBasho DBCol' id="7" onClick={handleViewState}>2022 03</p>
+                    <p className='DBBasho DBCol' id="6" onClick={handleViewState}>2022 01</p>
+                    <p className='DBBasho DBCol' id="5" onClick={handleViewState}>2021 11</p>
+                    <p className='DBBasho DBCol' id="4" onClick={handleViewState}>2021 09</p>
+                    <p className='DBBasho DBCol' id="3" onClick={handleViewState}>2021 07</p>
+                    <p className='DBBasho DBCol' id="2" onClick={handleViewState}>2021 05</p>
+                    <p className='DBBasho DBCol' id="1" onClick={handleViewState}>2021 03</p>
+                    <p className='DBBasho DBCol' id="0" onClick={handleViewState}>2021 01</p>
+                {/* </div> */}
             </div>
             <hr id="hrFSStats"></hr>
             <div id="DBAllRikishi">

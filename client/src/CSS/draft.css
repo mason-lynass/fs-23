@@ -220,6 +220,10 @@
 
 @media screen and (max-width: 600px) {
 
+  #DraftLogin {
+    margin: 10px auto;
+  }
+
   #DraftAD {
     height: 90px;
   }
