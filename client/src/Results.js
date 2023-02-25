@@ -29,8 +29,6 @@ function Results({ rikishi }) {
         }
     }, [rikishi])
 
-    console.log(teams)
-
     function renderTeams() {
 
         const allTeamsAsObjects = teams.map((team) => {

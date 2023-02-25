@@ -1,5 +1,6 @@
 import "./CSS/account.css"
 import "./CSS/media.css"
+import PreviousTeams from "./components/PreviousTeams";
 import LoginForm from "./components/LoginForm";
 import { useNavigate } from "react-router-dom";
 
@@ -75,6 +76,8 @@ function Account({ user, setUser, rikishi, clap }) {
         }
     }
 
+    console.log(user)
+
     function renderAccountPage() {
         if (!user) {
             return (
@@ -88,6 +91,10 @@ function Account({ user, setUser, rikishi, clap }) {
                 <div id="AccountPage">
                     <h2 id="AccountHello">Hello, {user.username}!</h2>
                     {renderCurrentBashoTeam()}
+                    {/* {user.teams.length > 0 ? 
+                    <PreviousTeams user={user} rikishi={rikishi}/>
+                    :
+                     null} */}
                 </div>
             )
         }

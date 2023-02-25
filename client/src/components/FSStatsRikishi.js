@@ -5,7 +5,6 @@ function FSStatsRikishi({ rikishi }) {
 
             const history = r.FS_history
             const recentFirst = [...history].reverse()
-            console.log(recentFirst)
 
             return (
                 <div key={r.id} className='DBOneRikishi'>
