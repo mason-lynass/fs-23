@@ -46,7 +46,7 @@ function Results({ rikishi }) {
             })
 
             // change this every basho
-            const ROScores = newRikishiObjects.map((r) => r.FS_history[11])
+            const ROScores = newRikishiObjects.map((r) => r.FS_history[12])
 
             let scoreSum = 0
             for (const item of ROScores) { scoreSum += item }
