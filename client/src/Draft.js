@@ -37,11 +37,9 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
         }
     }, [rikishi])
 
-    console.log(MRikishi)
-
     function onRFilter(e) {
         if (e.target.value === "All") {
-            const newRikishi = draftRikishi.filter(rikishi => rikishi.current_rank !== "J")
+            const newRikishi = draftRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS")
             setMRikishi(newRikishi)
         } else if (e.target.value === "S") {
             const newRikishi = rikishi.filter(rikishi => (rikishi.current_rank === "Y" || rikishi.current_rank === "O" || rikishi.current_rank === "S" || rikishi.current_rank === "K"))
@@ -118,7 +116,18 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
     }
 
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
-    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
+    // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
+    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS")
+    let sortedMRikishi = []
+    let sortArray = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", 
+"M11", "M12", "M13", "M14", "M15", "M16"]
+    for (let i = 0; i < sortArray.length - 1; i++) {
+        let tempArray = []
+        let target = MakuuchiRikishi.filter(r => r.current_rank === sortArray[i])
+        target.forEach((r) => sortedMRikishi.push(r))
+    }
+    
+    console.log(sortedMRikishi)
     const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J")
 
     function renderAlreadyDrafted() {
@@ -164,7 +173,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
                         <RikishiList
-                            rikishi={MakuuchiRikishi}
+                            rikishi={sortedMRikishi}
                             handleCardClick={handleCardClick}
                         />
                     </div>

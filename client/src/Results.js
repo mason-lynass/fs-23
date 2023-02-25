@@ -17,6 +17,7 @@ function Results({ rikishi }) {
                 // change this every basho
                 const currentTeams = teams.filter((team) => team.basho === 2023.3)
                 setTeams(currentTeams)
+                // setTeams(teams)
                 setTeamsLoaded(true)
             })
     }, [])
@@ -27,6 +28,8 @@ function Results({ rikishi }) {
             setRikishiLoaded(true)
         }
     }, [rikishi])
+
+    console.log(teams)
 
     function renderTeams() {
 
