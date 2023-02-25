@@ -2,7 +2,7 @@ function JResults ({JRikishi}) {
     return (
         JRikishi.map((r) => {
             return (
-                <div className="oneRR">
+                <div className="oneRR" id={r.shikona}>
                     <h2 className="RRShikona">{r.shikona}</h2>
                     <h2 className="RRPoints">{r.FS_20233}</h2>
                 </div>
