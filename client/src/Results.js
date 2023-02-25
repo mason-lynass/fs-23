@@ -15,7 +15,7 @@ function Results({ rikishi }) {
             .then(r => r.json())
             .then(teams => {
                 // change this every basho
-                const currentTeams = teams.filter((team) => team.basho === 2023.3)
+                const currentTeams = teams.filter((team) => team.basho === 2023.1)
                 setTeams(currentTeams)
                 // setTeams(teams)
                 setTeamsLoaded(true)
@@ -46,7 +46,7 @@ function Results({ rikishi }) {
             })
 
             // change this every basho
-            const ROScores = newRikishiObjects.map((r) => r.FS_20233)
+            const ROScores = newRikishiObjects.map((r) => r.FS_history[11])
 
             let scoreSum = 0
             for (const item of ROScores) { scoreSum += item }
