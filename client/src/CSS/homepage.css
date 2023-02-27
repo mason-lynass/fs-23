@@ -2,21 +2,22 @@
 
 #HomepageFlex {
     display: flex;
-    flex-flow: row wrap;
-    margin: 50px 5%;
+    flex-flow: row nowrap;
+    margin: 50px 2%;
     gap: 40px;
     align-items: center;
+    justify-content: center;
   }
 
   #HomeTextFull {
-    width: 100%;
+    width: 750px;
   }
   
   #HomepageText {
     text-align: center;
     margin: auto;
     width: 90%;
-    max-width: 660px;
+    max-width: 680px;
     font-size: 22px;
     background-color: white;
     padding: 20px;
@@ -26,7 +27,13 @@
   #takanoshoFootball {
     width: 600px;
     border: 5px ridge goldenrod;
-    margin: 0 auto;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 1440px) {
+    #HomepageFlex {
+      flex-flow: row wrap;
+    }
   }
 
 @media screen and (max-width: 600px) {
