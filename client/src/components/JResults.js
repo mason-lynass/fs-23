@@ -1,4 +1,5 @@
 function JResults ({JRikishi}) {
+    
     return (
         JRikishi.map((r) => {
             return (

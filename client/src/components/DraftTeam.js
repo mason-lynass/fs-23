@@ -92,11 +92,18 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, teams, setTeams, tach
                 </div>
             </div>
             <div>
-                <form id="FSTeamBottom" onSubmit={handleTeamFormSubmit}>
+                {
+                    (userTeam.r1 === "" || userTeam.r2 === "" || userTeam.r3 === "" || userTeam.r4 === "" || userTeam.r5 === "" || userTeam.r6 === "" || userTeam.r7 === "")
+                     ? 
+                    null
+                    :
+                    <form id="FSTeamBottom" onSubmit={handleTeamFormSubmit}>
                     <button type="submit">Submit your team</button>
                     {errorMessage()}
                     <p id="warning">remember, no edits after you submit!</p>
                 </form>
+                }
+                
             </div>
 
         </div>

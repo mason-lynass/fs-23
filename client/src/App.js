@@ -32,6 +32,23 @@ function App() {
   const [hyoshigi] = useSound(Hyoshigi)
   const [tachiai] = useSound(Hakkeyoi, { volume: 0.5 })
 
+  function rankSort (wrestlers, highest) {
+    let sortArray = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "J", "MS"]
+
+    let sortedRikishi = []
+    
+    for (let i = 0; i < sortArray.length; i++) {
+        let target = wrestlers.filter(r => r.current_rank === sortArray[i])
+        if (highest !== null) {
+          target = wrestlers.filter(r => r.highest_rank === sortArray[i])
+        }
+        target.forEach((r) => sortedRikishi.push(r))
+    }
+    return sortedRikishi
+  }
+
+  
+
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -43,7 +60,10 @@ function App() {
     });
     fetch("/rikishis")
       .then(r => r.json())
-      .then(r => setRikishi(r))
+      .then(r => {
+        const sorted = rankSort(r)
+        setRikishi(sorted)
+        })
     fetch("/teams")
       .then(r => r.json())
       .then(teams => {
@@ -51,8 +71,6 @@ function App() {
         setTeamsLoaded(true)
       })
   }, []);
-
-  // console.log(`in App ${user}`)
 
   return (
     <div className="App">
@@ -88,15 +106,15 @@ function App() {
         />
         <Route
           path="/draft"
-          element={<Draft user={user} setUser={setUser} rikishi={rikishi} tachiai={tachiai} clap={clap} />}
+          element={<Draft user={user} setUser={setUser} rikishi={rikishi} tachiai={tachiai} clap={clap} rankSort={rankSort} />}
         />
         <Route
           path="/results"
-          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}  />}
+          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded} rankSort={rankSort} />}
         />
         <Route
           path="/database"
-          element={<Database rikishi={rikishi} />}
+          element={<Database rikishi={rankSort(rikishi, true)} />}
         />
       </Routes>
     </div>

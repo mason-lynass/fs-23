@@ -8,7 +8,7 @@ import SignupForm from "./components/SignupForm"
 import { useNavigate } from "react-router-dom"
 
 
-function Draft({ user, setUser, rikishi, tachiai, clap }) {
+function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
 
     const navigate = useNavigate()
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
@@ -36,8 +36,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
             setRikishiLoaded(true)
         }
     }, [rikishi])
-
-    console.log(rikishi)
 
     function onRFilter(e) {
         if (e.target.value === "All") {
@@ -107,9 +105,9 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
         document.querySelectorAll(`#M9, #M10, #M11, #M12`).forEach(e => e.classList.remove("greyed"))
     }
     if (userTeam.r5 !== "" && userTeam.r6 !== "") {
-        document.querySelectorAll(`#M13, #M14, #M15, #M16`).forEach(e => e.classList.add("greyed"))
+        document.querySelectorAll(`#M13, #M14, #M15, #M16, #M17`).forEach(e => e.classList.add("greyed"))
     } else {
-        document.querySelectorAll(`#M13, #M14, #M15, #M16`).forEach(e => e.classList.remove("greyed"))
+        document.querySelectorAll(`#M13, #M14, #M15, #M16, #M17`).forEach(e => e.classList.remove("greyed"))
     }
     if (userTeam.r7 !== "" && userTeam.r6 !== "") {
         document.querySelectorAll(`#J`).forEach(e => e.classList.add("greyed"))
@@ -120,14 +118,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
     // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
     const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS")
-    let sortedMRikishi = []
-    let sortArray = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17"]
-    for (let i = 0; i < sortArray.length; i++) {
-        let tempArray = []
-        let target = MakuuchiRikishi.filter(r => r.current_rank === sortArray[i])
-        target.forEach((r) => sortedMRikishi.push(r))
-    }
-
+    const sortedMRikishi = rankSort(MakuuchiRikishi, null)
     const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J")
 
     function renderAlreadyDrafted() {

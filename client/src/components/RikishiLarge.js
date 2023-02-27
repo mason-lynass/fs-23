@@ -79,6 +79,8 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
                 <div id="RLargeTop">
                     <h2>click on a wrestler</h2>
                     <p>their information and stats will show up here</p>
+                    <hr></hr>
+                    <p>(more stats and score history on the Database page)</p>
                 </div>
             }
         </div>

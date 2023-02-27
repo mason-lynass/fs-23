@@ -19,6 +19,8 @@ function Database({ rikishi }) {
         setViewState(!viewState)
     }
 
+    // console.log(rikishi)
+
     return (
         (rikishiLoaded === true) ?
             <div id="DBContainer">

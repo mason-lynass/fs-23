@@ -48,6 +48,8 @@ function PreviousTeams({ user, rikishi, teams }) {
                     <div>
                         <h3>{team.basho}</h3>
                         <div id="oneTeamRank">
+                            <h2>{team.final_score} points</h2>
+                            <hr></hr>
                             <h2>#{teamPosition} out of</h2>
                             <h2>{otherTeams.length} teams</h2>
                         </div>

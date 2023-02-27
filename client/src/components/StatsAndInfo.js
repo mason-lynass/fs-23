@@ -70,6 +70,8 @@ function StatsAndInfo({ dbRikishi }) {
     function SIRikishiSwitch() {
         if (sortState === "default") {
             return <SIAllRikishi calculate_age={calculate_age} rikishi={defaultSort} />
+        } else if (sortState === "current") {
+            return <SIAllRikishi calculate_age={calculate_age} rikishi={currentSort} />
         } else if (sortState === "shikona") {
             return <SIAllRikishi calculate_age={calculate_age} rikishi={shikonaSort} />
         } else if (sortState === "highest") {
@@ -99,7 +101,7 @@ function StatsAndInfo({ dbRikishi }) {
         <div id="DBTable">
             <div id="DBTableColumns">
                 <p className='DBImage DBCol' id="reset"></p>
-                <p className='DBCurrent DBCol' id="default" onClick={handleSortState}>current rank</p>
+                <p className='DBCurrent DBCol' id="current" onClick={handleSortState}>current rank</p>
                 <p className='DBShikona DBCol' id="shikona" onClick={handleSortState}>shikona</p>
                 <p className='DBHighest DBCol' id="highest" onClick={handleSortState}>highest rank</p>
                 <p className='DBHeya DBCol' id="heya" onClick={handleSortState}>heya</p>

@@ -3,17 +3,18 @@ import { useEffect, useState } from "react"
 import OneTeam from "./components/OneTeam"
 import RikishiResults from "./components/RikishiResults"
 
-function Results({ rikishi, teams, teamsLoaded }) {
+function Results({ rikishi, teams, teamsLoaded, rankSort }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
-    
+
     // change this every basho
-    const currentTeams = teams.filter((team) => team.basho === 2023.1)
+    const currentTeams = teams.filter((team) => team.basho === 2023.3)
 
     useEffect(() => {
         setResultsRikishi(rikishi)
         if (rikishi.length > 0) {
+            rankSort(rikishi)
             setRikishiLoaded(true)
         }
     }, [rikishi])
@@ -54,9 +55,8 @@ function Results({ rikishi, teams, teamsLoaded }) {
 
                 <div>
                     <div id="hello">
-                        <p>Congratulations to <h2>heavenhouse666</h2> for your win in the Hatsu 2023 Fantasy Sumo Tournament!</p>
-                        <p>All scores on the Results page are final,<br></br> and they'll be available until the next draft is live.</p>
-                        <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p>
+                        <p>The draft is live! The rankings were updated on February 27th.</p>
+                        <p>The next tournament begins on March 12th, so make sure you draft before then!</p>
                     </div>
                     <div className='resultsContainer'>
                         <div className='teamsTop'>

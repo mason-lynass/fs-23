@@ -3,10 +3,11 @@ import JResults from "./JResults"
 
 function RikishiResults({ rikishi }) {
 
-    // console.log(rikishi)
+    const alphaSort = [...rikishi].sort((a, b) => a.shikona.localeCompare(b.shikona))
 
-    const MRikishi = [...rikishi].filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji").sort((a, b) => b.FS_20231 - a.FS_20231)
-    const JRikishi = [...rikishi].filter(rikishi => rikishi.current_rank === "J").sort((a, b) => b.FS_20231 - a.FS_20231)
+    // && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji"
+    const MRikishi = [...rikishi].filter(rikishi => rikishi.current_rank !== "J" ).sort((a, b) => b.FS_20233 - a.FS_20233)
+    const JRikishi = [...alphaSort].filter(rikishi => rikishi.current_rank === "J").sort((a, b) => b.FS_20233 - a.FS_20233)
 
 
 

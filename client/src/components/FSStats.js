@@ -17,12 +17,11 @@ function FSStats({ dbRikishi }) {
 
     function handleViewState(e) {
         setViewState(e.target.id)
-        console.log(e.target.id)
         const target = document.getElementById(`${e.target.id}`)
         setHighlight(target)
     }
 
-    const defaultSort = [...dbRikishi].sort((a, b) => a.id - b.id)
+    const shikonaSort = [...dbRikishi].sort((a, b) => a.shikona.localeCompare(b.shikona))
     const averageSort = [...dbRikishi].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
     const sort0 = [...dbRikishi].sort((a, b) => b.FS_history[0] - a.FS_history[0])
     const sort1 = [...dbRikishi].sort((a, b) => b.FS_history[1] - a.FS_history[1])
@@ -40,9 +39,11 @@ function FSStats({ dbRikishi }) {
 
     function FSRikishiSwitch() {
         if (viewState === 'default') {
-            return <FSStatsRikishi rikishi={defaultSort} />
+            return <FSStatsRikishi rikishi={dbRikishi} />
         } else if (viewState === 'average') {
             return <FSStatsRikishi rikishi={averageSort} />
+        } else if (viewState === 'shikona') {
+            return <FSStatsRikishi rikishi={shikonaSort} />
         } else if (viewState === '0') {
             return <FSStatsRikishi rikishi={sort0} />
         } else if (viewState === '1') {
@@ -75,8 +76,8 @@ function FSStats({ dbRikishi }) {
     return (
         <div id="DBTable">
             <div id="DBTableColumns">
-                <p className='DBImage DBCol'> </p>
-                <p className='DBShikona DBCol' id="default" onClick={handleViewState}>shikona</p>
+                <p className='DBImage DBCol' id="default" onClick={handleViewState}>(reset)</p>
+                <p className='DBShikona DBCol' id="shikona" onClick={handleViewState}>shikona</p>
                 {/* <div className="DBScores"> */}
                     <p className='DBAvg DBCol' id="average" onClick={handleViewState}>avg FS score</p>
                     <p className='DBBasho DBCol' id="12" onClick={handleViewState}>2023 01</p>

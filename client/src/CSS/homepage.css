@@ -5,12 +5,18 @@
     flex-flow: row wrap;
     margin: 50px 5%;
     gap: 40px;
+    align-items: center;
+  }
+
+  #HomeTextFull {
+    width: 100%;
   }
   
   #HomepageText {
     text-align: center;
     margin: auto;
-    width: 660px;
+    width: 90%;
+    max-width: 660px;
     font-size: 22px;
     background-color: white;
     padding: 20px;
@@ -39,7 +45,11 @@
   }
 
   #HomepageFlex {
-    margin: 20px 5%;
+    margin: 20px 3%;
+  }
+
+  #HomepageText {
+    width: 88%;
   }
 
   #HomepageText p {

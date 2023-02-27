@@ -76,8 +76,6 @@ function Account({ user, setUser, rikishi, clap, teams }) {
         }
     }
 
-    console.log(user)
-
     function renderAccountPage() {
         if (!user) {
             return (

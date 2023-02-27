@@ -91,6 +91,15 @@
   border-radius: 10px;
 }
 
+.RLarge hr {
+  width: 50px;
+}
+
+#RLargeTop {
+  width: 400px;
+  margin: 120px auto;
+}
+
 #AddRikishiButton {
   font-size: 20px;
   margin: 20px auto;
