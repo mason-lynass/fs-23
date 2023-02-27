@@ -35,13 +35,18 @@ function StatsAndInfo({ dbRikishi }) {
         setHighlight(target)
     }
 
-    const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "J"]
+    const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "J", "MS"]
 
     const defaultSort = [...dbRikishi].sort((a, b) => a.id - b.id)
     const shikonaSort = [...dbRikishi].sort((a, b) => a.shikona.localeCompare(b.shikona))
     const highestSort = [...dbRikishi].sort((a, b) => {
         const aRank = rankOrder.indexOf(a.highest_rank)
         const bRank = rankOrder.indexOf(b.highest_rank)
+        return aRank - bRank
+    })
+    const currentSort = [...dbRikishi].sort((a, b) => {
+        const aRank = rankOrder.indexOf(a.current_rank)
+        const bRank = rankOrder.indexOf(b.current_rank)
         return aRank - bRank
     })
     const heyaSort = [...dbRikishi].sort((a, b) => a.heya.localeCompare(b.heya))

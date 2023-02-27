@@ -104,14 +104,44 @@
     border: 2px solid black;
   }
 
+  #fullOneTeam {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px 50px;
+    background-color: rgb(229, 202, 133);
+    width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    border: 5px ridge goldenrod;
+  }
+
+  #oneTeam {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+
   #oneTeam div {
     display: grid;
-    grid-template-columns: 15% 5%;
+    grid-template-columns: 75% 22%;
     gap: 3%;
+    width: 200px;
   }
 
   #oneTeam div p {
     margin: 5px 10px;
+  }
+
+  #oneTeamRank {
+    background-color: white;
+    padding: 10px;
+    border: 5px ridge rgb(184, 2, 2);
+  }
+
+  #oneTeamRank h2 {
+    margin: 5px;
   }
 
   @media screen and (max-width: 600px) {
@@ -189,5 +219,10 @@
       font-size: 12px;
     }
 
+    #fullOneTeam {
+      flex-flow: row wrap;
+      width: 90%;
+      padding: 0 0 5px 0;
+    }
     
   }

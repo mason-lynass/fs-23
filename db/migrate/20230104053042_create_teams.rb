@@ -10,6 +10,7 @@ class CreateTeams < ActiveRecord::Migration[7.0]
       t.string :r6, null: false
       t.string :r7, null: false
       t.float :basho
+      t.integer :final_score
 
       t.timestamps
     end

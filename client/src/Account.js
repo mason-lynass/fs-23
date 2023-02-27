@@ -4,7 +4,7 @@ import PreviousTeams from "./components/PreviousTeams";
 import LoginForm from "./components/LoginForm";
 import { useNavigate } from "react-router-dom";
 
-function Account({ user, setUser, rikishi, clap }) {
+function Account({ user, setUser, rikishi, clap, teams }) {
 
     const navigate = useNavigate()
 
@@ -91,10 +91,10 @@ function Account({ user, setUser, rikishi, clap }) {
                 <div id="AccountPage">
                     <h2 id="AccountHello">Hello, {user.username}!</h2>
                     {renderCurrentBashoTeam()}
-                    {/* {user.teams.length > 0 ? 
-                    <PreviousTeams user={user} rikishi={rikishi}/>
+                    {user.teams.length > 0 ? 
+                    <PreviousTeams user={user} rikishi={rikishi} teams={teams}/>
                     :
-                     null} */}
+                     null}
                 </div>
             )
         }

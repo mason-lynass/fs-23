@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_24_224057) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_053042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,10 +28,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_224057) do
     t.integer "kanto_sho"
     t.integer "gino_sho"
     t.integer "kinboshi"
+    t.integer "FS_20233"
     t.integer "FS_history", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "FS_20233"
     t.index ["FS_history"], name: "index_rikishis_on_FS_history"
   end
 
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_24_224057) do
     t.string "r6", null: false
     t.string "r7", null: false
     t.float "basho"
+    t.integer "final_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_teams_on_user_id"

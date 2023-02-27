@@ -3,24 +3,13 @@ import { useEffect, useState } from "react"
 import OneTeam from "./components/OneTeam"
 import RikishiResults from "./components/RikishiResults"
 
-function Results({ rikishi }) {
+function Results({ rikishi, teams, teamsLoaded }) {
 
-    const [teams, setTeams] = useState([])
-    const [teamsLoaded, setTeamsLoaded] = useState(false)
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
-
-    useEffect(() => {
-        fetch("/teams")
-            .then(r => r.json())
-            .then(teams => {
-                // change this every basho
-                const currentTeams = teams.filter((team) => team.basho === 2023.1)
-                setTeams(currentTeams)
-                // setTeams(teams)
-                setTeamsLoaded(true)
-            })
-    }, [])
+    
+    // change this every basho
+    const currentTeams = teams.filter((team) => team.basho === 2023.1)
 
     useEffect(() => {
         setResultsRikishi(rikishi)
@@ -31,7 +20,7 @@ function Results({ rikishi }) {
 
     function renderTeams() {
 
-        const allTeamsAsObjects = teams.map((team) => {
+        const allTeamsAsObjects = currentTeams.map((team) => {
             const teamRikishi = ([
                 team.r1,
                 team.r2,

@@ -25,6 +25,8 @@ function App() {
 
   const [user, setUser] = useState(null)
   const [rikishi, setRikishi] = useState([])
+  const [teams, setTeams] = useState([])
+  const [teamsLoaded, setTeamsLoaded] = useState(false)
 
   const [clap] = useSound(Clap)
   const [hyoshigi] = useSound(Hyoshigi)
@@ -42,13 +44,19 @@ function App() {
     fetch("/rikishis")
       .then(r => r.json())
       .then(r => setRikishi(r))
+    fetch("/teams")
+      .then(r => r.json())
+      .then(teams => {
+        setTeams(teams)
+        setTeamsLoaded(true)
+      })
   }, []);
 
   // console.log(`in App ${user}`)
 
   return (
     <div className="App">
-      <img id="BI" src={BG1} alt=""/>
+      <img id="BI" src={BG1} alt="" />
       <NavBar
         user={user}
         setUser={setUser}
@@ -68,7 +76,7 @@ function App() {
         />
         <Route
           path="/account"
-          element={<Account user={user} setUser={setUser} rikishi={rikishi} clap={clap} />}
+          element={<Account user={user} setUser={setUser} rikishi={rikishi} clap={clap} teams={teams} />}
         />
         <Route
           path="/rules"
@@ -84,11 +92,11 @@ function App() {
         />
         <Route
           path="/results"
-          element={<Results rikishi={rikishi}/>}
+          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}  />}
         />
         <Route
           path="/database"
-          element={<Database rikishi={rikishi}/>}
+          element={<Database rikishi={rikishi} />}
         />
       </Routes>
     </div>

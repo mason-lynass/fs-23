@@ -37,6 +37,8 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
         }
     }, [rikishi])
 
+    console.log(rikishi)
+
     function onRFilter(e) {
         if (e.target.value === "All") {
             const newRikishi = draftRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS")
@@ -119,9 +121,8 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
     // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
     const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS")
     let sortedMRikishi = []
-    let sortArray = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", 
-"M11", "M12", "M13", "M14", "M15", "M16"]
-    for (let i = 0; i < sortArray.length - 1; i++) {
+    let sortArray = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17"]
+    for (let i = 0; i < sortArray.length; i++) {
         let tempArray = []
         let target = MakuuchiRikishi.filter(r => r.current_rank === sortArray[i])
         target.forEach((r) => sortedMRikishi.push(r))
@@ -220,17 +221,17 @@ function Draft({ user, setUser, rikishi, tachiai, clap }) {
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         areYouLoggedIn()
-    //         : <p>loading...</p>
-    // )
-
     return (
-        <div id="hello">
-            <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p>
-        </div>
+        (rikishiLoaded === true) ?
+            areYouLoggedIn()
+            : <p>loading...</p>
     )
+
+    // return (
+    //     <div id="hello">
+    //         <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p>
+    //     </div>
+    // )
 }
 
 export default Draft
