@@ -35,7 +35,7 @@ function StatsAndInfo({ dbRikishi }) {
         setHighlight(target)
     }
 
-    const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "J", "MS"]
+    const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "J", "MS"]
 
     const defaultSort = [...dbRikishi].sort((a, b) => a.id - b.id)
     const shikonaSort = [...dbRikishi].sort((a, b) => a.shikona.localeCompare(b.shikona))
