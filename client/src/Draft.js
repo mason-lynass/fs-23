@@ -160,6 +160,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
                         </select>
                     </div>
                 </div>
+                <p id="headsup">* it's not confirmed yet, but it seems that Terunofuji will not be competing in this tournament *</p>
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>

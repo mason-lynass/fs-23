@@ -227,6 +227,16 @@
   opacity: .7;
 }
 
+#headsup {
+  width: 25%;
+  min-width: 350px;
+  margin: 10px auto;
+  text-align: center;
+  border: 3px solid rgb(184, 2, 2);
+  background-color: white;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 600px) {
 
   #DraftLogin {

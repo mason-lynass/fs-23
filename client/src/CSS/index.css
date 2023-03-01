@@ -30,3 +30,9 @@ button {
   z-index: -1;
   opacity: .35;
 }
+
+@media screen and (max-width: 600px) {
+  #BI {
+    height: 100vh;
+  }
+}
