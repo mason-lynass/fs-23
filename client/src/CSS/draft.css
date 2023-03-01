@@ -291,6 +291,11 @@
     font-size: 14px;
   }
 
+  #RLargeTop {
+    width: 100%;
+    margin: auto;
+  }
+
   /* .card-title {
         display: flex;
         flex-flow: row nowrap;
@@ -379,7 +384,7 @@
 
   .SmallCard h3 {
     width: 80px;
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .SmallCard h3,
