@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
     private
 
-    BAD_WORDS = %w(nigg ngge nger chink cunt bitch shit cock penis vagina pussy dick balls fuck nazi skinhead kike faggot rape jew)
+    BAD_WORDS = %w(nigg ngge nger nggr chink cunt bitch shit cock penis vagina pussy dick balls fuck nazi skinhead kike faggot rape jew)
 
     def no_spaces
         if username.include?(" ")
