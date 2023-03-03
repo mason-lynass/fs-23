@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    validates :username, uniqueness: true, presence: true
+    validates :username, uniqueness: true, presence: true, length: { maximum: 20 }
     validate :no_bad_words, :no_spaces
 
     private
