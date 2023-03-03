@@ -48,8 +48,9 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
 
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
-        const first10teams = teamsHiToLo.slice(0, 10)
-        console.log(first10teams)
+        // the last number is the number of real teams
+        const firstTeams = teamsHiToLo.slice(0, 12)
+        console.log(firstTeams)
 
         return (
             (teamsLoaded === false) ?
@@ -74,7 +75,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
                             <h3 className="total">Total:</h3>
                         </div>
                         <div id="teamsContainer">
-                            {first10teams.map((team) => {
+                            {firstTeams.map((team) => {
                                 return (
                                     <OneTeam team={team} key={team.id} rikishi={rikishi} />
                                 )
