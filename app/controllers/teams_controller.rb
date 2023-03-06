@@ -19,8 +19,14 @@ class TeamsController < ApplicationController
     end
 
     def destroy
-        Team.find(params[:id]).destroy
-        head :no_content
+        team = Team.find(params[:id])
+        user = User.find_by(id: session[:user_id])
+        if (user.id == team.user_id)
+            team.destroy
+            head :no_content
+        else 
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+        end        
     end
 
     private
