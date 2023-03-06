@@ -50,7 +50,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
 
         // the last number is the number of real teams
         // const firstTeams = teamsHiToLo.slice(0, 12)
-        const firstTeams = []
+        const firstTeams = teamsHiToLo.filter((team) => team.user.username === "mason")
         console.log(firstTeams)
 
         return (
