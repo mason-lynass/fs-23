@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :teams
+  resources :teams, only: [:index, :show, :create]
   resources :rikishis, only: [:index, :show]
   resources :users, only: [:index, :show, :create]
 
