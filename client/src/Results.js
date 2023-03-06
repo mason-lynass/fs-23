@@ -49,7 +49,8 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
         // the last number is the number of real teams
-        const firstTeams = teamsHiToLo.slice(0, 12)
+        // const firstTeams = teamsHiToLo.slice(0, 12)
+        const firstTeams = []
         console.log(firstTeams)
 
         return (
