@@ -28,6 +28,12 @@
   #AccountHello {
     margin: 0px auto;
   }
+
+  #delay {
+    width: 75%;
+    min-width: 300px;
+    margin: auto;
+  }
   
   #AccountTeam {
     border: 5px ridge goldenrod;
