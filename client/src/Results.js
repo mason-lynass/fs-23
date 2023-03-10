@@ -49,7 +49,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
         // update this with valid users
-        const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass']
+        const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass', 'Yamashiro', 'Bunbukuchagama']
         const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
         // console.log(teamsHiToLo)
         // console.log(goodTeams)
