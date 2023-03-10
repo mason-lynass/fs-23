@@ -48,11 +48,11 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
 
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
-        // the last number is the number of real teams
-        // const firstTeams = teamsHiToLo.slice(0, 12)
-        const firstTeams = teamsHiToLo.filter((team) => team.user.username === "mason" || team.user.username === "acorn" || team.user.username === "Seitos" || team.user.username === "Tetsuba")
-        console.log(teamsHiToLo)
-        console.log(firstTeams)
+        // update this with valid users
+        const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass']
+        const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
+        // console.log(teamsHiToLo)
+        // console.log(goodTeams)
 
         return (
             (teamsLoaded === false) ?
@@ -77,7 +77,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
                             <h3 className="total">Total:</h3>
                         </div>
                         <div id="teamsContainer">
-                            {firstTeams.map((team) => {
+                            {goodTeams.map((team) => {
                                 return (
                                     <OneTeam team={team} key={team.id} rikishi={rikishi} />
                                 )
