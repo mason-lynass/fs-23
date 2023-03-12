@@ -60,10 +60,10 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
                 :
 
                 <div>
-                    <div id="hello">
+                    {/* <div id="hello">
                         <p>The draft is live! The rankings were updated on February 27th.</p>
                         <p>The next tournament begins on March 12th, so make sure you draft before then!</p>
-                    </div>
+                    </div> */}
                     <div className='resultsContainer'>
                         <div className='teamsTop'>
                             <h2 className="teamName">team name</h2>
