@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import OneTeam from "./components/OneTeam"
 import RikishiResults from "./components/RikishiResults"
 
-function Results({ rikishi, teams, teamsLoaded, rankSort }) {
+function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
@@ -49,7 +49,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort }) {
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
         // update this with valid users
-        const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass', 'Yamashiro', 'Bunbukuchagama', 'emplexus', 'Kanashisasu', 'Dreiden', 'blackroseyagami', 'Kohakuho', 'Hami', 'Terunozuna', 'BeskarBeast', 'Nondescriptusername', 'sumo-api', 'Gaijingai', 'N00bonicplague', 'maysteve21@gmail.com', 'Yoshinochin', 'Izzy', 'ahecardona', 'bill', 'liebesleet', 'duuudeman@gmail.com', 'Fuss', 'Hatt', 'SkipJam', 'existentialcats', 'Dannyfnlanza', 'Bountyhuntre', 'yurble', 'ExtractionWiz', 'Mokuseinoisu', 'Flynch', 'HoberMallow27', 'Gusoyama', 'VikingTomi', 'Flohru', 'Dannybo', 'ljvd']
+        
         const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
         // console.log(teamsHiToLo)
         // console.log(goodTeams)

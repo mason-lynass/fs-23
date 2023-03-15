@@ -47,7 +47,7 @@ function App() {
     return sortedRikishi
   }
 
-  
+  const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass', 'Yamashiro', 'Bunbukuchagama', 'emplexus', 'Kanashisasu', 'Dreiden', 'blackroseyagami', 'Kohakuho', 'Hami', 'Terunozuna', 'BeskarBeast', 'Nondescriptusername', 'sumo-api', 'Gaijingai', 'N00bonicplague', 'maysteve21@gmail.com', 'Yoshinochin', 'Izzy', 'ahecardona', 'bill', 'liebesleet', 'duuudeman@gmail.com', 'Fuss', 'Hatt', 'SkipJam', 'existentialcats', 'Dannyfnlanza', 'Bountyhuntre', 'yurble', 'ExtractionWiz', 'Mokuseinoisu', 'Flynch', 'HoberMallow27', 'Gusoyama', 'VikingTomi', 'Flohru', 'Dannybo', 'ljvd', 'mcquello', 'Hidenotora']
 
   useEffect(() => {
     // auto-login
@@ -94,7 +94,7 @@ function App() {
         />
         <Route
           path="/account"
-          element={<Account user={user} setUser={setUser} rikishi={rikishi} clap={clap} teams={teams} />}
+          element={<Account user={user} setUser={setUser} rikishi={rikishi} clap={clap} teams={teams} goodTeamNames={goodTeamNames} />}
         />
         <Route
           path="/rules"
@@ -110,7 +110,7 @@ function App() {
         />
         <Route
           path="/results"
-          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded} rankSort={rankSort} />}
+          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded} rankSort={rankSort} goodTeamNames={goodTeamNames}/>}
         />
         <Route
           path="/database"

@@ -4,9 +4,14 @@ import PreviousTeams from "./components/PreviousTeams";
 import LoginForm from "./components/LoginForm";
 import { useNavigate } from "react-router-dom";
 
-function Account({ user, setUser, rikishi, clap, teams }) {
+function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
 
     const navigate = useNavigate()
+
+    // starting to think about displaying the rank during the basho
+    // basically need to recreate what's happening in PreviousTeams
+    const otherTeams = [...teams].filter((team) => team.basho === 2023.3 && goodTeamNames.includes(team.user.username))
+    console.log(otherTeams)
 
     function handleDeleteTeam() {
         // change this every basho
