@@ -36,6 +36,7 @@ function FSStats({ dbRikishi }) {
     const sort10 = [...dbRikishi].sort((a, b) => b.FS_history[10] - a.FS_history[10])
     const sort11 = [...dbRikishi].sort((a, b) => b.FS_history[11] - a.FS_history[11])
     const sort12 = [...dbRikishi].sort((a, b) => b.FS_history[12] - a.FS_history[12])
+    const sort13 = [...dbRikishi].sort((a, b) => b.FS_history[12] - a.FS_history[13])
 
     function FSRikishiSwitch() {
         if (viewState === 'default') {
@@ -70,6 +71,8 @@ function FSStats({ dbRikishi }) {
             return <FSStatsRikishi rikishi={sort11} />
         } else if (viewState === '12') {
             return <FSStatsRikishi rikishi={sort12} />
+        } else if (viewState === '13') {
+            return <FSStatsRikishi rikishi={sort13} />
         }
     }
 
@@ -80,6 +83,7 @@ function FSStats({ dbRikishi }) {
                 <p className='DBShikona DBCol' id="shikona" onClick={handleViewState}>shikona</p>
                 {/* <div className="DBScores"> */}
                     <p className='DBAvg DBCol' id="average" onClick={handleViewState}>avg FS score</p>
+                    <p className='DBBasho DBCol' id="13" onClick={handleViewState}>2023 03</p>
                     <p className='DBBasho DBCol' id="12" onClick={handleViewState}>2023 01</p>
                     <p className='DBBasho DBCol' id="11" onClick={handleViewState}>2022 11</p>
                     <p className='DBBasho DBCol' id="10" onClick={handleViewState}>2022 09</p>
