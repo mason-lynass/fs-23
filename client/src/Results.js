@@ -49,7 +49,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
         // update this with valid users
-        
+
         const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
         // console.log(teamsHiToLo)
         // console.log(goodTeams)
@@ -60,10 +60,10 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 :
 
                 <div>
-                    {/* <div id="hello">
-                        <p>The draft is live! The rankings were updated on February 27th.</p>
-                        <p>The next tournament begins on March 12th, so make sure you draft before then!</p>
-                    </div> */}
+                    <div id="hello">
+                        <p>Congrats to mason on your Fantasy Sumo win, and to Kiribayama for winning the Haru 2023 yusho!</p>
+                        <p>The new rankings will be announced on May 1st, so the draft will open on the 2nd.</p>
+                    </div>
                     <div className='resultsContainer'>
                         <div className='teamsTop'>
                             <h2 className="teamName">team name</h2>

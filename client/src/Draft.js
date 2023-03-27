@@ -222,7 +222,8 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     return (
         <div id="hello">
             {/* <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p> */}
-            <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p>
+            {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p> */}
+            <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p>
         </div>
     )
 }
