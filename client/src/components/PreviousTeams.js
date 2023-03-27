@@ -28,7 +28,7 @@ function PreviousTeams({ user, rikishi, teams }) {
         let otherTeams = []
 
         if (team.basho === 2023.1) {
-            temp--
+            temp = temp - 2
             teamScores.r1 = actualTeam[0][0].FS_history[temp]
             teamScores.r2 = actualTeam[1][0].FS_history[temp]
             teamScores.r3 = actualTeam[2][0].FS_history[temp]
