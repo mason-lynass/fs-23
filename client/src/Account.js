@@ -12,6 +12,8 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
     // basically need to recreate what's happening in PreviousTeams
     const otherTeams = [...teams].filter((team) => team.basho === 2023.3 && goodTeamNames.includes(team.user.username))
     console.log(otherTeams)
+    const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
+    const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username == user.username) + 1
 
     function handleDeleteTeam() {
         // change this every basho
@@ -33,9 +35,13 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
 
     function isString(value) { return typeof value === "string" }
 
+    // change these every basho
+    const currentTeam = user.teams.find(e => e.basho === 2023.3)
+    const oldTeams = user.teams.filter(e => e.basho !== 2023.3)
+    console.log(oldTeams)
+
     function currentBashoTeam() {
-        // change this every basho
-        const currentTeam = user.teams.find(e => e.basho === 2023.3)
+        
         const CTRikishiStrings = Object.values(currentTeam).filter((isString))
         const actualTeam = rikishi.filter((r) => CTRikishiStrings.includes(r.shikona))
 
@@ -60,6 +66,9 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
                     <div id="ATTotal">
                         <h1>{totalPoints}</h1>
                         <h2>points</h2>
+                        <hr></hr>
+                        <h2>#{teamPosition} out of</h2>
+                        <h2>{otherTeams.length} teams</h2>
                     </div>
                 </div>
                 <div id="delay">
@@ -97,10 +106,10 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
                 <div id="AccountPage">
                     <h2 id="AccountHello">Hello, {user.username}!</h2>
                     {renderCurrentBashoTeam()}
-                    {user.teams.length > 0 ? 
-                    <PreviousTeams user={user} rikishi={rikishi} teams={teams}/>
-                    :
-                     null}
+                    {oldTeams.length > 0 ?
+                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} />
+                        :
+                        null}
                 </div>
             )
         }
