@@ -1,224 +1,259 @@
 /* for the Database */
 
 #DBTop {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 40px;
-    height: 60px;
-  }
-  
-  #DBTitle {
-    width: 300px;
-    background-color: antiquewhite;
-    text-align: center;
-    border: 3px solid goldenrod;
-    border-radius: 10px;
-  }
-  
-  #DBTopSpace {
-    width: 120px;
-  }
-  
-  #DBViewState {
-    width: 120px;
-    border: 2px solid black;
-  }
-  
-  #DBContainer {
-    max-width: 1300px;
-    margin: auto;
-  }
-  
-  #DBTable {
-    background-color: rgba(250, 235, 213, 0.85);
-    border: 7px ridge goldenrod;
-    margin: 20px 20px;
-    height: 800px;
-    overflow-x: scroll;
-  }
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 40px;
+  height: 60px;
+}
+
+#DBTitle {
+  width: 300px;
+  background-color: antiquewhite;
+  text-align: center;
+  border: 3px solid goldenrod;
+  border-radius: 10px;
+}
+
+#DBTopSpace {
+  width: 120px;
+}
+
+#DBViewState {
+  width: 120px;
+  border: 2px solid black;
+}
+
+#DBContainer {
+  max-width: 1300px;
+  margin: auto;
+}
+
+#DBTable {
+  background-color: rgba(250, 235, 213, 0.85);
+  border: 7px ridge goldenrod;
+  margin: 20px 20px;
+  height: 800px;
+  overflow-x: scroll;
+}
+
+#hrFSStats {
+  display: inline-block;
+  width: 100%;
+}
+
+#hrStats {
+  display: inline-block;
+  width: 100%;
+}
+
+#DBAllRikishi {
+  height: 740px;
+}
+
+#DBTableColumns,
+.DBOneRikishi {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  text-align: center;
+  min-width: 750px;
+}
+
+#DBTableColumns {
+  height: 57px;
+}
+
+#DBTableColumns p {
+  font-size: 12px;
+  margin: 0;
+}
+
+.DBImage {
+  width: 60px;
+}
+
+.DBCurrent,
+.DBHighest {
+  width: 40px;
+  text-align: center;
+}
+
+.DBShikona {
+  width: 120px;
+}
+
+.DBHeya {
+  width: 100px;
+}
+
+.DBAge,
+.DBWeight,
+.DBHeight {
+  width: 40px;
+}
+
+.DBYusho,
+.DBKinboshi,
+.DBSansho {
+  width: 40px;
+}
+
+.DBScores {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.DBBasho {
+  width: 50px;
+  text-align: center;
+}
+
+.DBAvg {
+  width: 60px;
+  font-weight: 800;
+}
+
+.DBCol {
+  color: black;
+}
+
+.DBStatsActive {
+  color: red;
+}
+
+@media screen and (max-width: 600px) {
 
   #hrFSStats {
     display: inline-block;
-    width: 100%;
+    width: 670px;
   }
 
   #hrStats {
     display: inline-block;
+    width: 495px;
+  }
+
+  #DBTop {
+    margin: 10px;
+    height: 60px;
+  }
+
+  #DBTopSpace,
+  #DBViewState {
+    width: 75px;
+    font-size: 8px;
+    height: 20px;
+  }
+
+  #DBTitle {
+    width: 150px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  #DBContainer {
     width: 100%;
   }
-  
-  #DBAllRikishi {
-    height: 740px;
+
+  #DBTable {
+    margin: 10px auto;
+    width: 95%;
+    height: 72vh;
+    border: 3px ridge goldenrod;
   }
-  
+
   #DBTableColumns,
   .DBOneRikishi {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    height: 60px;
-    text-align: center;
-    min-width: 750px;
+    justify-content: left;
+    height: 35px;
+    min-width: 300px;
   }
-  
-  #DBTableColumns {
-    height: 57px;
+
+  #DBTableColumns p,
+  .DBOneRikishi p {
+    font-size: 8px;
+    flex-shrink: 0;
   }
-  
-  #DBTableColumns p {
-    font-size: 12px;
-    margin: 0;
-  }
-  
+
   .DBImage {
-    width: 60px;
+    width: 35px;
+    height: 35px;
   }
-  
+
   .DBCurrent,
   .DBHighest {
-    width: 40px;
+    width: 25px;
     text-align: center;
   }
-  
+
   .DBShikona {
-    width: 120px;
+    width: 60px;
   }
-  
+
   .DBHeya {
-    width: 100px;
+    width: 60px;
   }
-  
+
   .DBAge,
   .DBWeight,
   .DBHeight {
-    width: 40px;
+    width: 35px;
   }
-  
+
   .DBYusho,
   .DBKinboshi,
   .DBSansho {
+    width: 35px;
+  }
+
+  .DBBasho {
+    text-align: center;
     width: 40px;
   }
 
-  .DBScores {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-  }
-  
-  .DBBasho {
-    width: 50px;
-    text-align: center;
-  }
-  
   .DBAvg {
-    width: 60px;
+    width: 50px;
     font-weight: 800;
   }
-  
-  .DBCol {
-    color: black;
-  }
-  
-  .DBStatsActive {
-    color: red;
-  }
 
-  @media screen and (max-width: 600px) {
+}
 
-    #hrFSStats {
-      display: inline-block;
-      width: 670px;
-    }
-  
-    #hrStats {
-      display: inline-block;
-      width: 495px;
-    }
+#dbtest-all-histories {
+  width: 980px;
+  overflow: scroll;
+  border: 5px solid goldenrod;
+  background-color: white;
+}
 
-    #DBTop {
-      margin: 10px;
-      height: 60px;
-    }
-  
-    #DBTopSpace,
-    #DBViewState {
-      width: 75px;
-      font-size: 8px;
-      height: 20px;
-    }
-  
-    #DBTitle {
-      width: 150px;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-  
-    #DBContainer {
-      width: 100%;
-    }
-  
-    #DBTable {
-      margin: 10px auto;
-      width: 95%;
-      height: 72vh;
-      border: 3px ridge goldenrod;
-    }
-  
-    #DBTableColumns,
-    .DBOneRikishi {
-      justify-content: left;
-      height: 35px;
-      min-width: 300px;
-    }
-  
-    #DBTableColumns p, .DBOneRikishi p {
-      font-size: 8px;
-      flex-shrink: 0;
-    }
-  
-    .DBImage {
-      width: 35px;
-      height: 35px;
-    }
-  
-    .DBCurrent,
-    .DBHighest {
-      width: 25px;
-      text-align: center;
-    }
-  
-    .DBShikona {
-      width: 60px;
-    }
-  
-    .DBHeya {
-      width: 60px;
-    }
-  
-    .DBAge,
-    .DBWeight,
-    .DBHeight {
-      width: 35px;
-    }
-  
-    .DBYusho,
-    .DBKinboshi,
-    .DBSansho {
-      width: 35px;
-    }
-  
-    .DBBasho {
-      text-align: center;
-      width: 40px;
-    }
-  
-    .DBAvg {
-      width: 50px;
-      font-weight: 800;
-    }
-  
-  }
+.dbtest-one-score {
+  width: 40px;
+  margin: 5px;
+  font-size: 10px;
+}
+
+.dbtest-one-rikishi-scores {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: left;
+  text-align: center;
+}
+
+.dbtest-one-rikishi {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  align-items: center;
+}
+
+.dbtest-rikishi-name {
+  width: 100px;
+  flex-shrink: 0;
+  margin: 15px 5px;
+}
