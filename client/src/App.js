@@ -20,6 +20,7 @@ import Results from './Results';
 import Database from './Database';
 import Account from './Account';
 import Terminology from './Terminology';
+import DbTest from './components/DbTest';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
   const [rikishi, setRikishi] = useState([])
   const [teams, setTeams] = useState([])
   const [teamsLoaded, setTeamsLoaded] = useState(false)
+  const [fsHistories, setFsHistories] = useState([])
 
   const [clap] = useSound(Clap)
   const [hyoshigi] = useSound(Hyoshigi)
@@ -70,6 +72,10 @@ function App() {
         setTeams(teams)
         setTeamsLoaded(true)
       })
+    // new
+    fetch("/fs_histories")
+    .then(r => r.json())
+    .then(r => setFsHistories(r))
   }, []);
 
   return (
@@ -84,6 +90,10 @@ function App() {
         <Route
           path="/"
           element={<Homepage />}
+        />
+        <Route
+          path="/dbtest"
+          element={<DbTest fsHistories={fsHistories} rikishi={rikishi}/>}
         />
         <Route
           path="/login"

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import takanoshoFootball from './images/takanosho_football.jpeg'
 
 function Homepage() {
-    // next tournament starts on March 12, banzuke is out on Feb 27
+    // next tournament starts on May 14th, banzuke is out on May 1st
 
     return (
         <div>
