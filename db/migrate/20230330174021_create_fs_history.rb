@@ -161,7 +161,7 @@ class CreateFsHistory < ActiveRecord::Migration[7.0]
     #   t.integer :b157
     #   t.integer :b158
     #   t.timestamps
-    end
+    # end
   end
 end
 
