@@ -78,8 +78,6 @@ function App() {
     .then(r => setFsHistories(r))
   }, []);
 
-  console.log(user)
-
   return (
     <div className="App">
       <img id="BI" src={BG1} alt="" />
