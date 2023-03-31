@@ -14,7 +14,7 @@ function DbTest({ fsHistories, rikishi }) {
 
         return (
             justTheHistoryValues.map((score) => {
-                if (score === null) score = 'null'
+                if (score === null) score = ' '
                 return (<p className="dbtest-one-score">{score}</p>)
             })
         )
