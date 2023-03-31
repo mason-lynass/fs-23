@@ -224,25 +224,37 @@
 
 }
 
-#dbtest-all-histories {
+#dbtest-full-table {
   width: 980px;
   overflow: scroll;
   border: 5px solid goldenrod;
   background-color: white;
 }
 
-.dbtest-one-score {
+#dbtest-basho-row {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 980px;
+}
+
+#dbtest-all-histories {
+  width: 980px;
+}
+
+.dbtest-one-score, .dbtest-basho {
   width: 40px;
   margin: 5px;
   font-size: 10px;
+  flex-shrink: 0;
+  text-align: center;
 }
 
 .dbtest-one-rikishi-scores {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-items: left;
-  text-align: center;
+  align-items: center;
 }
 
 .dbtest-one-rikishi {
