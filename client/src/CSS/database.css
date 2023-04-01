@@ -233,6 +233,7 @@
 
 #dbtest-basho-row {
   display: flex;
+  position: sticky;
   flex-flow: row nowrap;
   align-items: center;
   width: 980px;
@@ -264,8 +265,33 @@
   align-items: center;
 }
 
+.dbtest-rikishi-image {
+  width: 50px;
+}
+
+.dbtest-basho-image {
+  width: 50px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
 .dbtest-rikishi-name {
-  width: 100px;
+  width: 120px;
   flex-shrink: 0;
   margin: 15px 5px;
+  text-align: center;
+}
+
+.dbtest-rikishi-avg {
+  width: 70px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.dbtest-basho-avg {
+  width: 50px;
+  margin: auto 10px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 12px;
 }
