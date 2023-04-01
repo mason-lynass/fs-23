@@ -224,8 +224,19 @@
 
 }
 
+#dbtest-title {
+  background-color: white;
+  text-align: center;
+  width: 400px;
+  margin: 30px auto;
+  border: 3px solid black;
+  border-radius: 20px;
+}
+
 #dbtest-full-table {
-  width: 980px;
+  width: 90%;
+  height: 800px;
+  margin: 30px 5%;
   overflow: scroll;
   border: 5px solid goldenrod;
   background-color: white;
