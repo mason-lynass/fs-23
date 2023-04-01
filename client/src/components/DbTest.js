@@ -61,7 +61,7 @@ function DbTest({ fsHistories, rikishi }) {
     }
 
     function AllHistories(sorted) {
-        
+
         return (
             sorted.map((history) => {
                 return (
@@ -191,7 +191,7 @@ function DbTest({ fsHistories, rikishi }) {
 
     return (
         <div>
-            <h2>hello</h2>
+            <h2 id='dbtest-title'>Mason's Big Fantasy Sumo Table</h2>
             <div id='dbtest-full-table'>
                 <div id='dbtest-basho-row'>
                     <h4 className="dbtest-basho-image" id='default' onClick={handleViewState}>reset</h4>
