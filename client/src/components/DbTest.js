@@ -43,7 +43,7 @@ function DbTest({ fsHistories, rikishi }) {
             }
             default: {
                 return AllHistories(xSort(viewState))
-            } 
+            }
         }
     }
 
@@ -55,7 +55,7 @@ function DbTest({ fsHistories, rikishi }) {
         return (
             justTheHistoryValues.map((score) => {
                 if (score === null) score = ' '
-                return (<p className="dbtest-one-score">{score}</p>)
+                return (<td className="dbtest-one-score">{score}</td>)
             })
         )
     }
@@ -66,9 +66,12 @@ function DbTest({ fsHistories, rikishi }) {
             sorted.map((history) => {
                 return (
                     <div className="dbtest-one-rikishi">
-                        <img className="dbtest-rikishi-image" src={history.rikishi.image_url} alt={'picture of' + history.rikishi.shikona}></img>
-                        <h4 className="dbtest-rikishi-name">{history.rikishi.shikona}</h4>
-                        <p className="dbtest-rikishi-avg">{history.avg_fs_score}</p>
+                        <th className='dbtest-one-rikishi-header'>
+                            <img className="dbtest-rikishi-image" src={history.rikishi.image_url} alt={'picture of' + history.rikishi.shikona}></img>
+                            <h4 className="dbtest-rikishi-name">{history.rikishi.shikona}</h4>
+                            <p className="dbtest-rikishi-avg">{history.avg_fs_score}</p>
+                        </th>
+
                         <div className="dbtest-one-rikishi-scores">
                             {displayOneRikishi(history)}
                         </div>
@@ -183,7 +186,7 @@ function DbTest({ fsHistories, rikishi }) {
                 }
             }
             return bashoRowsArray.map((x) => {
-                return <p id={'b' + x[0]} className="dbtest-basho" onClick={handleViewState}>{x[1]}</p>
+                return <th id={'b' + x[0]} className="dbtest-basho" onClick={handleViewState}>{x[1]}</th>
             })
         }
     }
@@ -192,17 +195,19 @@ function DbTest({ fsHistories, rikishi }) {
     return (
         <div>
             <h2 id='dbtest-title'>Mason's Big Fantasy Sumo Table</h2>
-            <div id='dbtest-full-table'>
-                <div id='dbtest-basho-row'>
-                    <h4 className="dbtest-basho-image" id='default' onClick={handleViewState}>reset</h4>
-                    <h4 className="dbtest-rikishi-name" id='shikona' onClick={handleViewState}></h4>
-                    <h4 className="dbtest-basho-avg" id='average' onClick={handleViewState}>average score</h4>
+            <table id='dbtest-full-table'>
+                <thead id='dbtest-basho-row'>
+                    <div id='dbtest-basho-sticky'>
+                        <th className="dbtest-basho-image" id='default' onClick={handleViewState}>reset</th>
+                        <th className="dbtest-rikishi-name" id='shikona' onClick={handleViewState}></th>
+                        <th className="dbtest-basho-avg" id='average' onClick={handleViewState}>average score</th>
+                    </div>
                     {AllBashoRows()}
-                </div>
-                <div id='dbtest-all-histories'>
+                </thead>
+                <tbody id='dbtest-all-histories'>
                     {FSRikishiSwitch()}
-                </div>
-            </div>
+                </tbody>
+            </table>
 
         </div>
     )

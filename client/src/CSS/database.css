@@ -233,30 +233,72 @@
   border-radius: 20px;
 }
 
-#dbtest-full-table {
+table {
+  table-layout: fixed;
   width: 90%;
-  height: 800px;
+  height: 50px;
   margin: 30px 5%;
-  overflow: scroll;
+  overflow: auto;
+  border-collapse: collapse;
   border: 5px solid goldenrod;
   background-color: white;
 }
 
+table thead th {
+  /* border: 1px solid black; */
+  vertical-align: middle;
+  height: 30px;
+  padding: 0 1px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+
+/* table tbody th */
+.dbtest-one-rikishi-header {
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+  left: 0;
+  background: white;
+  z-index: 1;
+}
+
+/* table thead th:first-child */
+#dbtest-basho-sticky {
+  display: flex;
+  flex-flow: row nowrap;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+.dbtest-one-rikishi-header {
+  position: sticky;
+  left: 0;
+  background: white;
+  z-index: 1;
+}
+
 #dbtest-basho-row {
   display: flex;
-  position: sticky;
   flex-flow: row nowrap;
   align-items: center;
+  background: white;
+  height: 50px;
   width: 980px;
 }
 
-#dbtest-all-histories {
+tbody {
   width: 980px;
+  height: 20px;
 }
 
 .dbtest-one-score, .dbtest-basho {
   width: 40px;
-  margin: 5px;
+  margin: 0;
+  padding: 0 5px;
   font-size: 10px;
   flex-shrink: 0;
   text-align: center;
@@ -274,9 +316,11 @@
   flex-flow: row nowrap;
   justify-content: left;
   align-items: center;
+  height: 50px;
+  border-bottom: 1px solid black;
 }
 
-.dbtest-rikishi-image {
+tbody div th .dbtest-rikishi-image {
   width: 50px;
 }
 
@@ -289,20 +333,38 @@
 .dbtest-rikishi-name {
   width: 120px;
   flex-shrink: 0;
-  margin: 15px 5px;
+  margin: 0;
   text-align: center;
+  /* height: fit-content; */
 }
 
-.dbtest-rikishi-avg {
+.dbtest-one-rikishi-header .dbtest-rikishi-name {
+  vertical-align: middle;
+  height: fit-content;
+  margin: auto;
+}
+
+.dbtest-rikishi-avg, .dbtest-basho-avg {
   width: 70px;
   flex-shrink: 0;
   text-align: center;
+  margin: auto;
+}
+
+.dbtest-rikishi-avg {
+  vertical-align: middle;
 }
 
 .dbtest-basho-avg {
-  width: 50px;
-  margin: auto 10px;
-  flex-shrink: 0;
-  text-align: center;
-  font-size: 12px;
+  font-size: 10px;
+}
+
+.dbtest-one-rikishi-header {
+  padding: 0;
+}
+
+.dbtest-one-rikishi-header > img, h4, p {
+  /* border-left: 1px solid black;
+  border-right: 1px solid black; */
+  padding: 0px 1px;
 }
