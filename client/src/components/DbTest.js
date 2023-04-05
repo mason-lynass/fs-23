@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "../CSS/database.css"
 
 function DbTest({ fsHistories, rikishi }) {
@@ -6,7 +6,17 @@ function DbTest({ fsHistories, rikishi }) {
     console.log(fsHistories)
 
     const [viewState, setViewState] = useState('default')
-    // const [sorted, setSorted] = useState({})
+    const [scoreCells, setScoreCells] = useState([])
+
+    useEffect(() => {
+        if (fsHistories.length > 0) {
+            setScoreCells(document.querySelectorAll('td'))  
+        } 
+    }, [fsHistories])
+
+    scoreCells.forEach((cell) => {
+        if (cell.innerHTML === ' ') cell.classList.add('more-padding')
+    })
 
     const averageSort = [...fsHistories].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
     const shikonaSort = [...fsHistories].sort((a, b) => a.rikishi.shikona.localeCompare(b.rikishi.shikona))
@@ -193,7 +203,7 @@ function DbTest({ fsHistories, rikishi }) {
 
 
     return (
-        <div>
+        <main>
             <h2 id='dbtest-title'>Mason's Big Fantasy Sumo Table</h2>
             <table id='dbtest-full-table'>
                 <thead id='dbtest-basho-row'>
@@ -209,7 +219,7 @@ function DbTest({ fsHistories, rikishi }) {
                 </tbody>
             </table>
 
-        </div>
+        </main>
     )
 }
 

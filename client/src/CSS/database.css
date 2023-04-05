@@ -224,6 +224,11 @@
 
 }
 
+main {
+  width: 90vw;
+  margin: 50px 5%;
+}
+
 #dbtest-title {
   background-color: white;
   text-align: center;
@@ -235,19 +240,17 @@
 
 table {
   table-layout: fixed;
-  width: 90%;
-  height: 50px;
-  margin: 30px 5%;
-  overflow: auto;
+  display: block;
+  width: 100%;
+  height: 70vh;
+  margin: 30px 0;
+  overflow: scroll;
   border-collapse: collapse;
   border: 5px solid goldenrod;
   background-color: white;
 }
 
 table thead th {
-  /* border: 1px solid black; */
-  vertical-align: middle;
-  height: 30px;
   padding: 0 1px;
   position: sticky;
   top: 0;
@@ -260,9 +263,10 @@ table thead th {
   display: flex;
   flex-flow: row nowrap;
   position: relative;
+  position: sticky;
   left: 0;
-  background: white;
   z-index: 1;
+  background: white;
 }
 
 /* table thead th:first-child */
@@ -274,41 +278,44 @@ table thead th {
   z-index: 2;
 }
 
-.dbtest-one-rikishi-header {
-  position: sticky;
-  left: 0;
-  background: white;
-  z-index: 1;
-}
-
 #dbtest-basho-row {
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
+  align-items: flex-end;
   background: white;
   height: 50px;
   width: 980px;
 }
 
 tbody {
-  width: 980px;
+  width: 100%;
   height: 20px;
 }
+
+.dbtest-one-rikishi:nth-child(even), .dbtest-basho:nth-child(even), .dbtest-one-score:nth-child(even), .dbtest-one-rikishi-header:nth-of-type(even) {
+  background: rgba(194, 194, 194, .3);
+}
+
+/* .dbtest-one-rikishi:nth-of-type(2n) {
+  background: blue;
+} */
 
 .dbtest-one-score, .dbtest-basho {
   width: 40px;
   margin: 0;
-  padding: 0 5px;
+  vertical-align: bottom;
+  padding: 18px 5px;
   font-size: 10px;
   flex-shrink: 0;
-  text-align: center;
+  text-align: center; 
 }
 
 .dbtest-one-rikishi-scores {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  width: calc(90vw - 246px);
 }
 
 .dbtest-one-rikishi {
@@ -355,8 +362,9 @@ tbody div th .dbtest-rikishi-image {
   vertical-align: middle;
 }
 
-.dbtest-basho-avg {
+.dbtest-basho-avg, .dbtest-basho-image {
   font-size: 10px;
+  padding: 18px 1px;
 }
 
 .dbtest-one-rikishi-header {
@@ -364,7 +372,10 @@ tbody div th .dbtest-rikishi-image {
 }
 
 .dbtest-one-rikishi-header > img, h4, p {
-  /* border-left: 1px solid black;
-  border-right: 1px solid black; */
   padding: 0px 1px;
+}
+
+.more-padding {
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
