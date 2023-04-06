@@ -238,30 +238,30 @@ main {
   border-radius: 20px;
 }
 
-#dbtest-filters div {
-  width: 300px;
-  margin: 20px auto;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 20px;
-  padding: 15px;
-}
-
 #dbtest-filters {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+#dbtest-filters div {
+  width: 320px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 20px;
 }
 
 input {
-  margin: 0 20px;
+  margin: 0px 30px;
 }
 
 table {
   table-layout: fixed;
   display: block;
   width: 100%;
-  height: 70vh;
+  height: 12vh;
   margin: 30px 0;
   overflow: scroll;
   border-collapse: collapse;
@@ -280,7 +280,7 @@ thead th {
 .dbtest-one-rikishi-header {
   display: flex;
   flex-flow: row nowrap;
-  position: relative;
+  position: sticky;
   left: 0;
   z-index: 1;
   background: white;
@@ -309,7 +309,7 @@ tbody, thead, .dbtest-one-rikishi {
 }
 
 .dbtest-one-rikishi:nth-child(even), .dbtest-basho:nth-child(2n+1), .dbtest-one-score:nth-child(even), .dbtest-one-rikishi-header:nth-of-type(even) {
-  background: rgb(236, 235, 235);
+  background: rgba(194, 194, 194, .3);
 }
 
 /* .dbtest-one-rikishi:nth-of-type(2n) {
@@ -320,7 +320,7 @@ tbody, thead, .dbtest-one-rikishi {
   width: 40px;
   margin: 0;
   vertical-align: bottom;
-  padding: 25px 5px;
+  padding: 18px 5px;
   font-size: 10px;
   flex-shrink: 0;
   text-align: center; 
@@ -340,7 +340,7 @@ tbody, thead, .dbtest-one-rikishi {
   justify-content: left;
   align-items: center;
   height: 50px;
-  /* border-bottom: 1px solid black; */
+  border-bottom: 1px solid black;
 }
 
 tbody div th .dbtest-rikishi-image {
