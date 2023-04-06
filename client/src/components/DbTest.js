@@ -40,8 +40,28 @@ function DbTest({ fsHistories, rikishi }) {
 
     const filterBySearch = (r) => {
         return fsHistories.filter((history) => {
-            if (searchOne && searchTwo !== '') {
-                return history.rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase() || searchTwo.toLowerCase())
+            if (searchOne !== '' && searchTwo !== '') {
+                console.log(searchOne, searchTwo)
+                // const array = []
+                // for (let i = 0; i < fsHistories.length; i++) {
+                //     console.log(fsHistories[i])
+                //     if (fsHistories[i].rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase()) || fsHistories[i].rikishi.shikona.toLowerCase().includes(searchTwo.toLowerCase())) {
+                //         console.log('this')
+                //         array.push(fsHistories[i])
+                //     }
+                // }
+
+                // console.log(array)
+                // return history.rikishi.shikona.includes(array)
+
+                // return history.rikishi.shikona.toLowerCase().some(searchOne.toLowerCase(), searchTwo.toLowerCase())
+
+                const one = history.rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase())
+                const two = history.rikishi.shikona.toLowerCase().includes(searchTwo.toLowerCase())
+                console.log(one, two, history)
+                if (one === true || two === true) {
+                    return history
+                }
             }
             else if (searchOne !== '') {
                 return history.rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase())
@@ -53,7 +73,7 @@ function DbTest({ fsHistories, rikishi }) {
         })
     }
 
-    console.log(newRikishi, fsHistories)
+    // console.log(newRikishi, fsHistories)
 
     const averageSort = [...newRikishi].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
     const shikonaSort = [...newRikishi].sort((a, b) => a.rikishi.shikona.localeCompare(b.rikishi.shikona))
