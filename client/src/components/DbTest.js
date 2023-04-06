@@ -3,26 +3,63 @@ import "../CSS/database.css"
 
 function DbTest({ fsHistories, rikishi }) {
 
-    console.log(fsHistories)
-
     const [viewState, setViewState] = useState('default')
     const [scoreCells, setScoreCells] = useState([])
+    const [searchOne, setSearchOne] = useState("")
+    const [searchTwo, setSearchTwo] = useState("")
+    const [newRikishi, setNewRikishi] = useState([])
+
+    // console.log(fsHistories[0])
 
     useEffect(() => {
         if (fsHistories.length > 0) {
-            setScoreCells(document.querySelectorAll('td'))  
-        } 
+            setScoreCells(document.querySelectorAll('td'))
+            setNewRikishi(fsHistories)
+        }
     }, [fsHistories])
+
+    useEffect(() => {
+        // console.log('this')
+        let result = fsHistories
+        result = filterBySearch(result)
+        setNewRikishi(result)
+    }, [searchOne, searchTwo])
 
     scoreCells.forEach((cell) => {
         if (cell.innerHTML === ' ') cell.classList.add('more-padding')
     })
 
-    const averageSort = [...fsHistories].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
-    const shikonaSort = [...fsHistories].sort((a, b) => a.rikishi.shikona.localeCompare(b.rikishi.shikona))
+
+    function handleSearchOne(e) {
+        setSearchOne(e.target.value)
+    }
+
+    function handleSearchTwo(e) {
+        setSearchTwo(e.target.value)
+    }
+
+    const filterBySearch = (r) => {
+        return fsHistories.filter((history) => {
+            if (searchOne && searchTwo !== '') {
+                return history.rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase() || searchTwo.toLowerCase())
+            }
+            else if (searchOne !== '') {
+                return history.rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase())
+            }
+            else if (searchTwo !== '') {
+                return history.rikishi.shikona.toLowerCase().includes(searchTwo.toLowerCase())
+            } 
+            else return history
+        })
+    }
+
+    console.log(newRikishi, fsHistories)
+
+    const averageSort = [...newRikishi].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
+    const shikonaSort = [...newRikishi].sort((a, b) => a.rikishi.shikona.localeCompare(b.rikishi.shikona))
 
     function xSort(x) {
-        return [...fsHistories].sort((a, b) => b[x] - a[x])
+        return [...newRikishi].sort((a, b) => b[x] - a[x])
     }
 
     function setHighlight(target) {
@@ -196,7 +233,7 @@ function DbTest({ fsHistories, rikishi }) {
                 }
             }
             return bashoRowsArray.map((x) => {
-                return <th id={'b' + x[0]} className="dbtest-basho" onClick={handleViewState}>{x[1]}</th>
+                return <th key={x} id={'b' + x[0]} className="dbtest-basho" onClick={handleViewState}>{x[1]}</th>
             })
         }
     }
@@ -205,6 +242,16 @@ function DbTest({ fsHistories, rikishi }) {
     return (
         <main>
             <h2 id='dbtest-title'>Mason's Big Fantasy Sumo Table</h2>
+            <div id='dbtest-filters'>
+                <div>
+                    <input placeholder='Asashoryu' onChange={handleSearchOne} value={searchOne} type="text" name="search"></input>
+                    <label>rikishi search</label>
+                </div>
+                <div>
+                <input placeholder='Kakuryu' onChange={handleSearchTwo} value={searchTwo} type="text" name="search"></input>
+                <label>rikishi search</label>
+                </div>
+            </div>
             <table id='dbtest-full-table'>
                 <thead id='dbtest-basho-row'>
                     <div id='dbtest-basho-sticky'>
