@@ -9,7 +9,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
     const [resultsRikishi, setResultsRikishi] = useState([])
 
     // change this every basho
-    const currentTeams = teams.filter((team) => team.basho === 2023.3)
+    const currentTeams = teams.filter((team) => team.basho === 2023.5)
 
     useEffect(() => {
         setResultsRikishi(rikishi)
@@ -36,7 +36,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
             })
 
             // change this every basho
-            const ROScores = newRikishiObjects.map((r) => r.FS_20233)
+            const ROScores = newRikishiObjects.map((r) => r.FS_20235)
 
             let scoreSum = 0
             for (const item of ROScores) { scoreSum += item }

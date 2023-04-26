@@ -128,7 +128,8 @@
   display: flex;
   flex-flow: row nowrap;
   height: 30px;
-  width: 550px;
+  width: 50vw;
+  min-width: 550px;
   justify-content: space-between;
   align-items: center;
   margin: 0px auto;
@@ -140,6 +141,14 @@
 #DraftSearch {
   display: flex;
   flex-flow: row nowrap;
+  gap: 10px;
+}
+
+#DFSelect {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 
@@ -229,7 +238,8 @@
 
 #headsup {
   width: 25%;
-  min-width: 350px;
+  min-width: 450px;
+  padding: 10px;
   margin: 10px auto;
   text-align: center;
   border: 3px solid rgb(184, 2, 2);

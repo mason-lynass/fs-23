@@ -4,11 +4,18 @@
   display: flex;
   flex-flow: row nowrap;
   border: 1px solid black;
-  width: 500px;
+  width: 90%;
+  max-width: 450px;
   justify-content: center;
-  margin: 0px auto;
+  margin: 0px;
   padding: 20px;
   background-color: white;
+  height: 300px;
+  border-radius: 10px;;
+}
+
+#SignupLines {
+  margin: 30px auto;
 }
 
 .SignupLine {
@@ -17,36 +24,54 @@
   justify-content: space-between;
   align-items: center;
   width: 420px;
-  margin: 15px auto;
+  margin: 20px auto;
   font-size: 20px;
   height: 30px;
-  text-align: right;
+  text-align: left;
+}
+
+.SignupLine label {
+  width: 150px;
 }
 
 .SignupLine input {
   font-size: 18px;
+  width: 200px;
+  margin: 0;
+}
+
+#pc {
+  font-size: 14px;
 }
 
 #SignupFlex button {
   display: block;
-  margin: 40px auto 10px auto;
+  margin: 10px auto;
   height: 35px;
   width: 120px;
   font-size: 20px;
 }
 
+
+
 @media screen and (max-width: 600px) {
 
   #SignupFlex {
-    width: 100%;
+    width: 90%;
+    padding: 5%;
+    height: auto;
   }
 
   .SignupLine {
     width: 100%;
-    margin: 10px auto;
+    margin: 15px auto;
     font-size: 14px;
     height: 30px;
     text-align: left;
+  }
+
+  .SignupLine label {
+    width: 100px;
   }
 
   .SignupLine input {
