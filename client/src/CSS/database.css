@@ -300,6 +300,9 @@ thead th {
 
 #dbtest-basho-row {
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 3;
   flex-flow: row nowrap;
   align-items: flex-end;
   background: white;
