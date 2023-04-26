@@ -1234,10 +1234,10 @@
 # #     FS_history: [3,nil,nil,7,4,nil,nil,nil,nil,nil,nil,nil]
 # # )
 
-FsHistory.create(
-    rikishi_id: 1,
-    b150: 20,
-    b156: 15
-)
+# FsHistory.create(
+#     rikishi_id: 1,
+#     b150: 20,
+#     b156: 15
+# )
 
 puts "seeded!"

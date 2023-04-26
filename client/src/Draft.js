@@ -1,12 +1,13 @@
-import "./CSS/draft.css"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+
+import "./CSS/draft.css"
+
 import DraftTeam from "./components/DraftTeam"
 import RikishiList from "./components/RikishiList"
 import RikishiLarge from "./components/RikishiLarge"
 import LoginForm from "./components/LoginForm"
 import SignupForm from "./components/SignupForm"
-import { useNavigate } from "react-router-dom"
-
 
 function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
 
@@ -26,7 +27,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
         r7: "",
         user_id: "",
         // change this every basho
-        basho: 2023.3
+        basho: 2023.5
     })
 
     useEffect(() => {
@@ -117,7 +118,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
 
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
     // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
-    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Terunofuji")
+    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Wakatakakage")
     const sortedMRikishi = rankSort(MakuuchiRikishi, null)
     const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J")
 
@@ -148,8 +149,9 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
                         <label>Search:</label>
                         <input onChange={onSearch} value={search} type="text" name="search"></input>
                     </div>
-                    <p id='orFilter'>OR filter Makuuchi rikishi:</p>
+
                     <div id="DFSelect">
+                        <p id='orFilter'>OR filter Makuuchi rikishi:</p>
                         <select defaultValue="All" onChange={onRFilter}>
                             <option value="All" >All Makuuchi</option>
                             <option value="S">Sanyaku only</option>
@@ -160,7 +162,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
                         </select>
                     </div>
                 </div>
-                <p id="headsup">* Terunofuji will not be competing in this tournament *</p>
+                <p id="headsup">* Wakatakakage will not be competing in this tournament *</p>
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
@@ -213,19 +215,19 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         areYouLoggedIn()
-    //         : <p>loading...</p>
-    // )
-
     return (
-        <div id="hello">
-            {/* <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p> */}
-            {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p> */}
-            <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p>
-        </div>
+        (rikishiLoaded === true) ?
+            areYouLoggedIn()
+            : <p>loading...</p>
     )
+
+    // return (
+    //     <div id="hello">
+    //         {/* <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p> */}
+    //         {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p> */}
+    //         <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p>
+    //     </div>
+    // )
 }
 
 export default Draft

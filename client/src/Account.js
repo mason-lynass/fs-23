@@ -13,11 +13,11 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
     const otherTeams = [...teams].filter((team) => team.basho === 2023.3 && goodTeamNames.includes(team.user.username))
     console.log(otherTeams)
     const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
-    const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username == user.username) + 1
+    const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
 
     function handleDeleteTeam() {
         // change this every basho
-        const toDelete = user.teams.find(e => e.basho === 2023.3).id
+        const toDelete = user.teams.find(e => e.basho === 2023.5).id
         fetch(`/teams/${toDelete}`, { method: "DELETE" })
             .then((r) => {
                 if (r.ok) {
@@ -36,8 +36,8 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
     function isString(value) { return typeof value === "string" }
 
     // change these every basho
-    const currentTeam = user.teams.find(e => e.basho === 2023.3)
-    const oldTeams = user.teams.filter(e => e.basho !== 2023.3)
+    const currentTeam = user.teams.find(e => e.basho === 2023.5)
+    const oldTeams = user.teams.filter(e => e.basho !== 2023.5)
     console.log(oldTeams)
 
     function currentBashoTeam() {
@@ -74,17 +74,18 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
                 <div id="delay">
                     <h4>Your team will be visible on the Results page before and during the tournament - there may be some delay in visibility, up to 24 hours after you draft your team.</h4>
                 </div>
-                {/* <div id="Redraft">
+                {/* turn this off during the tournament */}
+                <div id="Redraft">
                     <h4>If you need to redraft before the tournament starts, if someone is injured or you've changed your mind: </h4>
                     <button onClick={handleDeleteTeam}>DELETE TEAM</button>
-                </div> */}
+                </div>
             </div>
         )
     }
 
     function renderCurrentBashoTeam() {
         // change this every basho
-        if (user.teams.find(e => e.basho === 2023.3) === undefined) {
+        if (user.teams.find(e => e.basho === 2023.5) === undefined) {
             return (
                 <p id="NoTeam">You haven't drafted a team yet for the upcoming tournament</p>
             )

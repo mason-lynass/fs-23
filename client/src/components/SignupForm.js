@@ -97,35 +97,37 @@ function SignupForm({ setUser, clap }) {
         <div id="SignupFlex">
             <form id="SignupForm" onSubmit={handleSignupSubmit}>
                 <h2 style={{ textAlign: "center" }}>Sign Up</h2>
-                <div className="SignupLine">
-                    <label>
-                        Username:
-                    </label>
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </div>
-                <div className="SignupLine">
-                    <label>
-                        Password:
-                    </label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div className="SignupLine">
-                    <label>
-                        Password confirmation:
-                    </label>
-                    <input
-                        type="password"
-                        value={passwordConfirmation}
-                        onChange={(e) => setPasswordConfirmation(e.target.value)}
-                    />
+                <div id='SignupLines'>
+                    <div className="SignupLine">
+                        <label>
+                            Username:
+                        </label>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+                    <div className="SignupLine">
+                        <label>
+                            Password:
+                        </label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="SignupLine">
+                        <label id='pc'>
+                            Confirm password:
+                        </label>
+                        <input
+                            type="password"
+                            value={passwordConfirmation}
+                            onChange={(e) => setPasswordConfirmation(e.target.value)}
+                        />
+                    </div>
                 </div>
                 <button type="submit">
                     {isLoading ? "Loading" : "Sign Up!"}

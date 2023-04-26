@@ -33,19 +33,21 @@ function LoginForm({ setUser, clap }) {
         <div id="LFFlex">
             <form id="LoginForm" onSubmit={handleLoginSubmit}>
                 <h2 style={{ textAlign: "center" }}>Log In</h2>
-                <div className="LoginLine">
-                    <label>Username:</label>
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)} />
-                </div>
-                <div className="LoginLine">
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
+                <div id='LoginLines'>
+                    <div className="LoginLine">
+                        <label>Username:</label>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)} />
+                    </div>
+                    <div className="LoginLine">
+                        <label>Password:</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} />
+                    </div>
                 </div>
                 <button id="LoginSubmit" type="submit">
                     {isLoading ? "Loading..." : "Login"}

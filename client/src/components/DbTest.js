@@ -9,8 +9,6 @@ function DbTest({ fsHistories, rikishi }) {
     const [searchTwo, setSearchTwo] = useState("")
     const [newRikishi, setNewRikishi] = useState([])
 
-    // console.log(fsHistories[0])
-
     useEffect(() => {
         if (fsHistories.length > 0) {
             setScoreCells(document.querySelectorAll('td'))
@@ -29,11 +27,9 @@ function DbTest({ fsHistories, rikishi }) {
         if (cell.innerHTML === ' ') cell.classList.add('more-padding')
     })
 
-
     function handleSearchOne(e) {
         setSearchOne(e.target.value)
     }
-
     function handleSearchTwo(e) {
         setSearchTwo(e.target.value)
     }
@@ -41,21 +37,6 @@ function DbTest({ fsHistories, rikishi }) {
     const filterBySearch = (r) => {
         return fsHistories.filter((history) => {
             if (searchOne !== '' && searchTwo !== '') {
-                console.log(searchOne, searchTwo)
-                // const array = []
-                // for (let i = 0; i < fsHistories.length; i++) {
-                //     console.log(fsHistories[i])
-                //     if (fsHistories[i].rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase()) || fsHistories[i].rikishi.shikona.toLowerCase().includes(searchTwo.toLowerCase())) {
-                //         console.log('this')
-                //         array.push(fsHistories[i])
-                //     }
-                // }
-
-                // console.log(array)
-                // return history.rikishi.shikona.includes(array)
-
-                // return history.rikishi.shikona.toLowerCase().some(searchOne.toLowerCase(), searchTwo.toLowerCase())
-
                 const one = history.rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase())
                 const two = history.rikishi.shikona.toLowerCase().includes(searchTwo.toLowerCase())
                 console.log(one, two, history)
@@ -72,8 +53,6 @@ function DbTest({ fsHistories, rikishi }) {
             else return history
         })
     }
-
-    // console.log(newRikishi, fsHistories)
 
     const averageSort = [...newRikishi].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
     const shikonaSort = [...newRikishi].sort((a, b) => a.rikishi.shikona.localeCompare(b.rikishi.shikona))

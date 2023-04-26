@@ -41,6 +41,8 @@ function App() {
     
     for (let i = 0; i < sortArray.length; i++) {
         let target = wrestlers.filter(r => r.current_rank === sortArray[i])
+
+        // if there's a second argument in the function call, sort them by highest_rank
         if (highest !== null) {
           target = wrestlers.filter(r => r.highest_rank === sortArray[i])
         }
@@ -77,6 +79,8 @@ function App() {
     .then(r => r.json())
     .then(r => setFsHistories(r))
   }, []);
+
+  console.log(fsHistories)
 
   return (
     <div className="App">
