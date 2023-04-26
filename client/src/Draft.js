@@ -186,7 +186,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     function ADCheck() {
         return (
             // change this every basho
-            (user.teams.some(e => e.basho === 2023.3)) ?
+            (user.teams.some(e => e.basho === 2023.5)) ?
                 renderAlreadyDrafted()
                 :
                 renderDraftPage()
