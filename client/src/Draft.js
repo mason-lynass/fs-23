@@ -8,8 +8,9 @@ import RikishiList from "./components/RikishiList"
 import RikishiLarge from "./components/RikishiLarge"
 import LoginForm from "./components/LoginForm"
 import SignupForm from "./components/SignupForm"
+import RLargeMobile from "./components/RLargeMobile"
 
-function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
+function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories }) {
 
     const navigate = useNavigate()
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
@@ -17,6 +18,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     const [draftRikishi, setDraftRikishi] = useState(rikishi)
     const [MRikishi, setMRikishi] = useState(rikishi)
     const [search, setSearch] = useState("")
+    const [rLargeMobileVisible, setRLargeMobileVisible] = useState(false)
     const [userTeam, setUserTeam] = useState({
         r1: "",
         r2: "",
@@ -34,6 +36,11 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
         setDraftRikishi(rikishi)
         setMRikishi(rikishi)
         if (rikishi.length > 0) {
+            // console.log(fsHistories.filter((h) => h.rikishi.shikona === 'Terunofuji'))
+            // console.log(rikishi[0])
+            rikishi.forEach((rikishi) => {
+                Object.assign(rikishi, {fsHistories: fsHistories.filter((h) => h.rikishi.shikona === rikishi.shikona)})
+            })
             setRikishiLoaded(true)
         }
     }, [rikishi])
@@ -79,6 +86,25 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     function handleCardClick(r) {
         setClickedRikishi(r)
     }
+
+    const behind = document.querySelector("body")
+    function handleMobileCardClick(r) {
+        setClickedRikishi(r)
+        behind.classList.add("behindBlur")
+        setRLargeMobileVisible(true)
+    }
+
+    function handleCloseMobileCard() {
+        behind.classList.remove("behindBlur")
+        setRLargeMobileVisible(false)
+    }
+
+    // useEffect(() => {
+    //     behind.addEventListener('click', handleCloseMobileCard)
+    //     return () => {
+    //         behind.removeEventListener('click', handleCloseMobileCard)
+    //     }
+    // })
 
     function goToTeam() {
         tachiai()
@@ -137,7 +163,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     function renderDraftMobile() {
         return (
             <section>
-                
                 <div id='DraftTopMobile'>
                     <DraftTeam userTeam={userTeam} setUserTeam={setUserTeam} user={user} setUser={setUser} tachiai={tachiai} />
                     <div id="DraftFilters">
@@ -147,7 +172,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
                         </div>
 
                         <div id="DFSelect">
-                            <p id='orFilter'>OR filter Makuuchi rikishi:</p>
+                            <p id='orFilter'>or filter Makuuchi rikishi:</p>
                             <select defaultValue="All" onChange={onRFilter}>
                                 <option value="All" >All Makuuchi</option>
                                 <option value="S">Sanyaku only</option>
@@ -160,22 +185,32 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
                         <p id="headsup">Wakatakakage will not be competing in this tournament</p>
                     </div>
                 </div>
+                <p id='clickText'>click on a wrestler to display info and add them to your team!</p>
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
                         <RikishiList
                             rikishi={sortedMRikishi}
-                            handleCardClick={handleCardClick}
+                            handleCardClick={handleMobileCardClick}
                         />
                     </div>
                     <div id="Juryo">
                         <h2>- Juryo -</h2>
                         <RikishiList
                             rikishi={JuryoRikishi}
-                            handleCardClick={handleCardClick}
+                            handleCardClick={handleMobileCardClick}
                         />
                     </div>
                 </div>
+                {(rLargeMobileVisible === true ?
+                    <RLargeMobile
+                        userTeam={userTeam}
+                        setUserTeam={setUserTeam}
+                        clickedRikishi={clickedRikishi}
+                        handleCardClick={handleMobileCardClick}
+                        handleCloseMobileCard={handleCloseMobileCard}
+                    />
+                    : "")}
             </section>
         )
     }

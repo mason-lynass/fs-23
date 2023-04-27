@@ -83,6 +83,16 @@
   border: 0;
 }
 
+#FSTeamBottom button {
+  color: white;
+  background-color: rgb(184, 2, 2);
+  border: 0px;
+  padding: 5px 10px;
+  height: 35px;
+  box-shadow: 0px 0px 10px 3px goldenrod;
+  margin: 2vw;
+}
+
 .RLarge {
   border: 1px solid black;
   text-align: center;
@@ -222,7 +232,8 @@
   box-shadow: 0 3px 6px 6px grey;
 }
 
-#FSTeamBottom button:hover, #AddRikishiButton:hover {
+#FSTeamBottom button:hover,
+#AddRikishiButton:hover {
   border: 2px solid rgb(184, 2, 2);
 }
 
@@ -248,14 +259,38 @@
 }
 
 #DraftTopMobile {
-  width: 98%;
+  width: 95vw;
   display: grid;
   grid-template-columns: 55% 40%;
   gap: 3%;
-  margin: 3vw 1vw;
+  margin: 3vw auto 1vw auto;
 }
 
 @media screen and (max-width: 600px) {
+
+  .behindBlur::after {
+    content: '';
+    height: 300vh;
+    overflow: hidden;
+    background-color: grey;
+    opacity: .7;
+    position: absolute;
+    /* position: -webkit-sticky;
+    position: sticky; */
+    inset: 0;
+    /* animation: fadeIn 1s; */
+  }
+
+  #MobileCardClose {
+    position: absolute;
+    right: 3vw;
+    top: 10px;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+    font-size: 18px;
+  }
 
   #DraftLogin {
     margin: 10px auto;
@@ -267,7 +302,7 @@
 
   #FSTeam {
     padding: 2%;
-    width: 96%;
+    width: calc(96% - 2px);
   }
 
   #FSTeam h2 {
@@ -305,9 +340,18 @@
     font-size: 10px;
   }
 
-  .RLarge {
-    width: 100%;
-    max-width: 400px;
+  .RLargeMobile {
+    width: calc(85vw - 2px);
+    margin: auto;
+    padding: 2vw;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    position: fixed;
+    top: 20vw;
+    left: 5vw;
+    z-index: 2;
   }
 
   .RLarge h2 {
@@ -326,13 +370,13 @@
         align-items: center;
       } */
 
-  .card-title h1 {
-    font-size: 16px;
-    margin: 5px;
+  .cardTitleMobile h1 {
+    font-size: calc((2 - 1) * 1.2vw + 1.5rem);
+    margin: 10px;
   }
 
   #RLargeImage {
-    width: 50px;
+    width: 60px;
     margin: 5px;
   }
 
@@ -359,10 +403,10 @@
   #DraftFilters {
     height: fit-content;
     flex-flow: row wrap;
-    width: 95%;
+    width: calc(100% - 12px);
     min-width: 0;
     margin: auto;
-    padding: 20px 5px;
+    padding: 2vw;
     font-size: 12px;
   }
 
@@ -372,6 +416,7 @@
 
   #DraftFilters input {
     width: 100%;
+    margin: 0;
   }
 
   #DraftSearch {
@@ -379,12 +424,28 @@
     flex-flow: row wrap;
     justify-content: center;
     gap: 5px;
+    padding-bottom: 1vw;
   }
 
   #DFSelect {
     flex-flow: row wrap;
     gap: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 2vw;
+  }
+
+  #orFilter {
+    margin: 1vw 0;
+  }
+
+  #clickText {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 1vw;
+    margin: 1vw auto;
+    font-size: calc((1.7 - 1) * 1.2vw + .5rem);
+    text-align: center;
+    width: fit-content;
   }
 
   #AllRikishiFlex {
@@ -398,8 +459,13 @@
   #Makuuchi,
   #Juryo {
     min-width: 170px;
-    margin: 10px 0;
+    margin: 0;
     height: auto;
+  }
+
+  #Makuuchi h2,
+  #Juryo h2 {
+    font-size: calc((2 - 1) * 1.2vw + .7rem);
   }
 
   #addedRikishiList {
@@ -410,12 +476,12 @@
   .SmallCard {
     flex-flow: row nowrap;
     height: 40px;
-    width: 150px;
+    width: 43vw;
     border: 1px solid black;
     border-radius: 10px;
     background-color: white;
-    padding: 5px;
-    margin: 5px;
+    padding: 1vw;
+    margin: .5vw 1vw;
   }
 
   .SmallCard h3 {
@@ -433,5 +499,6 @@
     min-width: 0px;
     font-size: calc((1.7 - 1) * 1.2vw + .4rem);
     padding: 5px;
+    margin: 2vw 0 0 0;
   }
 }

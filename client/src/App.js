@@ -120,7 +120,7 @@ function App() {
         />
         <Route
           path="/draft"
-          element={<Draft user={user} setUser={setUser} rikishi={rikishi} tachiai={tachiai} clap={clap} rankSort={rankSort} />}
+          element={<Draft user={user} setUser={setUser} rikishi={rikishi} tachiai={tachiai} clap={clap} rankSort={rankSort} fsHistories={fsHistories} />}
         />
         <Route
           path="/results"

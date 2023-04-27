@@ -16,6 +16,8 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }, [fsHistories])
 
+    console.log(fsHistories)
+
     useEffect(() => {
         // console.log('this')
         let result = fsHistories
