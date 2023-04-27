@@ -16,6 +16,8 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }, [fsHistories])
 
+    console.log(fsHistories)
+
     useEffect(() => {
         // console.log('this')
         let result = fsHistories
@@ -240,7 +242,7 @@ function DbTest({ fsHistories, rikishi }) {
 
     return (
         <main>
-            <h2 id='dbtest-title'>Mason's Big Fantasy Sumo Table</h2>
+            {/* <h2 id='dbtest-title'>Mason's Big Fantasy Sumo Table</h2> */}
             <div id='dbtest-filters'>
                 <div>
                     <input placeholder='Asashoryu' onChange={handleSearchOne} value={searchOne} type="text" name="search"></input>

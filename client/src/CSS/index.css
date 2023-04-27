@@ -32,6 +32,10 @@ button {
 }
 
 @media screen and (max-width: 600px) {
+  body {
+    margin: 5px 0 0 0;
+  }
+
   #BI {
     height: 100vh;
   }

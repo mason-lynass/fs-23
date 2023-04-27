@@ -8,8 +8,9 @@ import RikishiList from "./components/RikishiList"
 import RikishiLarge from "./components/RikishiLarge"
 import LoginForm from "./components/LoginForm"
 import SignupForm from "./components/SignupForm"
+import RLargeMobile from "./components/RLargeMobile"
 
-function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
+function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories }) {
 
     const navigate = useNavigate()
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
@@ -17,6 +18,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     const [draftRikishi, setDraftRikishi] = useState(rikishi)
     const [MRikishi, setMRikishi] = useState(rikishi)
     const [search, setSearch] = useState("")
+    const [rLargeMobileVisible, setRLargeMobileVisible] = useState(false)
     const [userTeam, setUserTeam] = useState({
         r1: "",
         r2: "",
@@ -34,6 +36,11 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
         setDraftRikishi(rikishi)
         setMRikishi(rikishi)
         if (rikishi.length > 0) {
+            // console.log(fsHistories.filter((h) => h.rikishi.shikona === 'Terunofuji'))
+            // console.log(rikishi[0])
+            rikishi.forEach((rikishi) => {
+                Object.assign(rikishi, {fsHistories: fsHistories.filter((h) => h.rikishi.shikona === rikishi.shikona)})
+            })
             setRikishiLoaded(true)
         }
     }, [rikishi])
@@ -79,6 +86,25 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     function handleCardClick(r) {
         setClickedRikishi(r)
     }
+
+    const behind = document.querySelector("body")
+    function handleMobileCardClick(r) {
+        setClickedRikishi(r)
+        behind.classList.add("behindBlur")
+        setRLargeMobileVisible(true)
+    }
+
+    function handleCloseMobileCard() {
+        behind.classList.remove("behindBlur")
+        setRLargeMobileVisible(false)
+    }
+
+    // useEffect(() => {
+    //     behind.addEventListener('click', handleCloseMobileCard)
+    //     return () => {
+    //         behind.removeEventListener('click', handleCloseMobileCard)
+    //     }
+    // })
 
     function goToTeam() {
         tachiai()
@@ -132,7 +158,66 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
         )
     }
 
-    function renderDraftPage() {
+    const mobileScreen = window.matchMedia("(max-width: 600px)")
+
+    function renderDraftMobile() {
+        return (
+            <section>
+                <div id='DraftTopMobile'>
+                    <DraftTeam userTeam={userTeam} setUserTeam={setUserTeam} user={user} setUser={setUser} tachiai={tachiai} />
+                    <div id="DraftFilters">
+                        <div id="DraftSearch">
+                            <label>Search:</label>
+                            <input onChange={onSearch} value={search} type="text" name="search"></input>
+                        </div>
+
+                        <div id="DFSelect">
+                            <p id='orFilter'>or filter Makuuchi rikishi:</p>
+                            <select defaultValue="All" onChange={onRFilter}>
+                                <option value="All" >All Makuuchi</option>
+                                <option value="S">Sanyaku only</option>
+                                <option value="1">M1-M4 only</option>
+                                <option value="5">M5-M8 only</option>
+                                <option value="9">M9-M12 only</option>
+                                <option value="13">M13+ only</option>
+                            </select>
+                        </div>
+                        <p id="headsup">Wakatakakage will not be competing in this tournament</p>
+                    </div>
+                </div>
+                <p id='clickText'>click on a wrestler to display info and add them to your team!</p>
+                <div id="AllRikishiFlex">
+                    <div id="Makuuchi">
+                        <h2>- Makuuchi -</h2>
+                        <RikishiList
+                            rikishi={sortedMRikishi}
+                            handleCardClick={handleMobileCardClick}
+                        />
+                    </div>
+                    <div id="Juryo">
+                        <h2>- Juryo -</h2>
+                        <RikishiList
+                            rikishi={JuryoRikishi}
+                            handleCardClick={handleMobileCardClick}
+                        />
+                    </div>
+                </div>
+                {(rLargeMobileVisible === true ?
+                    <RLargeMobile
+                        userTeam={userTeam}
+                        setUserTeam={setUserTeam}
+                        clickedRikishi={clickedRikishi}
+                        handleCardClick={handleMobileCardClick}
+                        handleCloseMobileCard={handleCloseMobileCard}
+                    />
+                    : "")}
+            </section>
+        )
+    }
+
+
+
+    function renderDraftNormal() {
         // console.log('you can draft')
         return (
             <div>
@@ -183,6 +268,13 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
         )
     }
 
+    function renderDraftPage() {
+        if (mobileScreen.matches) {
+            return renderDraftMobile()
+        }
+        else return renderDraftNormal()
+    }
+
     function ADCheck() {
         return (
             // change this every basho
@@ -215,19 +307,19 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort }) {
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         areYouLoggedIn()
-    //         : <p>loading...</p>
-    // )
-
     return (
-        <div id="hello">
-            {/* <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p> */}
-            {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p> */}
-            <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p>
-        </div>
+        (rikishiLoaded === true) ?
+            areYouLoggedIn()
+            : <p>loading...</p>
     )
+
+    // return (
+    //     <div id="hello">
+    //         {/* <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p> */}
+    //         {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p> */}
+    //         <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p>
+    //     </div>
+    // )
 }
 
 export default Draft
