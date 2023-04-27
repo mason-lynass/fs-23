@@ -1,6 +1,6 @@
 import "./CSS/homepage.css"
 import { Link } from "react-router-dom"
-import takanoshoFootball from './images/takanosho_football.jpeg'
+import takanoshoFootball from './images/takanosho_football.webp'
 
 function Homepage() {
     // next tournament starts on May 14th, banzuke is out on May 1st
@@ -21,7 +21,7 @@ function Homepage() {
                     </div>
                 </div>
 
-                <img id="takanoshoFootball" alt="Takanosho throwing a football" src={takanoshoFootball} ></img>
+                <img id="takanoshoFootball" rel='preload' alt="Takanosho throwing a football" src={takanoshoFootball} ></img>
             </div>
         </div>
     )

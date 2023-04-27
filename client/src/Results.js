@@ -35,8 +35,8 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 return resultsRikishi.filter((r) => r.shikona === tR)[0]
             })
 
-            // change this every basho
-            const ROScores = newRikishiObjects.map((r) => r.FS_20235)
+            // change this every basho (maybe not now?)
+            const ROScores = newRikishiObjects.map((r) => r.fs_current)
 
             let scoreSum = 0
             for (const item of ROScores) { scoreSum += item }
@@ -48,8 +48,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
 
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
-        // update this with valid users
-
+        // uses "goodTeamNames" from App.js
         const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
         // console.log(teamsHiToLo)
         // console.log(goodTeams)
@@ -58,7 +57,6 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
             (teamsLoaded === false) ?
                 <h2>Loading...</h2>
                 :
-
                 <div>
                     <div id="hello">
                         <p>Congrats to mason on your Fantasy Sumo win, and to Kiribayama for winning the Haru 2023 yusho!</p>

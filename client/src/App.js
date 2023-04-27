@@ -5,11 +5,11 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom"
 import { useSound } from "use-sound"
 
-import BG1 from "./images/sumo-background-1.jpeg"
+import BG1 from "./images/sumo-background-1.webp"
 
-import Clap from "./audio/sumo-clap.wav"
-import Hyoshigi from "./audio/sumo-hyoshigi.wav"
-import Hakkeyoi from "./audio/sumo-hakkeyoi.wav"
+import Clap from "./audio/sumo-clap.mp3"
+import Hyoshigi from "./audio/sumo-hyoshigi.mp3"
+import Hakkeyoi from "./audio/sumo-hakkeyoi.mp3"
 
 import NavBar from "./NavBar";
 import Homepage from "./Homepage";
@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div className="App">
-      <img id="BI" src={BG1} alt="" />
+      <img id="BI" src={BG1} alt="" rel='preload'/>
       <NavBar
         user={user}
         setUser={setUser}
@@ -128,7 +128,7 @@ function App() {
         />
         <Route
           path="/database"
-          element={<Database rikishi={rankSort(rikishi, true)} />}
+          element={<Database rikishi={rankSort(rikishi, true)} fsHistories={fsHistories} />}
         />
       </Routes>
     </div>

@@ -247,6 +247,14 @@
   border-radius: 5px;
 }
 
+#DraftTopMobile {
+  width: 98%;
+  display: grid;
+  grid-template-columns: 55% 40%;
+  gap: 3%;
+  margin: 3vw 1vw;
+}
+
 @media screen and (max-width: 600px) {
 
   #DraftLogin {
@@ -257,14 +265,9 @@
     height: 90px;
   }
 
-  #DraftTopFlex {
-    flex-flow: row wrap;
-    gap: 5px;
-    margin: 5px;
-  }
-
   #FSTeam {
-    padding: 5px;
+    padding: 2%;
+    width: 96%;
   }
 
   #FSTeam h2 {
@@ -274,11 +277,10 @@
 
   #FSFlex {
     display: grid;
-    grid-template-columns: 35% 67%;
-    gap: 4%;
+    grid-template-columns: 40% 55%;
+    gap: 5%;
     margin: auto;
     width: 100%;
-    min-width: 300px;
   }
 
   #FSTeamTable,
@@ -287,14 +289,15 @@
   }
 
   #FSRikishi div {
-    margin: 0 20px 0 0;
+    margin: 5px 2% 5px 0;
+    height: 16px;
   }
 
   #FSTeamTable p,
   #FSRikishi p {
-    font-size: 12px;
+    font-size: 10px;
     height: 16px;
-    margin: 5px;
+    margin: 5px 0;
   }
 
   #warning {
@@ -342,7 +345,7 @@
 
   .content {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: center;
     padding-bottom: 0;
@@ -354,35 +357,48 @@
   }
 
   #DraftFilters {
-    height: 25px;
+    height: fit-content;
+    flex-flow: row wrap;
     width: 95%;
-    margin: 0px auto;
-    padding: 5px;
+    min-width: 0;
+    margin: auto;
+    padding: 20px 5px;
     font-size: 12px;
   }
 
   #DraftFilters p {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   #DraftFilters input {
-    width: 100px;
+    width: 100%;
   }
 
   #DraftSearch {
     align-items: center;
+    flex-flow: row wrap;
+    justify-content: center;
     gap: 5px;
   }
 
+  #DFSelect {
+    flex-flow: row wrap;
+    gap: 0px;
+    margin-bottom: 20px;
+  }
+
   #AllRikishiFlex {
-    width: 100%;
-    flex-flow: row nowrap;
+    width: 98%;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    gap: 2%;
+    margin: auto;
   }
 
   #Makuuchi,
   #Juryo {
     min-width: 170px;
-    margin: 10px 5px;
+    margin: 10px 0;
     height: auto;
   }
 
@@ -410,5 +426,12 @@
   .SmallCard h3,
   .SmallCard p {
     margin: 5px;
+  }
+
+  #DraftFilters #headsup {
+    width: fit-content;
+    min-width: 0px;
+    font-size: calc((1.7 - 1) * 1.2vw + .4rem);
+    padding: 5px;
   }
 }
