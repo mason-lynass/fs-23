@@ -1,7 +1,7 @@
 function PreviousTeams({ user, rikishi, teams, fsHistories }) {
 
     const userTeams = user.teams
-    const oldTeams = userTeams.filter((team) => team.basho !== 2023.5)
+    const oldTeams = userTeams.filter((team) => team.basho !== 2023.5).sort((a, b) => b.basho - a.basho)
 
     console.log(rikishi)
     console.log(fsHistories)
@@ -27,7 +27,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories }) {
         }
 
         // temp should equal the last row of fsHistories, not including avg_score and rikishi
-        let temp = (Object.values(fsHistories[0]).length - 2)
+        let temp = (Object.values(fsHistories[0]).length - 1)
         let otherTeams = []
 
         // after the splice, this array will only be the values of scores
@@ -49,28 +49,26 @@ function PreviousTeams({ user, rikishi, teams, fsHistories }) {
 
         temp = `b${temp}`
 
-        teamScores.r1 = actualTeam[0][0].fsHistories[0][temp]
-        teamScores.r2 = actualTeam[1][0].FS_history[temp]
-        teamScores.r3 = actualTeam[2][0].FS_history[temp]
-        teamScores.r4 = actualTeam[3][0].FS_history[temp]
-        teamScores.r5 = actualTeam[4][0].FS_history[temp]
-        teamScores.r6 = actualTeam[5][0].FS_history[temp]
-        teamScores.r7 = team.final_score - teamScores.r1 - teamScores.r2 - teamScores.r3 - teamScores.r4 - teamScores.r5 - teamScores.r6
+        // teamScores.r1 = actualTeam[0][0].fsHistories[0][temp]
+        // teamScores.r2 = actualTeam[1][0].fsHistories[0][temp]
+        // teamScores.r3 = actualTeam[2][0].fsHistories[0][temp]
+        // teamScores.r4 = actualTeam[3][0].fsHistories[0][temp]
+        // teamScores.r5 = actualTeam[4][0].fsHistories[0][temp]
+        // teamScores.r6 = actualTeam[5][0].fsHistories[0][temp]
+        // teamScores.r7 = team.final_score - teamScores.r1 - teamScores.r2 - teamScores.r3 - teamScores.r4 - teamScores.r5 - teamScores.r6
 
         const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
         const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
 
         return (
             <div id='fullOneTeam'>
-                <div >
-                    <div>
-                        <h3>{team.basho}</h3>
-                        <div id="oneTeamRank">
-                            <h2>{team.final_score} points</h2>
-                            <hr></hr>
-                            <h2>#{teamPosition} out of</h2>
-                            <h2>{otherTeams.length} teams</h2>
-                        </div>
+                <div>
+                    <h3>{team.basho}</h3>
+                    <div id="oneTeamRank">
+                        <h2>{team.final_score} points</h2>
+                        <hr></hr>
+                        <h2>#{teamPosition} out of</h2>
+                        <h2>{otherTeams.length} teams</h2>
                     </div>
                 </div>
                 <div id='oneTeam'>
@@ -103,7 +101,6 @@ function PreviousTeams({ user, rikishi, teams, fsHistories }) {
                         <p>{teamScores.r7}</p>
                     </div>
                 </div>
-
             </div>
         )
     }
@@ -112,9 +109,9 @@ function PreviousTeams({ user, rikishi, teams, fsHistories }) {
         return (
             oldTeams.map((team) => {
                 return (
-                    <div>
+                    <>
                         {oneOldTeam(team)}
-                    </div>
+                    </>
 
                 )
             })
