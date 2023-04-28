@@ -4,14 +4,14 @@ import PreviousTeams from "./components/PreviousTeams";
 import LoginForm from "./components/LoginForm";
 import { useNavigate } from "react-router-dom";
 
-function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
+function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistories }) {
 
     const navigate = useNavigate()
 
     // starting to think about displaying the rank during the basho
     // basically need to recreate what's happening in PreviousTeams
     const otherTeams = [...teams].filter((team) => team.basho === 2023.3 && goodTeamNames.includes(team.user.username))
-    console.log(otherTeams)
+    // console.log(otherTeams)
     const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
     const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
 
@@ -38,7 +38,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
     // change these every basho
     const currentTeam = user.teams.find(e => e.basho === 2023.5)
     const oldTeams = user.teams.filter(e => e.basho !== 2023.5)
-    console.log(oldTeams)
+    // console.log(oldTeams)
 
     function currentBashoTeam() {
         
@@ -50,7 +50,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
 
         return (
             <div>
-                <h3>Here's your team for the March tournament:</h3>
+                <h3>Here's your team for the May tournament:</h3>
                 <div id="AccountTeam">
                     <div id="ATRikishi">
                         {actualTeam.map((obj) =>
@@ -59,7 +59,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
                                 <h3 className="AORrank">{obj.current_rank}</h3>
                                 <h3 className="AORshikona">{obj.shikona}</h3>
                                 {/* change this every basho */}
-                                <h3 className="AORscore">{obj.FS_20233 !== null ? obj.FS_20233 : "0"}</h3>
+                                <h3 className="AORscore">{obj.fs_current !== null ? obj.fs_current : "0"}</h3>
                             </div>
                         )}
                     </div>
@@ -108,7 +108,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames }) {
                     <h2 id="AccountHello">Hello, {user.username}!</h2>
                     {renderCurrentBashoTeam()}
                     {oldTeams.length > 0 ?
-                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} />
+                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} fsHistories={fsHistories}/>
                         :
                         null}
                 </div>

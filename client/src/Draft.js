@@ -38,10 +38,10 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
         if (rikishi.length > 0) {
             // console.log(fsHistories.filter((h) => h.rikishi.shikona === 'Terunofuji'))
             // console.log(rikishi[0])
-            // adding the correct FS History to each rikishi object
-            rikishi.forEach((rikishi) => {
-                Object.assign(rikishi, {fsHistories: fsHistories.filter((h) => h.rikishi.shikona === rikishi.shikona)})
-            })
+            // rikishi.forEach((rikishi) => {
+            //     Object.assign(rikishi, {fsHistories: fsHistories.filter((h) => h.rikishi.shikona === rikishi.shikona)})
+            // })
+
             setRikishiLoaded(true)
         }
     }, [rikishi])
