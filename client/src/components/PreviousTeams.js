@@ -1,8 +1,10 @@
-function PreviousTeams({ user, rikishi, teams }) {
+function PreviousTeams({ user, rikishi, teams, fsHistories }) {
 
     const userTeams = user.teams
-    const oldTeams = userTeams.filter((team) => team.basho !== 2023.3)
-    const fs_history = rikishi[0].FS_history.length
+    const oldTeams = userTeams.filter((team) => team.basho !== 2023.5)
+
+    console.log(rikishi)
+    console.log(fsHistories)
 
     function oneOldTeam(team) {
 
@@ -24,20 +26,36 @@ function PreviousTeams({ user, rikishi, teams }) {
             r7: 0
         }
 
-        let temp = fs_history
+        // temp should equal the last row of fsHistories, not including avg_score and rikishi
+        let temp = (Object.values(fsHistories[0]).length - 2)
         let otherTeams = []
+
+        // after the splice, this array will only be the values of scores
+        let fsHistoriesArray = Object.values(fsHistories[0])
+        fsHistoriesArray.splice(fsHistoriesArray.length - 2, 2)
+
+        console.log(fsHistoriesArray)
 
         if (team.basho === 2023.1) {
             temp = temp - 2
-            teamScores.r1 = actualTeam[0][0].FS_history[temp]
-            teamScores.r2 = actualTeam[1][0].FS_history[temp]
-            teamScores.r3 = actualTeam[2][0].FS_history[temp]
-            teamScores.r4 = actualTeam[3][0].FS_history[temp]
-            teamScores.r5 = actualTeam[4][0].FS_history[temp]
-            teamScores.r6 = actualTeam[5][0].FS_history[temp]
-            teamScores.r7 = team.final_score - teamScores.r1 - teamScores.r2 - teamScores.r3 - teamScores.r4 - teamScores.r5 - teamScores.r6
             otherTeams = [...teams].filter((team) => team.basho === 2023.1)
         }
+        else if (team.basho === 2023.3) {
+            temp = temp - 1
+            otherTeams = [...teams].filter((team) => team.basho === 2023.3)
+        }
+
+        console.log(actualTeam[0][0])
+
+        temp = `b${temp}`
+
+        teamScores.r1 = actualTeam[0][0].fsHistories[0][temp]
+        teamScores.r2 = actualTeam[1][0].FS_history[temp]
+        teamScores.r3 = actualTeam[2][0].FS_history[temp]
+        teamScores.r4 = actualTeam[3][0].FS_history[temp]
+        teamScores.r5 = actualTeam[4][0].FS_history[temp]
+        teamScores.r6 = actualTeam[5][0].FS_history[temp]
+        teamScores.r7 = team.final_score - teamScores.r1 - teamScores.r2 - teamScores.r3 - teamScores.r4 - teamScores.r5 - teamScores.r6
 
         const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
         const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1

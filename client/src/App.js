@@ -34,19 +34,19 @@ function App() {
   const [hyoshigi] = useSound(Hyoshigi)
   const [tachiai] = useSound(Hakkeyoi, { volume: 0.5 })
 
-  function rankSort (wrestlers, highest) {
+  function rankSort(wrestlers, highest) {
     let sortArray = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "J", "MS"]
 
     let sortedRikishi = []
-    
-    for (let i = 0; i < sortArray.length; i++) {
-        let target = wrestlers.filter(r => r.current_rank === sortArray[i])
 
-        // if there's a second argument in the function call, sort them by highest_rank
-        if (highest !== null) {
-          target = wrestlers.filter(r => r.highest_rank === sortArray[i])
-        }
-        target.forEach((r) => sortedRikishi.push(r))
+    for (let i = 0; i < sortArray.length; i++) {
+      let target = wrestlers.filter(r => r.current_rank === sortArray[i])
+
+      // if there's a second argument in the function call, sort them by highest_rank
+      if (highest !== null) {
+        target = wrestlers.filter(r => r.highest_rank === sortArray[i])
+      }
+      target.forEach((r) => sortedRikishi.push(r))
     }
     return sortedRikishi
   }
@@ -67,7 +67,7 @@ function App() {
       .then(r => {
         const sorted = rankSort(r)
         setRikishi(sorted)
-        })
+      })
     fetch("/teams")
       .then(r => r.json())
       .then(teams => {
@@ -76,15 +76,19 @@ function App() {
       })
     // new
     fetch("/fs_histories")
-    .then(r => r.json())
-    .then(r => setFsHistories(r))
+      .then(r => r.json())
+      .then(r => setFsHistories(r))
   }, []);
 
-  console.log(fsHistories)
+  if (rikishi.length > 0 && fsHistories.length > 0) {
+    rikishi.forEach((rikishi) => {
+      Object.assign(rikishi, { fsHistories: fsHistories.filter((h) => h.rikishi.shikona === rikishi.shikona) })
+    })
+  }
 
   return (
     <div className="App">
-      <img id="BI" src={BG1} alt="" rel='preload'/>
+      <img id="BI" src={BG1} alt="" rel='preload' />
       <NavBar
         user={user}
         setUser={setUser}
@@ -97,7 +101,7 @@ function App() {
         />
         <Route
           path="/dbtest"
-          element={<DbTest fsHistories={fsHistories} rikishi={rikishi}/>}
+          element={<DbTest fsHistories={fsHistories} rikishi={rikishi} />}
         />
         <Route
           path="/login"
@@ -108,7 +112,7 @@ function App() {
         />
         <Route
           path="/account"
-          element={<Account user={user} setUser={setUser} rikishi={rikishi} clap={clap} teams={teams} goodTeamNames={goodTeamNames} />}
+          element={<Account user={user} setUser={setUser} rikishi={rikishi} clap={clap} teams={teams} goodTeamNames={goodTeamNames} fsHistories={fsHistories} />}
         />
         <Route
           path="/rules"
@@ -124,7 +128,7 @@ function App() {
         />
         <Route
           path="/results"
-          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded} rankSort={rankSort} goodTeamNames={goodTeamNames}/>}
+          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded} rankSort={rankSort} goodTeamNames={goodTeamNames} />}
         />
         <Route
           path="/database"
