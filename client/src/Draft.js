@@ -41,6 +41,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
             // rikishi.forEach((rikishi) => {
             //     Object.assign(rikishi, {fsHistories: fsHistories.filter((h) => h.rikishi.shikona === rikishi.shikona)})
             // })
+
             setRikishiLoaded(true)
         }
     }, [rikishi])
