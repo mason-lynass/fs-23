@@ -36,12 +36,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
         setDraftRikishi(rikishi)
         setMRikishi(rikishi)
         if (rikishi.length > 0) {
-            // console.log(fsHistories.filter((h) => h.rikishi.shikona === 'Terunofuji'))
-            // console.log(rikishi[0])
-            // rikishi.forEach((rikishi) => {
-            //     Object.assign(rikishi, {fsHistories: fsHistories.filter((h) => h.rikishi.shikona === rikishi.shikona)})
-            // })
-
             setRikishiLoaded(true)
         }
     }, [rikishi])
@@ -99,13 +93,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
         behind.classList.remove("behindBlur")
         setRLargeMobileVisible(false)
     }
-
-    // useEffect(() => {
-    //     behind.addEventListener('click', handleCloseMobileCard)
-    //     return () => {
-    //         behind.removeEventListener('click', handleCloseMobileCard)
-    //     }
-    // })
 
     function goToTeam() {
         tachiai()
@@ -308,19 +295,19 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         areYouLoggedIn()
-    //         : <p>loading...</p>
-    // )
-
     return (
-        <div id="hello">
-            {/* <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p> */}
-            {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p> */}
-            <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p>
-        </div>
+        (rikishiLoaded === true) ?
+            areYouLoggedIn()
+            : <p>loading...</p>
     )
+
+    // return (
+    //     <div id="hello">
+    //         {/* <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p> */}
+    //         {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p> */}
+    //         <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p>
+    //     </div>
+    // )
 }
 
 export default Draft
