@@ -24,6 +24,7 @@
 #DBViewState {
   width: 120px;
   border: 2px solid black;
+  color: black;
 }
 
 #DBContainer {
@@ -38,6 +39,7 @@
   border: 2px solid rgb(184, 2, 2);
   padding: 10px;
   border-radius: 20px;
+  text-align: center;
 }
 
 #DBTable {
@@ -139,6 +141,12 @@
 
 @media screen and (max-width: 600px) {
 
+  #howToSort {
+    width: 80vw;
+    margin: auto;
+    font-size: calc((2 - 1) * 1.2vw + .5rem);
+  }
+
   #hrFSStats {
     display: inline-block;
     width: 670px;
@@ -146,25 +154,26 @@
 
   #hrStats {
     display: inline-block;
-    width: 495px;
+    width: 510px;
   }
 
   #DBTop {
-    margin: 10px;
+    margin: 10px 10px 0 10px;
     height: 60px;
   }
 
   #DBTopSpace,
   #DBViewState {
-    width: 75px;
-    font-size: 8px;
-    height: 20px;
+    width: 20vw;
+    font-size: calc((2 - 1) * 1.2vw + .3rem);
+    height: 40px;
   }
 
   #DBTitle {
-    width: 150px;
+    width: fit-content;
+    padding: 5px 10px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: calc((1.7 - 1) * 1.2vw + .8rem);
   }
 
   #DBContainer {
@@ -173,10 +182,12 @@
 
   #DBTable {
     margin: 10px auto;
+    padding-top: 5px;
     width: 95%;
     height: 72vh;
     border: 3px ridge goldenrod;
   }
+
 
   #DBTableColumns,
   .DBOneRikishi {
@@ -416,4 +427,42 @@ tbody div th .dbtest-rikishi-image {
 .more-padding {
   padding-top: 25px;
   padding-bottom: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    margin: 5vw auto;
+  }
+
+  #dbtest-filters {
+    width: 80vw;
+    gap: 1vw;
+  }
+
+  #dbtest-filters div {
+    width: 72vw;
+  }
+
+  input {
+    margin: 1vw 3vw;
+  }
+
+  #dbtest-full-table {
+    margin: 2vw;
+  }
+
+  table {
+    width: 96vw;
+  }
+
+  #sorry {
+    background-color: rgb(184, 2, 2);
+    color: white;
+    border: 2px solid goldenrod;
+    border-radius: 20px;
+    width: 60vw;
+    margin: 2vw auto;
+    text-align: center;
+    padding: 2vw;
+  }
 }

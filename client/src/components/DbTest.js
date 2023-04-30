@@ -239,10 +239,15 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }
 
+    const mobileScreen = window.matchMedia("(max-width: 600px)")
 
     return (
         <main>
-            {/* <h2 id='dbtest-title'>Mason's Big Fantasy Sumo Table</h2> */}
+            { mobileScreen.matches ? 
+             <h4 id='sorry'>sorry, this database looks a lot better on a computer!</h4>
+             :
+             ""
+             }
             <div id='dbtest-filters'>
                 <div>
                     <input placeholder='Asashoryu' onChange={handleSearchOne} value={searchOne} type="text" name="search"></input>

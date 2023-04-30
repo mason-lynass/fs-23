@@ -146,8 +146,6 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
         )
     }
 
-    const mobileScreen = window.matchMedia("(max-width: 600px)")
-
     function renderDraftMobile() {
         return (
             <section>
@@ -255,6 +253,8 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
             </div>
         )
     }
+
+    const mobileScreen = window.matchMedia("(max-width: 600px)")
 
     function renderDraftPage() {
         if (mobileScreen.matches) {

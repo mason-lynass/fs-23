@@ -106,7 +106,13 @@
   @media screen and (max-width: 600px) {
 
     .resultsContainer {
-      margin: 20px 5px;
+      margin: 20px 2vw;
+    }
+
+    .teamsTop, .oneTeam {
+      display: grid;
+      grid-template-columns: 40% 7% 7% 7% 7% 7% 7% 7% 11%;
+      padding: 0;
     }
   
     .teamsTop h2,
@@ -115,8 +121,20 @@
     .oneTeam h2,
     .oneTeam h3,
     .oneTeam p {
-      font-size: 8px;
-      width: 40px;
+      font-size: 10px;
+      margin: 10px 0;
+    }
+
+    .teamsTop h3, .oneTeam h3 {
+      width: calc(96vw * 11 / 100)
+    }
+
+    .teamsTop h2, .oneTeam h2 {
+      width: calc(96vw * 40 / 100)
+    }
+
+    .teamsTop p, .oneTeam p {
+      width: calc(96vw * 7 / 100)
     }
   
     #teamsContainer {
@@ -126,24 +144,32 @@
       overflow: scroll;
     }
   
-    .oneTeam h2,
-    .total {
-      width: 40px;
-    }
-  
     .oneTeam p {
       font-size: 6.5px;
-      width: 40px;
+      width: 20px;
       margin: 5px auto;
     }
 
     #RRContainer {
-      margin: 0 10px;
-      gap: 10px;
+      margin: 0 2vw;
+      gap: 3vw;
+    }
+
+    .oneRR, #MRRTitles, #JRRTitles {
+      display: grid;
+      grid-template-columns: 60% 40%;
     }
 
     #RRContainer h3, #RRContainer h2 {
       font-size: 12px;
+    }
+
+    .RRShikona {
+      width: 27vw;
+    }
+
+    .RRPoints {
+      width: 18vw;
     }
 
     #MRR, #JRR, .resultsContainer {
