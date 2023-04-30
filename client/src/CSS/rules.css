@@ -62,7 +62,7 @@
     width: 400px;
     padding: 5px 20px;
     border: 3px ridge black;
-    border-radius: 100px;
+    border-radius: 30px;
   }
   
   #MoreFacts {
@@ -83,12 +83,12 @@
     }
   
     #RulesTopFlex p {
-      font-size: 12px;
+      font-size: calc((1.7 - 1) * 1.2vw + .6rem);
     }
   
     #RulesTopFlex h2,
     h3 {
-      font-size: 16px;
+      font-size: calc((1.7 - 1) * 1.2vw + 1rem);
     }
   
     #RulesText,
@@ -99,7 +99,7 @@
   
     #HowItWorks li {
       margin: 0 auto;
-      font-size: 12px;
+      font-size: calc((1.7 - 1) * 1.2vw + .6rem);
     }
   
     #HWFlex {
@@ -108,7 +108,7 @@
     }
   
     #Scoring li {
-      font-size: 12px;
+      font-size: calc((1.7 - 1) * 1.2vw + .6rem);
       width: 90%;
       margin: 0;
     }
@@ -134,7 +134,7 @@
 
     #Terminology {
       width: 70%;
-      font-size: 12px;
+      font-size: calc((1.7 - 1) * 1.2vw + .7rem);
       border: 2px solid black;
     }
   
@@ -147,6 +147,6 @@
     }
   
     #MoreFacts p, #Terminology p {
-      font-size: 12px;
+      font-size: calc((1.7 - 1) * 1.2vw + .7rem);
     }
   }

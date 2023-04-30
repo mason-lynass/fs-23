@@ -1,4 +1,4 @@
-function OneTeam({ team }) {
+function OneTeamMobile({ team }) {
 
     console.log(team)
 
@@ -6,31 +6,24 @@ function OneTeam({ team }) {
         <div className='oneTeam'>
             <h2>{team.user.username}</h2>
             <div className="smallerColumn">
-                <p>{team[0].shikona}</p>
                 <p>{team[0].fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[1].shikona}</p>
                 <p>{team[1].fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[2].shikona}</p>
                 <p>{team[2].fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[3].shikona}</p>
                 <p>{team[3].fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[4].shikona}</p>
                 <p>{team[4].fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[5].shikona}</p>
                 <p>{team[5].fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[6].shikona}</p>
                 <p>{team[6].fs_current}</p>
             </div>
             <h3 className="total">{team.scoreSum}</h3>
@@ -38,4 +31,4 @@ function OneTeam({ team }) {
     )
 }
 
-export default OneTeam
+export default OneTeamMobile

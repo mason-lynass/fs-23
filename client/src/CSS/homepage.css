@@ -44,7 +44,7 @@
   }
 
   #hello p {
-    font-size: 10px;
+    font-size: calc((2 - 1) * 1.2vw + .6rem);
   }
 
   #hello h2 {
@@ -61,11 +61,12 @@
   }
 
   #HomepageText p {
-    font-size: 14px;
+    font-size: calc((2 - 1) * 1.2vw + .7rem);
   }
 
   #takanoshoFootball {
-    width: 95%;
+    width: 90vw;
+    height: calc(90vw * (768 / 600));
     margin: 0 auto;
   }
 }

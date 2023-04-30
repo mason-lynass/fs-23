@@ -76,7 +76,7 @@ function RLargeMobile ({ clickedRikishi, userTeam, setUserTeam, handleCloseMobil
                             <p> Yusho: {rikishi.yusho}</p>
                             <p> special prizes: {totalSansho}</p>
                             <p>Kinboshi: {rikishi.kinboshi}</p>
-                            <p>FS points last basho: {rikishi.FS_20226 !== null ? rikishi.FS_20226 : "N/A"}</p>
+                            <p>FS points last basho: {rikishi.fsHistories.length > 0 ? rikishi.fsHistories[0].b158 : "N/A"}</p>
 
                         </div>
                     </div>
