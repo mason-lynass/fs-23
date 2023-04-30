@@ -49,7 +49,7 @@
   margin: 10px auto;
   height: 35px;
   width: 120px;
-  font-size: 20px;
+  font-size: 18px;
   color: black;
 }
 
@@ -80,10 +80,6 @@
   }
 
   #SignupFlex button {
-    display: block;
     margin: 20px auto 10px auto;
-    height: 35px;
-    width: 120px;
-    font-size: 20px;
   }
 }
