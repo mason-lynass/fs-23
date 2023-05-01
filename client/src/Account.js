@@ -10,7 +10,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
 
     // starting to think about displaying the rank during the basho
     // basically need to recreate what's happening in PreviousTeams
-    const otherTeams = [...teams].filter((team) => team.basho === 2023.3 && goodTeamNames.includes(team.user.username))
+    const otherTeams = [...teams].filter((team) => team.basho === 2023.5 && goodTeamNames.includes(team.user.username))
     // console.log(otherTeams)
     const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
     const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
@@ -45,7 +45,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
         const CTRikishiStrings = Object.values(currentTeam).filter((isString))
         const actualTeam = rikishi.filter((r) => CTRikishiStrings.includes(r.shikona))
 
-        const indivPoints = actualTeam.map((r) => r.FS_20233)
+        const indivPoints = actualTeam.map((r) => r.fs_current)
         const totalPoints = indivPoints.reduce((a, b) => a + b, 0)
 
         return (
