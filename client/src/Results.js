@@ -60,8 +60,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 :
                 <div>
                     <div id="hello">
-                        <p>Congrats to mason on your Fantasy Sumo win, and to Kiribayama for winning the Haru 2023 yusho!</p>
-                        <p>The new rankings will be announced on May 1st, so the draft will open on the 2nd.</p>
+                    <p> The draft is open! The next tournament begins on May 14th, so make sure you draft before then!</p>
                     </div>
                     <div className='resultsContainer'>
                         <div className='teamsTop'>
@@ -128,8 +127,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 :
                 <div>
                     <div id="hello">
-                        <p>Congrats to mason on your Fantasy Sumo win, and to Kiribayama for winning the Haru 2023 yusho!</p>
-                        <p>The new rankings will be announced on May 1st, so the draft will open on the 2nd.</p>
+                        <p> The draft is open! The next tournament begins on May 14th, so make sure you draft before then!</p>
                     </div>
                     <div className='resultsContainer'>
                         <div className='teamsTop'>
