@@ -97,8 +97,6 @@ function StatsAndInfo({ dbRikishi }) {
         }
     }
 
-    console.log(dbRikishi)
-
     return (
         <div id="DBTable">
             <div id="DBTableColumns">

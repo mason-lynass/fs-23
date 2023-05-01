@@ -10,8 +10,7 @@ function Homepage() {
             <div id="HomepageFlex">
                 <div id='HomeTextFull'>
                     <div id="hello">
-                        <p>Congrats to mason on your Fantasy Sumo win, and to Kiribayama for winning the Haru 2023 yusho!</p>
-                        <p>The new rankings will be announced on May 1st, so the draft will open on the 2nd.</p>
+                        <p> The draft is open! The next tournament begins on May 14th, so make sure you draft before then!</p>
                     </div>
                     <div id="HomepageText">
                         <p>Welcome to my Fantasy Sumo website!<br></br> Whether you play every other sumo game, or you know absolutely nothing about sumo, I hope you'll join my game.</p>
