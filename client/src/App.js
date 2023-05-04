@@ -51,7 +51,7 @@ function App() {
     return sortedRikishi
   }
 
-  const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass', 'Yamashiro', 'Bunbukuchagama', 'emplexus', 'Kanashisasu', 'Dreiden', 'blackroseyagami', 'Kohakuho', 'Hami', 'Terunozuna', 'BeskarBeast', 'Nondescriptusername', 'sumo-api', 'Gaijingai', 'N00bonicplague', 'maysteve21@gmail.com', 'Yoshinochin', 'Izzy', 'ahecardona', 'bill', 'liebesleet', 'duuudeman@gmail.com', 'Fuss', 'Hatt', 'SkipJam', 'existentialcats', 'Dannyfnlanza', 'Bountyhuntre', 'yurble', 'ExtractionWiz', 'Mokuseinoisu', 'Flynch', 'HoberMallow27', 'Gusoyama', 'VikingTomi', 'Flohru', 'Dannybo', 'ljvd', 'mcquello', 'Hidenotora', 'BrycinHuckeba', 'Bulldoza']
+  const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass', 'Yamashiro', 'Bunbukuchagama', 'emplexus', 'Kanashisasu', 'Dreiden', 'blackroseyagami', 'Kohakuho', 'Hami', 'Terunozuna', 'BeskarBeast', 'Nondescriptusername', 'sumo-api', 'Gaijingai', 'N00bonicplague', 'maysteve21@gmail.com', 'Yoshinochin', 'Izzy', 'ahecardona', 'bill', 'liebesleet', 'duuudeman@gmail.com', 'Fuss', 'Hatt', 'SkipJam', 'existentialcats', 'Dannyfnlanza', 'Bountyhuntre', 'yurble', 'ExtractionWiz', 'Mokuseinoisu', 'Flynch', 'HoberMallow27', 'Gusoyama', 'VikingTomi', 'Flohru', 'Dannybo', 'ljvd', 'mcquello', 'Hidenotora', 'BrycinHuckeba', 'Bulldoza', 'Lex']
 
   useEffect(() => {
     // auto-login
@@ -85,6 +85,8 @@ function App() {
       Object.assign(rikishi, { fsHistories: fsHistories.filter((h) => h.rikishi.shikona === rikishi.shikona) })
     })
   }
+
+  console.log(rikishi)
 
   return (
     <div className="App">
