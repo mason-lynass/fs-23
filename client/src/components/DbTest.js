@@ -16,8 +16,6 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }, [fsHistories])
 
-    console.log(fsHistories)
-
     useEffect(() => {
         // console.log('this')
         let result = fsHistories
@@ -64,8 +62,10 @@ function DbTest({ fsHistories, rikishi }) {
     }
 
     function setHighlight(target) {
+        console.log(target)
         if (fsHistories.length > 0) {
-            const columns = document.querySelectorAll(".dbtest-basho" || ".dbtest-basho-image" || ".dbtest-rikishi-name" || ".dbtest-basho-avg")
+            // const columns = document.querySelectorAll(".dbtest-basho" && ".dbtest-basho-image" && ".dbtest-rikishi-name" && ".dbtest-basho-avg")
+            const columns = document.querySelectorAll(".highlight")
             columns.forEach((col) => {
                 if (col.classList.contains("DBStatsActive")) {
                     col.classList.remove("DBStatsActive")
@@ -94,6 +94,8 @@ function DbTest({ fsHistories, rikishi }) {
             }
         }
     }
+
+    
 
     function displayOneRikishi(history) {
 
@@ -234,7 +236,7 @@ function DbTest({ fsHistories, rikishi }) {
                 }
             }
             return bashoRowsArray.map((x) => {
-                return <th key={x} id={'b' + x[0]} className="dbtest-basho" onClick={handleViewState}>{x[1]}</th>
+                return <th key={x} id={'b' + x[0]} className="dbtest-basho highlight" onClick={handleViewState}>{x[1]}</th>
             })
         }
     }
@@ -261,9 +263,9 @@ function DbTest({ fsHistories, rikishi }) {
             <table id='dbtest-full-table'>
                 <thead id='dbtest-basho-row'>
                     <div id='dbtest-basho-sticky'>
-                        <th className="dbtest-basho-image" id='default' onClick={handleViewState}>reset</th>
-                        <th className="dbtest-rikishi-name" id='shikona' onClick={handleViewState}></th>
-                        <th className="dbtest-basho-avg" id='average' onClick={handleViewState}>average score</th>
+                        <th className="dbtest-basho-image highlight" id='default' onClick={handleViewState}>reset</th>
+                        <th className="dbtest-rikishi-name highlight" id='shikona' onClick={handleViewState}></th>
+                        <th className="dbtest-basho-avg highlight" id='average' onClick={handleViewState}>average score</th>
                     </div>
                     {AllBashoRows()}
                 </thead>

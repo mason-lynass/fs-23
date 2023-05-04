@@ -132,7 +132,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
 
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
     // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
-    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Wakatakakage")
+    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Wakatakakage" && rikishi.shikona !== "Ichinojo")
     const sortedMRikishi = rankSort(MakuuchiRikishi, null)
     const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J")
 
@@ -168,7 +168,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
                                 <option value="13">M13+ only</option>
                             </select>
                         </div>
-                        <p id="headsup">Wakatakakage will not be competing in this tournament</p>
+                        <p id="headsup">Wakatakakage will not be competing in this tournament. Ichinojo has retired from professional sumo!</p>
                     </div>
                 </div>
                 <p id='clickText'>click on a wrestler to display info and add them to your team!</p>
@@ -233,7 +233,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
                         </select>
                     </div>
                 </div>
-                <p id="headsup">* Wakatakakage will not be competing in this tournament *</p>
+                <p id="headsup">* Wakatakakage will not be competing in this tournament. Ichinojo has retired from professional sumo! *</p>
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
@@ -295,17 +295,17 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         areYouLoggedIn()
-    //         : <p>loading...</p>
-    // )
+    return (
+        (rikishiLoaded === true) ?
+            areYouLoggedIn()
+            : <p>loading...</p>
+    )
 
     return (
         <div id="hello">
-            {/* <p>The banzuke for the next tournament will be published on February 27th, and the Draft page will be up soon after. The next tournament begins on March 12th, so make sure you draft before then!</p> */}
+            <p> The draft is open! The next tournament begins on May 14th, so make sure you draft before then!</p>
             {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the May tournament.</p> */}
-            <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p>
+            {/* <p>The new rankings will be announced on May 1st, so the draft will open from May 2nd - May 13th.</p> */}
         </div>
     )
 }
