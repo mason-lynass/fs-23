@@ -6,11 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistories }) {
 
-    console.log(user)
-
     const navigate = useNavigate()
-
-
 
     function handleDeleteTeam() {
         // change this every basho
@@ -96,8 +92,6 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
     }
 
     function renderAccountPage() {
-
-
         if (user === null) {
             return (
                 <div>
@@ -106,10 +100,9 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
                 </div>
             )
         } else {
-
             // change this every basho
             const oldTeams = user.teams.filter(e => e.basho !== 2023.5)
-            
+
             return (
                 <div id="AccountPage">
                     <h2 id="AccountHello">Hello, {user.username}!</h2>

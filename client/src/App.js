@@ -86,8 +86,6 @@ function App() {
     })
   }
 
-  console.log(rikishi)
-
   return (
     <div className="App">
       <img id="BI" src={BG1} alt="" rel='preload' />
