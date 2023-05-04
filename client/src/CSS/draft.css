@@ -167,6 +167,10 @@
   text-align: center;
 }
 
+#DFSelect select {
+  color: black;
+}
+
 #DFCheckboxes {
   display: flex;
   flex-flow: row nowrap;
@@ -386,6 +390,7 @@
     margin: 5px auto;
     padding: 0 10px;
     height: 30px;
+    color: black;
   }
 
   .content {
