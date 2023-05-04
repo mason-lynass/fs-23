@@ -1,7 +1,5 @@
 function OneTeamMobile({ team }) {
 
-    console.log(team)
-
     return (
         <div className='oneTeam'>
             <h2>{team.user.username}</h2>

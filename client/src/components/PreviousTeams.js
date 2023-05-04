@@ -3,8 +3,8 @@ function PreviousTeams({ user, rikishi, teams, fsHistories }) {
     const userTeams = user.teams
     const oldTeams = userTeams.filter((team) => team.basho !== 2023.5).sort((a, b) => b.basho - a.basho)
 
-    console.log(rikishi)
-    console.log(fsHistories)
+    // console.log(rikishi)
+    // console.log(fsHistories)
 
     function oneOldTeam(team) {
 
@@ -34,7 +34,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories }) {
         let fsHistoriesArray = Object.values(fsHistories[0])
         fsHistoriesArray.splice(fsHistoriesArray.length - 2, 2)
 
-        console.log(fsHistoriesArray)
+        // console.log(fsHistoriesArray)
 
         if (team.basho === 2023.1) {
             temp = temp - 2
@@ -45,7 +45,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories }) {
             otherTeams = [...teams].filter((team) => team.basho === 2023.3)
         }
 
-        console.log(actualTeam[0][0])
+        // console.log(actualTeam[0][0])
 
         temp = `b${temp}`
 
