@@ -6,14 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistories }) {
 
+    console.log(user)
+
     const navigate = useNavigate()
 
-    // starting to think about displaying the rank during the basho
-    // basically need to recreate what's happening in PreviousTeams
-    const otherTeams = [...teams].filter((team) => team.basho === 2023.5 && goodTeamNames.includes(team.user.username))
-    // console.log(otherTeams)
-    const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
-    const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
+
 
     function handleDeleteTeam() {
         // change this every basho
@@ -35,13 +32,17 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
 
     function isString(value) { return typeof value === "string" }
 
-    // change these every basho
-    const currentTeam = user.teams.find(e => e.basho === 2023.5)
-    const oldTeams = user.teams.filter(e => e.basho !== 2023.5)
-    // console.log(oldTeams)
-
     function currentBashoTeam() {
-        
+
+        // starting to think about displaying the rank during the basho
+        // basically need to recreate what's happening in PreviousTeams
+        const otherTeams = [...teams].filter((team) => team.basho === 2023.5 && goodTeamNames.includes(team.user.username))
+        // console.log(otherTeams)
+        const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
+        const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
+
+        // change these every basho
+        const currentTeam = user.teams.find(e => e.basho === 2023.5)
         const CTRikishiStrings = Object.values(currentTeam).filter((isString))
         const actualTeam = rikishi.filter((r) => CTRikishiStrings.includes(r.shikona))
 
@@ -95,7 +96,9 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
     }
 
     function renderAccountPage() {
-        if (!user) {
+
+
+        if (user === null) {
             return (
                 <div>
                     <h1 id="AccountLogin">You need to login to see your account page!</h1>
@@ -103,12 +106,16 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
                 </div>
             )
         } else {
+
+            // change this every basho
+            const oldTeams = user.teams.filter(e => e.basho !== 2023.5)
+            
             return (
                 <div id="AccountPage">
                     <h2 id="AccountHello">Hello, {user.username}!</h2>
                     {renderCurrentBashoTeam()}
                     {oldTeams.length > 0 ?
-                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} fsHistories={fsHistories}/>
+                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} fsHistories={fsHistories} />
                         :
                         null}
                 </div>
