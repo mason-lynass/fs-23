@@ -20,6 +20,8 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
         }
     }, [rikishi])
 
+    console.log(teams)
+
     function renderTeamsNormal() {
 
         const allTeamsAsObjects = currentTeams.map((team) => {
