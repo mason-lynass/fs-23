@@ -51,7 +51,9 @@ function App() {
     return sortedRikishi
   }
 
-  const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass', 'Yamashiro', 'Bunbukuchagama', 'emplexus', 'Kanashisasu', 'Dreiden', 'blackroseyagami', 'Kohakuho', 'Hami', 'Terunozuna', 'BeskarBeast', 'Nondescriptusername', 'sumo-api', 'Gaijingai', 'N00bonicplague', 'maysteve21@gmail.com', 'Yoshinochin', 'Izzy', 'ahecardona', 'bill', 'liebesleet', 'duuudeman@gmail.com', 'Fuss', 'Hatt', 'SkipJam', 'existentialcats', 'Dannyfnlanza', 'Bountyhuntre', 'yurble', 'ExtractionWiz', 'Mokuseinoisu', 'Flynch', 'HoberMallow27', 'Gusoyama', 'VikingTomi', 'Flohru', 'Dannybo', 'ljvd', 'mcquello', 'Hidenotora', 'BrycinHuckeba', 'Bulldoza', 'lex', 'meatslab', 'wockhardt', 'cubistpepe', 'bransby', 'MitchThor', 'dalebcooper2', 'Sumofan811', 'mkmeese42@gmail.com', 'Joosh', 'Ajoyham', 'clashplaids', 'freedlund', 'meep', 'Cur_ceph', 'lonewolf', 'Pmwilkins', 'SeattleSumoRiley', 'mateg0re', 'Alexh51']
+  const goodTeamNames = ['mason', 'acorn', 'Seitos', 'Tetsuba', 'nemalie', 'jlynass', 'Yamashiro', 'Bunbukuchagama', 'emplexus', 'Kanashisasu', 'Dreiden', 'blackroseyagami', 'Kohakuho', 'Hami', 'Terunozuna', 'BeskarBeast', 'Nondescriptusername', 'sumo-api', 'Gaijingai', 'N00bonicplague', 'maysteve21@gmail.com', 'Yoshinochin', 'Izzy', 'ahecardona', 'bill', 'liebesleet', 'duuudeman@gmail.com', 'Fuss', 'Hatt', 'SkipJam', 'existentialcats', 'Dannyfnlanza', 'Bountyhuntre', 'yurble', 'ExtractionWiz', 'Mokuseinoisu', 'Flynch', 'HoberMallow27', 'Gusoyama', 'VikingTomi', 'Flohru', 'Dannybo', 'ljvd', 'mcquello', 'Hidenotora', 'BrycinHuckeba', 'Bulldoza', 'lex', 'meatslab', 'wockhardt', 'cubistpepe', 'bransby', 'MitchThor', 'dalebcooper2', 'Sumofan811', 'mkmeese42@gmail.com', 'Joosh', 'Ajoyham', 'clashplaids', 'freedlund', 'meep', 'Cur_ceph', 'lonewolf', 'Pmwilkins', 'SeattleSumoRiley', 'mateg0re', 'Alexh51', 'Torafujii', 'ArmenOzeki', 'jreign', 'Wamahada']
+
+  console.log(goodTeamNames.sort((a, b) => a.localeCompare(b)))
 
   useEffect(() => {
     // auto-login
