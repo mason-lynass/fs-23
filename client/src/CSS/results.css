@@ -11,7 +11,7 @@
 
 #resultsButton {
   font-size: calc((1.5 - 1) * 1.2vw + .6rem);
-  padding: 1vw 2vw;
+  padding: .5vw 1vw;
   height: fit-content;
 }
 
@@ -21,7 +21,7 @@
   }
 
   .resultsContainer, #allRR {
-    margin: 3vw 40px;
+    margin: 20px 40px;
   }
   
   .teamsTop {
