@@ -2,11 +2,13 @@ function HowMany({ teams, teamsLoaded }) {
 
     console.log(teams)
 
+    const currentTeams = teams.filter((team) => team.basho === 2023.5)
+
     let allRikishiArray = []
     let freqObject = {}
 
     if (teamsLoaded === true) {
-        teams.forEach((team) => {
+        currentTeams.forEach((team) => {
             const teamValues = Object.values(team)
             // const teamStrings = teamValues.filter((val) => val.contains(''))
             const strings = teamValues.filter(val => {
