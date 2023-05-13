@@ -1,7 +1,5 @@
 function HowMany({ teams, teamsLoaded }) {
 
-    console.log(teams)
-
     const currentTeams = teams.filter((team) => team.basho === 2023.5)
 
     let mRikishiArray = []
@@ -90,11 +88,11 @@ function HowMany({ teams, teamsLoaded }) {
         return (
             <>
                 <div id='HowManyM'>
-                    <h2>Makuuchi</h2>
+                    <h3>Makuuchi wrestler count:</h3>
                     {oneDivision(mRikishiArray)}
                 </div>
                 <div id='HowManyJ'>
-                    <h2>Juryo</h2>
+                    <h3>Juryo wrestler count:</h3>
                     {oneDivision(jRikishiArray)}
                 </div>
             </>

@@ -1,13 +1,16 @@
 import "./CSS/results.css"
 import { useEffect, useState } from "react"
-import OneTeam from "./components/OneTeam"
-import OneTeamMobile from "./components/OneTeamMobile"
 import RikishiResults from "./components/RikishiResults"
+import Hello from "./components/Hello"
+import ResultsNav from './components/ResultsNav'
+import MobileResultsContainer from "./components/MobileResultsContainer"
+import DesktopResultsContainer from "./components/DesktopResultsContainer"
 
 function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
+    const [viewState, setViewState] = useState(true)
 
     // change this every basho
     const currentTeams = teams.filter((team) => team.basho === 2023.5)
@@ -20,7 +23,10 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
         }
     }, [rikishi])
 
-    console.log(teams)
+    function changeViewState() {
+        setViewState(!viewState)
+        console.log(viewState)
+    }
 
     function renderTeamsNormal() {
 
@@ -61,30 +67,15 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 <h2>Loading...</h2>
                 :
                 <div>
-                    <div id="hello">
-                    <p> The draft is open! The next tournament begins on May 14th, so make sure you draft before then!</p>
+                    <Hello />
+                    <div id='resultsNav'>
+                        <button id='resultsButton' onClick={changeViewState}>{viewState === true ? "rikishi results" : "team results"}</button>
                     </div>
-                    <div className='resultsContainer'>
-                        <div className='teamsTop'>
-                            <h2 className="teamName">team name</h2>
-                            <p className="smallerColumn">sanyaku</p>
-                            <p className="smallerColumn">M1-M4</p>
-                            <p className="smallerColumn">M5-M8</p>
-                            <p className="smallerColumn">M9-M12</p>
-                            <p className="smallerColumn">M13-M17</p>
-                            <p className="smallerColumn">extra</p>
-                            <p className="smallerColumn">juryo</p>
-                            <h3 className="total">Total:</h3>
-                        </div>
-                        <div id="teamsContainer">
-                            {goodTeams.map((team) => {
-                                return (
-                                    <OneTeam team={team} key={team.id} rikishi={rikishi} />
-                                )
-                            })}
-                        </div>
-                    </div>
-                    <RikishiResults rikishi={rikishi} />
+                    {viewState === true ? 
+                    <DesktopResultsContainer goodTeams={goodTeams} rikishi={rikishi} />
+                     :
+                    <RikishiResults rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
+                    }
                 </div>
         )
     }
@@ -128,30 +119,15 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 <h2>Loading...</h2>
                 :
                 <div>
-                    <div id="hello">
-                        <p> The draft is open! The next tournament begins on May 14th, so make sure you draft before then!</p>
+                    <Hello />
+                    <div id='resultsNav'>
+                        <button id='resultsButton' onClick={changeViewState}>{viewState === true ? "rikishi results" : "team results"}</button>
                     </div>
-                    <div className='resultsContainer'>
-                        <div className='teamsTop'>
-                            <h2 className="teamName">team name</h2>
-                            <p className="smallerColumn">1</p>
-                            <p className="smallerColumn">2</p>
-                            <p className="smallerColumn">3</p>
-                            <p className="smallerColumn">4</p>
-                            <p className="smallerColumn">5</p>
-                            <p className="smallerColumn">6</p>
-                            <p className="smallerColumn">7</p>
-                            <h3 className="total">Total:</h3>
-                        </div>
-                        <div id="teamsContainer">
-                            {goodTeams.map((team) => {
-                                return (
-                                    <OneTeamMobile team={team} key={team.id} rikishi={rikishi} />
-                                )
-                            })}
-                        </div>
-                    </div>
-                    <RikishiResults rikishi={rikishi} />
+                    {viewState === true ? 
+                    <MobileResultsContainer goodTeams={goodTeams} rikishi={rikishi} />
+                     :
+                    <RikishiResults rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
+                    }
                 </div>
         )
     }

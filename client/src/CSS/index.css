@@ -40,6 +40,7 @@ button {
 
 #HowManyM, #HowManyJ {
   width: 15vw;
+  height: fit-content;
   margin: 3vw 0;
   padding: 0 1vw;
   background: white;
