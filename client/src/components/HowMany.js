@@ -72,7 +72,7 @@ function HowMany({ teams, teamsLoaded }) {
             // freqObject.set(allRikishiArray[i], 1)
             // if (`'${fill}'` in freqObject) { console.log('woohoo') }
         }
-        let freqArray = Object.entries(freqObject)
+        let freqArray = Object.entries(freqObject).sort((a,b) => b[1] - a[1])
 
         return (
             freqArray.map((rikishi) => {
