@@ -4,42 +4,76 @@ function HowMany({ teams, teamsLoaded }) {
 
     const currentTeams = teams.filter((team) => team.basho === 2023.5)
 
-    let allRikishiArray = []
-    let freqObject = {}
+    let mRikishiArray = []
+    let jRikishiArray = []
 
     if (teamsLoaded === true) {
         currentTeams.forEach((team) => {
-            const teamValues = Object.values(team)
+            const teamValues = Object.entries(team)
+            // console.log(teamValues)
             // const teamStrings = teamValues.filter((val) => val.contains(''))
-            const strings = teamValues.filter(val => {
-                return val !== null && typeof val === 'string'
+            const mStrings = teamValues.filter(val => {
+                return (
+                    val[0] === 'r1' || val[0] === 'r2' || val[0] === 'r3' ||
+                    val[0] === 'r4' || val[0] === 'r5' || val[0] === 'r6'
+                )
             })
             // console.log(strings)
-            strings.forEach((string) => allRikishiArray.push(string))
+            mStrings.forEach((string) => mRikishiArray.push(string[1]))
+            const jStrings = teamValues.filter(val => val[0] === 'r7')
+            jStrings.forEach((string) => jRikishiArray.push(string[1]))
         })
         // console.log(allRikishiArray)
     }
 
-    console.log(allRikishiArray.sort((a, b) => a.localeCompare(b)))
+    // console.log(allRikishiArray.sort((a, b) => a.localeCompare(b)))
 
-    for (let i = 0; i < allRikishiArray.length; i++) {
-        const fill = allRikishiArray[i]
-        if (Object.keys(freqObject).includes(allRikishiArray[i])) {
-            console.log("THIS")
-            console.log(freqObject[allRikishiArray[i]])
-            freqObject[allRikishiArray[i]] = (freqObject[allRikishiArray[i]] + 1)
+    // function Makuuchi() {
+
+    //     for (let i = 0; i < mRikishiArray.length; i++) {
+    //         const fill = mRikishiArray[i]
+    //         if (Object.keys(freqObject).includes(mRikishiArray[i])) {
+    //             // console.log("THIS")
+    //             // console.log(freqObject[allRikishiArray[i]])
+    //             freqObject[mRikishiArray[i]] = (freqObject[mRikishiArray[i]] + 1)
+    //         }
+    //         else freqObject[mRikishiArray[i]] = 1
+    //         // freqObject.set(allRikishiArray[i], 1)
+    //         // if (`'${fill}'` in freqObject) { console.log('woohoo') }
+    //     }
+    // }
+
+    // function Juryo() {
+    //     for (let i = 0; i < jRikishiArray.length; i++) {
+
+    //         const fill = jRikishiArray[i]
+    //         console.log(fill)
+    //         if (Object.keys(freqObject).includes(jRikishiArray[i])) {
+    //             // console.log("THIS")
+    //             // console.log(freqObject[allRikishiArray[i]])
+    //             freqObject[jRikishiArray[i]] = (freqObject[jRikishiArray[i]] + 1)
+    //         }
+    //         else freqObject[jRikishiArray[i]] = 1
+    //         // freqObject.set(allRikishiArray[i], 1)
+    //         // if (`'${fill}'` in freqObject) { console.log('woohoo') }
+    //     }
+    // }
+
+    function oneDivision(wrestlers) {
+        let freqObject = {}
+        for (let i = 0; i < wrestlers.length; i++) {
+            const fill = wrestlers[i]
+            if (Object.keys(freqObject).includes(wrestlers[i])) {
+                // console.log("THIS")
+                // console.log(freqObject[allRikishiArray[i]])
+                freqObject[wrestlers[i]] = (freqObject[wrestlers[i]] + 1)
+            }
+            else freqObject[wrestlers[i]] = 1
+            // freqObject.set(allRikishiArray[i], 1)
+            // if (`'${fill}'` in freqObject) { console.log('woohoo') }
         }
-        else freqObject[allRikishiArray[i]] = 1
-        // freqObject.set(allRikishiArray[i], 1)
-        // if (`'${fill}'` in freqObject) { console.log('woohoo') }
-    }
+        let freqArray = Object.entries(freqObject)
 
-    console.log(freqObject)
-
-    const freqArray = Object.entries(freqObject)
-    console.log(freqArray.sort((a, b) => b[1] - a[1]))
-
-    function allRikishi() {
         return (
             freqArray.map((rikishi) => {
                 return (
@@ -49,6 +83,21 @@ function HowMany({ teams, teamsLoaded }) {
                     </div>
                 )
             })
+        )
+    }
+
+    function allRikishi() {
+        return (
+            <>
+                <div id='HowManyM'>
+                    <h2>Makuuchi</h2>
+                    {oneDivision(mRikishiArray)}
+                </div>
+                <div id='HowManyJ'>
+                    <h2>Juryo</h2>
+                    {oneDivision(jRikishiArray)}
+                </div>
+            </>
         )
     }
 

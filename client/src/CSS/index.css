@@ -32,10 +32,22 @@ button {
 }
 
 #HowManyMain {
-  width: 20vw;
-  margin: 3vw auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 10vw;
+}
+
+#HowManyM, #HowManyJ {
+  width: 15vw;
+  margin: 3vw 0;
+  padding: 0 1vw;
   background: white;
   border: 3px solid goldenrod;
+}
+
+#HowManyM h2, #HowManyJ h2 { 
+  text-align: center;
 }
 
 .HowManyOne {
