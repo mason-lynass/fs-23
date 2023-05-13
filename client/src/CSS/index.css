@@ -31,6 +31,28 @@ button {
   opacity: .35;
 }
 
+#HowManyMain {
+  width: 20vw;
+  margin: 3vw auto;
+  background: white;
+  border: 3px solid goldenrod;
+}
+
+.HowManyOne {
+  display: grid;
+  grid-template-columns: 75% 15%;
+  gap: 10%;
+  margin: 1vw auto;
+}
+
+.HowManyOne p:first-child {
+  text-align: right;
+}
+
+.HowManyOne p {
+  margin: 0;
+}
+
 @media screen and (max-width: 600px) {
   body {
     margin: 5px 0 0 0;

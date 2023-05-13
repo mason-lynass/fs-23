@@ -21,6 +21,7 @@ import Database from './Database';
 import Account from './Account';
 import Terminology from './Terminology';
 import DbTest from './components/DbTest';
+import HowMany from './components/HowMany';
 
 function App() {
 
@@ -98,6 +99,10 @@ function App() {
         <Route
           path="/"
           element={<Homepage />}
+        />
+        <Route
+          path="/howmany"
+          element={<HowMany teams={teams} teamsLoaded={teamsLoaded}/>}
         />
         <Route
           path="/dbtest"
