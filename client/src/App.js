@@ -101,10 +101,6 @@ function App() {
           element={<Homepage />}
         />
         <Route
-          path="/howmany"
-          element={<HowMany teams={teams} teamsLoaded={teamsLoaded}/>}
-        />
-        <Route
           path="/dbtest"
           element={<DbTest fsHistories={fsHistories} rikishi={rikishi} />}
         />

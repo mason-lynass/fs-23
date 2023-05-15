@@ -72,10 +72,10 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
                     <h4>Your team will be visible on the Results page before and during the tournament - there may be some delay in visibility, up to 24 hours after you draft your team.</h4>
                 </div>
                 {/* turn this off during the tournament */}
-                <div id="Redraft">
+                {/* <div id="Redraft">
                     <h4>If you need to redraft before the tournament starts, if someone is injured or you've changed your mind: </h4>
                     <button onClick={handleDeleteTeam}>DELETE TEAM</button>
-                </div>
+                </div> */}
             </div>
         )
     }
