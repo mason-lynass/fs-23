@@ -45,6 +45,8 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
         const indivPoints = actualTeam.map((r) => r.fs_current)
         const totalPoints = indivPoints.reduce((a, b) => a + b, 0)
 
+        console.log(currentTeam)
+
         return (
             <div>
                 <h3>Here's your team for the May tournament:</h3>
@@ -63,9 +65,16 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
                     <div id="ATTotal">
                         <h1>{totalPoints}</h1>
                         <h2>points</h2>
-                        <hr></hr>
-                        <h2>#{teamPosition} out of</h2>
-                        <h2>{otherTeams.length} teams</h2>
+                        {currentTeam.final_score === null ?
+                        ''
+                        :
+                         <>
+                         <hr></hr>
+                         <h2>#{teamPosition} out of</h2>
+                         <h2>{otherTeams.length} teams</h2>
+                         </>
+                         }
+                        
                     </div>
                 </div>
                 <div id="delay">
