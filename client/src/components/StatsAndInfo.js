@@ -1,9 +1,65 @@
 import SIAllRikishi from "./SIAllRikishi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function StatsAndInfo({ dbRikishi }) {
 
     const [sortState, setSortState] = useState("default")
+    const [searchOne, setSearchOne] = useState("")
+    const [searchTwo, setSearchTwo] = useState("")
+    const [newRikishi, setNewRikishi] = useState([])
+    const [retiredState, setRetiredState] = useState(true)
+
+    useEffect(() => {
+        if (dbRikishi.length > 0) {
+            setNewRikishi(dbRikishi)
+        }
+    }, [dbRikishi])
+
+    console.log(newRikishi)
+
+    useEffect(() => {
+        // console.log('this')
+        let result = dbRikishi
+        result = filterBySearch(result)
+        setNewRikishi(result)
+    }, [searchOne, searchTwo])
+
+    function handleRetired() {
+        if (retiredState === true) {
+            setNewRikishi(newRikishi.filter((r) => r.retired === false))
+            setRetiredState(!retiredState)
+        } else if (retiredState === false) {
+            setNewRikishi(filterBySearch(dbRikishi))
+            setRetiredState(!retiredState)
+        }
+    }
+
+    function handleSearchOne(e) {
+        setSearchOne(e.target.value)
+    }
+    function handleSearchTwo(e) {
+        setSearchTwo(e.target.value)
+    }
+
+    const filterBySearch = (r) => {
+        return dbRikishi.filter((rik) => {
+            if (searchOne !== '' && searchTwo !== '') {
+                const one = rik.shikona.toLowerCase().includes(searchOne.toLowerCase())
+                const two = rik.shikona.toLowerCase().includes(searchTwo.toLowerCase())
+                console.log(one, two, rik)
+                if (one === true || two === true) {
+                    return rik
+                }
+            }
+            else if (searchOne !== '') {
+                return rik.shikona.toLowerCase().includes(searchOne.toLowerCase())
+            }
+            else if (searchTwo !== '') {
+                return rik.shikona.toLowerCase().includes(searchTwo.toLowerCase())
+            }
+            else return rik
+        })
+    }
 
     function calculate_age(dob) {
         const birthdate = new Date(dob)
@@ -35,29 +91,39 @@ function StatsAndInfo({ dbRikishi }) {
         setHighlight(target)
     }
 
-    const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "J", "MS"]
+    const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "J", "MS", "i"]
 
-    const defaultSort = [...dbRikishi].sort((a, b) => a.id - b.id)
-    const shikonaSort = [...dbRikishi].sort((a, b) => a.shikona.localeCompare(b.shikona))
-    const highestSort = [...dbRikishi].sort((a, b) => {
+    // const defaultSort = [...newRikishi].sort((a, b) => a.id - b.id)
+    const defaultSort = [...newRikishi].sort((a, b) => {
         const aRank = rankOrder.indexOf(a.highest_rank)
         const bRank = rankOrder.indexOf(b.highest_rank)
         return aRank - bRank
-    })
-    const currentSort = [...dbRikishi].sort((a, b) => {
+    }).sort((a, b) => {
         const aRank = rankOrder.indexOf(a.current_rank)
         const bRank = rankOrder.indexOf(b.current_rank)
         return aRank - bRank
     })
-    const heyaSort = [...dbRikishi].sort((a, b) => a.heya.localeCompare(b.heya))
-    const ageSort = [...dbRikishi].sort((a, b) => calculate_age_order(b.birthdate) - calculate_age_order(a.birthdate))
-    const heightSort = [...dbRikishi].sort((a, b) => b.height - a.height)
-    const weightSort = [...dbRikishi].sort((a, b) => b.weight - a.weight)
-    const yushoSort = [...dbRikishi].sort((a, b) => b.yusho - a.yusho)
-    const kinboshiSort = [...dbRikishi].sort((a, b) => b.kinboshi - a.kinboshi)
-    const ssSort = [...dbRikishi].sort((a, b) => b.shukun_sho - a.shukun_sho)
-    const ksSort = [...dbRikishi].sort((a, b) => b.kanto_sho - a.kanto_sho)
-    const gsSort = [...dbRikishi].sort((a, b) => b.gino_sho - a.gino_sho)
+
+    const shikonaSort = [...newRikishi].sort((a, b) => a.shikona.localeCompare(b.shikona))
+    const highestSort = [...newRikishi].sort((a, b) => {
+        const aRank = rankOrder.indexOf(a.highest_rank)
+        const bRank = rankOrder.indexOf(b.highest_rank)
+        return aRank - bRank
+    })
+    const currentSort = [...newRikishi].sort((a, b) => {
+        const aRank = rankOrder.indexOf(a.current_rank)
+        const bRank = rankOrder.indexOf(b.current_rank)
+        return aRank - bRank
+    })
+    const heyaSort = [...newRikishi].sort((a, b) => a.heya.localeCompare(b.heya))
+    const ageSort = [...newRikishi].sort((a, b) => calculate_age_order(b.birthdate) - calculate_age_order(a.birthdate))
+    const heightSort = [...newRikishi].sort((a, b) => b.height - a.height)
+    const weightSort = [...newRikishi].sort((a, b) => b.weight - a.weight)
+    const yushoSort = [...newRikishi].sort((a, b) => b.yusho - a.yusho)
+    const kinboshiSort = [...newRikishi].sort((a, b) => b.kinboshi - a.kinboshi)
+    const ssSort = [...newRikishi].sort((a, b) => b.shukun_sho - a.shukun_sho)
+    const ksSort = [...newRikishi].sort((a, b) => b.kanto_sho - a.kanto_sho)
+    const gsSort = [...newRikishi].sort((a, b) => b.gino_sho - a.gino_sho)
 
     // filter, then push to an empty array
     // filter Y 
@@ -98,27 +164,45 @@ function StatsAndInfo({ dbRikishi }) {
     }
 
     return (
-        <div id="DBTable">
-            <div id="DBTableColumns">
-                <p className='DBImage DBCol' id="reset"></p>
-                <p className='DBCurrent DBCol' id="current" onClick={handleSortState}>current rank</p>
-                <p className='DBShikona DBCol' id="shikona" onClick={handleSortState}>shikona</p>
-                <p className='DBHighest DBCol' id="highest" onClick={handleSortState}>highest rank</p>
-                <p className='DBHeya DBCol' id="heya" onClick={handleSortState}>heya</p>
-                <p className='DBAge DBCol' id="age" onClick={handleSortState}>age</p>
-                <p className='DBHeight DBCol' id="height" onClick={handleSortState}>height (in cm)</p>
-                <p className='DBWeight DBCol' id="weight" onClick={handleSortState}>weight (in kg)</p>
-                <p className='DBYusho DBCol' id="yusho" onClick={handleSortState}>Yusho</p>
-                <p className='DBKinboshi DBCol' id="kinboshi" onClick={handleSortState}>Kinboshi</p>
-                <p className='DBSansho DBCol' id="ss" onClick={handleSortState}>Shukun-sho</p>
-                <p className='DBSansho DBCol' id="ks" onClick={handleSortState}>Kanto-sho</p>
-                <p className='DBSansho DBCol' id="gs" onClick={handleSortState}>Gino-sho</p>
+        <main>
+            <div id='dbtest-all-filters'>
+                <div id='dbtest-filters'>
+                    <div>
+                        <input placeholder='Asashoryu' onChange={handleSearchOne} value={searchOne} type="text" name="search"></input>
+                        <label>rikishi search</label>
+                    </div>
+                    <div>
+                        <input placeholder='Kakuryu' onChange={handleSearchTwo} value={searchTwo} type="text" name="search"></input>
+                        <label>rikishi search</label>
+                    </div>
+                </div>
+                <div id='retired-checkbox'>
+                    <input type='checkbox' id='retiredCheckbox' name='retired-checkbox' value={retiredState} onClick={handleRetired}></input>
+                    <label htmlFor='retiredCheckbox'>Hide Retired Rikishi</label>
+                </div>
             </div>
-            <hr id='hrStats'></hr>
-            <div id="DBAllRikishi">
-                {SIRikishiSwitch()}
+            <div id="DBTable">
+                <div id="DBTableColumns">
+                    <p className='DBImage DBCol' id="reset"></p>
+                    <p className='DBCurrent DBCol' id="current" onClick={handleSortState}>current rank</p>
+                    <p className='DBShikona DBCol' id="shikona" onClick={handleSortState}>shikona</p>
+                    <p className='DBHighest DBCol' id="highest" onClick={handleSortState}>highest rank</p>
+                    <p className='DBHeya DBCol' id="heya" onClick={handleSortState}>heya</p>
+                    <p className='DBAge DBCol' id="age" onClick={handleSortState}>age</p>
+                    <p className='DBHeight DBCol' id="height" onClick={handleSortState}>height (in cm)</p>
+                    <p className='DBWeight DBCol' id="weight" onClick={handleSortState}>weight (in kg)</p>
+                    <p className='DBYusho DBCol' id="yusho" onClick={handleSortState}>Yusho</p>
+                    <p className='DBKinboshi DBCol' id="kinboshi" onClick={handleSortState}>Kinboshi</p>
+                    <p className='DBSansho DBCol' id="ss" onClick={handleSortState}>Shukun-sho</p>
+                    <p className='DBSansho DBCol' id="ks" onClick={handleSortState}>Kanto-sho</p>
+                    <p className='DBSansho DBCol' id="gs" onClick={handleSortState}>Gino-sho</p>
+                </div>
+                <hr id='hrStats'></hr>
+                <div id="DBAllRikishi">
+                    {SIRikishiSwitch()}
+                </div>
             </div>
-        </div>
+        </main>
     )
 }
 

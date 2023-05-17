@@ -29,11 +29,11 @@ function DbTest({ fsHistories, rikishi }) {
     })
 
     function handleRetired() {
-        if (retiredState == true) {
+        if (retiredState === true) {
             setNewRikishi(newRikishi.filter((r) => r.rikishi.retired === false))
             setRetiredState(!retiredState)
-        } else if (retiredState == false) {
-            setNewRikishi(fsHistories)
+        } else if (retiredState === false) {
+            setNewRikishi(filterBySearch(fsHistories))
             setRetiredState(!retiredState)
         }
     }
