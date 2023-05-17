@@ -7,7 +7,7 @@ function RikishiResults({ rikishi, teams, teamsLoaded }) {
     const alphaSort = [...rikishi].sort((a, b) => a.shikona.localeCompare(b.shikona))
 
     // && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji"
-    const MRikishi = [...rikishi].filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS").sort((a, b) => b.fs_current - a.fs_current)
+    const MRikishi = [...rikishi].filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.current_rank !== 'i').sort((a, b) => b.fs_current - a.fs_current)
     const JRikishi = [...alphaSort].filter(rikishi => rikishi.current_rank === "J").sort((a, b) => b.fs_current - a.fs_current)
 
 
