@@ -1,8 +1,8 @@
 import "./CSS/results.css"
 import { useEffect, useState } from "react"
 import RikishiResults from "./components/RikishiResults"
-import Hello from "./components/Hello"
-import ResultsNav from './components/ResultsNav'
+// import Hello from "./components/Hello"
+// import ResultsNav from './components/ResultsNav'
 import MobileResultsContainer from "./components/MobileResultsContainer"
 import DesktopResultsContainer from "./components/DesktopResultsContainer"
 
@@ -25,7 +25,6 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
 
     function changeViewState() {
         setViewState(!viewState)
-        console.log(viewState)
     }
 
     function renderTeamsNormal() {

@@ -2,7 +2,7 @@ import "./CSS/homepage.css"
 import { Link } from "react-router-dom"
 import takanoshoFootball from './images/takanosho_football.webp'
 
-import Hello from "./components/Hello"
+// import Hello from "./components/Hello"
 
 function Homepage() {
     // next tournament starts on May 14th, banzuke is out on May 1st

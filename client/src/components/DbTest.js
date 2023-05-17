@@ -50,7 +50,7 @@ function DbTest({ fsHistories, rikishi }) {
             if (searchOne !== '' && searchTwo !== '') {
                 const one = history.rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase())
                 const two = history.rikishi.shikona.toLowerCase().includes(searchTwo.toLowerCase())
-                console.log(one, two, history)
+                // console.log(one, two, history)
                 if (one === true || two === true) {
                     return history
                 }

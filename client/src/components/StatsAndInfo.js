@@ -15,8 +15,6 @@ function StatsAndInfo({ dbRikishi }) {
         }
     }, [dbRikishi])
 
-    console.log(newRikishi)
-
     useEffect(() => {
         // console.log('this')
         let result = dbRikishi
@@ -46,7 +44,7 @@ function StatsAndInfo({ dbRikishi }) {
             if (searchOne !== '' && searchTwo !== '') {
                 const one = rik.shikona.toLowerCase().includes(searchOne.toLowerCase())
                 const two = rik.shikona.toLowerCase().includes(searchTwo.toLowerCase())
-                console.log(one, two, rik)
+                // console.log(one, two, rik)
                 if (one === true || two === true) {
                     return rik
                 }

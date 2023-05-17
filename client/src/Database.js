@@ -1,7 +1,7 @@
 import "./CSS/database.css"
 import { useEffect, useState } from 'react'
 import StatsAndInfo from './components/StatsAndInfo'
-import FSStats from './components/FSStats'
+// import FSStats from './components/FSStats'
 import DbTest from "./components/DbTest"
 
 function Database({ rikishi, fsHistories }) {
