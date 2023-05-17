@@ -8,23 +8,23 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
 
     const navigate = useNavigate()
 
-    function handleDeleteTeam() {
-        // change this every basho
-        const toDelete = user.teams.find(e => e.basho === 2023.5).id
-        fetch(`/teams/${toDelete}`, { method: "DELETE" })
-            .then((r) => {
-                if (r.ok) {
-                    fetch("/me").then((r) => {
-                        if (r.ok) {
-                            r.json().then((user) => {
-                                setUser(user)
-                                navigate("/draft")
-                            });
-                        }
-                    })
-                }
-            })
-    }
+    // function handleDeleteTeam() {
+    //     // change this every basho
+    //     const toDelete = user.teams.find(e => e.basho === 2023.5).id
+    //     fetch(`/teams/${toDelete}`, { method: "DELETE" })
+    //         .then((r) => {
+    //             if (r.ok) {
+    //                 fetch("/me").then((r) => {
+    //                     if (r.ok) {
+    //                         r.json().then((user) => {
+    //                             setUser(user)
+    //                             navigate("/draft")
+    //                         });
+    //                     }
+    //                 })
+    //             }
+    //         })
+    // }
 
     function isString(value) { return typeof value === "string" }
 

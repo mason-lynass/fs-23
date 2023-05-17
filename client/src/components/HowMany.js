@@ -60,7 +60,7 @@ function HowMany({ teams, teamsLoaded }) {
     function oneDivision(wrestlers) {
         let freqObject = {}
         for (let i = 0; i < wrestlers.length; i++) {
-            const fill = wrestlers[i]
+            // const fill = wrestlers[i]
             if (Object.keys(freqObject).includes(wrestlers[i])) {
                 // console.log("THIS")
                 // console.log(freqObject[allRikishiArray[i]])

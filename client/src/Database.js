@@ -9,7 +9,7 @@ function Database({ rikishi, fsHistories }) {
     const [viewState, setViewState] = useState(false)
     const [dbRikishi, setDBRikishi] = useState([])
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
-    const fsRikishi = dbRikishi.map((r) => r)
+    // const fsRikishi = dbRikishi.map((r) => r)
 
     useEffect(() => {
         setDBRikishi(rikishi)
