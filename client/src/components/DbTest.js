@@ -8,6 +8,7 @@ function DbTest({ fsHistories, rikishi }) {
     const [searchOne, setSearchOne] = useState("")
     const [searchTwo, setSearchTwo] = useState("")
     const [newRikishi, setNewRikishi] = useState([])
+    const [retiredState, setRetiredState] = useState(true)
 
     useEffect(() => {
         if (fsHistories.length > 0) {
@@ -26,6 +27,16 @@ function DbTest({ fsHistories, rikishi }) {
     scoreCells.forEach((cell) => {
         if (cell.innerHTML === ' ') cell.classList.add('more-padding')
     })
+
+    function handleRetired() {
+        if (retiredState == true) {
+            setNewRikishi(newRikishi.filter((r) => r.rikishi.retired === false))
+            setRetiredState(!retiredState)
+        } else if (retiredState == false) {
+            setNewRikishi(fsHistories)
+            setRetiredState(!retiredState)
+        }
+    }
 
     function handleSearchOne(e) {
         setSearchOne(e.target.value)
@@ -49,7 +60,7 @@ function DbTest({ fsHistories, rikishi }) {
             }
             else if (searchTwo !== '') {
                 return history.rikishi.shikona.toLowerCase().includes(searchTwo.toLowerCase())
-            } 
+            }
             else return history
         })
     }
@@ -95,7 +106,7 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }
 
-    
+
 
     function displayOneRikishi(history) {
 
@@ -241,25 +252,34 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }
 
+    
+
     const mobileScreen = window.matchMedia("(max-width: 600px)")
 
     return (
         <main>
-            { mobileScreen.matches ? 
-             <h4 id='sorry'>sorry, this database looks a lot better on a computer!</h4>
-             :
-             ""
-             }
-            <div id='dbtest-filters'>
-                <div>
-                    <input placeholder='Asashoryu' onChange={handleSearchOne} value={searchOne} type="text" name="search"></input>
-                    <label>rikishi search</label>
+            {mobileScreen.matches ?
+                <h4 id='sorry'>sorry, this database looks a lot better on a computer!</h4>
+                :
+                ""
+            }
+            <div id='dbtest-all-filters'>
+                <div id='dbtest-filters'>
+                    <div>
+                        <input placeholder='Asashoryu' onChange={handleSearchOne} value={searchOne} type="text" name="search"></input>
+                        <label>rikishi search</label>
+                    </div>
+                    <div>
+                        <input placeholder='Kakuryu' onChange={handleSearchTwo} value={searchTwo} type="text" name="search"></input>
+                        <label>rikishi search</label>
+                    </div>
                 </div>
-                <div>
-                <input placeholder='Kakuryu' onChange={handleSearchTwo} value={searchTwo} type="text" name="search"></input>
-                <label>rikishi search</label>
+                <div id='retired-checkbox'>
+                    <input type='checkbox' id='retiredCheckbox' name='retired-checkbox' value={retiredState} onClick={handleRetired}></input>
+                    <label htmlFor='retiredCheckbox'>Hide Retired Rikishi</label>
                 </div>
             </div>
+
             <table id='dbtest-full-table'>
                 <thead id='dbtest-basho-row'>
                     <div id='dbtest-basho-sticky'>

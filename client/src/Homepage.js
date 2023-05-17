@@ -11,7 +11,7 @@ function Homepage() {
         <div>
             <div id="HomepageFlex">
                 <div id='HomeTextFull'>
-                    <Hello />
+                    {/* <Hello /> */}
                     <div id="HomepageText">
                         <p>Welcome to my Fantasy Sumo website!<br></br> Whether you play every other sumo game, or you know absolutely nothing about sumo, I hope you'll join my game.</p>
                         <p>Make sure you read <Link to="/rules">the rules</Link> before you draft so that you can get the most points!</p>

@@ -67,7 +67,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 <h2>Loading...</h2>
                 :
                 <div>
-                    <Hello />
+                    {/* <Hello /> */}
                     <div id='resultsNav'>
                         <button id='resultsButton' onClick={changeViewState}>{viewState === true ? "rikishi results" : "team results"}</button>
                     </div>
@@ -119,7 +119,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 <h2>Loading...</h2>
                 :
                 <div>
-                    <Hello />
+                    {/* <Hello /> */}
                     <div id='resultsNav'>
                         <button id='resultsButton' onClick={changeViewState}>{viewState === true ? "rikishi results" : "team results"}</button>
                     </div>

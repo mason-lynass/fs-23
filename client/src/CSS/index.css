@@ -31,41 +31,6 @@ button {
   opacity: .35;
 }
 
-#HowManyMain {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  gap: 10vw;
-}
-
-#HowManyM, #HowManyJ {
-  width: 15vw;
-  height: fit-content;
-  margin: 3vw 0;
-  padding: 0 1vw;
-  background: white;
-  border: 3px solid goldenrod;
-}
-
-#HowManyM h2, #HowManyJ h2 { 
-  text-align: center;
-}
-
-.HowManyOne {
-  display: grid;
-  grid-template-columns: 75% 15%;
-  gap: 10%;
-  margin: 1vw auto;
-}
-
-.HowManyOne p:first-child {
-  text-align: right;
-}
-
-.HowManyOne p {
-  margin: 0;
-}
-
 @media screen and (max-width: 600px) {
   body {
     margin: 5px 0 0 0;
