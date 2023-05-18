@@ -1,10 +1,14 @@
-function SIAllRikishi ({rikishi, calculate_age}) {
-    
+function SIAllRikishi({ rikishi, calculate_age }) {
+
     return (
         rikishi.map((r) => {
+
+            let image = r.image_url
+            if (image.charAt(0) !== 'h') image = 'https://sumo.or.jp/img/sumo_data/rikishi/60x60/kanto_no_image.jpg'
+
             return (
                 <div key={r.id} className='DBOneRikishi'>
-                    <img className='DBImage' src={r.image_url} alt=""/>
+                    <img className='DBImage' src={image} alt="" />
                     <p className='DBCurrent'>{r.current_rank}</p>
                     <p className='DBShikona'>{r.shikona}</p>
                     <p className='DBHighest'>{r.highest_rank}</p>

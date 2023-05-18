@@ -125,10 +125,13 @@ function DbTest({ fsHistories, rikishi }) {
 
         return (
             sorted.map((history) => {
+                let image = history.rikishi.image_url
+                if (image.charAt(0) !== 'h') image = 'https://sumo.or.jp/img/sumo_data/rikishi/60x60/kanto_no_image.jpg'
+
                 return (
                     <div className="dbtest-one-rikishi">
                         <th className='dbtest-one-rikishi-header'>
-                            <img className="dbtest-rikishi-image" src={history.rikishi.image_url} alt={'picture of' + history.rikishi.shikona}></img>
+                            <img className="dbtest-rikishi-image" src={image} alt={'picture of' + history.rikishi.shikona}></img>
                             <h4 className="dbtest-rikishi-name">{history.rikishi.shikona}</h4>
                             <p className="dbtest-rikishi-avg">{history.avg_fs_score}</p>
                         </th>

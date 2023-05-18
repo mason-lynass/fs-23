@@ -266,6 +266,8 @@ main {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 #dbtest-filters {
