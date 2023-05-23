@@ -58,6 +58,9 @@
 
 #hrStats {
   display: inline-block;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
 }
 
@@ -78,6 +81,11 @@
 
 #DBTableColumns {
   height: 57px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border-bottom: 1px solid black;
 }
 
 #DBTableColumns p {

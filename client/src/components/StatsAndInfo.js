@@ -195,7 +195,7 @@ function StatsAndInfo({ dbRikishi }) {
                     <p className='DBSansho DBCol' id="ks" onClick={handleSortState}>Kanto-sho</p>
                     <p className='DBSansho DBCol' id="gs" onClick={handleSortState}>Gino-sho</p>
                 </div>
-                <hr id='hrStats'></hr>
+                {/* <hr id='hrStats'></hr> */}
                 <div id="DBAllRikishi">
                     {SIRikishiSwitch()}
                 </div>
