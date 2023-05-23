@@ -92,7 +92,7 @@ function StatsAndInfo({ dbRikishi }) {
     const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "J", "MS", "i"]
 
     // const defaultSort = [...newRikishi].sort((a, b) => a.id - b.id)
-    const defaultSort = [...newRikishi].sort((a, b) => {
+    const defaultSort = [...newRikishi].sort((a, b) => calculate_age_order(b.birthdate) - calculate_age_order(a.birthdate)).sort((a, b) => b.kinboshi - a.kinboshi).sort((a, b) => b.yusho - a.yusho).sort((a, b) => {
         const aRank = rankOrder.indexOf(a.highest_rank)
         const bRank = rankOrder.indexOf(b.highest_rank)
         return aRank - bRank

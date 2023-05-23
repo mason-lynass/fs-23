@@ -100,10 +100,10 @@ function App() {
           path="/"
           element={<Homepage />}
         />
-        <Route
+        {/* <Route
           path="/dbtest"
           element={<DbTest fsHistories={fsHistories} rikishi={rikishi} />}
-        />
+        /> */}
         <Route
           path="/login"
           element={<Login
