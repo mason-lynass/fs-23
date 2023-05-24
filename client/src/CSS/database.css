@@ -440,7 +440,7 @@ tbody div th .dbtest-rikishi-image {
   margin: auto;
 }
 
-.dbtest-rikishi-avg, .dbtest-basho-avg {
+.dbtest-rikishi-avg, .dbtest-basho-avg, .dbtest-basho-total, .dbtest-rikishi-total {
   width: 70px;
   flex-shrink: 0;
   text-align: center;
@@ -451,7 +451,7 @@ tbody div th .dbtest-rikishi-image {
   vertical-align: middle;
 }
 
-.dbtest-basho-avg, .dbtest-basho-image {
+.dbtest-basho-avg, .dbtest-basho-image, .dbtest-basho-total {
   font-size: 10px;
   padding: 18px 1px;
 }

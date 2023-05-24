@@ -67,6 +67,17 @@ function DbTest({ fsHistories, rikishi }) {
 
     const averageSort = [...newRikishi].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
     const shikonaSort = [...newRikishi].sort((a, b) => a.rikishi.shikona.localeCompare(b.rikishi.shikona))
+    const totalSort = [...newRikishi].sort((a, b) => {
+        function getTotalPoints (x) {
+            const notNullBashos = Object.entries(x).filter((entry) => entry[0].includes('b')).filter((entry) => entry[1] !== null)
+
+            let scores = []
+            notNullBashos.forEach((score) => scores.push(score[1]))
+            const totalPoints = scores.reduce((a, b) => a + b, 0)
+            return totalPoints
+        }
+        return getTotalPoints(b) - getTotalPoints(a)
+    })
 
     function xSort(x) {
         return [...newRikishi].sort((a, b) => b[x] - a[x])
@@ -100,6 +111,9 @@ function DbTest({ fsHistories, rikishi }) {
             case 'average': {
                 return AllHistories(averageSort)
             }
+            case 'total': {
+                return AllHistories(totalSort)
+            }
             default: {
                 return AllHistories(xSort(viewState))
             }
@@ -128,11 +142,18 @@ function DbTest({ fsHistories, rikishi }) {
                 let image = history.rikishi.image_url
                 if (image.charAt(0) !== 'h') image = 'https://sumo.or.jp/img/sumo_data/rikishi/60x60/kanto_no_image.jpg'
 
+                const notNullBashos = Object.entries(history).filter((entry) => entry[0].includes('b')).filter((entry) => entry[1] !== null)
+
+                let scores = []
+                notNullBashos.forEach((score) => scores.push(score[1]))
+                const totalPoints = scores.reduce((a, b) => a + b, 0)
+
                 return (
                     <div className="dbtest-one-rikishi">
                         <th className='dbtest-one-rikishi-header'>
                             <img className="dbtest-rikishi-image" src={image} alt={'picture of' + history.rikishi.shikona}></img>
                             <h4 className="dbtest-rikishi-name">{history.rikishi.shikona}</h4>
+                            <p className="dbtest-rikishi-total">{totalPoints}</p>
                             <p className="dbtest-rikishi-avg">{history.avg_fs_score}</p>
                         </th>
 
@@ -255,8 +276,6 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }
 
-    
-
     const mobileScreen = window.matchMedia("(max-width: 600px)")
 
     return (
@@ -288,6 +307,7 @@ function DbTest({ fsHistories, rikishi }) {
                     <div id='dbtest-basho-sticky'>
                         <th className="dbtest-basho-image highlight" id='default' onClick={handleViewState}>reset</th>
                         <th className="dbtest-rikishi-name highlight" id='shikona' onClick={handleViewState}></th>
+                        <th className="dbtest-basho-total highlight" id='total' onClick={handleViewState}>total FS points</th>
                         <th className="dbtest-basho-avg highlight" id='average' onClick={handleViewState}>average score</th>
                     </div>
                     {AllBashoRows()}
