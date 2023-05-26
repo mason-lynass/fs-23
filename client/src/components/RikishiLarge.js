@@ -2,8 +2,6 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
 
     const rikishi = clickedRikishi
 
-    console.log(rikishi)
-
     const totalSansho = (clickedRikishi.shukun_sho + clickedRikishi.kanto_sho + clickedRikishi.gino_sho)
 
     function calculate_age(dob) {
@@ -14,6 +12,7 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
         return Math.abs(age_dt.getUTCFullYear() - 1970)
     }
 
+    // this is pretty self-explanatory but we're checking for their rank, then checking to see if their normal slot is filled
     function handleAddToTeam(rikishi) {
         if (rikishi.current_rank === "Y" || rikishi.current_rank === "O" || rikishi.current_rank === "S" || rikishi.current_rank === "K") {
             if (userTeam.r1 === "") {
@@ -59,9 +58,7 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
         <div className="RLarge">
             {clickedRikishi ?
                 <div>
-                    <div className="content"
-                    // onClick={() => handleCardClick(rikishi)}
-                    >
+                    <div className="content">
                         <div className="card-title">
                             <h1>{rikishi.shikona}</h1>
                             <img id="RLargeImage" src={rikishi.image_url} alt={rikishi.shikona}></img>

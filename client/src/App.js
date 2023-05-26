@@ -25,6 +25,7 @@ import DbTest from './components/DbTest';
 
 function App() {
 
+  const basho = 2023.5
   const [user, setUser] = useState(null)
   const [rikishi, setRikishi] = useState([])
   const [teams, setTeams] = useState([])
@@ -113,7 +114,7 @@ function App() {
         />
         <Route
           path="/account"
-          element={<Account user={user} setUser={setUser} rikishi={rikishi} clap={clap} teams={teams} goodTeamNames={goodTeamNames} fsHistories={fsHistories} />}
+          element={<Account user={user} setUser={setUser} rikishi={rikishi} clap={clap} teams={teams} goodTeamNames={goodTeamNames} fsHistories={fsHistories} basho={basho}/>}
         />
         <Route
           path="/rules"
@@ -125,15 +126,15 @@ function App() {
         />
         <Route
           path="/draft"
-          element={<Draft user={user} setUser={setUser} rikishi={rikishi} tachiai={tachiai} clap={clap} rankSort={rankSort} fsHistories={fsHistories} />}
+          element={<Draft user={user} setUser={setUser} rikishi={rikishi} tachiai={tachiai} clap={clap} rankSort={rankSort} fsHistories={fsHistories} basho={basho}/>}
         />
         <Route
           path="/results"
-          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded} rankSort={rankSort} goodTeamNames={goodTeamNames} />}
+          element={<Results rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded} rankSort={rankSort} goodTeamNames={goodTeamNames} basho={basho}/>}
         />
         <Route
           path="/database"
-          element={<Database rikishi={rankSort(rikishi, true)} fsHistories={fsHistories} />}
+          element={<Database rikishi={rankSort(rikishi, true)} fsHistories={fsHistories} basho={basho}/>}
         />
       </Routes>
     </div>

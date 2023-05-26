@@ -31,7 +31,6 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, teams, setTeams, tach
             })
     }
 
-
     function errorMessage() {
         if (errors !== "") {
             return (
@@ -82,16 +81,11 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, teams, setTeams, tach
                     </div>
                     <div>
                     <p>{userTeam.r7}</p> {userTeam.r7 !== "" ? <button id="r7" onClick={handleXButton}>X</button> : null}   
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
+                    </div> 
                 </div>
             </div>
             <div>
+                // only show this when all r spots are filled
                 {
                     (userTeam.r1 === "" || userTeam.r2 === "" || userTeam.r3 === "" || userTeam.r4 === "" || userTeam.r5 === "" || userTeam.r6 === "" || userTeam.r7 === "")
                      ? 

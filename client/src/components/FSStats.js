@@ -1,3 +1,5 @@
+// using DbTest now, not using this one anymore
+
 import { useState } from "react"
 import FSStatsRikishi from "./FSStatsRikishi"
 

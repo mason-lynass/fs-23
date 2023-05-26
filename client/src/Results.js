@@ -6,14 +6,13 @@ import RikishiResults from "./components/RikishiResults"
 import MobileResultsContainer from "./components/MobileResultsContainer"
 import DesktopResultsContainer from "./components/DesktopResultsContainer"
 
-function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
+function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames, basho }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
     const [viewState, setViewState] = useState(true)
 
-    // change this every basho
-    const currentTeams = teams.filter((team) => team.basho === 2023.5)
+    const currentTeams = teams.filter((team) => team.basho === basho)
 
     useEffect(() => {
         setResultsRikishi(rikishi)
@@ -43,7 +42,6 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                 return resultsRikishi.filter((r) => r.shikona === tR)[0]
             })
 
-            // change this every basho (maybe not now?)
             const ROScores = newRikishiObjects.map((r) => r.fs_current)
 
             let scoreSum = 0
@@ -73,7 +71,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                     {viewState === true ? 
                     <DesktopResultsContainer goodTeams={goodTeams} rikishi={rikishi} />
                      :
-                    <RikishiResults rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
+                    <RikishiResults basho={basho} rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
                     }
                 </div>
         )
@@ -125,7 +123,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames }) {
                     {viewState === true ? 
                     <MobileResultsContainer goodTeams={goodTeams} rikishi={rikishi} />
                      :
-                    <RikishiResults rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
+                    <RikishiResults basho={basho} rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
                     }
                 </div>
         )

@@ -1,8 +1,8 @@
-function RLargeMobile ({ clickedRikishi, userTeam, setUserTeam, handleCloseMobileCard }) {
+// this is RikishiLarge.js with some different formatting for mobile
+
+function RLargeMobile({ clickedRikishi, userTeam, setUserTeam, handleCloseMobileCard }) {
 
     const rikishi = clickedRikishi
-
-    console.log(rikishi)
 
     const totalSansho = (clickedRikishi.shukun_sho + clickedRikishi.kanto_sho + clickedRikishi.gino_sho)
 
@@ -58,38 +58,27 @@ function RLargeMobile ({ clickedRikishi, userTeam, setUserTeam, handleCloseMobil
 
     return (
         <div className="RLargeMobile">
-            {/* {clickedRikishi ? */}
             <button id="MobileCardClose" onClick={handleCloseMobileCard}>x</button>
-                <div>
-                    <div className="contentMobile"
-                    // onClick={() => handleCardClick(rikishi)}
-                    >
-                        <div className="cardTitleMobile">
-                            <h1>{rikishi.shikona}</h1>
-                            <img id="RLargeImage" src={rikishi.image_url} alt={rikishi.shikona}></img>
-                        </div>
-                        <div>
-                            <p>Age: {calculate_age(rikishi.birthdate)} - {rikishi.heya} stable</p>
-                            <p>height: {rikishi.height} cm - weight: {rikishi.weight} kg</p>
-                            <p>current rank: {rikishi.current_rank} - highest rank: {rikishi.highest_rank}</p>
-                            <p>career stats:</p>
-                            <p> Yusho: {rikishi.yusho}</p>
-                            <p> special prizes: {totalSansho}</p>
-                            <p>Kinboshi: {rikishi.kinboshi}</p>
-                            <p>FS points last basho: {rikishi.fsHistories.length > 0 ? rikishi.fsHistories[0].b158 : "N/A"}</p>
-
-                        </div>
+            <div>
+                <div className="contentMobile">
+                    <div className="cardTitleMobile">
+                        <h1>{rikishi.shikona}</h1>
+                        <img id="RLargeImage" src={rikishi.image_url} alt={rikishi.shikona}></img>
                     </div>
-                    <button id="AddRikishiButton" onClick={() => handleAddToTeam(rikishi)}>Add {rikishi.shikona} to your squad</button>
+                    <div>
+                        <p>Age: {calculate_age(rikishi.birthdate)} - {rikishi.heya} stable</p>
+                        <p>height: {rikishi.height} cm - weight: {rikishi.weight} kg</p>
+                        <p>current rank: {rikishi.current_rank} - highest rank: {rikishi.highest_rank}</p>
+                        <p>career stats:</p>
+                        <p> Yusho: {rikishi.yusho}</p>
+                        <p> special prizes: {totalSansho}</p>
+                        <p>Kinboshi: {rikishi.kinboshi}</p>
+                        <p>FS points last basho: {rikishi.fsHistories.length > 0 ? rikishi.fsHistories[0].b158 : "N/A"}</p>
+
+                    </div>
                 </div>
-                {/* :
-                <div id="RLargeTop">
-                    <h2>click on a wrestler</h2>
-                    <p>their information and stats will show up here</p>
-                    <hr></hr>
-                    <p>(more stats and score history on the Database page)</p>
-                </div>
-            } */}
+                <button id="AddRikishiButton" onClick={() => handleAddToTeam(rikishi)}>Add {rikishi.shikona} to your squad</button>
+            </div>
         </div>
     )
 }

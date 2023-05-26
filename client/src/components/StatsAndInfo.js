@@ -91,7 +91,8 @@ function StatsAndInfo({ dbRikishi }) {
 
     const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "J", "MS", "i"]
 
-    // const defaultSort = [...newRikishi].sort((a, b) => a.id - b.id)
+    // default is sort by age, then kinboshi, then yusho, then highest rank, then current rank
+    // so that by default, retired rikishi show up on the bottom, and they're sorted by highest rank, then yusho, then kinboshi, then age
     const defaultSort = [...newRikishi].sort((a, b) => calculate_age_order(b.birthdate) - calculate_age_order(a.birthdate)).sort((a, b) => b.kinboshi - a.kinboshi).sort((a, b) => b.yusho - a.yusho).sort((a, b) => {
         const aRank = rankOrder.indexOf(a.highest_rank)
         const bRank = rankOrder.indexOf(b.highest_rank)
@@ -123,14 +124,7 @@ function StatsAndInfo({ dbRikishi }) {
     const ksSort = [...newRikishi].sort((a, b) => b.kanto_sho - a.kanto_sho)
     const gsSort = [...newRikishi].sort((a, b) => b.gino_sho - a.gino_sho)
 
-    // filter, then push to an empty array
-    // filter Y 
-    // filter O 
-    // filter S 
-    // filter K 
-    // filter M 
-    // filter J
-
+    // this switch returns all the rikishi, changing the rikishi sent to the component based on the sortState
     function SIRikishiSwitch() {
         if (sortState === "default") {
             return <SIAllRikishi calculate_age={calculate_age} rikishi={defaultSort} />
@@ -195,7 +189,6 @@ function StatsAndInfo({ dbRikishi }) {
                     <p className='DBSansho DBCol' id="ks" onClick={handleSortState}>Kanto-sho</p>
                     <p className='DBSansho DBCol' id="gs" onClick={handleSortState}>Gino-sho</p>
                 </div>
-                {/* <hr id='hrStats'></hr> */}
                 <div id="DBAllRikishi">
                     {SIRikishiSwitch()}
                 </div>

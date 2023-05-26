@@ -9,7 +9,6 @@ function Database({ rikishi, fsHistories }) {
     const [viewState, setViewState] = useState(false)
     const [dbRikishi, setDBRikishi] = useState([])
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
-    // const fsRikishi = dbRikishi.map((r) => r)
 
     useEffect(() => {
         setDBRikishi(rikishi)
@@ -19,8 +18,6 @@ function Database({ rikishi, fsHistories }) {
     function changeViewState() {
         setViewState(!viewState)
     }
-
-    // console.log(rikishi)
 
     return (
         (rikishiLoaded === true) ?
@@ -39,24 +36,6 @@ function Database({ rikishi, fsHistories }) {
             :
             <h2>loading...</h2>
     )
-
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         <div id="DBContainer">
-    //             <div id="DBTop">
-    //                 <p id='DBTopSpace'> </p>
-    //                 <h1 id="DBTitle">{viewState === false ? "Rikishi Stats & Info" : "Fantasy Sumo Stats"}</h1>
-    //                 <button id="DBViewState" onClick={changeViewState}>{viewState === false ? "view FS Stats" : "view Rikishi Info"}</button>
-
-    //             </div>
-    //             {viewState === false && dbRikishi.length > 0 ?
-    //             <StatsAndInfo dbRikishi={dbRikishi}/>
-    //              :
-    //             <FSStats dbRikishi={fsRikishi}/>}
-    //         </div>
-    //         :
-    //         <h2>loading...</h2>
-    // )
 }
 
 export default Database

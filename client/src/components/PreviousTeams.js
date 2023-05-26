@@ -1,13 +1,11 @@
-function PreviousTeams({ user, rikishi, teams, fsHistories }) {
+function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
 
     const userTeams = user.teams
-    const oldTeams = userTeams.filter((team) => team.basho !== 2023.5).sort((a, b) => b.basho - a.basho)
-
-    // console.log(rikishi)
-    // console.log(fsHistories)
+    const oldTeams = userTeams.filter((team) => team.basho !== basho).sort((a, b) => b.basho - a.basho)
 
     function oneOldTeam(team) {
 
+        // shikona are the only strings in the object, so filter all strings to get only the wrestler names
         function isString(value) { return typeof value === "string" }
         const OTRikishiStrings = Object.values(team).filter((isString))
         let actualTeam = []
@@ -45,8 +43,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories }) {
             otherTeams = [...teams].filter((team) => team.basho === 2023.3)
         }
 
-        // console.log(actualTeam[0][0])
-
+        // use this to access fsHistories at the appropriate tournament
         temp = `b${temp}`
 
         teamScores.r1 = actualTeam[0][0].fsHistories[0][temp]

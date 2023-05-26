@@ -10,6 +10,7 @@ function DbTest({ fsHistories, rikishi }) {
     const [newRikishi, setNewRikishi] = useState([])
     const [retiredState, setRetiredState] = useState(true)
 
+    // one fsHistories are loaded, update newRikishi and scoreCells
     useEffect(() => {
         if (fsHistories.length > 0) {
             setScoreCells(document.querySelectorAll('td'))
@@ -17,17 +18,19 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }, [fsHistories])
 
+    // search functionality, running fsHistories through filterBySearch
     useEffect(() => {
-        // console.log('this')
         let result = fsHistories
         result = filterBySearch(result)
         setNewRikishi(result)
     }, [searchOne, searchTwo])
 
+    // if a score cell doesn't have a number, give it more padding
     scoreCells.forEach((cell) => {
         if (cell.innerHTML === ' ') cell.classList.add('more-padding')
     })
 
+    // switch for the retired checkbox
     function handleRetired() {
         if (retiredState === true) {
             setNewRikishi(newRikishi.filter((r) => r.rikishi.retired === false))
@@ -38,6 +41,7 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }
 
+    // search functions
     function handleSearchOne(e) {
         setSearchOne(e.target.value)
     }
@@ -50,7 +54,7 @@ function DbTest({ fsHistories, rikishi }) {
             if (searchOne !== '' && searchTwo !== '') {
                 const one = history.rikishi.shikona.toLowerCase().includes(searchOne.toLowerCase())
                 const two = history.rikishi.shikona.toLowerCase().includes(searchTwo.toLowerCase())
-                // console.log(one, two, history)
+               // if both searches are in use, return a rikishi history that matches either search
                 if (one === true || two === true) {
                     return history
                 }
@@ -65,6 +69,7 @@ function DbTest({ fsHistories, rikishi }) {
         })
     }
 
+    // fsHistories sort definitions
     const averageSort = [...newRikishi].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
     const shikonaSort = [...newRikishi].sort((a, b) => a.rikishi.shikona.localeCompare(b.rikishi.shikona))
     const totalSort = [...newRikishi].sort((a, b) => {
@@ -83,6 +88,7 @@ function DbTest({ fsHistories, rikishi }) {
         return [...newRikishi].sort((a, b) => b[x] - a[x])
     }
 
+    // adding and removing classes to highlight a clicked column header
     function setHighlight(target) {
         console.log(target)
         if (fsHistories.length > 0) {
@@ -103,6 +109,7 @@ function DbTest({ fsHistories, rikishi }) {
         setHighlight(target)
     }
 
+    // returns fsHistories sorted in a certain way, based on value of viewState
     function FSRikishiSwitch() {
         switch (viewState) {
             case 'default': {
@@ -120,10 +127,8 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }
 
-
-
+    // shows the score values for each fsHistory
     function displayOneRikishi(history) {
-
         const justTheHistoryEntries = Object.fromEntries(Object.entries(history).filter(([key]) => key.includes('b')))
         const justTheHistoryValues = Object.values(justTheHistoryEntries).reverse()
 
@@ -135,15 +140,15 @@ function DbTest({ fsHistories, rikishi }) {
         )
     }
 
+    // shows all fsHistories, with sections for info & total & average, then all the individual scores
     function AllHistories(sorted) {
-
         return (
             sorted.map((history) => {
                 let image = history.rikishi.image_url
+                // if there's no image_url definted, use a placeholder image
                 if (image.charAt(0) !== 'h') image = 'https://sumo.or.jp/img/sumo_data/rikishi/60x60/kanto_no_image.jpg'
 
                 const notNullBashos = Object.entries(history).filter((entry) => entry[0].includes('b')).filter((entry) => entry[1] !== null)
-
                 let scores = []
                 notNullBashos.forEach((score) => scores.push(score[1]))
                 const totalPoints = scores.reduce((a, b) => a + b, 0)
@@ -156,7 +161,6 @@ function DbTest({ fsHistories, rikishi }) {
                             <p className="dbtest-rikishi-total">{totalPoints}</p>
                             <p className="dbtest-rikishi-avg">{history.avg_fs_score}</p>
                         </th>
-
                         <div className="dbtest-one-rikishi-scores">
                             {displayOneRikishi(history)}
                         </div>
@@ -166,14 +170,17 @@ function DbTest({ fsHistories, rikishi }) {
         )
     }
 
+    // logic to show the basho in the correct format "2023.05" from one fsHistory
     function AllBashoRows() {
         if (fsHistories.length > 0) {
+            // populate rows with integers for each basho key in fsHistory, then reverse 
             let rows = []
             for (let i = 1; i < Object.keys(fsHistories[0]).length - 1; i++) {
                 rows.push(i)
             }
             const reverseOrder = rows.reverse()
 
+            // basically converting the integers in reverseOrder to the correct format
             let bashoRowsArray = []
             for (const basho of reverseOrder) {
                 let year = 2023
@@ -208,6 +215,7 @@ function DbTest({ fsHistories, rikishi }) {
                     }
                 }
 
+                // i think this had to be offset by one because there was no tournament due to COVID?
                 if (basho < 142 && basho > 87) {
                     year = year - Math.floor((reverseOrder.length - (basho - 5)) / 6)
 
@@ -239,6 +247,7 @@ function DbTest({ fsHistories, rikishi }) {
                     }
                 }
 
+                // another offset for that time that they cancelled the basho to investigate match fixing
                 if (basho > 0 && basho <= 87) {
                     year = year - Math.floor((reverseOrder.length - (basho - 6)) / 6)
 
@@ -276,6 +285,7 @@ function DbTest({ fsHistories, rikishi }) {
         }
     }
 
+    // defined so that mobile users see the 'sorry' message
     const mobileScreen = window.matchMedia("(max-width: 600px)")
 
     return (
@@ -301,7 +311,6 @@ function DbTest({ fsHistories, rikishi }) {
                     <label htmlFor='retiredCheckbox'>Hide Retired Rikishi</label>
                 </div>
             </div>
-
             <table id='dbtest-full-table'>
                 <thead id='dbtest-basho-row'>
                     <div id='dbtest-basho-sticky'>
@@ -316,7 +325,6 @@ function DbTest({ fsHistories, rikishi }) {
                     {FSRikishiSwitch()}
                 </tbody>
             </table>
-
         </main>
     )
 }

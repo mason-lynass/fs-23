@@ -10,7 +10,7 @@ import LoginForm from "./components/LoginForm"
 import SignupForm from "./components/SignupForm"
 import RLargeMobile from "./components/RLargeMobile"
 
-function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories }) {
+function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, basho }) {
 
     const navigate = useNavigate()
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
@@ -28,8 +28,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
         r6: "",
         r7: "",
         user_id: "",
-        // change this every basho
-        basho: 2023.5
+        basho: basho
     })
 
     useEffect(() => {
@@ -265,8 +264,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories })
 
     function ADCheck() {
         return (
-            // change this every basho
-            (user.teams.some(e => e.basho === 2023.5)) ?
+            (user.teams.some(e => e.basho === basho)) ?
                 renderAlreadyDrafted()
                 :
                 renderDraftPage()

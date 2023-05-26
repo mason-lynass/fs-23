@@ -4,7 +4,7 @@ import PreviousTeams from "./components/PreviousTeams";
 import LoginForm from "./components/LoginForm";
 import { useNavigate } from "react-router-dom";
 
-function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistories }) {
+function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistories, basho }) {
 
     const navigate = useNavigate()
 
@@ -30,22 +30,18 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
 
     function currentBashoTeam() {
 
-        // starting to think about displaying the rank during the basho
-        // basically need to recreate what's happening in PreviousTeams
-        const otherTeams = [...teams].filter((team) => team.basho === 2023.5 && goodTeamNames.includes(team.user.username))
-        // console.log(otherTeams)
+        // otherTeams is all teams with valid usernames for the current basho
+        const otherTeams = [...teams].filter((team) => team.basho === basho && goodTeamNames.includes(team.user.username))
         const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
+        // find this team's position by finding its index in all teams, sorted by final score
         const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
 
-        // change these every basho
-        const currentTeam = user.teams.find(e => e.basho === 2023.5)
+        const currentTeam = user.teams.find(e => e.basho === basho)
         const CTRikishiStrings = Object.values(currentTeam).filter((isString))
         const actualTeam = rikishi.filter((r) => CTRikishiStrings.includes(r.shikona))
 
         const indivPoints = actualTeam.map((r) => r.fs_current)
         const totalPoints = indivPoints.reduce((a, b) => a + b, 0)
-
-        console.log(currentTeam)
 
         return (
             <div>
@@ -90,8 +86,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
     }
 
     function renderCurrentBashoTeam() {
-        // change this every basho
-        if (user.teams.find(e => e.basho === 2023.5) === undefined) {
+        if (user.teams.find(e => e.basho === basho) === undefined) {
             return (
                 <p id="NoTeam">You haven't drafted a team yet for the upcoming tournament</p>
             )
@@ -109,15 +104,14 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
                 </div>
             )
         } else {
-            // change this every basho
-            const oldTeams = user.teams.filter(e => e.basho !== 2023.5)
+            const oldTeams = user.teams.filter(e => e.basho !== basho)
 
             return (
                 <div id="AccountPage">
                     <h2 id="AccountHello">Hello, {user.username}!</h2>
                     {renderCurrentBashoTeam()}
                     {oldTeams.length > 0 ?
-                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} fsHistories={fsHistories} />
+                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} fsHistories={fsHistories} basho={basho}/>
                         :
                         null}
                 </div>
