@@ -2,6 +2,7 @@ import "./CSS/account.css"
 import "./CSS/media.css"
 import PreviousTeams from "./components/PreviousTeams";
 import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
 import { useNavigate } from "react-router-dom";
 
 function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistories, basho }) {
@@ -9,8 +10,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
     const navigate = useNavigate()
 
     // function handleDeleteTeam() {
-    //     // change this every basho
-    //     const toDelete = user.teams.find(e => e.basho === 2023.5).id
+    //     const toDelete = user.teams.find(e => e.basho === basho).id
     //     fetch(`/teams/${toDelete}`, { method: "DELETE" })
     //         .then((r) => {
     //             if (r.ok) {
@@ -62,15 +62,15 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
                         <h1>{totalPoints}</h1>
                         <h2>points</h2>
                         {currentTeam.final_score === null ?
-                        ''
-                        :
-                         <>
-                         <hr></hr>
-                         <h2>#{teamPosition} out of</h2>
-                         <h2>{otherTeams.length} teams</h2>
-                         </>
-                         }
-                        
+                            ''
+                            :
+                            <>
+                                <hr></hr>
+                                <h2>#{teamPosition} out of</h2>
+                                <h2>{otherTeams.length} teams</h2>
+                            </>
+                        }
+
                     </div>
                 </div>
                 <div id="delay">
@@ -100,7 +100,16 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
             return (
                 <div>
                     <h1 id="AccountLogin">You need to login to see your account page!</h1>
-                    <LoginForm id="AccountLoginForm" clap={clap} setUser={setUser} />
+                    <div id="LoginFlex">
+                        <LoginForm
+                            setUser={setUser}
+                            clap={clap}
+                        />
+                        <SignupForm
+                            setUser={setUser}
+                            clap={clap}
+                        />
+                    </div>
                 </div>
             )
         } else {
@@ -111,7 +120,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
                     <h2 id="AccountHello">Hello, {user.username}!</h2>
                     {renderCurrentBashoTeam()}
                     {oldTeams.length > 0 ?
-                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} fsHistories={fsHistories} basho={basho}/>
+                        <PreviousTeams user={user} rikishi={rikishi} teams={teams} fsHistories={fsHistories} basho={basho} />
                         :
                         null}
                 </div>
