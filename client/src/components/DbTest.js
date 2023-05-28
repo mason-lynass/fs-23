@@ -186,7 +186,7 @@ function DbTest({ fsHistories, rikishi }) {
                 let year = 2023
 
                 if (basho >= 142) {
-                    year = year - Math.floor((reverseOrder.length - (basho - 4)) / 6)
+                    year = year - Math.floor((reverseOrder.length - (basho - 3)) / 6)
                     switch (basho % 6) {
                         case 1: {
                             bashoRowsArray.push([basho, year + '.01'])
@@ -217,7 +217,7 @@ function DbTest({ fsHistories, rikishi }) {
 
                 // i think this had to be offset by one because there was no tournament due to COVID?
                 if (basho < 142 && basho > 87) {
-                    year = year - Math.floor((reverseOrder.length - (basho - 5)) / 6)
+                    year = year - Math.floor((reverseOrder.length - (basho - 4)) / 6)
 
                     switch (basho % 6) {
                         case 2: {
@@ -249,7 +249,7 @@ function DbTest({ fsHistories, rikishi }) {
 
                 // another offset for that time that they cancelled the basho to investigate match fixing
                 if (basho > 0 && basho <= 87) {
-                    year = year - Math.floor((reverseOrder.length - (basho - 6)) / 6)
+                    year = year - Math.floor((reverseOrder.length - (basho - 5)) / 6)
 
                     switch (basho % 6) {
                         case 3: {
