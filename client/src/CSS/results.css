@@ -14,246 +14,289 @@
   padding: 5px 10px;
   margin: 20px auto;
   height: fit-content;
-  border: 3px solid rgb(184,2,2);
+  border: 3px solid rgb(184, 2, 2);
 }
 
 .resultsContainer {
-    background-color: antiquewhite;
-    border: 7px ridge goldenrod;
+  background-color: antiquewhite;
+  border: 7px ridge goldenrod;
+}
+
+.resultsContainer,
+#allRR {
+  margin: 0px 40px;
+}
+
+.teamsTop {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 3px solid black;
+  text-align: center;
+  height: 40px;
+  padding: 5px 0;
+}
+
+.teamsTop h2 {
+  font-size: 20px;
+  width: 120px;
+}
+
+.teamsTop p {
+  width: 100px;
+  margin: 0;
+}
+
+#teamsContainer {
+  max-height: 700px;
+  min-height: 100px;
+  overflow: scroll;
+}
+
+.oneTeam {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.oneTeam h2 {
+  font-size: 20px;
+  width: 120px;
+  overflow: scroll;
+}
+
+.oneTeam p {
+  width: 100px;
+  margin: 5px auto;
+}
+
+.total {
+  width: 50px;
+}
+
+#allRR {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2vw;
+}
+
+#RRContainer {
+  width: 45vw;
+  max-width: 270px;
+  margin: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+}
+
+.RRtop {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: antiquewhite;
+}
+
+#HowManyM h3, #HowManyJ h3 {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+#MRR,
+#JRR {
+  background-color: antiquewhite;
+  margin: 0 auto;
+  border: 7px ridge goldenrod;
+  width: 250px;
+  height: 500px;
+  overflow: scroll;
+}
+
+.oneRR,
+#MRRTitles,
+#JRRTitles {
+  display: grid;
+  grid-template-columns: 80% 15%;
+  gap: 3%;
+  padding: 0 2vw;
+}
+
+#RRMakuuchi,
+#RRJuryo {
+  text-align: center;
+  margin: 5px 0 0 0;
+  padding-bottom: 5px;
+}
+
+#RRMakuuchi,
+#RRJuryo,
+#HowManyM h3,
+#HowManyJ h3 {
+  border-bottom: 3px solid black;
+}
+
+.RRShikona {
+  text-align: left;
+}
+
+#RRContainer h2 {
+  margin: 3px;
+  font-size: 16px;
+}
+
+#HowManyMain {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 120px;
+}
+
+#HowManyM,
+#HowManyJ {
+  width: 40vw;
+  max-width: 200px;
+  height: 400px;
+  margin: 0;
+  padding: 0;
+  background: white;
+  border: 7px ridge goldenrod;
+  overflow: scroll;
+}
+
+#HowManyM h3,
+#HowManyJ h3 {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.HowManyOne {
+  display: grid;
+  grid-template-columns: 80% 15%;
+  gap: 5%;
+  margin: 0 auto;
+  padding: 0 2vw;
+}
+
+.HowManyOne p:first-child {
+  text-align: left;
+}
+
+.HowManyOne p {
+  margin: 3px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .resultsContainer,
+  #allRR {
+    margin: 20px 2vw;
   }
 
-  .resultsContainer, #allRR {
-    margin: 0px 40px;
+  .teamsTop,
+  .oneTeam {
+    display: grid;
+    grid-template-columns: 40% 7% 7% 7% 7% 7% 7% 7% 11%;
+    padding: 0;
   }
-  
-  .teamsTop {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    border-bottom: 3px solid black;
-    text-align: center;
-    height: 40px;
-    padding: 5px 0;
+
+  .teamsTop h2,
+  .teamsTop h3,
+  .teamsTop p,
+  .oneTeam h2,
+  .oneTeam h3,
+  .oneTeam p {
+    font-size: 10px;
+    margin: 10px 0;
   }
-  
-  .teamsTop h2 {
-    font-size: 20px;
-    width: 120px;
+
+  .teamsTop h3,
+  .oneTeam h3 {
+    width: calc(96vw * 11 / 100)
   }
-  
-  .teamsTop p {
-    width: 100px;
-    margin: 0;
+
+  .teamsTop h2,
+  .oneTeam h2 {
+    width: calc(96vw * 40 / 100)
   }
-  
+
+  .teamsTop p,
+  .oneTeam p {
+    width: calc(96vw * 7 / 100)
+  }
+
   #teamsContainer {
     max-height: 700px;
     min-height: 100px;
+    width: 100%;
     overflow: scroll;
-  }
-  
-  .oneTeam {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-    border-bottom: 1px solid black;
-  }
-  
-  .oneTeam h2 {
-    font-size: 20px;
-    width: 120px;
-    overflow: scroll;
-  }
-  
-  .oneTeam p {
-    width: 100px;
-    margin: 5px auto;
-  }
-  
-  .total {
-    width: 50px;
   }
 
-  #allRR {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2vw;
+  .oneTeam p {
+    font-size: 6.5px;
+    width: 20px;
+    margin: 5px auto;
   }
-  
+
   #RRContainer {
-    width: 45vw;
-    max-width: 270px;
-    margin: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 20px;
+    gap: 3vw;
   }
-  
-  #MRR, #JRR {
-    background-color: antiquewhite;
-    margin: 0 auto;
-    border: 7px ridge goldenrod;
-    width: 250px;
-    height: 500px;
-    overflow: scroll;
-  }
-  
-  .oneRR, #MRRTitles, #JRRTitles {
+
+  .oneRR,
+  #MRRTitles,
+  #JRRTitles {
     display: grid;
     grid-template-columns: 80% 15%;
     gap: 3%;
-    padding: 0 2vw;
   }
-  
-  #RRMakuuchi, #RRJuryo {
-    text-align: center;
-    margin: 5px 0 0 0;
-    padding-bottom: 5px;
-  }
-  
-  #RRMakuuchi, #RRJuryo, #HowManyM h3, #HowManyJ h3 {
-    border-bottom: 3px solid black;
-  }
-  
-  .RRShikona {
-    text-align: left;
-  }
-  
-  #RRContainer h2 {
-    margin: 3px;
-    font-size: 16px;
+
+  #RRContainer h3,
+  #RRContainer h2,
+  #HowManyM h3,
+  #HowManyJ h3,
+  .HowManyOne p {
+    font-size: 12px;
   }
 
   #HowManyMain {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 120px;
+    gap: calc(50px + 3vw);
   }
-  
-  #HowManyM, #HowManyJ {
-    width: 40vw;
-    max-width: 200px;
+
+  #HowManyM h3,
+  #HowManyJ h3 {
+    margin: 5px 0 0 0;
+    padding-bottom: 5px;
+  }
+
+  #HowManyM,
+  #HowManyJ {
+    height: 350px;
+  }
+
+  .RRShikona,
+  .RRPoints {
+    width: 100%;
+  }
+
+  #MRR,
+  #JRR {
+    width: 43vw;
     height: 400px;
-    margin: 0;
-    padding: 0;
-    background: white;
-    border: 7px ridge goldenrod;
-    overflow: scroll;
-  }
-  
-  #HowManyM h3, #HowManyJ h3 { 
-    text-align: center;
-    margin: 5px 0;
-  }
-  
-  .HowManyOne {
-    display: grid;
-    grid-template-columns: 80% 15%;
-    gap: 5%;
-    margin: 0 auto;
-    padding: 0 2vw;
-  }
-  
-  .HowManyOne p:first-child {
-    text-align: left;
-  }
-  
-  .HowManyOne p {
-    margin: 3px;
-    font-size: 16px;
   }
 
-  @media screen and (max-width: 600px) {
-
-    .resultsContainer, #allRR {
-      margin: 20px 2vw;
-    }
-
-    .teamsTop, .oneTeam {
-      display: grid;
-      grid-template-columns: 40% 7% 7% 7% 7% 7% 7% 7% 11%;
-      padding: 0;
-    }
-  
-    .teamsTop h2,
-    .teamsTop h3,
-    .teamsTop p,
-    .oneTeam h2,
-    .oneTeam h3,
-    .oneTeam p {
-      font-size: 10px;
-      margin: 10px 0;
-    }
-
-    .teamsTop h3, .oneTeam h3 {
-      width: calc(96vw * 11 / 100)
-    }
-
-    .teamsTop h2, .oneTeam h2 {
-      width: calc(96vw * 40 / 100)
-    }
-
-    .teamsTop p, .oneTeam p {
-      width: calc(96vw * 7 / 100)
-    }
-  
-    #teamsContainer {
-      max-height: 700px;
-      min-height: 100px;
-      width: 100%;
-      overflow: scroll;
-    }
-  
-    .oneTeam p {
-      font-size: 6.5px;
-      width: 20px;
-      margin: 5px auto;
-    }
-
-    #RRContainer {
-      gap: 3vw;
-    }
-
-    .oneRR, #MRRTitles, #JRRTitles {
-      display: grid;
-      grid-template-columns: 80% 15%;
-      gap: 3%;
-    }
-
-    #RRContainer h3, #RRContainer h2, #HowManyM h3, #HowManyJ h3, .HowManyOne p {
-      font-size: 12px;
-    }
-
-    #HowManyMain {
-      gap: calc(50px + 3vw);
-    }
-
-    #HowManyM h3, #HowManyJ h3 {
-      margin: 5px 0 0 0;
-      padding-bottom: 5px;
-    }
-
-    #HowManyM, #HowManyJ {
-      height: 350px;
-    }
-
-    .RRShikona, .RRPoints {
-      width: 100%;
-    }
-
-    #MRR, #JRR {
-      width: 43vw;
-      height: 400px;
-    }
-
-    #MRR, #JRR, .resultsContainer, #HowManyM, #HowManyJ {
-      border: 4px ridge goldenrod;
-    }
+  #MRR,
+  #JRR,
+  .resultsContainer,
+  #HowManyM,
+  #HowManyJ {
+    border: 4px ridge goldenrod;
   }
+}
