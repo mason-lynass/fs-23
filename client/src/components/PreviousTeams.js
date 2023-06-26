@@ -44,7 +44,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
         }
         else if (team.basho === 2023.5) {
             temp = temp - 1
-            otherTeams = [...teams].filter((team) => team.basho === 2023.3)
+            otherTeams = [...teams].filter((team) => team.basho === 2023.5)
         }
 
         // use this to access fsHistories at the appropriate tournament

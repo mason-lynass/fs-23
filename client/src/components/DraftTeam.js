@@ -85,7 +85,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, teams, setTeams, tach
                 </div>
             </div>
             <div>
-                // only show this when all r spots are filled
+                {/* only show this when all r spots are filled */}
                 {
                     (userTeam.r1 === "" || userTeam.r2 === "" || userTeam.r3 === "" || userTeam.r4 === "" || userTeam.r5 === "" || userTeam.r6 === "" || userTeam.r7 === "")
                      ? 
