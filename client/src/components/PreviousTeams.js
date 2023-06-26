@@ -35,10 +35,14 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
         // console.log(fsHistoriesArray)
 
         if (team.basho === 2023.1) {
-            temp = temp - 2
+            temp = temp - 3
             otherTeams = [...teams].filter((team) => team.basho === 2023.1)
         }
         else if (team.basho === 2023.3) {
+            temp = temp - 2
+            otherTeams = [...teams].filter((team) => team.basho === 2023.3)
+        }
+        else if (team.basho === 2023.5) {
             temp = temp - 1
             otherTeams = [...teams].filter((team) => team.basho === 2023.3)
         }
