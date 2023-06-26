@@ -132,7 +132,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
 
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
     // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
-    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Wakatakakage" && rikishi.shikona !== "Ichinojo")
+    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS")
     const sortedMRikishi = rankSort(MakuuchiRikishi, null)
     const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J")
 
