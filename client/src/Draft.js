@@ -168,7 +168,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                                 <option value="13">M13+ only</option>
                             </select>
                         </div>
-                        <p id="headsup">Wakatakakage will not be competing in this tournament. Ichinojo has retired from professional sumo!</p>
+                        {/* <p id="headsup">Wakatakakage will not be competing in this tournament. Ichinojo has retired from professional sumo!</p> */}
                     </div>
                 </div>
                 <p id='clickText'>click on a wrestler to display info and add them to your team!</p>
@@ -233,7 +233,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                         </select>
                     </div>
                 </div>
-                <p id="headsup">* Wakatakakage will not be competing in this tournament. Ichinojo has retired from professional sumo! *</p>
+                {/* <p id="headsup">* Wakatakakage will not be competing in this tournament. Ichinojo has retired from professional sumo! *</p> */}
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
