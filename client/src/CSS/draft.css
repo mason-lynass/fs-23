@@ -35,6 +35,10 @@
   border-radius: 10px;
 }
 
+#FSTeam h2 {
+  margin: 5px;
+}
+
 #DraftErrorMessage {
   border: 3px solid red;
   width: 320px;
@@ -48,12 +52,17 @@
   gap: 4%;
   margin: auto;
   width: 400px;
+  height: 100%;
+  max-height: 280px;
 }
 
 #FSTeamTable,
 #FSRikishi {
-  display: block;
-  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  margin: auto;
+  height: 100%;
 }
 
 #FSTeamTable {
@@ -71,7 +80,11 @@
   justify-content: space-between;
   align-items: center;
   height: 21.5px;
-  margin: 16px 0;
+  /* margin: 16px 0; */
+}
+
+#FSRikishi div p, #FSTeamTable p {
+  margin: 1px;
 }
 
 #FSRikishi button {
@@ -83,6 +96,12 @@
   margin: 0 5px;
   border: 0;
   color: black;
+  box-shadow: none;
+
+}
+
+#FSRikishi button:hover {
+  color: red;
 }
 
 #FSTeamBottom button {
@@ -92,7 +111,11 @@
   padding: 5px 10px;
   height: 35px;
   box-shadow: 0px 0px 10px 3px goldenrod;
-  margin: 2vw;
+  margin: 10px;
+}
+
+#warning {
+  margin: 5px;
 }
 
 .RLarge {
@@ -148,6 +171,7 @@
   background-color: white;
   border: 1px solid black;
   padding: 5px 20px;
+  border-radius: 5px;
 }
 
 #DraftSearch {
@@ -240,7 +264,7 @@
 
 #FSTeamBottom button:hover,
 #AddRikishiButton:hover {
-  border: 2px solid rgb(184, 2, 2);
+  box-shadow: 0px 3px 10px rgb(184, 2, 2);
 }
 
 .smallImage {
@@ -313,7 +337,7 @@
 
   #FSTeam h2 {
     margin: 5px;
-    font-size: 14px;
+    font-size: calc(100vw / 30);
   }
 
   #FSFlex {
@@ -322,10 +346,13 @@
     gap: 5%;
     margin: auto;
     width: 100%;
+    max-height: 180px;
   }
 
   #FSTeamTable,
   #FSRikishi {
+    height: 100%;
+    max-height: 200px;
     width: 100%;
   }
 
@@ -338,7 +365,7 @@
   #FSRikishi p {
     font-size: 10px;
     height: 16px;
-    margin: 5px 0;
+    margin: 0;
   }
 
   #warning {

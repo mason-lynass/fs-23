@@ -27,6 +27,10 @@
   color: black;
 }
 
+#DBViewState:hover {
+  border: 2px inset rgb(184, 2, 2);
+}
+
 #DBContainer {
   width: 90vw;
   margin: auto;

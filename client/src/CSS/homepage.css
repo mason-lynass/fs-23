@@ -20,8 +20,9 @@
     max-width: 680px;
     font-size: 22px;
     background-color: white;
-    padding: 20px;
-    border: 2px solid black;
+    padding: 0px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
   }
   
   #takanoshoFootball {

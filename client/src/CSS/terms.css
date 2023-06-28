@@ -1,84 +1,85 @@
 /* for the Terminology page */
 
 #termBorder {
-    margin: 30px;
+  margin: 30px;
+}
+
+#termContainer {
+  background-color: white;
+  border: 5px ridge goldenrod;
+  margin: 20px auto;
+  padding: 0 30px;
+  max-width: 840px;
+  border-radius: 10px;
+}
+
+#termContainer hr {
+  width: 240px;
+  margin: 40px auto;
+}
+
+#termContainer h2,
+#formore {
+  text-align: center;
+}
+
+.oneTerm {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  align-items: flex-start;
+  margin: 10px auto;
+  max-width: 800px;
+}
+
+.oneTerm h4,
+.oneTerm p {
+  margin: 10px 3px;
+}
+
+.oneTerm h4 {
+  min-width: 100px;
+}
+
+.termDef {
+  max-width: 600px;
+}
+
+#formore {
+  font-size: 12px;
+  width: 400px;
+  margin: 0 auto 40px auto;
+}
+
+@media screen and (max-width: 600px) {
+  #termBorder {
+    margin: 10px;
   }
-  
+
   #termContainer {
-    background-color: white;
-    border: 5px ridge goldenrod;
-    margin: 20px auto;
-    padding: 0 30px;
-    max-width: 1000px;
+    padding: 0 15px;
   }
-  
-  #termContainer hr {
-    width: 240px;
-    margin: 40px auto;
-  }
-  
-  #termContainer h2,
+
   #formore {
-    text-align: center;
+    width: 85%;
+    margin-bottom: 20px;
   }
-  
+
   .oneTerm {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: left;
-    align-items: top;
-    margin: 10px auto;
-    max-width: 800px;
+    margin-top: 0;
   }
-  
-  .oneTerm h4,
-  .oneTerm p {
-    margin: 10px 3px;
-  }
-  
+
   .oneTerm h4 {
-    min-width: 100px;
+    font-size: 14px;
+    min-width: 90px;
   }
-  
+
   .termDef {
-    max-width: 600px;
-  }
-  
-  #formore {
     font-size: 12px;
-    width: 400px;
-    margin: 0 auto 40px auto;
   }
 
-  @media screen and (max-width: 600px) {
-    #termBorder {
-      margin: 10px;
-    }
-
-    #termContainer {
-      padding: 0 15px;
-    }
-
-    #formore {
-      width: 85%;
-      margin-bottom: 20px;
-    }
-
-    .oneTerm {
-      margin-top: 0;
-    }
-
-    .oneTerm h4 {
-      font-size: 14px;
-      min-width: 90px;
-    }
-
-    .termDef {
-      font-size: 12px;
-    }
-
-    .oneTerm h4,
+  .oneTerm h4,
   .oneTerm p {
     margin: 3px;
   }
-  }
+}

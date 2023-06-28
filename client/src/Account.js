@@ -9,22 +9,22 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
 
     const navigate = useNavigate()
 
-    // function handleDeleteTeam() {
-    //     const toDelete = user.teams.find(e => e.basho === basho).id
-    //     fetch(`/teams/${toDelete}`, { method: "DELETE" })
-    //         .then((r) => {
-    //             if (r.ok) {
-    //                 fetch("/me").then((r) => {
-    //                     if (r.ok) {
-    //                         r.json().then((user) => {
-    //                             setUser(user)
-    //                             navigate("/draft")
-    //                         });
-    //                     }
-    //                 })
-    //             }
-    //         })
-    // }
+    function handleDeleteTeam() {
+        const toDelete = user.teams.find(e => e.basho === basho).id
+        fetch(`/teams/${toDelete}`, { method: "DELETE" })
+            .then((r) => {
+                if (r.ok) {
+                    fetch("/me").then((r) => {
+                        if (r.ok) {
+                            r.json().then((user) => {
+                                setUser(user)
+                                navigate("/draft")
+                            });
+                        }
+                    })
+                }
+            })
+    }
 
     function isString(value) { return typeof value === "string" }
 
@@ -77,10 +77,10 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
                     <h4>Your team will be visible on the Results page before and during the tournament - there may be some delay in visibility, up to 24 hours after you draft your team.</h4>
                 </div>
                 {/* turn this off during the tournament */}
-                {/* <div id="Redraft">
+                <div id="Redraft">
                     <h4>If you need to redraft before the tournament starts, if someone is injured or you've changed your mind: </h4>
                     <button onClick={handleDeleteTeam}>DELETE TEAM</button>
-                </div> */}
+                </div>
             </div>
         )
     }
@@ -99,7 +99,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
         if (user === null) {
             return (
                 <div>
-                    <h1 id="AccountLogin">You need to login to see your account page!</h1>
+                    <h2 id="AccountLogin">You need to login to see your account page!</h2>
                     <div id="LoginFlex">
                         <LoginForm
                             setUser={setUser}
