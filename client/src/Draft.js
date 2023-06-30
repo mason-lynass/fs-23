@@ -233,7 +233,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                         </select>
                     </div>
                 </div>
-                {/* <p id="headsup">* Wakatakakage will not be competing in this tournament. Ichinojo has retired from professional sumo! *</p> */}
+                <p id="headsup">* Wakatakakage has an injured meniscus and is not likely to compete in this tournament. *</p>
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
