@@ -14,6 +14,7 @@
   padding: 5px 10px;
   margin: 20px auto;
   height: fit-content;
+  color: black;
   /* border: 3px solid rgb(184, 2, 2); */
 }
 
@@ -290,7 +291,7 @@
 
   #HowManyM,
   #HowManyJ {
-    height: 350px;
+    max-height: 350px;
   }
 
   .RRShikona,

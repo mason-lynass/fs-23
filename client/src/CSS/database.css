@@ -97,6 +97,10 @@
   margin: 0;
 }
 
+.DBOneRikishi:nth-child(2n) {
+  background-color: rgba(5,5,5,.05);
+}
+
 .DBImage {
   width: 60px;
 }
@@ -381,13 +385,9 @@ tbody, thead, .dbtest-one-rikishi {
   width: calc(246px + (50px * 158));
 }
 
-.dbtest-one-rikishi:nth-child(even), .dbtest-basho:nth-child(2n+1), .dbtest-one-score:nth-child(even), .dbtest-one-rikishi-header:nth-of-type(even) {
+.dbtest-one-rikishi:nth-of-type(even), .dbtest-basho:nth-child(2n+1), .dbtest-one-score:nth-child(even), .dbtest-one-rikishi-header:nth-of-type(2n) {
   background: rgba(194, 194, 194, .3);
 }
-
-/* .dbtest-one-rikishi:nth-of-type(2n) {
-  background: blue;
-} */
 
 .dbtest-one-score {
   height: 14px;
