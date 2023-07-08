@@ -61,7 +61,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames, basho }
 
         return (
             (teamsLoaded === false) ?
-                <h2>Loading...</h2>
+                <h2 style={{ textAlign: 'center'}}>Loading...</h2>
                 :
                 <div>
                     <Hello />
@@ -113,7 +113,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames, basho }
 
         return (
             (teamsLoaded === false) ?
-                <h2>Loading...</h2>
+                <h2 style={{ textAlign: 'center'}}>Loading...</h2>
                 :
                 <div>
                     <Hello />
