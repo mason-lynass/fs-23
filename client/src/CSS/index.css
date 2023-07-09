@@ -11,7 +11,8 @@ button {
 }
 
 #hello {
-  width: 500px;
+  max-width: 550px;
+  width: 80vw;
   background-color: white;
   border: 4px ridge goldenrod;
   border-radius: 10px;
