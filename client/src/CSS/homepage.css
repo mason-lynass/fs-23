@@ -38,6 +38,17 @@
     }
   }
 
+  #ThanksSumoAPI {
+    width: 80vw;
+    max-width: 500px;
+    margin: 1vw auto;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
 @media screen and (max-width: 600px) {
   #hello {
     width: 270px;

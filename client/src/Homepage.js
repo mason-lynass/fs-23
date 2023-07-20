@@ -18,10 +18,12 @@ function Homepage() {
                         <p>Once you're familiar with the rules and my scoring system, <Link to="/draft">assemble your team</Link> and show the world you know who's the best!</p>
                         <p>Feel free to <Link to="/database">browse the database</Link> to check out information about individual rikishi, records of past tournaments, and Fantasy Sumo scores going back for years!</p>
                     </div>
+                    <p id='ThanksSumoAPI'>thanks to James and <a href='https://www.sumo-api.com/' target="_blank" rel="noopener noreferrer">Sumo-API</a> for providing real-time sumo data, this game runs smoothly because of Sumo-API!</p>
                 </div>
 
                 <img id="takanoshoFootball" rel='preload' alt="Takanosho throwing a football" src={takanoshoFootball} ></img>
             </div>
+            
         </div>
     )
 }
