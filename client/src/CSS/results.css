@@ -72,6 +72,18 @@
   background-color: rgba(5,5,5,.1);
 }
 
+.oneTeam:nth-child(1) {
+  background-color: gold;
+}
+
+.oneTeam:nth-child(2) {
+  background-color: silver;
+}
+
+.oneTeam:nth-child(3) {
+  background-color: #CD7F32;
+}
+
 .oneTeam h2 {
   font-size: 20px;
   width: 120px;
