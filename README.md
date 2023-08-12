@@ -7,14 +7,23 @@ https://www.fantasysumo.net
 ## Tech Stack
 
 a non-exhaustive list of technologies used in this project:
+
 React
+
 React Router
+
 useSound
+
 Ruby on Rails
+
 PostgreSQL
+
 BCrypt
+
 Puma
+
 CSS
+
 a web service, database, and cron job deployed through Render
 
 ## Repo:
