@@ -290,8 +290,7 @@
 }
 
 #headsup {
-  width: 25%;
-  min-width: 450px;
+  width: fit-content;
   padding: 10px;
   margin: 10px auto;
   text-align: center;

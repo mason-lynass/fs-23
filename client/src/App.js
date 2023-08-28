@@ -25,7 +25,7 @@ import Terminology from './Terminology';
 
 function App() {
 
-  const basho = 2023.7
+  const basho = 2023.9
   const [user, setUser] = useState(null)
   const [rikishi, setRikishi] = useState([])
   const [teams, setTeams] = useState([])
