@@ -134,7 +134,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
     // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
     const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Wakatakakage" && rikishi.shikona !== "Hakuoho")
     const sortedMRikishi = rankSort(MakuuchiRikishi, null)
-    const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J")
+    const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J" && rikishi.shikona !== "Wakatakakage")
 
     function renderAlreadyDrafted() {
         // console.log('already drafted')
