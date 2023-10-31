@@ -133,7 +133,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
             <hr></hr>
             <h3>Check out your previous teams:</h3>
             <div>
-                {allPrevTeams()}
+                {teams.length > 0 ? allPrevTeams() : ""}
             </div>
         </div>
     )
