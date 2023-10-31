@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_024812) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_050702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -178,6 +178,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_024812) do
     t.datetime "updated_at", null: false
     t.integer "b159"
     t.integer "b160"
+    t.integer "b161"
     t.index ["rikishi_id"], name: "index_fs_histories_on_rikishi_id"
   end
 

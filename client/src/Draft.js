@@ -132,9 +132,9 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
 
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
     // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
-    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Terunofuji" && rikishi.shikona !== "Wakatakakage" && rikishi.shikona !== "Hakuoho")
+    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Terunofuji")
     const sortedMRikishi = rankSort(MakuuchiRikishi, null)
-    const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J" && rikishi.shikona !== "Wakatakakage")
+    const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J" && rikishi.shikona !== "Hakuoho")
 
     function renderAlreadyDrafted() {
         // console.log('already drafted')
@@ -168,7 +168,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                                 <option value="13">M13+ only</option>
                             </select>
                         </div>
-                        <p id="headsup">Terunofuji, Wakatakakage, and Hakuoho will not be competing in this tournament due to injuries!</p>
+                        <p id="headsup">* As far as I can tell for now, Terunofuji and Hakuoho will not be competing due to injury. *</p>
                     </div>
                 </div>
                 <p id='clickText'>click on a wrestler to display info and add them to your team!</p>
@@ -233,7 +233,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                         </select>
                     </div>
                 </div>
-                <p id="headsup">* Terunofuji, Wakatakakage, and Hakuoho will not compete this tournament due to injuries! *</p>
+                <p id="headsup">* As far as I can tell for now, Terunofuji and Hakuoho will not be competing due to injury. *</p>
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
@@ -294,11 +294,11 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         areYouLoggedIn()
-    //         : <p style={{ textAlign: 'center'}}>loading...</p>
-    // )
+    return (
+        (rikishiLoaded === true) ?
+            areYouLoggedIn()
+            : <p style={{ textAlign: 'center'}}>loading...</p>
+    )
 
     return (
         <Hello />

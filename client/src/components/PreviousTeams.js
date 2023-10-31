@@ -54,6 +54,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
             temp = temp - 1
             otherTeams = [...teams].filter((team) => team.basho === 2023.7)
         }
+        
 
         // use this to access fsHistories at the appropriate tournament
         temp = `b${temp}`
