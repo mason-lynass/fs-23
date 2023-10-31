@@ -45,7 +45,7 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
 
         return (
             <div>
-                <h3>Here's your team for the May tournament:</h3>
+                <h3>Here's your team for the November tournament:</h3>
                 <div id="AccountTeam">
                     <div id="ATRikishi">
                         {actualTeam.map((obj) =>
