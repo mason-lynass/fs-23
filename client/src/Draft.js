@@ -168,7 +168,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                                 <option value="13">M13+ only</option>
                             </select>
                         </div>
-                        <p id="headsup">* As far as I can tell for now, Terunofuji and Hakuoho will not be competing due to injury. *</p>
+                        <p id="headsup">* Terunofuji and Hakuoho will not be competing due to injury. Asanoyama is injured and will not be starting on Day 1, but may enter during the basho. *</p>
                     </div>
                 </div>
                 <p id='clickText'>click on a wrestler to display info and add them to your team!</p>
@@ -233,7 +233,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                         </select>
                     </div>
                 </div>
-                <p id="headsup">* As far as I can tell for now, Terunofuji and Hakuoho will not be competing due to injury. *</p>
+                <p id="headsup">* Terunofuji and Hakuoho will not be competing due to injury. Asanoyama is injured and will not be starting on Day 1, but may enter during the basho. *</p>
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
