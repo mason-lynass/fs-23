@@ -132,9 +132,9 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
 
     // this is where you filter out rikishi if anyone is injured or absent before the tournament
     // const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.shikona !== "Ichinojo" && rikishi.shikona !== "Terunofuji")
-    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS" && rikishi.shikona !== "Terunofuji")
+    const MakuuchiRikishi = MRikishi.filter(rikishi => rikishi.current_rank !== "J" && rikishi.current_rank !== "MS")
     const sortedMRikishi = rankSort(MakuuchiRikishi, null)
-    const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J" && rikishi.shikona !== "Hakuoho")
+    const JuryoRikishi = draftRikishi.filter(rikishi => rikishi.current_rank === "J")
 
     function renderAlreadyDrafted() {
         // console.log('already drafted')
@@ -168,7 +168,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                                 <option value="13">M13+ only</option>
                             </select>
                         </div>
-                        <p id="headsup">* Terunofuji and Hakuoho will not be competing due to injury. Asanoyama is injured and will not be starting on Day 1, but may enter during the basho. *</p>
+                        <p id="headsup">* You can pick Terunofuji if you want, but I'm not sure he'll be competing this tournament. *</p>
                     </div>
                 </div>
                 <p id='clickText'>click on a wrestler to display info and add them to your team!</p>
@@ -233,7 +233,7 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
                         </select>
                     </div>
                 </div>
-                <p id="headsup">* Terunofuji and Hakuoho will not be competing due to injury. Asanoyama is injured and will not be starting on Day 1, but may enter during the basho. *</p>
+                <p id="headsup">* You can pick Terunofuji if you want, but I'm not sure he'll be competing this tournament. *</p>
                 <div id="AllRikishiFlex">
                     <div id="Makuuchi">
                         <h2>- Makuuchi -</h2>
@@ -294,11 +294,11 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    // return (
-    //     (rikishiLoaded === true) ?
-    //         areYouLoggedIn()
-    //         : <p style={{ textAlign: 'center'}}>loading...</p>
-    // )
+    return (
+        (rikishiLoaded === true) ?
+            areYouLoggedIn()
+            : <p style={{ textAlign: 'center'}}>loading...</p>
+    )
 
     return (
         <Hello />
