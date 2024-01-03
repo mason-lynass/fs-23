@@ -29,3 +29,8 @@ a web service, database, and cron job deployed through Render
 ## Repo:
 
 https://github.com/mason-lynass/fs-23
+
+### To start locally:
+
+npm run --prefix client
+rails s (on port 4000)
