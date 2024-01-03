@@ -35,8 +35,6 @@ function App() {
   const [hyoshigi] = useSound(Hyoshigi);
   const [tachiai] = useSound(Hakkeyoi, { volume: 0.5 });
 
-  console.log(basho.toString().slice(5))
-
   function rankSort(wrestlers, highest) {
     let sortArray = [
       "Y",
