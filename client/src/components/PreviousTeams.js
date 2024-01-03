@@ -56,7 +56,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
         }
         else if (team.basho === 2023.11) {
             temp = temp - 1
-            otherTeams = [...teams].filter((team) => team.basho === 2023.9)
+            otherTeams = [...teams].filter((team) => team.basho === 2023.11)
         }
         
 
