@@ -77,11 +77,16 @@ function App() {
   }
 
   const goodTeamNames = [
+    'Hsumo',
+    'Hsumoho',
+    'DanielSun',
+    'dustyjduncan',
     'RjSoToxic',
     'maltagoya',
     'smartestmoronx19',
     'OSAKIHAKI',
     'sam',
+    'catower',
     'mason',
     'DemenciaChess',
     'W4EMBMB',
@@ -94,6 +99,7 @@ function App() {
     'Gadjira',
     'Hatt',
     'MitchThor',
+    'acorn',
     'Bubba',
     'vengaryu',
     'Rikitaro',
