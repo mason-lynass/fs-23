@@ -79,10 +79,13 @@ function App() {
   const goodTeamNames = [
     'mason',
     'acorn',
+    'Hidenotora',
     'Fuss',
     'Hatt',
     'MitchThor',
     'ArmenOzeki',
+    'The_Dark_Reach',
+    'StrictTime',
     'Ga',
     'Mowse',
     'imaginethings',
@@ -94,6 +97,7 @@ function App() {
     'Hrsh',
     'Andreas',
     'Seitoss',
+    'Hisui',
     'Wakinnebis',
     'Kuniumi',
     'OSAKIHAKI',
@@ -101,6 +105,7 @@ function App() {
     'KMSHEYA',
     'RjSoToxic',
     'DemenciaChess',
+    'MattGrubb',
     'Verseau',
     'Hsumo',
     'Hsumoho',
@@ -128,7 +133,9 @@ function App() {
     'pnguetta',
     'LiviuszBp',
     'koolio',
-    'NikkoBarato'
+    'NikkoBarato',
+    'Tochinofuji',
+    'Lex'
   ];
 
   useEffect(() => {
