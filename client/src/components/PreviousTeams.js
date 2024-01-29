@@ -35,28 +35,32 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
         // console.log(fsHistoriesArray)
 
         if (team.basho === 2023.01) {
-            temp = temp - 6
+            temp = temp - 7
             otherTeams = [...teams].filter((team) => team.basho === 2023.01)
         }
         else if (team.basho === 2023.03) {
-            temp = temp - 5
+            temp = temp - 6
             otherTeams = [...teams].filter((team) => team.basho === 2023.03)
         }
         else if (team.basho === 2023.05) {
-            temp = temp - 4
+            temp = temp - 5
             otherTeams = [...teams].filter((team) => team.basho === 2023.05)
         }
         else if (team.basho === 2023.07) {
-            temp = temp - 3
+            temp = temp - 4
             otherTeams = [...teams].filter((team) => team.basho === 2023.07)
         }
         else if (team.basho === 2023.09) {
-            temp = temp - 2
+            temp = temp - 3
             otherTeams = [...teams].filter((team) => team.basho === 2023.09)
         }
         else if (team.basho === 2023.11) {
-            temp = temp - 1
+            temp = temp - 2
             otherTeams = [...teams].filter((team) => team.basho === 2023.11)
+        }
+        else if (team.basho === 2024.01) {
+            temp = temp - 1
+            otherTeams = [...teams].filter((team) => team.basho === 2024.01)
         }
         
 
