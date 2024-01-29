@@ -158,7 +158,7 @@ function App() {
     "Tochinofuji",
     "Lex",
     "Areku",
-    "InfernoWing2",
+    "InfernoWing",
     'Erno',
     'InfernoWing2',
     "Woodstock-99",
