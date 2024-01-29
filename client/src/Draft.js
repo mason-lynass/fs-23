@@ -294,11 +294,11 @@ function Draft({ user, setUser, rikishi, tachiai, clap, rankSort, fsHistories, b
     }
 
     // turn this back on when it's time to draft (it's not right now)
-    return (
+    {/* return (
         (rikishiLoaded === true) ?
             areYouLoggedIn()
             : <p style={{ textAlign: 'center'}}>loading...</p>
-    )
+    )*/}
 
     return (
         <Hello />
