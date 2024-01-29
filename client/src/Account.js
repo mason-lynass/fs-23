@@ -31,7 +31,8 @@ function Account({ user, setUser, rikishi, clap, teams, goodTeamNames, fsHistori
     function currentBashoTeam() {
 
         // otherTeams is all teams with valid usernames for the current basho
-        const otherTeams = [...teams].filter((team) => team.basho === basho && goodTeamNames.includes(team.user.username))
+        // const otherTeams = [...teams].filter((team) => team.basho === basho && goodTeamNames.includes(team.user.username))
+        const otherTeams = [...teams].filter((team) => team.basho === basho)
         const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
         // find this team's position by finding its index in all teams, sorted by final score
         const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
