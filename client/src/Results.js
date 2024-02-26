@@ -55,7 +55,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames, basho }
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
         // uses "goodTeamNames" from App.js
-        const goodTeams = teamsHiToLo
+        const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
         // console.log(teamsHiToLo)
         // console.log(goodTeams)
 
@@ -107,7 +107,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames, basho }
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
         // uses "goodTeamNames" from App.js
-        const goodTeams = teamsHiToLo
+        const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
         // console.log(teamsHiToLo)
         // console.log(goodTeams)
 
