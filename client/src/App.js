@@ -24,7 +24,7 @@ import Terminology from "./Terminology";
 // import HowMany from './components/HowMany';
 
 function App() {
-  const basho = 2024.01;
+  const basho = 2024.03;
   const [user, setUser] = useState(null);
   const [rikishi, setRikishi] = useState([]);
   const [teams, setTeams] = useState([]);
