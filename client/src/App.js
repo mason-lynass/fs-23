@@ -185,6 +185,13 @@ function App() {
     "ManUFan9225",
     "Slothbjj",
     "tweedledeedum",
+    'byakkoorii',
+    'Xabel',
+    'LauraSumo',
+    'HOSHORYUUUUUUU!',
+    'FatherDaB',
+    'Bette',
+    'sergentmajor'
   ];
 
   useEffect(() => {
