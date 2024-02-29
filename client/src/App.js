@@ -191,7 +191,10 @@ function App() {
     'HOSHORYUUUUUUU!',
     'FatherDaB',
     'Bette',
-    'sergentmajor'
+    'sergentmajor',
+    'cransford13',
+    'moldingham@yahoo.com',
+    'NessaSan'
   ];
 
   useEffect(() => {
