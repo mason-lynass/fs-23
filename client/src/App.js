@@ -194,7 +194,25 @@ function App() {
     'sergentmajor',
     'cransford13',
     'moldingham@yahoo.com',
-    'NessaSan'
+    'NessaSan',
+    'H',
+    'glorfunk',
+    'SloppyJoe',
+    'frodo_sagbag',
+    'WakatakaPetah',
+    'Varlash91',
+    'Kevoh',
+    'slimey',
+    'ballerscuba',
+    'DocZoidberg',
+    'Zatoichi888',
+    'Lumpyfranklin',
+    'woodyakc@outlook.com',
+    'TJMPDX',
+    'sackanutz',
+    'Rodsumo',
+    'my_style_of_sumo',
+    'GODZUKI'
   ];
 
   useEffect(() => {
