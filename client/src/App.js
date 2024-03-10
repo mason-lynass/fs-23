@@ -409,6 +409,10 @@ function App() {
     "thepersephonies",
     "Marmoris",
     "Xenthea",
+    'Jazum',
+    'FastCash',
+    'andonishiki',
+    'SumoMaster696969'
   ];
 
   useEffect(() => {
