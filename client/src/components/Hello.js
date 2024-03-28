@@ -11,7 +11,7 @@ function Hello() {
             {/* <p>(If you picked someone that's out of the tournament, feel free to email me at mtfujisumo at gmail.com with your team name and new pick.)</p> */}
 
             {/* after the tournament */}
-            <p>Congrats to Hisui, texaskevin, and KappyKaiju3 on your Fantasy Sumo victories! A three-way tie with three different teams, how exciting! </p><p> The new rankings will be announced on April 30th, so the draft will be open from May 1st - May 12th.</p><p>I'll update the database in a day or two. Thanks for playing everyone!</p>
+            <p>Congrats to Hisui, texaskevin, and KappyKaiju3 on your Fantasy Sumo victories! A three-way tie with three different teams, how exciting! </p><p> The new rankings will be announced on April 30th, so the draft will be open from May 1st - May 12th.</p><p>Thanks for playing everyone!</p>
         </div>
     )
 }
