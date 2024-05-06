@@ -1,6 +1,8 @@
 function Hello() {
     return (
         <div id="hello">
+            <p>I'll be out of town until May 4th, so I should have everything set up and ready to draft by the 5th. Sorry for the delay!</p>
+        
             {/*  when it's time to draft */}
             <p> The draft is open!<br/><br/> The next tournament begins on May 12th, so make sure you draft before then!</p>
 
