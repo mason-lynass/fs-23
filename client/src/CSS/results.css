@@ -191,7 +191,7 @@
   grid-template-columns: 80% 15%;
   gap: 5%;
   margin: 0 auto;
-  padding: 0 5px;
+  padding: 0 10px;
 }
 
 .HowManyOne p:first-child {
