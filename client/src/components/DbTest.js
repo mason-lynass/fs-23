@@ -170,7 +170,7 @@ function DbTest({ fsHistories, rikishi }) {
         )
     }
 
-    // logic to show the basho in the correct format "2024.03" from one fsHistory
+    // logic to show the basho in the correct format "2024.05" from one fsHistory
     function AllBashoRows() {
         if (fsHistories.length > 0) {
             // populate rows with integers for each basho key in fsHistory, then reverse 
@@ -186,7 +186,7 @@ function DbTest({ fsHistories, rikishi }) {
                 let year = 2024
 
                 if (basho >= 142) {
-                    year = year - Math.floor((reverseOrder.length - (basho - 4)) / 6)
+                    year = year - Math.floor((reverseOrder.length - (basho - 3)) / 6)
                     switch (basho % 6) {
                         case 1: {
                             bashoRowsArray.push([basho, year + '.01'])
@@ -211,13 +211,16 @@ function DbTest({ fsHistories, rikishi }) {
                         case 0: {
                             bashoRowsArray.push([basho, year + '.11'])
                             break
+                        }
+                        default: {
+                            console.log("we don't use this case, how did you get here?")
                         }
                     }
                 }
 
                 // i think this had to be offset by one because there was no tournament due to COVID?
                 if (basho < 142 && basho > 87) {
-                    year = year - Math.floor((reverseOrder.length - (basho - 5)) / 6)
+                    year = year - Math.floor((reverseOrder.length - (basho - 4)) / 6)
 
                     switch (basho % 6) {
                         case 2: {
@@ -243,13 +246,16 @@ function DbTest({ fsHistories, rikishi }) {
                         case 1: {
                             bashoRowsArray.push([basho, year + '.11'])
                             break
+                        }
+                        default: {
+                            console.log("we don't use this case, how did you get here?")
                         }
                     }
                 }
 
                 // another offset for that time that they cancelled the basho to investigate match fixing
                 if (basho > 0 && basho <= 87) {
-                    year = year - Math.floor((reverseOrder.length - (basho - 6)) / 6)
+                    year = year - Math.floor((reverseOrder.length - (basho - 5)) / 6)
 
                     switch (basho % 6) {
                         case 3: {
@@ -275,6 +281,9 @@ function DbTest({ fsHistories, rikishi }) {
                         case 2: {
                             bashoRowsArray.push([basho, year + '.11'])
                             break
+                        }
+                        default: {
+                            console.log("we don't use this case, how did you get here?")
                         }
                     }
                 }
