@@ -20,6 +20,7 @@ import Results from "./Results";
 import Database from "./Database";
 import Account from "./Account";
 import Terminology from "./Terminology";
+import TeamRankings from './TeamRankings'
 // import DbTest from './components/DbTest';
 // import HowMany from './components/HowMany';
 
@@ -483,6 +484,8 @@ function App() {
         />
         <Route path="/rules" element={<Rules />} />
         <Route path="/terminology" element={<Terminology />} />
+        <Route path='/team-rankings' element={<TeamRankings teams={teams}
+              teamsLoaded={teamsLoaded} />} />
         <Route
           path="/draft"
           element={
