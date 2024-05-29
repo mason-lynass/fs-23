@@ -1,6 +1,6 @@
 import OneTeam from "./components/OneTeam";
 
-function TeamRankings(teams, teamsLoaded) {
+function TeamRankings({teams, teamsLoaded}) {
 
   function allTeams() {
     console.log(teams);
