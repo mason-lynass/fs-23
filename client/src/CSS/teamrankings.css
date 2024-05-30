@@ -16,18 +16,18 @@
   border-bottom: 1px solid black;
 }
 
-.oneTeam:nth-child(2n - 1) {
+.oneTeamTR:nth-child(2n - 1) {
   background-color: rgba(5, 5, 5, 0.1);
 }
 
 .oneTeamTR h2 {
   font-size: 20px;
-  width: 120px;
+  width: 180px;
   overflow: scroll;
 }
 
 .oneTeamTR p {
-  width: 70px;
+  width: 100px;
   margin: 5px auto;
 }
 

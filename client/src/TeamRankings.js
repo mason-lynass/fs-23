@@ -69,6 +69,8 @@ function TeamRankings({ teams, teamsLoaded }) {
       );
       const average = (total / allPercentiles.length).toFixed(2); // something like this
       u.average_percentile = average;
+      u.weighted_average = parseFloat(average) + (.1 * allPercentiles.length - 1)
+      u.total = total.toFixed(2)
     });
     console.log(allUsers);
     setUsersLoaded(true);
@@ -113,6 +115,8 @@ function TeamRankings({ teams, teamsLoaded }) {
           <div className="oneTeamTR" key={user.username}>
             <h2>{user.username}</h2>
             <h3 className="totalTR">{user.average_percentile}</h3>
+            <h3 className="totalTR">{user.total}</h3>
+            <h3 className="totalTR">{user.weighted_average}</h3>
             <p>{user[`score2023.01`]}</p>
             <p>{user[`score2023.03`]}</p>
             <p>{user[`score2023.05`]}</p>
@@ -136,6 +140,12 @@ function TeamRankings({ teams, teamsLoaded }) {
         <h2>username</h2>
         <h3 className="totalTR" id="TRHeader">
           average score
+        </h3>
+        <h3 className="totalTR" id="TRHeader">
+          total score
+        </h3>
+        <h3 className="totalTR" id="TRHeader">
+          weighted average
         </h3>
         <p>2023.01</p>
         <p>2023.03</p>
