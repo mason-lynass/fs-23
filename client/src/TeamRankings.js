@@ -105,7 +105,7 @@ function TeamRankings({ teams, teamsLoaded }) {
     }
   }
 
-  return teamsLoaded === false ? <h2>loading...</h2> : <div>{allTeams()}</div>;
+  return usersLoaded === false ? <h2>loading...</h2> : <div>{allTeams()}</div>;
 }
 
 export default TeamRankings;
