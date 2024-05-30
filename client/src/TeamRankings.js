@@ -36,15 +36,9 @@ function TeamRankings({ teams, teamsLoaded }) {
           target.teams.push(teams[i]);
         }
 
-        if (
-          users.length > 0 &&
-          users.some((u) => u.username === teams[i].user.username)
-        )
-          continue;
-        else {
-          users.push({ username: teams[i].user.username });
-        }
-
+        if (!users.some((u) => u.username === teams[i].user.username)) {
+            users.push({ username: teams[i].user.username });
+          }
         iNumber++
       }
       console.log(teams, bashos);
