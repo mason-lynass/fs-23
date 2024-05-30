@@ -61,7 +61,7 @@ function TeamRankings({ teams, teamsLoaded }) {
             targetUser[`score${t.basho}`] = percentile
         })
     }) 
-    console.log(bashos)
+    console.log(bashos, users)
     // usersCleanup()
   }
 
