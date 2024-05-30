@@ -69,7 +69,7 @@ function TeamRankings({ teams, teamsLoaded }) {
       );
       const average = (total / allPercentiles.length).toFixed(2); // something like this
       u.average_percentile = average;
-      u.weighted_average = parseFloat(average) + (.1 * allPercentiles.length - 1)
+      u.weighted_average = (parseFloat(average) + (.1 * (allPercentiles.length - 1))).toFixed(2)
       u.total = total.toFixed(2)
     });
     console.log(allUsers);
@@ -100,7 +100,8 @@ function TeamRankings({ teams, teamsLoaded }) {
       console.log(allUsers);
       const sortedUsers = allUsers.sort(
         (a, b) =>
-          parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
+        //   parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
+        parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
       );
       console.log(sortedUsers);
       return sortedUsers.map((user) => {
