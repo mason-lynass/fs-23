@@ -42,6 +42,13 @@ function TeamRankings({ teams, teamsLoaded }) {
     }
   }, [teamsLoaded]);
 
+  function usersCleanup () {
+    users.forEach((u) => {
+        const allPercentiles = u //find the keys that have "score" in their name
+        const average = allPercentiles.sum() / allPercentiles.length // something like this
+        u.average_percentile = average
+    })
+  }
 
   function bashosCleanup () {
     bashos.forEach((b) => {
@@ -50,13 +57,12 @@ function TeamRankings({ teams, teamsLoaded }) {
         b.teams.forEach((t) => {
             const percentile = (t.final_score / highest_score).toFixed(2)
             t.percentile = percentile
+            const targetUser = users.find((u) => u.username = t.user.username)
+            targetUser[`score${t.basho}`] = percentile
         })
     }) 
     console.log(bashos)
-  }
-
-  if (bashos.length > 0) {
-    bashosCleanup()
+    // usersCleanup()
   }
 
   function allTeams() {
