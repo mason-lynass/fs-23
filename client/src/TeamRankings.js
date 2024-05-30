@@ -23,6 +23,7 @@ function TeamRankings({ teams, teamsLoaded }) {
         let number = teams.length
         let iNumber = 1
       for (let i = 0; i < teams.length; i++) {
+        console.log(number, iNumber)
         if (bashos.length === 0) {
           bashos.push({ basho: teams[i].basho, teams: [teams[i]] });
         } else if (
