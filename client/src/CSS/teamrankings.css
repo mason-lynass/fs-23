@@ -1,0 +1,40 @@
+#team-rankings-box {
+  background-color: white;
+  width: 90vw;
+  margin: 20px auto;
+  border: 5px ridge goldenrod;
+  max-height: 900px;
+  overflow: scroll;
+}
+
+.oneTeamTR {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.oneTeam:nth-child(2n - 1) {
+  background-color: rgba(5, 5, 5, 0.1);
+}
+
+.oneTeamTR h2 {
+  font-size: 20px;
+  width: 120px;
+  overflow: scroll;
+}
+
+.oneTeamTR p {
+  width: 70px;
+  margin: 5px auto;
+}
+
+.totalTR {
+  width: 50px;
+}
+
+#TRHeader {
+    font-size: 14px;
+}

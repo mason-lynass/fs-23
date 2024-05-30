@@ -34,12 +34,6 @@ button {
   opacity: .35;
 }
 
-#team-rankings-box {
-  background-color: white;
-  width: 90vw;
-  margin: auto;
-}
-
 @media screen and (max-width: 600px) {
   body {
     margin: 5px 0 0 0;

@@ -1,4 +1,5 @@
 import OneTeam from "./components/OneTeam";
+import "./CSS/teamrankings.css";
 import { useEffect, useState } from "react";
 
 function TeamRankings({ teams, teamsLoaded }) {
@@ -101,10 +102,18 @@ function TeamRankings({ teams, teamsLoaded }) {
       );
       console.log(sortedUsers);
       return sortedUsers.map((user) => {
+        let username = user.username;
+
+        // to hide full email addresses
+        if (username.includes("@")) {
+          let at = username.indexOf("@");
+          username = username.slice(0, at);
+        }
         return (
-          <div className="oneTeam" key={user.username}>
+          <div className="oneTeamTR" key={user.username}>
             <h2>{user.username}</h2>
-            <h3 className="total">{user.average_percentile}</h3>
+            <h3 className="totalTR">{user.average_percentile}</h3>
+            <p>{user[`score2023.01`]}</p>
             <p>{user[`score2023.03`]}</p>
             <p>{user[`score2023.05`]}</p>
             <p>{user[`score2023.07`]}</p>
@@ -123,9 +132,12 @@ function TeamRankings({ teams, teamsLoaded }) {
     <h2>loading...</h2>
   ) : (
     <div id="team-rankings-box">
-      <div className="oneTeam">
+      <div className="oneTeamTR">
         <h2>username</h2>
-        <h3 className="total">average score</h3>
+        <h3 className="totalTR" id="TRHeader">
+          average score
+        </h3>
+        <p>2023.01</p>
         <p>2023.03</p>
         <p>2023.05</p>
         <p>2023.07</p>
