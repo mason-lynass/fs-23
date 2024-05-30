@@ -46,7 +46,7 @@ function TeamRankings({ teams, teamsLoaded }) {
     users.forEach((u) => {
         const allPercentileKeys = Object.keys(u).filter((k) => k.includes('score')) //find the keys that have "score" in their name
         const allPercentiles = allPercentileKeys.map(key => u[key])
-        const total = allPercentiles.reduce((acc, value) => parseInt(acc) + parseInt(value), 0)
+        const total = allPercentiles.reduce((acc, value) => parseFloat(acc) + parseFloat(value), 0)
         console.log(total)
         const average = total / allPercentiles.length // something like this
         u.average_percentile = average
