@@ -20,6 +20,8 @@ function TeamRankings({ teams, teamsLoaded }) {
     if (teamsLoaded === true) {
         let bashos = []
         let users = []
+        let number = teams.length
+        let iNumber = 1
       for (let i = 0; i < teams.length; i++) {
         if (bashos.length === 0) {
           bashos.push({ basho: teams[i].basho, teams: [teams[i]] });
@@ -41,14 +43,26 @@ function TeamRankings({ teams, teamsLoaded }) {
         else {
           users.push({ username: teams[i].user.username });
         }
+
+        iNumber++
       }
       console.log(teams, bashos);
-      setAllBashos(bashos)
-      setAllUsers(users)
-      setBashosLoaded(true);
-      bashosCleanup();
+      if (number === iNumber) {
+        console.log('its working!')
+        setAllBashos(bashos)
+        setAllUsers(users)
+        setBashosLoaded(true);
+      }
+      
     }
   }, [teamsLoaded]);
+
+  useEffect(() => {
+    if (allBashos.length > 0 && allUsers.length > 0) {
+        console.log('doing bashosCleanup')
+        bashosCleanup();
+    }
+  }, [allBashos, allUsers])
 
   function usersCleanup() {
     allUsers.forEach((u) => {
