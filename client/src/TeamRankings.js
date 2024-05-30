@@ -57,7 +57,7 @@ function TeamRankings({ teams, teamsLoaded }) {
         b.teams.forEach((t) => {
             const percentile = (t.final_score / highest_score).toFixed(2)
             t.percentile = percentile
-            const targetUser = users.find((u) => u.username = t.user.username)
+            const targetUser = users.find((u) => u.username === t.user.username)
             targetUser[`score${t.basho}`] = percentile
         })
     }) 
