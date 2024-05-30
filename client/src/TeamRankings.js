@@ -172,7 +172,7 @@ function TeamRankings({ teams, teamsLoaded }) {
   ) : (
     <div id="team-rankings-box">
       <div className="oneTeamTR" id="TRHeaderColumn">
-        <h2 className="TRCol" id='TRUsername' onClick={handleSortState}>username</h2>
+        <h2 className="TRCol" id='TRUsername'>username</h2>
         <h3 className="totalTR TRCol" id="TRAverage" onClick={handleSortState}>
           average score
         </h3>
