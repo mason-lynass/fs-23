@@ -21,7 +21,7 @@ function TeamRankings({ teams, teamsLoaded }) {
         let bashos = []
         let users = []
         let number = teams.length
-        let iNumber = 1
+        let iNumber = 0
       for (let i = 0; i < teams.length; i++) {
         console.log(number, iNumber)
         if (bashos.length === 0) {
