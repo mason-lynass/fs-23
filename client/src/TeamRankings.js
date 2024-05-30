@@ -10,20 +10,18 @@ function TeamRankings({ teams, teamsLoaded }) {
   // once you've done this for every basho, add up each user's scores and divide it by their number of bashos - save this as a value "averageRank"
   // sort users by average rank, display the number of bashos, display their % of highest score in a table
 
-
   const [bashosLoaded, setBashosLoaded] = useState(false);
   const [usersLoaded, setUsersLoaded] = useState(false);
-  const [allUsers, setAllUsers] = useState([])
-  const [allBashos, setAllBashos] = useState([])
+  const [allUsers, setAllUsers] = useState([]);
+  const [allBashos, setAllBashos] = useState([]);
 
   useEffect(() => {
     if (teamsLoaded === true) {
-        let bashos = []
-        let users = []
-        let number = teams.length
-        let iNumber = 0
+      let bashos = [];
+      let users = [];
+      let number = teams.length;
+      let iNumber = 0;
       for (let i = 0; i < teams.length; i++) {
-        console.log(number, iNumber)
         if (bashos.length === 0) {
           bashos.push({ basho: teams[i].basho, teams: [teams[i]] });
         } else if (
@@ -37,27 +35,26 @@ function TeamRankings({ teams, teamsLoaded }) {
         }
 
         if (!users.some((u) => u.username === teams[i].user.username)) {
-            users.push({ username: teams[i].user.username });
-          }
-        iNumber++
+          users.push({ username: teams[i].user.username });
+        }
+        iNumber++;
       }
       console.log(teams, bashos, number, iNumber);
       if (number === iNumber) {
-        console.log('its working!')
-        setAllBashos(bashos)
-        setAllUsers(users)
+        console.log("its working!");
+        setAllBashos(bashos);
+        setAllUsers(users);
         setBashosLoaded(true);
       }
-      
     }
   }, [teamsLoaded]);
 
   useEffect(() => {
     if (allBashos.length > 0 && allUsers.length > 0) {
-        console.log('doing bashosCleanup')
-        bashosCleanup();
+      console.log("doing bashosCleanup");
+      bashosCleanup();
     }
-  }, [allBashos, allUsers])
+  }, [allBashos, allUsers]);
 
   function usersCleanup() {
     allUsers.forEach((u) => {
@@ -69,7 +66,6 @@ function TeamRankings({ teams, teamsLoaded }) {
         (acc, value) => parseFloat(acc) + parseFloat(value),
         0
       );
-      console.log(total);
       const average = (total / allPercentiles.length).toFixed(2); // something like this
       u.average_percentile = average;
     });
@@ -78,7 +74,7 @@ function TeamRankings({ teams, teamsLoaded }) {
   }
 
   function bashosCleanup() {
-    console.log(allBashos, allUsers)
+    console.log(allBashos, allUsers);
     allBashos.forEach((b) => {
       b.teams.sort((a, b) => b.final_score - a.final_score);
       const highest_score = b.teams[0].final_score;
@@ -94,12 +90,16 @@ function TeamRankings({ teams, teamsLoaded }) {
   }
 
   function allTeams() {
-    if (usersLoaded === true && allUsers[allUsers.length - 1].average_percentile) {
-        console.log(allUsers)
+    if (
+      usersLoaded === true &&
+      allUsers[allUsers.length - 1].average_percentile
+    ) {
+      console.log(allUsers);
       const sortedUsers = allUsers.sort(
-        (a, b) => parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
+        (a, b) =>
+          parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
       );
-      console.log(sortedUsers)
+      console.log(sortedUsers);
       return sortedUsers.map((user) => {
         return (
           <div className="oneTeam" key={user.username}>
@@ -119,7 +119,25 @@ function TeamRankings({ teams, teamsLoaded }) {
     }
   }
 
-  return usersLoaded === false ? <h2>loading...</h2> : <div>{allTeams()}</div>;
+  return usersLoaded === false ? (
+    <h2>loading...</h2>
+  ) : (
+    <div id="team-rankings-box">
+      <div className="oneTeam">
+        <h2>username</h2>
+        <h3 className="total">average score</h3>
+        <p>2023.03</p>
+        <p>2023.05</p>
+        <p>2023.07</p>
+        <p>2023.09</p>
+        <p>2023.11</p>
+        <p>2024.01</p>
+        <p>2024.03</p>
+        <p>2024.05</p>
+      </div>
+      <div>{allTeams()}</div>
+    </div>
+  );
 }
 
 export default TeamRankings;
