@@ -41,7 +41,7 @@ function TeamRankings({ teams, teamsLoaded }) {
           }
         iNumber++
       }
-      console.log(teams, bashos);
+      console.log(teams, bashos, number, iNumber);
       if (number === iNumber) {
         console.log('its working!')
         setAllBashos(bashos)
