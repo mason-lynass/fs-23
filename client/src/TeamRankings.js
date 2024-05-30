@@ -15,6 +15,7 @@ function TeamRankings({ teams, teamsLoaded }) {
   const [usersLoaded, setUsersLoaded] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
   const [allBashos, setAllBashos] = useState([]);
+  const [sortState, setSortState] = useState("default");
 
   useEffect(() => {
     if (teamsLoaded === true) {
@@ -57,6 +58,22 @@ function TeamRankings({ teams, teamsLoaded }) {
     }
   }, [allBashos, allUsers]);
 
+  function handleSortState(e) {
+    setSortState(e.target.id);
+    const target = document.getElementById(`${e.target.id}`);
+    setHighlight(target);
+  }
+
+  function setHighlight(target) {
+    const columns = document.querySelectorAll(".TRCol");
+    columns.forEach((col) => {
+      if (col.classList.contains("DBStatsActive")) {
+        col.classList.remove("DBStatsActive");
+      }
+    });
+    target.classList.add("DBStatsActive");
+  }
+
   function usersCleanup() {
     allUsers.forEach((u) => {
       const allPercentileKeys = Object.keys(u).filter((k) =>
@@ -69,8 +86,11 @@ function TeamRankings({ teams, teamsLoaded }) {
       );
       const average = (total / allPercentiles.length).toFixed(2); // something like this
       u.average_percentile = average;
-      u.weighted_average = (parseFloat(average) + (.1 * (allPercentiles.length - 1))).toFixed(2)
-      u.total = total.toFixed(2)
+      u.weighted_average = (
+        parseFloat(average) +
+        0.1 * (allPercentiles.length - 1)
+      ).toFixed(2);
+      u.total = total.toFixed(2);
     });
     console.log(allUsers);
     setUsersLoaded(true);
@@ -93,16 +113,30 @@ function TeamRankings({ teams, teamsLoaded }) {
   }
 
   function allTeams() {
-    if (
-      usersLoaded === true &&
-      allUsers[allUsers.length - 1].average_percentile
-    ) {
+    if (usersLoaded === true && allUsers[allUsers.length - 1].average_percentile) {
       console.log(allUsers);
-      const sortedUsers = allUsers.sort(
-        (a, b) =>
-        //   parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
-        parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
-      );
+      let sortedUsers
+      if (sortState === 'default') {
+        sortedUsers = allUsers.sort(
+            (a, b) =>
+              //   parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
+              parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
+          );
+      }
+      else if (sortState === 'TRUsername') sortedUsers = allUsers.sort((a, b) => a.username - b.username);
+      else if (sortState === 'TRAverage') sortedUsers = allUsers.sort((a, b) => parseFloat(b.average_percentile) - parseFloat(a.average_percentile));
+      else if (sortState === 'TRTotal') sortedUsers = allUsers.sort((a, b) => parseFloat(b.total) - parseFloat(a.total));
+      else if (sortState === 'TRWeighted') sortedUsers = allUsers.sort((a, b) => parseFloat(b.weighted_average) - parseFloat(a.weighted_average));
+      else if (sortState === '202301') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2023.01`]) - parseFloat(a[`score2023.01`]));
+      else if (sortState === '202303') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2023.03`]) - parseFloat(a[`score2023.03`]))
+      else if (sortState === '202305') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2023.05`]) - parseFloat(a[`score2023.05`]))
+      else if (sortState === '202307') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2023.07`]) - parseFloat(a[`score2023.07`]))
+      else if (sortState === '202309') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2023.09`]) - parseFloat(a[`score2023.09`]))
+      else if (sortState === '202311') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2023.11`]) - parseFloat(a[`score2023.11`]))
+      else if (sortState === '202401') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2024.01`]) - parseFloat(a[`score2024.01`]))
+      else if (sortState === '202403') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2024.03`]) - parseFloat(a[`score2024.03`]))
+      else if (sortState === '202405') sortedUsers = allUsers.sort((a, b) => parseFloat(b[`score2024.05`]) - parseFloat(a[`score2024.05`]))
+      
       console.log(sortedUsers);
       return sortedUsers.map((user) => {
         let username = user.username;
@@ -137,26 +171,44 @@ function TeamRankings({ teams, teamsLoaded }) {
     <h2>loading...</h2>
   ) : (
     <div id="team-rankings-box">
-      <div className="oneTeamTR">
-        <h2>username</h2>
-        <h3 className="totalTR" id="TRHeader">
+      <div className="oneTeamTR" id="TRHeaderColumn">
+        <h2 className="TRCol" id='TRUsername'>username</h2>
+        <h3 className="totalTR TRCol" id="TRAverage" onClick={handleSortState}>
           average score
         </h3>
-        <h3 className="totalTR" id="TRHeader">
+        <h3 className="totalTR TRCol" id="TRTotal" onClick={handleSortState}>
           total score
         </h3>
-        <h3 className="totalTR" id="TRHeader">
+        <h3 className="totalTR TRCol" id="TRWeighted" onClick={handleSortState}>
           weighted average
         </h3>
-        <p>2023.01</p>
-        <p>2023.03</p>
-        <p>2023.05</p>
-        <p>2023.07</p>
-        <p>2023.09</p>
-        <p>2023.11</p>
-        <p>2024.01</p>
-        <p>2024.03</p>
-        <p>2024.05</p>
+        <p className="TRCol" id="202301" onClick={handleSortState}>
+          2023.01
+        </p>
+        <p className="TRCol" id="202303" onClick={handleSortState}>
+          2023.03
+        </p>
+        <p className="TRCol" id="202305" onClick={handleSortState}>
+          2023.05
+        </p>
+        <p className="TRCol" id="202307" onClick={handleSortState}>
+          2023.07
+        </p>
+        <p className="TRCol" id="202309" onClick={handleSortState}>
+          2023.09
+        </p>
+        <p className="TRCol" id="202311" onClick={handleSortState}>
+          2023.11
+        </p>
+        <p className="TRCol" id="202401" onClick={handleSortState}>
+          2024.01
+        </p>
+        <p className="TRCol" id="202403" onClick={handleSortState}>
+          2024.03
+        </p>
+        <p className="TRCol" id="202405" onClick={handleSortState}>
+          2024.05
+        </p>
       </div>
       <div>{allTeams()}</div>
     </div>
