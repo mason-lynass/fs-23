@@ -37,7 +37,6 @@ function TeamRankings({ teams, teamsLoaded }) {
       }
       console.log(teams, bashos)
       setBashosLoaded(true)
-      setUsersLoaded(true)
       bashosCleanup()
     }
   }, [teamsLoaded]);
@@ -48,10 +47,11 @@ function TeamRankings({ teams, teamsLoaded }) {
         const allPercentiles = allPercentileKeys.map(key => u[key])
         const total = allPercentiles.reduce((acc, value) => parseFloat(acc) + parseFloat(value), 0)
         console.log(total)
-        const average = total / allPercentiles.length // something like this
+        const average = (total / allPercentiles.length).toFixed(2) // something like this
         u.average_percentile = average
     })
     console.log(users)
+    setUsersLoaded(true)
   }
 
   function bashosCleanup () {
@@ -70,13 +70,21 @@ function TeamRankings({ teams, teamsLoaded }) {
   }
 
   function allTeams() {
-    if (teamsLoaded === true) {
-      return teams.map((team) => {
+    if (usersLoaded === true) {
+        const sortedUsers = users.sort((a, b) => b.average_percentile - a.average_percentile)
+      return sortedUsers.map((user) => {
         return (
-          <div className="oneTeam" key={team.id}>
-            <h2>{team.user.username}</h2>
-            <p>{team.basho}</p>
-            <h3 className="total">{team.final_score}</h3>
+          <div className="oneTeam" key={user.username}>
+            <h2>{user.username}</h2>
+            <h3 className="total">{user.average_percentile}</h3>
+            <p>{user[`score2023.03`]}</p>
+            <p>{user[`score2023.05`]}</p>
+            <p>{user[`score2023.07`]}</p>
+            <p>{user[`score2023.09`]}</p>
+            <p>{user[`score2023.11`]}</p>
+            <p>{user[`score2024.01`]}</p>
+            <p>{user[`score2024.03`]}</p>
+            <p>{user[`score2024.05`]}</p>
           </div>
         );
       });
