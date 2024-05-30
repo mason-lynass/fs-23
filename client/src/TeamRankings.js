@@ -81,6 +81,7 @@ function TeamRankings({ teams, teamsLoaded }) {
 
   function allTeams() {
     if (usersLoaded === true) {
+        console.log(users)
       const sortedUsers = users.sort(
         (a, b) => parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
       );
