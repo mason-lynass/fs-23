@@ -69,6 +69,7 @@ function TeamRankings({ teams, teamsLoaded }) {
   }
 
   function bashosCleanup() {
+    console.log(allBashos, allUsers)
     allBashos.forEach((b) => {
       b.teams.sort((a, b) => b.final_score - a.final_score);
       const highest_score = b.teams[0].final_score;
