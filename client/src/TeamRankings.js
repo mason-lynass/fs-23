@@ -18,9 +18,14 @@ function TeamRankings({ teams, teamsLoaded }) {
   const [sortState, setSortState] = useState("default");
 
   useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then((r) => setAllUsers(r));
+  }, [])
+
+  useEffect(() => {
     if (teamsLoaded === true) {
       let bashos = [];
-      let users = [];
       let number = teams.length;
       let iNumber = 0;
       for (let i = 0; i < teams.length; i++) {
@@ -35,17 +40,12 @@ function TeamRankings({ teams, teamsLoaded }) {
           const target = bashos.find((b) => b.basho === teams[i].basho);
           target.teams.push(teams[i]);
         }
-
-        if (!users.some((u) => u.username === teams[i].user.username)) {
-          users.push({ username: teams[i].user.username });
-        }
         iNumber++;
       }
       console.log(teams, bashos, number, iNumber);
       if (number === iNumber) {
         console.log("its working!");
         setAllBashos(bashos);
-        setAllUsers(users);
         setBashosLoaded(true);
       }
     }
