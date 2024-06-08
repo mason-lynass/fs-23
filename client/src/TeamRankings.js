@@ -80,10 +80,7 @@ function TeamRankings({ teams, teamsLoaded }) {
         k.includes("score")
       ); //find the keys that have "score" in their name
       const allPercentiles = allPercentileKeys.map((key) => u[key]);
-      const total = allPercentiles.reduce(
-        (acc, value) => parseFloat(acc) + parseFloat(value),
-        0
-      );
+      const total = u.total_percentile
       const average = (total / allPercentiles.length).toFixed(2); // something like this
       u.average_percentile = average;
       u.weighted_average = (
@@ -99,13 +96,9 @@ function TeamRankings({ teams, teamsLoaded }) {
   function bashosCleanup() {
     console.log(allBashos, allUsers);
     allBashos.forEach((b) => {
-      b.teams.sort((a, b) => b.final_score - a.final_score);
-      const highest_score = b.teams[0].final_score;
       b.teams.forEach((t) => {
-        const percentile = (t.final_score / highest_score).toFixed(2);
-        t.percentile = percentile;
         const targetUser = allUsers.find((u) => u.username === t.user.username);
-        targetUser[`score${t.basho}`] = percentile;
+        targetUser[`score${t.basho}`] = t.percentile;
       });
     });
     console.log(allBashos, allUsers);
