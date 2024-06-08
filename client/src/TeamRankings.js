@@ -81,7 +81,7 @@ function TeamRankings({ teams, teamsLoaded }) {
       ); //find the keys that have "score" in their name
       const allPercentiles = allPercentileKeys.map((key) => u[key]);
       const total = u.total_percentile
-      const average = (total / allPercentiles.length).toFixed(2); // something like this
+      const average = (parseFloat(total) / allPercentiles.length).toFixed(2); // something like this
       u.average_percentile = average;
       u.weighted_average = (
         parseFloat(average) +
