@@ -75,6 +75,7 @@ function TeamRankings({ teams, teamsLoaded }) {
   }
 
   function usersCleanup() {
+    console.log(allUsers);
     allUsers.forEach((u) => {
       const allPercentileKeys = Object.keys(u).filter((k) =>
         k.includes("score")
