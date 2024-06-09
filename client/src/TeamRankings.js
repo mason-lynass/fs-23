@@ -55,7 +55,7 @@ function TeamRankings({ teams, teamsLoaded }) {
       const total = u.total_percentile;
       let average = 0;
       let weightedAverage = 0;
-      console.log(total)
+      console.log(total);
       if (parseFloat(total) > 0) {
         average = (parseFloat(total) / u.teams.length).toFixed(2); // something like this
         weightedAverage = (
@@ -66,16 +66,25 @@ function TeamRankings({ teams, teamsLoaded }) {
       u.average_percentile = average;
       u.weighted_average = weightedAverage;
     });
-    console.log(allUsers)
+    console.log(allUsers);
     setUsersLoaded(true);
   }
 
   function allTeams() {
-    if (
-      usersLoaded === true
-    ) {
+    if (usersLoaded === true) {
       console.log(allUsers);
       let sortedUsers;
+
+      function bashoSort(x) {
+        console.log(x)
+        sortedUsers = allUsers.sort((a, b) => {
+          let targetBasho = x
+          b.theScore = b.teams.find((t) => t.basho === targetBasho).final_score || 0
+          a.theScore = a.teams.find((t) => t.basho === targetBasho).final_score || 0
+          return b.theTeam - a.theTeam
+        } );
+      }
+
       if (sortState === "default") {
         sortedUsers = allUsers.sort(
           (a, b) =>
@@ -91,58 +100,17 @@ function TeamRankings({ teams, teamsLoaded }) {
         );
       else if (sortState === "TRTotal")
         sortedUsers = allUsers.sort(
-          (a, b) => parseFloat(b.total_percentile) - parseFloat(a.total_percentile)
+          (a, b) =>
+            parseFloat(b.total_percentile) - parseFloat(a.total_percentile)
         );
       else if (sortState === "TRWeighted")
         sortedUsers = allUsers.sort(
           (a, b) =>
             parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
         );
-      else if (sortState === "202301")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2023.01).final_score) - parseFloat(a.teams.find((t) => t.basho === 2023.01).final_score)
-        );
-      else if (sortState === "202303")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2023.03).final_score) - parseFloat(a.teams.find((t) => t.basho === 2023.03).final_score)
-        );
-      else if (sortState === "202305")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2023.05).final_score) - parseFloat(a.teams.find((t) => t.basho === 2023.05).final_score)
-        );
-      else if (sortState === "202307")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2023.07).final_score) - parseFloat(a.teams.find((t) => t.basho === 2023.07).final_score)
-        );
-      else if (sortState === "202309")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2023.09).final_score) - parseFloat(a.teams.find((t) => t.basho === 2023.09).final_score)
-        );
-      else if (sortState === "202311")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2023.11).final_score) - parseFloat(a.teams.find((t) => t.basho === 2023.11).final_score)
-        );
-      else if (sortState === "202401")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2024.01).final_score) - parseFloat(a.teams.find((t) => t.basho === 2024.01).final_score)
-        );
-      else if (sortState === "202403")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2024.03).final_score) - parseFloat(a.teams.find((t) => t.basho === 2024.03).final_score)
-        );
-      else if (sortState === "202405")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.teams.find((t) => t.basho === 2024.05).final_score) - parseFloat(a.teams.find((t) => t.basho === 2024.05).final_score)
-        );
+      else bashoSort(sortState)
+
+
 
       console.log(sortedUsers);
       return sortedUsers.map((user) => {
@@ -208,31 +176,31 @@ function TeamRankings({ teams, teamsLoaded }) {
         <h3 className="totalTR TRCol" id="TRWeighted" onClick={handleSortState}>
           weighted average
         </h3>
-        <p className="TRCol" id="202301" onClick={handleSortState}>
+        <p className="TRCol" id="2023.01" onClick={handleSortState}>
           2023.01
         </p>
-        <p className="TRCol" id="202303" onClick={handleSortState}>
+        <p className="TRCol" id="2023.03" onClick={handleSortState}>
           2023.03
         </p>
-        <p className="TRCol" id="202305" onClick={handleSortState}>
+        <p className="TRCol" id="2023.05" onClick={handleSortState}>
           2023.05
         </p>
-        <p className="TRCol" id="202307" onClick={handleSortState}>
+        <p className="TRCol" id="2023.07" onClick={handleSortState}>
           2023.07
         </p>
-        <p className="TRCol" id="202309" onClick={handleSortState}>
+        <p className="TRCol" id="2023.09" onClick={handleSortState}>
           2023.09
         </p>
-        <p className="TRCol" id="202311" onClick={handleSortState}>
+        <p className="TRCol" id="2023.11" onClick={handleSortState}>
           2023.11
         </p>
-        <p className="TRCol" id="202401" onClick={handleSortState}>
+        <p className="TRCol" id="2024.01" onClick={handleSortState}>
           2024.01
         </p>
-        <p className="TRCol" id="202403" onClick={handleSortState}>
+        <p className="TRCol" id="2024.03" onClick={handleSortState}>
           2024.03
         </p>
-        <p className="TRCol" id="202405" onClick={handleSortState}>
+        <p className="TRCol" id="2024.05" onClick={handleSortState}>
           2024.05
         </p>
       </div>
