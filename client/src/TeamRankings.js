@@ -103,15 +103,15 @@ function TeamRankings({ teams, teamsLoaded }) {
           username = username.slice(0, at);
         }
 
-        const hatsu2023 = user.teams.filter((t) => t.basho === 2023.01)
-        const haru2023 = user.teams.filter((t) => t.basho === 2023.03)
-        const natsu2023 = user.teams.filter((t) => t.basho === 2023.05)
-        const nagoya2023 = user.teams.filter((t) => t.basho === 2023.07)
-        const aki2023 = user.teams.filter((t) => t.basho === 2023.09)
-        const kyushu2023 = user.teams.filter((t) => t.basho === 2023.11)
-        const hatsu2024 = user.teams.filter((t) => t.basho === 2024.01)
-        const haru2024 = user.teams.filter((t) => t.basho === 2024.03)
-        const natsu2024 = user.teams.filter((t) => t.basho === 2024.05)
+        const hatsu2023 = user.teams.filter((t) => t.basho === 2023.01)[0]
+        const haru2023 = user.teams.filter((t) => t.basho === 2023.03)[0]
+        const natsu2023 = user.teams.filter((t) => t.basho === 2023.05)[0]
+        const nagoya2023 = user.teams.filter((t) => t.basho === 2023.07)[0]
+        const aki2023 = user.teams.filter((t) => t.basho === 2023.09)[0]
+        const kyushu2023 = user.teams.filter((t) => t.basho === 2023.11)[0]
+        const hatsu2024 = user.teams.filter((t) => t.basho === 2024.01)[0]
+        const haru2024 = user.teams.filter((t) => t.basho === 2024.03)[0]
+        const natsu2024 = user.teams.filter((t) => t.basho === 2024.05)[0]
 
         console.log(natsu2024, natsu2023, natsu2024.percentile)
 
