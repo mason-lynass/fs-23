@@ -91,7 +91,7 @@ function TeamRankings({ teams, teamsLoaded }) {
         );
       else if (sortState === "TRTotal")
         sortedUsers = allUsers.sort(
-          (a, b) => parseFloat(b.total) - parseFloat(a.total)
+          (a, b) => parseFloat(b.total_percentile) - parseFloat(a.total_percentile)
         );
       else if (sortState === "TRWeighted")
         sortedUsers = allUsers.sort(
@@ -101,47 +101,47 @@ function TeamRankings({ teams, teamsLoaded }) {
       else if (sortState === "202301")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2023.01`]) - parseFloat(a[`score2023.01`])
+            parseFloat(b.teams.find((b) => b.basho === 2023.01).final_score) - parseFloat(b.teams.find((b) => b.basho === 2023.01).final_score)
         );
       else if (sortState === "202303")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2023.03`]) - parseFloat(a[`score2023.03`])
+            parseFloat(b.teams.find((b) => b.basho === 2023.03).final_score) - parseFloat(b.teams.find((b) => b.basho === 2023.03).final_score)
         );
       else if (sortState === "202305")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2023.05`]) - parseFloat(a[`score2023.05`])
+            parseFloat(b.teams.find((b) => b.basho === 2023.05).final_score) - parseFloat(b.teams.find((b) => b.basho === 2023.05).final_score)
         );
       else if (sortState === "202307")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2023.07`]) - parseFloat(a[`score2023.07`])
+            parseFloat(b.teams.find((b) => b.basho === 2023.07).final_score) - parseFloat(b.teams.find((b) => b.basho === 2023.07).final_score)
         );
       else if (sortState === "202309")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2023.09`]) - parseFloat(a[`score2023.09`])
+            parseFloat(b.teams.find((b) => b.basho === 2023.09).final_score) - parseFloat(b.teams.find((b) => b.basho === 2023.09).final_score)
         );
       else if (sortState === "202311")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2023.11`]) - parseFloat(a[`score2023.11`])
+            parseFloat(b.teams.find((b) => b.basho === 2023.11).final_score) - parseFloat(b.teams.find((b) => b.basho === 2023.11).final_score)
         );
       else if (sortState === "202401")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2024.01`]) - parseFloat(a[`score2024.01`])
+            parseFloat(b.teams.find((b) => b.basho === 2024.01).final_score) - parseFloat(b.teams.find((b) => b.basho === 2024.01).final_score)
         );
       else if (sortState === "202403")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2024.03`]) - parseFloat(a[`score2024.03`])
+            parseFloat(b.teams.find((b) => b.basho === 2024.03).final_score) - parseFloat(b.teams.find((b) => b.basho === 2024.03).final_score)
         );
       else if (sortState === "202405")
         sortedUsers = allUsers.sort(
           (a, b) =>
-            parseFloat(b[`score2024.05`]) - parseFloat(a[`score2024.05`])
+            parseFloat(b.teams.find((b) => b.basho === 2024.05).final_score) - parseFloat(b.teams.find((b) => b.basho === 2024.05).final_score)
         );
 
       console.log(sortedUsers);
