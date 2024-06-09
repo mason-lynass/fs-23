@@ -103,15 +103,15 @@ function TeamRankings({ teams, teamsLoaded }) {
           username = username.slice(0, at);
         }
 
-        const hatsu2023 = user.teams.filter((t) => t.basho === 2023.01)[0]
-        const haru2023 = user.teams.filter((t) => t.basho === 2023.03)[0]
-        const natsu2023 = user.teams.filter((t) => t.basho === 2023.05)[0]
-        const nagoya2023 = user.teams.filter((t) => t.basho === 2023.07)[0]
-        const aki2023 = user.teams.filter((t) => t.basho === 2023.09)[0]
-        const kyushu2023 = user.teams.filter((t) => t.basho === 2023.11)[0]
-        const hatsu2024 = user.teams.filter((t) => t.basho === 2024.01)[0]
-        const haru2024 = user.teams.filter((t) => t.basho === 2024.03)[0]
-        const natsu2024 = user.teams.filter((t) => t.basho === 2024.05)[0]
+        const hatsu2023 = user.teams.filter((t) => t.basho === 2023.01)[0]  || ''
+        const haru2023 = user.teams.filter((t) => t.basho === 2023.03)[0]  || ''
+        const natsu2023 = user.teams.filter((t) => t.basho === 2023.05)[0]  || ''
+        const nagoya2023 = user.teams.filter((t) => t.basho === 2023.07)[0]  || ''
+        const aki2023 = user.teams.filter((t) => t.basho === 2023.09)[0]  || ''
+        const kyushu2023 = user.teams.filter((t) => t.basho === 2023.11)[0]  || ''
+        const hatsu2024 = user.teams.filter((t) => t.basho === 2024.01)[0]  || ''
+        const haru2024 = user.teams.filter((t) => t.basho === 2024.03)[0]  || ''
+        const natsu2024 = user.teams.filter((t) => t.basho === 2024.05)[0]  || ''
 
         console.log(natsu2024, natsu2023, natsu2024.percentile)
 
@@ -121,15 +121,15 @@ function TeamRankings({ teams, teamsLoaded }) {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
-            <p>{hatsu2023.percentile}</p>
-            <p>{haru2023.percentile}</p>
-            <p>{natsu2023.percentile}</p>
-            <p>{nagoya2023.percentile}</p>
-            <p>{aki2023.percentile}</p>
-            <p>{kyushu2023.percentile}</p>
-            <p>{hatsu2024.percentile}</p>
-            <p>{haru2024.percentile}</p>
-            <p>{natsu2024.percentile}</p>
+            <p>{hatsu2023 === '' ? hatsu2023.percentile : ''}</p>
+            <p>{haru2023 === '' ? haru2023.percentile : ''}</p>
+            <p>{natsu2023 === '' ? natsu2023.percentile : ''}</p>
+            <p>{nagoya2023 === '' ? nagoya2023.percentile : ''}</p>
+            <p>{aki2023 === '' ? aki2023.percentile : ''}</p>
+            <p>{kyushu2023 === '' ? kyushu2023.percentile : ''}</p>
+            <p>{hatsu2024 === '' ? hatsu2024.percentile : ''}</p>
+            <p>{haru2024 === '' ? haru2024.percentile : ''}</p>
+            <p>{natsu2024 === '' ? natsu2024.percentile : ''}</p>
           </div>
         );
       });
