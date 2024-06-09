@@ -66,6 +66,7 @@ function TeamRankings({ teams, teamsLoaded }) {
       u.average_percentile = average;
       u.weighted_average = weightedAverage;
     });
+    console.log(allUsers)
     setUsersLoaded(true);
   }
 
