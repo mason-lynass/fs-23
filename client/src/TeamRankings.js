@@ -18,10 +18,8 @@ function TeamRankings({ teams, teamsLoaded }) {
   // once you've done this for every basho, add up each user's scores and divide it by their number of bashos - save this as a value "averageRank"
   // sort users by average rank, display the number of bashos, display their % of highest score in a table
 
-  const [bashosLoaded, setBashosLoaded] = useState(false);
   const [usersLoaded, setUsersLoaded] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
-  const [allBashos, setAllBashos] = useState([]);
   const [sortState, setSortState] = useState("default");
 
   useEffect(() => {
@@ -112,8 +110,6 @@ function TeamRankings({ teams, teamsLoaded }) {
         const hatsu2024 = user.teams.filter((t) => t.basho === 2024.01)[0]  || ''
         const haru2024 = user.teams.filter((t) => t.basho === 2024.03)[0]  || ''
         const natsu2024 = user.teams.filter((t) => t.basho === 2024.05)[0]  || ''
-
-        console.log(natsu2024, natsu2023, natsu2024.percentile)
 
         return (
           <div className="oneTeamTR" key={user.username}>
