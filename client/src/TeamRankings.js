@@ -79,9 +79,14 @@ function TeamRankings({ teams, teamsLoaded }) {
         console.log(x)
         sortedUsers = allUsers.sort((a, b) => {
           let targetBasho = x
-          b.theScore = b.teams.find((t) => t.basho === targetBasho).final_score || 0
-          a.theScore = a.teams.find((t) => t.basho === targetBasho).final_score || 0
-          return b.theTeam - a.theTeam
+          let bTeam = b.teams.find((t) => t.basho === targetBasho)
+          let aTeam = a.teams.find((t) => t.basho === targetBasho)
+          let bScore, aScore
+          if (bTeam === undefined) bScore = 0
+          else bScore = bTeam.final_score
+          if (aTeam === undefined) aScore = 0
+          else aScore = aTeam.final_score
+          return bScore - aScore
         } );
       }
 
