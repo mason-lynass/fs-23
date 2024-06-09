@@ -113,6 +113,8 @@ function TeamRankings({ teams, teamsLoaded }) {
         const haru2024 = user.teams.filter((t) => t.basho = 2024.03)
         const natsu2024 = user.teams.filter((t) => t.basho = 2024.05)
 
+        console.log(natsu2024, natsu2023, natsu2024.percentile)
+
         return (
           <div className="oneTeamTR" key={user.username}>
             <h2>{user.username}</h2>
