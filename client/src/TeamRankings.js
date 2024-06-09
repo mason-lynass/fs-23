@@ -119,15 +119,15 @@ function TeamRankings({ teams, teamsLoaded }) {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
-            <p>{hatsu2023}</p>
-            <p>{haru2023}</p>
-            <p>{natsu2023}</p>
-            <p>{nagoya2023}</p>
-            <p>{aki2023}</p>
-            <p>{kyushu2023}</p>
-            <p>{hatsu2024}</p>
-            <p>{haru2024}</p>
-            <p>{natsu2024}</p>
+            <p>{hatsu2023.percentile}</p>
+            <p>{haru2023.percentile}</p>
+            <p>{natsu2023.percentile}</p>
+            <p>{nagoya2023.percentile}</p>
+            <p>{aki2023.percentile}</p>
+            <p>{kyushu2023.percentile}</p>
+            <p>{hatsu2024.percentile}</p>
+            <p>{haru2024.percentile}</p>
+            <p>{natsu2024.percentile}</p>
           </div>
         );
       });
