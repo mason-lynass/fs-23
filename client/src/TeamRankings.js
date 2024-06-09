@@ -32,7 +32,7 @@ function TeamRankings({ teams, teamsLoaded }) {
 
   useEffect(() => {
     if (allUsers.length > 0) {
-      console.log("doing bashosCleanup");
+      console.log("doing usersCleanup");
       usersCleanup();
     }
   }, [allUsers]);
@@ -102,21 +102,32 @@ function TeamRankings({ teams, teamsLoaded }) {
           let at = username.indexOf("@");
           username = username.slice(0, at);
         }
+
+        const hatsu2023 = user.teams.filter((t) => t.basho = 2023.01)
+        const haru2023 = user.teams.filter((t) => t.basho = 2023.03)
+        const natsu2023 = user.teams.filter((t) => t.basho = 2023.05)
+        const nagoya2023 = user.teams.filter((t) => t.basho = 2023.07)
+        const aki2023 = user.teams.filter((t) => t.basho = 2023.09)
+        const kyushu2023 = user.teams.filter((t) => t.basho = 2023.11)
+        const hatsu2024 = user.teams.filter((t) => t.basho = 2024.01)
+        const haru2024 = user.teams.filter((t) => t.basho = 2024.03)
+        const natsu2024 = user.teams.filter((t) => t.basho = 2024.05)
+
         return (
           <div className="oneTeamTR" key={user.username}>
             <h2>{user.username}</h2>
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
-            <p>{user.teams.filter((t) => t.basho === 2023.01).percentile}</p>
-            <p>{user.teams.filter((t) => t.basho === 2023.03).percentile}</p>
-            <p>{user.teams.filter((t) => t.basho === 2023.05).percentile}</p>
-            <p>{user.teams.filter((t) => t.basho === 2023.07).percentile}</p>
-            <p>{user.teams.filter((t) => t.basho === 2023.09).percentile}</p>
-            <p>{user.teams.filter((t) => t.basho === 2023.11).percentile}</p>
-            <p>{user.teams.filter((t) => t.basho === 2024.01).percentile}</p>
-            <p>{user.teams.filter((t) => t.basho === 2024.03).percentile}</p>
-            <p>{user.teams.filter((t) => t.basho === 2024.05).percentile}</p>
+            <p>{hatsu2023}</p>
+            <p>{haru2023}</p>
+            <p>{natsu2023}</p>
+            <p>{nagoya2023}</p>
+            <p>{aki2023}</p>
+            <p>{kyushu2023}</p>
+            <p>{hatsu2024}</p>
+            <p>{haru2024}</p>
+            <p>{natsu2024}</p>
           </div>
         );
       });
