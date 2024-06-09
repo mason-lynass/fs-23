@@ -72,8 +72,7 @@ function TeamRankings({ teams, teamsLoaded }) {
 
   function allTeams() {
     if (
-      usersLoaded === true &&
-      allUsers[allUsers.length - 1].average_percentile
+      usersLoaded === true
     ) {
       console.log(allUsers);
       let sortedUsers;
