@@ -55,7 +55,8 @@ function TeamRankings({ teams, teamsLoaded }) {
       const total = u.total_percentile;
       let average = 0;
       let weightedAverage = 0;
-      if (total > 0) {
+      console.log(total)
+      if (parseFloat(total) > 0) {
         average = (parseFloat(total) / u.teams.length).toFixed(2); // something like this
         weightedAverage = (
           parseFloat(average) +
