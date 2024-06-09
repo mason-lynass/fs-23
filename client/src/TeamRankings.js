@@ -121,15 +121,15 @@ function TeamRankings({ teams, teamsLoaded }) {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
-            <p>{hatsu2023 === '' ? hatsu2023.percentile : ''}</p>
-            <p>{haru2023 === '' ? haru2023.percentile : ''}</p>
-            <p>{natsu2023 === '' ? natsu2023.percentile : ''}</p>
-            <p>{nagoya2023 === '' ? nagoya2023.percentile : ''}</p>
-            <p>{aki2023 === '' ? aki2023.percentile : ''}</p>
-            <p>{kyushu2023 === '' ? kyushu2023.percentile : ''}</p>
-            <p>{hatsu2024 === '' ? hatsu2024.percentile : ''}</p>
-            <p>{haru2024 === '' ? haru2024.percentile : ''}</p>
-            <p>{natsu2024 === '' ? natsu2024.percentile : ''}</p>
+            <p>{hatsu2023 !== '' ? hatsu2023.percentile : ''}</p>
+            <p>{haru2023 !== '' ? haru2023.percentile : ''}</p>
+            <p>{natsu2023 !== '' ? natsu2023.percentile : ''}</p>
+            <p>{nagoya2023 !== '' ? nagoya2023.percentile : ''}</p>
+            <p>{aki2023 !== '' ? aki2023.percentile : ''}</p>
+            <p>{kyushu2023 !== '' ? kyushu2023.percentile : ''}</p>
+            <p>{hatsu2024 !== '' ? hatsu2024.percentile : ''}</p>
+            <p>{haru2024 !== '' ? haru2024.percentile : ''}</p>
+            <p>{natsu2024 !== '' ? natsu2024.percentile : ''}</p>
           </div>
         );
       });
