@@ -3,6 +3,13 @@ import "./CSS/teamrankings.css";
 import { useEffect, useState } from "react";
 
 function TeamRankings({ teams, teamsLoaded }) {
+
+  // get all of the users
+  // they already have teams with percentile values, so we don't need to calculate that
+  // users also already have total_percentiles, so we don't need to calculate that
+  // what we need to calculate is the average_percentile, which is just total_percentile / number of teams
+  // 
+
   // get all of the teams - this comes from a prop
   // go through all of the teams and create user objects for each username
   // organize all of the teams into bashos
@@ -24,39 +31,11 @@ function TeamRankings({ teams, teamsLoaded }) {
   }, [])
 
   useEffect(() => {
-    if (teamsLoaded === true) {
-      let bashos = [];
-      let number = teams.length;
-      let iNumber = 0;
-      for (let i = 0; i < teams.length; i++) {
-        if (bashos.length === 0) {
-          bashos.push({ basho: teams[i].basho, teams: [teams[i]] });
-        } else if (
-          bashos.length > 0 &&
-          bashos.some((b) => b.basho === teams[i].basho) === false
-        ) {
-          bashos.push({ basho: teams[i].basho, teams: [teams[i]] });
-        } else {
-          const target = bashos.find((b) => b.basho === teams[i].basho);
-          target.teams.push(teams[i]);
-        }
-        iNumber++;
-      }
-      console.log(teams, bashos, number, iNumber);
-      if (number === iNumber) {
-        console.log("its working!");
-        setAllBashos(bashos);
-        setBashosLoaded(true);
-      }
-    }
-  }, [teamsLoaded]);
-
-  useEffect(() => {
-    if (allBashos.length > 0 && allUsers.length > 0) {
+    if (allUsers.length > 0) {
       console.log("doing bashosCleanup");
-      bashosCleanup();
+      usersCleanup();
     }
-  }, [allBashos, allUsers]);
+  }, [allUsers]);
 
   function handleSortState(e) {
     setSortState(e.target.id);
@@ -77,33 +56,16 @@ function TeamRankings({ teams, teamsLoaded }) {
   function usersCleanup() {
     console.log(allUsers);
     allUsers.forEach((u) => {
-      const allPercentileKeys = Object.keys(u).filter((k) =>
-        k.includes("score")
-      ); //find the keys that have "score" in their name
-      const allPercentiles = allPercentileKeys.map((key) => u[key]);
       const total = u.total_percentile
-      const average = (parseFloat(total) / allPercentiles.length).toFixed(2); // something like this
+      const average = (parseFloat(total) / u.teams.length).toFixed(2); // something like this
       u.average_percentile = average;
       u.weighted_average = (
         parseFloat(average) +
-        0.1 * (allPercentiles.length - 1)
+        0.1 * (u.teams.length - 1)
       ).toFixed(2);
-      u.total = total.toFixed(2);
     });
     console.log(allUsers);
     setUsersLoaded(true);
-  }
-
-  function bashosCleanup() {
-    console.log(allBashos, allUsers);
-    allBashos.forEach((b) => {
-      b.teams.forEach((t) => {
-        const targetUser = allUsers.find((u) => u.username === t.user.username);
-        targetUser[`score${t.basho}`] = t.percentile;
-      });
-    });
-    console.log(allBashos, allUsers);
-    usersCleanup();
   }
 
   function allTeams() {
@@ -144,17 +106,17 @@ function TeamRankings({ teams, teamsLoaded }) {
           <div className="oneTeamTR" key={user.username}>
             <h2>{user.username}</h2>
             <h3 className="totalTR">{user.average_percentile}</h3>
-            <h3 className="totalTR">{user.total}</h3>
+            <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
-            <p>{user[`score2023.01`]}</p>
-            <p>{user[`score2023.03`]}</p>
-            <p>{user[`score2023.05`]}</p>
-            <p>{user[`score2023.07`]}</p>
-            <p>{user[`score2023.09`]}</p>
-            <p>{user[`score2023.11`]}</p>
-            <p>{user[`score2024.01`]}</p>
-            <p>{user[`score2024.03`]}</p>
-            <p>{user[`score2024.05`]}</p>
+            <p>{user.teams.filter((t) => t.basho === 2023.01).percentile}</p>
+            <p>{user.teams.filter((t) => t.basho === 2023.03).percentile}</p>
+            <p>{user.teams.filter((t) => t.basho === 2023.05).percentile}</p>
+            <p>{user.teams.filter((t) => t.basho === 2023.07).percentile}</p>
+            <p>{user.teams.filter((t) => t.basho === 2023.09).percentile}</p>
+            <p>{user.teams.filter((t) => t.basho === 2023.11).percentile}</p>
+            <p>{user.teams.filter((t) => t.basho === 2024.01).percentile}</p>
+            <p>{user.teams.filter((t) => t.basho === 2024.03).percentile}</p>
+            <p>{user.teams.filter((t) => t.basho === 2024.05).percentile}</p>
           </div>
         );
       });
