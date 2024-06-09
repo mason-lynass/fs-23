@@ -24,7 +24,7 @@ function TeamRankings({ teams, teamsLoaded }) {
   useEffect(() => {
     fetch("/users")
       .then((r) => r.json())
-      .then((r) => setAllUsers(r));
+      .then((r) => setAllUsers(r.filter((u) => u.teams.length > 0)));
   }, []);
 
   useEffect(() => {
@@ -172,7 +172,7 @@ function TeamRankings({ teams, teamsLoaded }) {
 
         return (
           <div className="oneTeamTR" key={user.username}>
-            <h2>{user.username}</h2>
+            <h2>{username}</h2>
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
