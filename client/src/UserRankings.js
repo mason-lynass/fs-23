@@ -158,6 +158,7 @@ function UserRankings() {
   return usersLoaded === false ? (
     <h2>loading...</h2>
   ) : (
+    <main>
     <div id="team-rankings-box">
       <div className="oneTeamTR" id="TRHeaderColumn">
         <h2 className="TRCol" id="TRUsername">
@@ -202,6 +203,12 @@ function UserRankings() {
       </div>
       <div>{allTeams()}</div>
     </div>
+    <div id='about-box'>
+        <p>Each basho has a different highest score, so basho scores are calculated as a percentage of the tournament winner's score.</p>
+        <p>Weighted averages are calculated as an average of each user's team's percentage, plus .1 for each tournament after the user's first tournament. I know it's arbitrary, but it's a way to reward regular players, I guess.</p>
+        <p>Feel free to email me if you have any questions - mklynass93@gmail.com</p>
+      </div>
+    </main>
   );
 }
 
