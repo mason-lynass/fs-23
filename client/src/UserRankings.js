@@ -1,8 +1,7 @@
-import OneTeam from "./components/OneTeam";
 import "./CSS/teamrankings.css";
 import { useEffect, useState } from "react";
 
-function TeamRankings({ teams, teamsLoaded }) {
+function UserRankings() {
   // get all of the users
   // they already have teams with percentile values, so we don't need to calculate that
   // users also already have total_percentiles, so we don't need to calculate that
@@ -70,11 +69,9 @@ function TeamRankings({ teams, teamsLoaded }) {
 
   function allTeams() {
     if (usersLoaded === true) {
-      console.log(allUsers);
       let sortedUsers;
 
       function bashoSort(x) {
-        console.log(x)
         sortedUsers = allUsers.sort((a, b) => {
           let targetBasho = parseFloat(x)
           let bTeam = b.teams.find((t) => t.basho === targetBasho)
@@ -84,7 +81,6 @@ function TeamRankings({ teams, teamsLoaded }) {
           else bScore = bTeam.final_score
           if (aTeam === undefined) aScore = 0
           else aScore = aTeam.final_score
-          console.log(b, a, bTeam, aTeam, bScore, aScore)
           return bScore - aScore
         } );
       }
@@ -114,9 +110,6 @@ function TeamRankings({ teams, teamsLoaded }) {
         );
       else bashoSort(sortState)
 
-
-
-      console.log(sortedUsers);
       return sortedUsers.map((user) => {
         let username = user.username;
 
@@ -213,4 +206,4 @@ function TeamRankings({ teams, teamsLoaded }) {
   );
 }
 
-export default TeamRankings;
+export default UserRankings;
