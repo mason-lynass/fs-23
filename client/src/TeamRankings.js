@@ -55,7 +55,6 @@ function TeamRankings({ teams, teamsLoaded }) {
       const total = u.total_percentile;
       let average = 0;
       let weightedAverage = 0;
-      console.log(total);
       if (parseFloat(total) > 0) {
         average = (parseFloat(total) / u.teams.length).toFixed(2); // something like this
         weightedAverage = (
@@ -66,7 +65,6 @@ function TeamRankings({ teams, teamsLoaded }) {
       u.average_percentile = average;
       u.weighted_average = weightedAverage;
     });
-    console.log(allUsers);
     setUsersLoaded(true);
   }
 
@@ -86,6 +84,7 @@ function TeamRankings({ teams, teamsLoaded }) {
           else bScore = bTeam.final_score
           if (aTeam === undefined) aScore = 0
           else aScore = aTeam.final_score
+          console.log(bTeam, aTeam, bScore, aScore)
           return bScore - aScore
         } );
       }
