@@ -76,7 +76,7 @@ function TeamRankings({ teams, teamsLoaded }) {
       function bashoSort(x) {
         console.log(x)
         sortedUsers = allUsers.sort((a, b) => {
-          let targetBasho = x
+          let targetBasho = parseFloat(x)
           let bTeam = b.teams.find((t) => t.basho === targetBasho)
           let aTeam = a.teams.find((t) => t.basho === targetBasho)
           let bScore, aScore
