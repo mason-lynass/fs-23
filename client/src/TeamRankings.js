@@ -84,7 +84,7 @@ function TeamRankings({ teams, teamsLoaded }) {
           else bScore = bTeam.final_score
           if (aTeam === undefined) aScore = 0
           else aScore = aTeam.final_score
-          console.log(bTeam, aTeam, bScore, aScore)
+          console.log(b, a, bTeam, aTeam, bScore, aScore)
           return bScore - aScore
         } );
       }
