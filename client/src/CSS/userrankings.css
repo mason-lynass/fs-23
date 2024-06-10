@@ -47,3 +47,13 @@
 #TRHeader, #TRAverage, #TRWeighted, #TRTotal {
     font-size: 14px;
 }
+
+#about-box {
+  background-color: antiquewhite;
+  border-radius: 20px;
+  padding: 10px;
+  width: 90vw;
+  max-width: 800px;
+  margin: 10px auto;
+  border: 1px solid black;
+}

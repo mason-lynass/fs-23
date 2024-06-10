@@ -27,11 +27,12 @@
   margin: 10px auto;
   width: fit-content;
   background-color: goldenrod;
-  border-radius: 10px;
+  border-radius: 50px;
 }
 
 #DBSubMenu button {
-  font-size: 24px;
+  font-size: 20px;
+  height: 40px;
 }
 
 #DBViewState {
