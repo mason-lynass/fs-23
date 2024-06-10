@@ -48,7 +48,7 @@ function Database({ rikishi, fsHistories }) {
         Click on a column header (basho, average score, kinboshi, etc.) to sort
         by that column
       </p>
-      {visibleTable()}
+      {dbRikishi.length > 0 ? <>{visibleTable()}</> : <h2>loading...</h2>}
       {/* {viewState === false && dbRikishi.length > 0 ? (
         <StatsAndInfo dbRikishi={dbRikishi} />
       ) : (
