@@ -21,6 +21,15 @@
   width: 120px;
 }
 
+#DBSubMenu {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: goldenrod;
+}
+
 #DBViewState {
   width: 120px;
   border: 2px solid black;

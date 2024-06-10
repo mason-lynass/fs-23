@@ -17,10 +17,9 @@ function Database({ rikishi, fsHistories }) {
   }, [rikishi]);
 
   function changeViewState(e) {
-    console.log(e.target);
-    setViewState(!viewState);
-    // setViewState(e.target)
-    // setPageTitle(e.target)
+    console.log(e);
+    setViewState(e.target.value)
+    setPageTitle(e.target.value)
   }
 
   function visibleTable() {
@@ -37,30 +36,24 @@ function Database({ rikishi, fsHistories }) {
 
   return rikishiLoaded === true ? (
     <div id="DBContainer">
-      {/* <div id="DBTop">
-        <p id="DBTopSpace"> </p>
-        <h1 id="DBTitle">
-          {viewState === false ? "Rikishi Stats & Info" : "Fantasy Sumo Stats"}
-        </h1>
-        <button id="DBViewState" onClick={changeViewState}>
-          {viewState === false ? "view FS Stats" : "view Rikishi Info"}
-        </button>
-      </div> */}
       <div id="DBTop">
-        <h1>{pageTitle}</h1>
-        <button onClick={(e) => changeViewState(e)}>Rikishi Stats & Info</button>
-        <button onClick={(e) => changeViewState(e)}>Fantasy Sumo Stats</button>
-        <button onClick={(e) => changeViewState(e)}>User Rankings</button>
+        <h1 id="DBTitle">{pageTitle}</h1>
+        <div id="DBSubMenu">
+            <button onClick={(e) => changeViewState(e)}>Rikishi Stats & Info</button>
+            <button onClick={(e) => changeViewState(e)}>Fantasy Sumo Stats</button>
+            <button onClick={(e) => changeViewState(e)}>User Rankings</button>
+        </div>
       </div>
       <p id="howToSort">
         Click on a column header (basho, average score, kinboshi, etc.) to sort
         by that column
       </p>
-      {viewState === false && dbRikishi.length > 0 ? (
+      {visibleTable()}
+      {/* {viewState === false && dbRikishi.length > 0 ? (
         <StatsAndInfo dbRikishi={dbRikishi} />
       ) : (
         <DbTest rikishi={rikishi} fsHistories={fsHistories} />
-      )}
+      )} */}
     </div>
   ) : (
     <h2>loading...</h2>
