@@ -6,7 +6,7 @@ import DbTest from "./components/DbTest";
 import UserRankings from "./UserRankings";
 
 function Database({ rikishi, fsHistories }) {
-  const [viewState, setViewState] = useState(false);
+  const [viewState, setViewState] = useState("Rikishi Stats & Info");
   const [dbRikishi, setDBRikishi] = useState([]);
   const [rikishiLoaded, setRikishiLoaded] = useState(false);
   const [pageTitle, setPageTitle] = useState("Rikishi Stats & Info");

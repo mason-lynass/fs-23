@@ -1,4 +1,4 @@
-import "./CSS/teamrankings.css";
+import "./CSS/userrankings.css";
 import { useEffect, useState } from "react";
 
 function UserRankings() {
