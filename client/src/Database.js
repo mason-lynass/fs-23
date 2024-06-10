@@ -17,13 +17,11 @@ function Database({ rikishi, fsHistories }) {
   }, [rikishi]);
 
   function changeViewState(e) {
-    console.log(e);
     setViewState(e.target.textContent)
     setPageTitle(e.target.textContent)
   }
 
   function visibleTable() {
-    console.log(dbRikishi, viewState)
     if (dbRikishi.length > 0) {
       if (viewState === "Rikishi Stats & Info") {
         return <StatsAndInfo dbRikishi={dbRikishi} />;

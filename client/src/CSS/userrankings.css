@@ -2,7 +2,7 @@
   background-color: white;
   width: 90vw;
   margin: 20px auto;
-  border: 5px ridge goldenrod;
+  border: 7px ridge goldenrod;
   max-height: 900px;
   overflow: scroll;
 }
@@ -13,6 +13,7 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  padding: 0 10px;
   border-bottom: 1px solid black;
 }
 
@@ -36,7 +37,7 @@
 .oneTeamTR p {
   width: 80px;
   margin: 5px auto;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .totalTR {

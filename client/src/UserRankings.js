@@ -28,7 +28,6 @@ function UserRankings() {
 
   useEffect(() => {
     if (allUsers.length > 0) {
-      console.log("doing usersCleanup");
       usersCleanup();
     }
   }, [allUsers]);
