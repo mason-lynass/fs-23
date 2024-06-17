@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_08_200952) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_08_203152) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -181,6 +181,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_08_200952) do
     t.integer "b161"
     t.integer "b162"
     t.integer "b163"
+    t.integer "b164"
+    t.integer "b165"
     t.index ["rikishi_id"], name: "index_fs_histories_on_rikishi_id"
   end
 
@@ -228,6 +230,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_08_200952) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "total_percentile", precision: 3, scale: 2
   end
 
   add_foreign_key "fs_histories", "rikishis"
