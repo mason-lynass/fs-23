@@ -24,7 +24,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
             r7: 0
         }
 
-        console.log(Object.values(fsHistories[0]).length)
+        // console.log(Object.values(fsHistories[0]).length)
 
         // temp should equal the last row of fsHistories, not including avg_score and rikishi
         let temp = (Object.values(fsHistories[0]).length - 1)
@@ -73,7 +73,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
             otherTeams = [...teams].filter((team) => team.basho === 2024.05)
         }
         
-        console.log(temp)
+        // console.log(temp)
 
         // use this to access fsHistories at the appropriate tournament
         temp = `b${temp}`
