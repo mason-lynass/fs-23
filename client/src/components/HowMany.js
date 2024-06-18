@@ -49,11 +49,11 @@ function HowMany({ teams, teamsLoaded, basho }) {
         return (
             <>
                 <div id='HowManyM'>
-                    <h3>Makuuchi wrestler count:</h3>
+                    <h3>Makuuchi wrestler count</h3>
                     {oneDivision(mRikishiArray)}
                 </div>
                 <div id='HowManyJ'>
-                    <h3>Juryo wrestler count:</h3>
+                    <h3>Juryo wrestler count</h3>
                     {oneDivision(jRikishiArray)}
                 </div>
             </>

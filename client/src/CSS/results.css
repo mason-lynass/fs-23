@@ -280,7 +280,7 @@
   }
 
   #HowManyMain {
-    gap: calc(50px + 3vw);
+    gap: 3vw;
   }
 
   #HowManyM h3,
@@ -302,7 +302,7 @@
   #MRR,
   #JRR {
     width: 43vw;
-    height: 400px;
+    height: 350px;
   }
 
   #MRR,

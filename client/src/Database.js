@@ -1,7 +1,6 @@
 import "./CSS/database.css";
 import { useEffect, useState } from "react";
 import StatsAndInfo from "./components/StatsAndInfo";
-// import FSStats from './components/FSStats'
 import DbTest from "./components/DbTest";
 import UserRankings from "./UserRankings";
 

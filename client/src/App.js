@@ -459,10 +459,6 @@ function App() {
       <NavBar user={user} setUser={setUser} hyoshigi={hyoshigi} />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        {/* <Route
-          path="/dbtest"
-          element={<DbTest fsHistories={fsHistories} rikishi={rikishi} />}
-        /> */}
         <Route
           path="/login"
           element={<Login setUser={setUser} clap={clap} />}

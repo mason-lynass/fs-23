@@ -110,7 +110,7 @@
   
     #RulesText,
     #ScoringFacts {
-      width: 95%;
+      width: 90%;
       padding: 0 10px;
     }
   
@@ -145,7 +145,7 @@
   
     #Kotomitsuki {
       display: block;
-      width: 100%;
+      width: calc(100% - 20px);
       border: 5px ridge gold;
     }
 

@@ -1,6 +1,5 @@
 import "./CSS/rules.css"
 import Kotomitsuki from "./images/kotomitsuki.webp"
-import { Link } from "react-router-dom"
 
 function Rules() {
 
@@ -66,8 +65,8 @@ function Rules() {
             
             <div id="MoreFacts">
                 <p>Daieisho set the high bar for active rikishi in January 2021, earning 43 points in his Yusho winning effort.</p>
-                <p>Right now, the active leader in Fantasy Sumo points per basho is Kiribayama, with 13.16 points.</p>
-                <p>Asashoryu is the all-time leader in average points per basho, but Hakuho set the all-time total points record at 1399 at the end of his much longer career.</p>
+                <p>Right now, the active leader in Fantasy Sumo points per basho is Takerufuji, with 39 points in a small sample size of 1 basho.</p>
+                <p>Hakuho set the all-time total points record at 1399, but Asashoryu has a higher average points per basho in his shorter career!</p>
                 <p>You can find Fantasy Sumo records going back 20 years and all kinds of other info about wrestlers on the <a id='DBLink' href="./database">Database page</a>.</p>
             </div>
         </div>
