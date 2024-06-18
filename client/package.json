@@ -4,14 +4,15 @@
   "private": true,
   "proxy": "http://localhost:3000",
   "engines": {
-    "node": "16.x"
+    "node": "20.x"
   },
   "dependencies": {
+    "@million/lint": "^1.0.0-rc.26",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "react": "18.2",
-    "react-dom": "18.2",
+    "react": "18.3",
+    "react-dom": "18.3",
     "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
     "use-sound": "^4.0.1",
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0"
   }
 }

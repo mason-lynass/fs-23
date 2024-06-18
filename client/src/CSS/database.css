@@ -189,7 +189,6 @@
 
   #DBTop {
     margin: 10px 10px 0 10px;
-    height: 60px;
   }
 
   #DBTopSpace,
@@ -271,6 +270,21 @@
   .DBAvg {
     width: 50px;
     font-weight: 800;
+  }
+
+  #DBSubMenu button {
+    font-size: 12px;
+    height: auto;
+    padding: 5px;
+  }
+
+  #DBSubMenu { 
+  gap: 10px;
+  padding: 5px;
+  margin: 10px auto;
+  width: fit-content;
+  background-color: goldenrod;
+  border-radius: 50px;
   }
 
 }
@@ -391,7 +405,7 @@ thead th {
   align-items: flex-end;
   background: white;
   height: 50px;
-  width: calc(246px + (50px * 158));
+  width: calc(246px + (50px * 165));
   border-bottom: 1px solid black;
 }
 

@@ -57,3 +57,39 @@
   margin: 10px auto;
   border: 1px solid black;
 }
+
+@media screen and (max-width: 600px) {
+
+  #team-rankings-box {
+    border: 3px solid goldenrod;
+    font-size: 10px;
+  }
+
+  .oneTeamTR {
+    margin: 0;
+    width: fit-content;
+    gap: 5px;
+  }
+
+  .oneTeamTR h2 {
+    width: 70px;
+    margin: 10px 0;
+  }
+
+  .totalTR {
+    width: 40px;
+  }
+
+  .oneTeamTR p {
+    width: 30px;
+    margin: 5px auto;
+  }
+
+   .oneTeamTR h3, .oneTeamTR h2 {
+    font-size: 10px;
+  }
+  
+  .oneTeamTR p, #TRHeader, #TRAverage, #TRWeighted, #TRTotal, #TRUsername {
+    font-size: 8px;
+  }  
+}

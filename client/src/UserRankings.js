@@ -140,15 +140,15 @@ function UserRankings() {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
-            <p>{hatsu2023 !== "" ? hatsu2023.percentile : ""}</p>
-            <p>{haru2023 !== "" ? haru2023.percentile : ""}</p>
-            <p>{natsu2023 !== "" ? natsu2023.percentile : ""}</p>
-            <p>{nagoya2023 !== "" ? nagoya2023.percentile : ""}</p>
-            <p>{aki2023 !== "" ? aki2023.percentile : ""}</p>
-            <p>{kyushu2023 !== "" ? kyushu2023.percentile : ""}</p>
-            <p>{hatsu2024 !== "" ? hatsu2024.percentile : ""}</p>
-            <p>{haru2024 !== "" ? haru2024.percentile : ""}</p>
             <p>{natsu2024 !== "" ? natsu2024.percentile : ""}</p>
+            <p>{haru2024 !== "" ? haru2024.percentile : ""}</p>
+            <p>{hatsu2024 !== "" ? hatsu2024.percentile : ""}</p>
+            <p>{kyushu2023 !== "" ? kyushu2023.percentile : ""}</p>
+            <p>{aki2023 !== "" ? aki2023.percentile : ""}</p>
+            <p>{nagoya2023 !== "" ? nagoya2023.percentile : ""}</p>
+            <p>{natsu2023 !== "" ? natsu2023.percentile : ""}</p>
+            <p>{haru2023 !== "" ? haru2023.percentile : ""}</p>
+            <p>{hatsu2023 !== "" ? hatsu2023.percentile : ""}</p>
           </div>
         );
       });
@@ -173,32 +173,32 @@ function UserRankings() {
         <h3 className="totalTR TRCol" id="TRWeighted" onClick={handleSortState}>
           weighted average
         </h3>
-        <p className="TRCol" id="2023.01" onClick={handleSortState}>
-          2023.01
-        </p>
-        <p className="TRCol" id="2023.03" onClick={handleSortState}>
-          2023.03
-        </p>
-        <p className="TRCol" id="2023.05" onClick={handleSortState}>
-          2023.05
-        </p>
-        <p className="TRCol" id="2023.07" onClick={handleSortState}>
-          2023.07
-        </p>
-        <p className="TRCol" id="2023.09" onClick={handleSortState}>
-          2023.09
-        </p>
-        <p className="TRCol" id="2023.11" onClick={handleSortState}>
-          2023.11
-        </p>
-        <p className="TRCol" id="2024.01" onClick={handleSortState}>
-          2024.01
+        <p className="TRCol" id="2024.05" onClick={handleSortState}>
+          2024.05
         </p>
         <p className="TRCol" id="2024.03" onClick={handleSortState}>
           2024.03
         </p>
-        <p className="TRCol" id="2024.05" onClick={handleSortState}>
-          2024.05
+        <p className="TRCol" id="2024.01" onClick={handleSortState}>
+          2024.01
+        </p>
+        <p className="TRCol" id="2023.11" onClick={handleSortState}>
+          2023.11
+        </p>
+        <p className="TRCol" id="2023.09" onClick={handleSortState}>
+          2023.09
+        </p>
+        <p className="TRCol" id="2023.07" onClick={handleSortState}>
+          2023.07
+        </p>
+        <p className="TRCol" id="2023.05" onClick={handleSortState}>
+          2023.05
+        </p>
+        <p className="TRCol" id="2023.03" onClick={handleSortState}>
+          2023.03
+        </p>
+        <p className="TRCol" id="2023.01" onClick={handleSortState}>
+          2023.01
         </p>
       </div>
       <div>{allTeams()}</div>

@@ -73,7 +73,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
             otherTeams = [...teams].filter((team) => team.basho === 2024.05)
         }
         
-        // console.log(temp)
+        console.log(temp)
 
         // use this to access fsHistories at the appropriate tournament
         temp = `b${temp}`
@@ -85,6 +85,8 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
         teamScores.r5 = actualTeam[4][0].fsHistories[0][temp]
         teamScores.r6 = actualTeam[5][0].fsHistories[0][temp]
         teamScores.r7 = team.final_score - teamScores.r1 - teamScores.r2 - teamScores.r3 - teamScores.r4 - teamScores.r5 - teamScores.r6
+
+        console.log(teamScores)
 
         const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
         const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
