@@ -25,7 +25,7 @@ import UserRankings from "./UserRankings";
 // import HowMany from './components/HowMany';
 
 function App() {
-  const basho = 2024.05;
+  const basho = 2024.07;
   const [user, setUser] = useState(null);
   const [rikishi, setRikishi] = useState([]);
   const [teams, setTeams] = useState([]);
