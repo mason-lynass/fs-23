@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :rikishis, only: [:index, :show]
   resources :users, only: [:index, :show, :create]
   resources :fs_histories, only: [:index, :show, :create]
+  resources :fantasy_sumo_histories, only: [:index, :show, :create]
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
