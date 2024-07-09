@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :fantasy_sumo_histories
   resources :teams, only: [:index, :show, :create, :destroy]
   resources :rikishis, only: [:index, :show]
   resources :users, only: [:index, :show, :create]
