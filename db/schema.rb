@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_09_234010) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_11_072515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -168,7 +168,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_09_234010) do
     t.integer "b198211"
     t.integer "b198301"
     t.integer "b198303"
-    t.integer "b195305"
+    t.integer "b198305"
     t.integer "b198307"
     t.integer "b198309"
     t.integer "b198311"
