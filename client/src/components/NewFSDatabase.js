@@ -11,11 +11,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
     const [newRikishi, setNewRikishi] = useState([])
     const [retiredState, setRetiredState] = useState(true)
 
-    // useEffect(() => {
-    //     fetch("/fantasy_sumo_histories")
-    //       .then((r) => r.json())
-    //       .then((r) => setFsHistories(r));
-    //   }, []);
+    console.log(fsHistories)
 
     // one fsHistories are loaded, update newRikishi and scoreCells
     useEffect(() => {
@@ -79,7 +75,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
     }
 
     // fsHistories sort definitions
-    const averageSort = [...newRikishi].sort((a, b) => b.avg_fs_score - a.avg_fs_score)
+    const averageSort = [...newRikishi].sort((a, b) => b.avg_fantasy_sumo_score - a.avg_fantasy_sumo_score)
     const shikonaSort = [...newRikishi].sort((a, b) => a.rikishi.shikona.localeCompare(b.rikishi.shikona))
     const totalSort = [...newRikishi].sort((a, b) => {
         function getTotalPoints (x) {
@@ -122,10 +118,10 @@ function NewFSDatabase({ fsHistories, rikishi }) {
     function FSRikishiSwitch() {
         switch (viewState) {
             case 'default': {
-                return AllHistories(shikonaSort)
+                return AllHistories(averageSort)
             }
             case 'average': {
-                return AllHistories(averageSort)
+                return AllHistories(shikonaSort)
             }
             case 'total': {
                 return AllHistories(totalSort)
@@ -168,7 +164,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
                             <img className="dbtest-rikishi-image" src={image} alt={'picture of' + history.rikishi.shikona}></img>
                             <h4 className="dbtest-rikishi-name">{history.rikishi.shikona}</h4>
                             <p className="dbtest-rikishi-total">{totalPoints}</p>
-                            <p className="dbtest-rikishi-avg">{history.avg_fs_score}</p>
+                            <p className="dbtest-rikishi-avg">{history.avg_fantasy_sumo_score}</p>
                         </th>
                         <div className="dbtest-one-rikishi-scores">
                             {displayOneRikishi(history)}
@@ -333,7 +329,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
                 <thead id='dbtest-basho-row'>
                     <div id='dbtest-basho-sticky'>
                         <th className="dbtest-basho-image highlight" id='default' onClick={handleViewState}>reset</th>
-                        <th className="dbtest-rikishi-name highlight" id='shikona' onClick={handleViewState}></th>
+                        <th className="dbtest-rikishi-name highlight" id='shikona' onClick={handleViewState}>shikona</th>
                         <th className="dbtest-basho-total highlight" id='total' onClick={handleViewState}>total FS points</th>
                         <th className="dbtest-basho-avg highlight" id='average' onClick={handleViewState}>average score</th>
                     </div>
