@@ -482,7 +482,7 @@ tbody div th .dbtest-rikishi-image {
   vertical-align: middle;
 }
 
-.dbtest-basho-avg, .dbtest-basho-image, .dbtest-basho-total {
+.dbtest-basho-avg, .dbtest-basho-image, .dbtest-basho-total, .dbtest-rikishi-name {
   font-size: 10px;
   padding: 18px 1px;
 }
