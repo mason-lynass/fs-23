@@ -21,7 +21,7 @@ import Database from "./Database";
 import Account from "./Account";
 import Terminology from "./Terminology";
 import UserRankings from "./UserRankings";
-import NewFSDatabase from '../components/NewFSDatabase'
+import NewFSDatabase from './components/NewFSDatabase'
 // import DbTest from './components/DbTest';
 // import HowMany from './components/HowMany';
 
