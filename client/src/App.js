@@ -21,7 +21,7 @@ import Database from "./Database";
 import Account from "./Account";
 import Terminology from "./Terminology";
 import UserRankings from "./UserRankings";
-import NewFSDatabase from './components/NewFSDatabase'
+import NewFSDatabase from "./components/NewFSDatabase";
 // import DbTest from './components/DbTest';
 // import HowMany from './components/HowMany';
 
@@ -32,6 +32,7 @@ function App() {
   const [teams, setTeams] = useState([]);
   const [teamsLoaded, setTeamsLoaded] = useState(false);
   const [fsHistories, setFsHistories] = useState([]);
+  const [fantasySumoHistories, setFantasySumoHistories] = useState([])
 
   const [clap] = useSound(Clap);
   const [hyoshigi] = useSound(Hyoshigi);
@@ -411,10 +412,10 @@ function App() {
     "thepersephonies",
     "Marmoris",
     "Xenthea",
-    'Jazum',
-    'FastCash',
-    'andonishiki',
-    'SumoMaster696969'
+    "Jazum",
+    "FastCash",
+    "andonishiki",
+    "SumoMaster696969",
   ];
 
   useEffect(() => {
@@ -442,6 +443,9 @@ function App() {
     fetch("/fs_histories")
       .then((r) => r.json())
       .then((r) => setFsHistories(r));
+    fetch("/fantasy_sumo_histories")
+      .then((r) => r.json())
+      .then((r) => setFantasySumoHistories(r));
   }, []);
 
   if (rikishi.length > 0 && fsHistories.length > 0) {
@@ -481,8 +485,8 @@ function App() {
         />
         <Route path="/rules" element={<Rules />} />
         <Route path="/terminology" element={<Terminology />} />
-        <Route path='/team-rankings' element={<UserRankings/>} />
-        <Route path='/fsh-test' element={<NewFSDatabase rikishi={rikishi}/>} />
+        <Route path="/team-rankings" element={<UserRankings />} />
+        <Route path="/fsh-test" element={<NewFSDatabase fsHistories={fantasySumoHistories} rikishi={rikishi} />} />
         <Route
           path="/draft"
           element={

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import "../CSS/database.css"
 
-function NewFSDatabase({ rikishi }) {
+function NewFSDatabase({ fsHistories, rikishi }) {
 
-    const [fsHistories, setFsHistories] = useState([])
+    // const [fsHistories, setFsHistories] = useState([])
     const [viewState, setViewState] = useState('default')
     const [scoreCells, setScoreCells] = useState([])
     const [searchOne, setSearchOne] = useState("")
@@ -11,11 +11,11 @@ function NewFSDatabase({ rikishi }) {
     const [newRikishi, setNewRikishi] = useState([])
     const [retiredState, setRetiredState] = useState(true)
 
-    useEffect(() => {
-        fetch("/fantasy_sumo_histories")
-          .then((r) => r.json())
-          .then((r) => setFsHistories(r));
-      }, []);
+    // useEffect(() => {
+    //     fetch("/fantasy_sumo_histories")
+    //       .then((r) => r.json())
+    //       .then((r) => setFsHistories(r));
+    //   }, []);
 
     // one fsHistories are loaded, update newRikishi and scoreCells
     useEffect(() => {
