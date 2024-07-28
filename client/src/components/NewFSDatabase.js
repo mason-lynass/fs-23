@@ -145,9 +145,11 @@ function NewFSDatabase({ fsHistories, rikishi }) {
 
     const allScores = Object.entries(targetRikishi[1]).filter((el) => el[0].includes('b')).filter((el) => el[1] !== null)
 
+    console.log(allScores)
+
     let bestScore = ["", 0]
 
-    for (let i = 0; i < allScores.length; i++) {
+    for (let i = 0; i <= allScores.length; i++) {
         if (allScores[i][i] > bestScore[1]) bestScore = allScores[i]
     }
 
