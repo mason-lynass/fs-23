@@ -103,7 +103,6 @@ function NewFSDatabase({ fsHistories, rikishi }) {
 
   // adding and removing classes to highlight a clicked column header
   function setHighlight(target) {
-    console.log(target);
     if (fsHistories.length > 0) {
       // const columns = document.querySelectorAll(".dbtest-basho" && ".dbtest-basho-image" && ".dbtest-rikishi-name" && ".dbtest-basho-avg")
       const columns = document.querySelectorAll(".highlight");
@@ -150,22 +149,16 @@ function NewFSDatabase({ fsHistories, rikishi }) {
       .filter((el) => el[0].includes("b"))
       .filter((el) => el[1] !== null);
 
-    console.log(allScores);
-
     let bestScore = ["", 0];
 
     for (let i = 0; i < allScores.length; i++) {
       if (allScores[i][1] > bestScore[1]) bestScore = allScores[i];
     }
 
-    console.log(bestScore);
-
     const pastSix = allScores
       .filter((score) => score[1] !== null)
       .reverse()
       .slice(0, 6);
-
-    console.log(pastSix)
 
     function calculate_age(dob) {
       const birthdate = new Date(dob);
