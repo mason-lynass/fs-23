@@ -163,7 +163,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
     const pastSix = allScores
       .filter((score) => score[1] !== null)
       .reverse()
-      .slice(0, 5);
+      .slice(0, 6);
 
     console.log(pastSix)
 
@@ -286,7 +286,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
             ></img>
             <h4
               onClick={() => handleRikishiOpenClick(history)}
-              className="dbtest-rikishi-name"
+              className="dbtest-rikishi-name dbtest-rikishi-link-hover"
             >
               {history.rikishi.shikona}
             </h4>
@@ -422,7 +422,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         }
       }
       return bashoRowsArray.map((x) => {
-        const theID = `b${x[1].split('.').join()}`
+        const theID = `b${x[1].split('.').join('')}`
         return (
           <th
             key={x}
