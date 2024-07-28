@@ -112,7 +112,7 @@
 }
 
 .DBOneRikishi:nth-child(2n) {
-  background-color: rgba(5,5,5,.05);
+  background-color: rgba(5, 5, 5, 0.05);
 }
 
 .DBImage {
@@ -170,11 +170,10 @@
 }
 
 @media screen and (max-width: 600px) {
-
   #howToSort {
     width: 80vw;
     margin: auto;
-    font-size: calc((2 - 1) * 1.2vw + .5rem);
+    font-size: calc((2 - 1) * 1.2vw + 0.5rem);
   }
 
   #hrFSStats {
@@ -194,7 +193,7 @@
   #DBTopSpace,
   #DBViewState {
     width: 20vw;
-    font-size: calc((2 - 1) * 1.2vw + .3rem);
+    font-size: calc((2 - 1) * 1.2vw + 0.3rem);
     height: 40px;
   }
 
@@ -202,7 +201,7 @@
     width: fit-content;
     padding: 5px 10px;
     border-radius: 5px;
-    font-size: calc((1.7 - 1) * 1.2vw + .8rem);
+    font-size: calc((1.7 - 1) * 1.2vw + 0.8rem);
   }
 
   #DBContainer {
@@ -216,7 +215,6 @@
     height: 72vh;
     border: 3px ridge goldenrod;
   }
-
 
   #DBTableColumns,
   .DBOneRikishi {
@@ -278,14 +276,13 @@
     padding: 5px;
   }
 
-  #DBSubMenu { 
-  gap: 10px;
-  padding: 5px;
-  margin: 10px auto;
-  width: fit-content;
-  border-radius: 50px;
+  #DBSubMenu {
+    gap: 10px;
+    padding: 5px;
+    margin: 10px auto;
+    width: fit-content;
+    border-radius: 50px;
   }
-
 }
 
 main {
@@ -343,7 +340,6 @@ main {
 @media screen and (max-width: 1000px) {
   #dbtest-all-filters {
     flex-flow: column-reverse nowrap;
-
   }
 
   #dbtest-filters {
@@ -392,7 +388,6 @@ thead th {
   position: sticky;
   left: 0;
   z-index: 2;
-  
 }
 
 #dbtest-basho-row {
@@ -404,30 +399,36 @@ thead th {
   align-items: flex-end;
   background: white;
   height: 50px;
-  width: calc(246px + (50px * 165));
+  width: calc(267px + (50px * 401));
   border-bottom: 1px solid black;
 }
 
-tbody, thead, .dbtest-one-rikishi {
-  width: calc(246px + (50px * 158));
+tbody,
+thead,
+.dbtest-one-rikishi {
+  width: calc(267px + (50px * 401));
 }
 
-.dbtest-one-rikishi:nth-of-type(even), .dbtest-basho:nth-child(2n+1), .dbtest-one-score:nth-child(even), .dbtest-one-rikishi-header:nth-of-type(2n) {
-  background: rgba(194, 194, 194, .3);
+.dbtest-one-rikishi:nth-of-type(even),
+.dbtest-basho:nth-child(2n + 1),
+.dbtest-one-score:nth-child(even),
+.dbtest-one-rikishi-header:nth-of-type(2n) {
+  background: rgba(194, 194, 194, 0.3);
 }
 
 .dbtest-one-score {
   height: 14px;
 }
 
-.dbtest-one-score, .dbtest-basho {
+.dbtest-one-score,
+.dbtest-basho {
   width: 40px;
   margin: 0;
   vertical-align: bottom;
   padding: 18px 5px;
   font-size: 10px;
   flex-shrink: 0;
-  text-align: center; 
+  text-align: center;
 }
 
 .dbtest-one-rikishi-scores {
@@ -471,7 +472,27 @@ tbody div th .dbtest-rikishi-image {
   margin: auto;
 }
 
-.dbtest-rikishi-avg, .dbtest-basho-avg, .dbtest-basho-total, .dbtest-rikishi-total {
+.dbtest-rikishi-link-hover {
+  width: 120px;
+  padding: 10px 0;
+  margin: auto;
+}
+
+.dbtest-rikishi-link-hover .dbtest-rikishi-name {
+  width: 116px;
+  padding: 0;
+  text-align: center;
+}
+
+.dbtest-rikishi-link-hover:hover {
+  border: 2px solid rgb(184, 2, 2);
+  width: 116px;
+}
+
+.dbtest-rikishi-avg,
+.dbtest-basho-avg,
+.dbtest-basho-total,
+.dbtest-rikishi-total {
   width: 70px;
   flex-shrink: 0;
   text-align: center;
@@ -482,7 +503,10 @@ tbody div th .dbtest-rikishi-image {
   vertical-align: middle;
 }
 
-.dbtest-basho-avg, .dbtest-basho-image, .dbtest-basho-total, #shikona {
+.dbtest-basho-avg,
+.dbtest-basho-image,
+.dbtest-basho-total,
+#shikona {
   font-size: 10px;
   padding: 18px 1px;
 }
@@ -491,13 +515,65 @@ tbody div th .dbtest-rikishi-image {
   padding: 0;
 }
 
-.dbtest-one-rikishi-header > img, h4, p {
+.dbtest-one-rikishi-header > img,
+h4,
+p {
   padding: 0px 1px;
 }
 
 .more-padding {
   padding-top: 25px;
   padding-bottom: 25px;
+}
+
+#rikishi-info-dialog {
+  z-index: 5;
+  display: block;
+  width: 80vw;
+  max-width: 600px;
+  position: absolute;
+  top: 400px;
+  right: 0;
+  padding: 0 1em;
+}
+
+#rikishi-info-close {
+  position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background-color: red;
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 2px;
+    font-size: 18px;
+}
+
+.rikishi-info-title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.rikishi-info-title img {
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+}
+
+#rikishi-info-text {
+  text-align: center;
+}
+
+#rikishi-fs-recent {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 30px;
 }
 
 @media screen and (max-width: 600px) {
