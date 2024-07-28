@@ -83,19 +83,9 @@ function NewFSDatabase({ fsHistories, rikishi }) {
   const shikonaSort = [...newRikishi].sort((a, b) =>
     a.rikishi.shikona.localeCompare(b.rikishi.shikona)
   );
-  const totalSort = [...newRikishi].sort((a, b) => {
-    function getTotalPoints(x) {
-      const notNullBashos = Object.entries(x)
-        .filter((entry) => entry[0].includes("b"))
-        .filter((entry) => entry[1] !== null);
-
-      let scores = [];
-      notNullBashos.forEach((score) => scores.push(score[1]));
-      const totalPoints = scores.reduce((a, b) => a + b, 0);
-      return totalPoints;
-    }
-    return getTotalPoints(b) - getTotalPoints(a);
-  });
+  const totalSort = [...newRikishi].sort(
+    (a, b) => b.total_points - a.total_points
+  );
 
   function xSort(x) {
     return [...newRikishi].sort((a, b) => b[x] - a[x]);
@@ -262,13 +252,6 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         image =
           "https://sumo.or.jp/img/sumo_data/rikishi/60x60/kanto_no_image.jpg";
 
-      const notNullBashos = Object.entries(history)
-        .filter((entry) => entry[0].includes("b"))
-        .filter((entry) => entry[1] !== null);
-      let scores = [];
-      notNullBashos.forEach((score) => scores.push(score[1]));
-      const totalPoints = scores.reduce((a, b) => a + b, 0);
-
       return (
         <div className="dbtest-one-rikishi">
           <th className="dbtest-one-rikishi-header">
@@ -283,7 +266,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
             >
               {history.rikishi.shikona}
             </h4>
-            <p className="dbtest-rikishi-total">{totalPoints}</p>
+            <p className="dbtest-rikishi-total">{history.total_points}</p>
             <p className="dbtest-rikishi-avg">
               {history.avg_fantasy_sumo_score}
             </p>
