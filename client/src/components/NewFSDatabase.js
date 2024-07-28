@@ -150,7 +150,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
     let bestScore = ["", 0]
 
     for (let i = 0; i <= allScores.length; i++) {
-        if (allScores[i][i] > bestScore[1]) bestScore = allScores[i]
+        if (allScores[i][1] > bestScore[1]) bestScore = allScores[i]
     }
 
     console.log(bestScore)

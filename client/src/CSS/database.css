@@ -459,7 +459,7 @@ tbody div th .dbtest-rikishi-image {
 }
 
 .dbtest-rikishi-name {
-  width: 116px;
+  width: 118px;
   flex-shrink: 0;
   margin: 0;
   text-align: center;
@@ -556,6 +556,7 @@ p {
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 .rikishi-info-title img {
@@ -574,6 +575,8 @@ p {
   justify-content: center;
   align-items: center;
   gap: 10px 30px;
+  max-width: 400px;
+  margin: auto;
 }
 
 @media screen and (max-width: 600px) {
