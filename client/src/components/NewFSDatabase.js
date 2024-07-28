@@ -294,30 +294,30 @@ function NewFSDatabase({ fsHistories, rikishi }) {
       for (const basho of reverseOrder) {
         let year = 2024;
 
-        if (basho >= 373) {
+        if (basho >= 374) {
           year = year - Math.floor((reverseOrder.length - basho) / 6);
           switch (basho % 6) {
-            case 5: {
+            case 0: {
               bashoRowsArray.push([basho, year + ".01"]);
               break;
             }
-            case 0: {
+            case 1: {
               bashoRowsArray.push([basho, year + ".03"]);
               break;
             }
-            case 1: {
+            case 2: {
               bashoRowsArray.push([basho, year + ".05"]);
               break;
             }
-            case 2: {
+            case 3: {
               bashoRowsArray.push([basho, year + ".07"]);
               break;
             }
-            case 3: {
+            case 4: {
               bashoRowsArray.push([basho, year + ".09"]);
               break;
             }
-            case 4: {
+            case 5: {
               bashoRowsArray.push([basho, year + ".11"]);
               break;
             }
@@ -328,31 +328,31 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         }
 
         // i think this had to be offset by one because there was no tournament due to COVID?
-        if (basho < 373 && basho > 319) {
+        if (basho < 374 && basho > 320) {
           year = year - Math.floor((reverseOrder.length - (basho - 1)) / 6);
 
           switch (basho % 6) {
-            case 0: {
+            case 1: {
               bashoRowsArray.push([basho, year + ".01"]);
               break;
             }
-            case 1: {
+            case 2: {
               bashoRowsArray.push([basho, year + ".03"]);
               break;
             }
-            case 2: {
+            case 3: {
               bashoRowsArray.push([basho, year + ".05"]);
               break;
             }
-            case 3: {
+            case 4: {
               bashoRowsArray.push([basho, year + ".07"]);
               break;
             }
-            case 4: {
+            case 5: {
               bashoRowsArray.push([basho, year + ".09"]);
               break;
             }
-            case 5: {
+            case 0: {
               bashoRowsArray.push([basho, year + ".11"]);
               break;
             }
@@ -363,31 +363,31 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         }
 
         // another offset for that time that they cancelled the basho to investigate match fixing
-        if (basho > 0 && basho <= 319) {
+        if (basho > 0 && basho <= 320) {
           year = year - Math.floor((reverseOrder.length - (basho - 2)) / 6);
 
           switch (basho % 6) {
-            case 1: {
+            case 2: {
               bashoRowsArray.push([basho, year + ".01"]);
               break;
             }
-            case 2: {
+            case 3: {
               bashoRowsArray.push([basho, year + ".03"]);
               break;
             }
-            case 3: {
+            case 4: {
               bashoRowsArray.push([basho, year + ".05"]);
               break;
             }
-            case 4: {
+            case 5: {
               bashoRowsArray.push([basho, year + ".07"]);
               break;
             }
-            case 5: {
+            case 6: {
               bashoRowsArray.push([basho, year + ".09"]);
               break;
             }
-            case 0: {
+            case 1: {
               bashoRowsArray.push([basho, year + ".11"]);
               break;
             }
