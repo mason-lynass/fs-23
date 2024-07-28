@@ -521,6 +521,7 @@ function App() {
             <Database
               rikishi={rankSort(rikishi, true)}
               fsHistories={fsHistories}
+              fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
           }
