@@ -486,7 +486,7 @@ function App() {
         <Route path="/rules" element={<Rules />} />
         <Route path="/terminology" element={<Terminology />} />
         <Route path="/team-rankings" element={<UserRankings />} />
-        <Route path="/fsh-test" element={<NewFSDatabase fsHistories={fantasySumoHistories} rikishi={rikishi} />} />
+        {/* <Route path="/fsh-test" element={<NewFSDatabase fsHistories={fantasySumoHistories} rikishi={rikishi} />} /> */}
         <Route
           path="/draft"
           element={
