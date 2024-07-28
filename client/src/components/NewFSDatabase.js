@@ -129,6 +129,9 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         return AllHistories(averageSort);
       }
       case "average": {
+        return AllHistories(averageSort);
+      }
+      case "shikona": {
         return AllHistories(shikonaSort);
       }
       case "total": {
@@ -143,19 +146,26 @@ function NewFSDatabase({ fsHistories, rikishi }) {
   function openRikishiInfo(targetRikishi) {
     const rikishi = targetRikishi[0];
 
-    const allScores = Object.entries(targetRikishi[1]).filter((el) => el[0].includes('b')).filter((el) => el[1] !== null)
+    const allScores = Object.entries(targetRikishi[1])
+      .filter((el) => el[0].includes("b"))
+      .filter((el) => el[1] !== null);
 
-    console.log(allScores)
+    console.log(allScores);
 
-    let bestScore = ["", 0]
+    let bestScore = ["", 0];
 
     for (let i = 0; i < allScores.length; i++) {
-        if (allScores[i][1] > bestScore[1]) bestScore = allScores[i]
+      if (allScores[i][1] > bestScore[1]) bestScore = allScores[i];
     }
 
-    console.log(bestScore)
+    console.log(bestScore);
 
-    const pastSix = allScores.filter((score) => score[1] !== null).reverse().slice(0,5)
+    const pastSix = allScores
+      .filter((score) => score[1] !== null)
+      .reverse()
+      .slice(0, 5);
+
+    console.log(pastSix)
 
     function calculate_age(dob) {
       const birthdate = new Date(dob);
@@ -184,7 +194,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
               alt={rikishi.shikona}
             ></img>
             <h1>{rikishi.shikona}</h1>
-            <p>{rikishi.retired === true ? 'retired' : ''}</p>
+            <p>{rikishi.retired === true ? "retired" : ""}</p>
           </div>
           <div id="rikishi-info-text">
             <p>
@@ -204,16 +214,24 @@ function NewFSDatabase({ fsHistories, rikishi }) {
               Gino-sho: {rikishi.gino_sho} --- Shukun-sho: {rikishi.shukun_sho}{" "}
               --- Kanto-sho: {rikishi.kanto_sho}
             </p>
-            <hr style={{width: '200px', margin: '10px auto'}}/>
+            <hr style={{ width: "200px", margin: "10px auto" }} />
             <p></p>
             <p>
-              Average Fantasy Sumo Points: {targetRikishi[1].avg_fantasy_sumo_score}
+              Average Fantasy Sumo Points:{" "}
+              {targetRikishi[1].avg_fantasy_sumo_score}
             </p>
-            <p>Best Fantasy Sumo performance: {bestScore[1]} ({bestScore[0].slice(1)})</p>
+            <p>
+              Best Fantasy Sumo performance: {bestScore[1]} (
+              {bestScore[0].slice(1)})
+            </p>
             <p>Recent Fantasy Sumo History:</p>
-            <div id='rikishi-fs-recent'>
-            {pastSix.map((el) => <p>{el[0].slice(1)} : {el[1]}</p>)}
-                </div>
+            <div id="rikishi-fs-recent">
+              {pastSix.map((el) => (
+                <p>
+                  {el[0].slice(1)} : {el[1]}
+                </p>
+              ))}
+            </div>
             <p></p>
           </div>
         </div>
@@ -266,14 +284,12 @@ function NewFSDatabase({ fsHistories, rikishi }) {
               src={image}
               alt={"picture of" + history.rikishi.shikona}
             ></img>
-            <a className="dbtest-rikishi-link-hover">
-              <h4
-                onClick={() => handleRikishiOpenClick(history)}
-                className="dbtest-rikishi-name"
-              >
-                {history.rikishi.shikona}
-              </h4>
-            </a>
+            <h4
+              onClick={() => handleRikishiOpenClick(history)}
+              className="dbtest-rikishi-name"
+            >
+              {history.rikishi.shikona}
+            </h4>
             <p className="dbtest-rikishi-total">{totalPoints}</p>
             <p className="dbtest-rikishi-avg">
               {history.avg_fantasy_sumo_score}
@@ -406,10 +422,11 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         }
       }
       return bashoRowsArray.map((x) => {
+        const theID = `b${x[1].split('.').join()}`
         return (
           <th
             key={x}
-            id={"b" + x[0]}
+            id={theID}
             className="dbtest-basho highlight"
             onClick={handleViewState}
           >
