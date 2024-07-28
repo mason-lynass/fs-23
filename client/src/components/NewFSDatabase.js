@@ -83,19 +83,9 @@ function NewFSDatabase({ fsHistories, rikishi }) {
   const shikonaSort = [...newRikishi].sort((a, b) =>
     a.rikishi.shikona.localeCompare(b.rikishi.shikona)
   );
-  const totalSort = [...newRikishi].sort((a, b) => {
-    function getTotalPoints(x) {
-      const notNullBashos = Object.entries(x)
-        .filter((entry) => entry[0].includes("b"))
-        .filter((entry) => entry[1] !== null);
-
-      let scores = [];
-      notNullBashos.forEach((score) => scores.push(score[1]));
-      const totalPoints = scores.reduce((a, b) => a + b, 0);
-      return totalPoints;
-    }
-    return getTotalPoints(b) - getTotalPoints(a);
-  });
+  const totalSort = [...newRikishi].sort(
+    (a, b) => b.total_points - a.total_points
+  );
 
   function xSort(x) {
     return [...newRikishi].sort((a, b) => b[x] - a[x]);
