@@ -210,7 +210,6 @@
 
   #DBTable {
     margin: 10px auto;
-    padding-top: 5px;
     width: 95%;
     height: 72vh;
     border: 3px ridge goldenrod;
@@ -587,7 +586,7 @@ p {
 
 @media screen and (max-width: 600px) {
   main {
-    margin: 5vw auto;
+    margin: 10px auto;
   }
 
   #dbtest-filters {
@@ -616,9 +615,36 @@ p {
     color: white;
     border: 2px solid goldenrod;
     border-radius: 20px;
-    width: 60vw;
-    margin: 2vw auto;
+    max-width: 90vw;
+    margin: 10px auto;
     text-align: center;
-    padding: 2vw;
+    padding: 5px;
+  }
+
+  #dbtest-full-table p {
+    font-size: 12px;
+  }
+
+  .dbtest-one-rikishi {
+    height: 40px;
+  }
+
+  .dbtest-basho-image, tbody div th .dbtest-rikishi-image {
+    width: 40px;
+  }
+
+  .dbtest-rikishi-name {
+    font-size: 10px;
+    width: 85px;
+    padding: 13px 0;
+  }
+
+  #shikona {
+    padding: 18px 0;
+  }
+
+  .dbtest-basho-total, .dbtest-rikishi-total, .dbtest-basho-avg, .dbtest-rikishi-avg {
+    width: 45px;
+    padding: 9px 1px;
   }
 }
