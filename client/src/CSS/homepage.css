@@ -58,7 +58,7 @@
   }
 
   #hello p {
-    font-size: calc((2 - 1) * 1.2vw + .6rem);
+    font-size: calc((2 - 1) * 1.2vw + .45rem);
   }
 
   #hello h2 {
@@ -87,6 +87,6 @@
   #takanoshoFootball {
     width: 90vw;
     height: calc(90vw * (768 / 600));
-    margin: 0 auto;
+    margin: -10px auto 10px auto;
   }
 }

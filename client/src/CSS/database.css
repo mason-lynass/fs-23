@@ -214,12 +214,14 @@
     width: 95%;
     height: 72vh;
     border: 3px ridge goldenrod;
+    text-decoration: none;
   }
 
   #DBTableColumns,
   .DBOneRikishi {
     justify-content: left;
     height: 35px;
+    width: 515px;
     min-width: 300px;
   }
 
@@ -274,6 +276,10 @@
     font-size: 12px;
     height: auto;
     padding: 5px;
+    color: black;
+    text-decoration: none;
+    box-shadow: none;
+    border: 1px solid black;
   }
 
   #DBSubMenu {

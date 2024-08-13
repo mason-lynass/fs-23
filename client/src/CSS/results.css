@@ -206,12 +206,14 @@
 @media screen and (max-width: 600px) {
 
   #resultsButton {
-    margin: 1vh auto;
+    margin: 0 auto;
+    padding: 10px 20px;
   }
 
   .resultsContainer,
   #allRR {
     margin: 20px 2vw;
+    text-decoration: none;
   }
 
   .teamsTop,
