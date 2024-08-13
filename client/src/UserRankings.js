@@ -138,7 +138,7 @@ function UserRankings() {
 
         return (
           <div className="oneTeamTR" key={user.username}>
-            <h2>{username}</h2>
+            <h2 style={{overflow: 'hidden'}}>{username}</h2>
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
@@ -159,7 +159,7 @@ function UserRankings() {
   }
 
   return usersLoaded === false ? (
-    <h2>loading...</h2>
+    <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>
   ) : (
     <main>
       <div id="team-rankings-box">
