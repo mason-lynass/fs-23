@@ -27,6 +27,10 @@ function NewFSDatabase({ fsHistories, rikishi }) {
     setNewRikishi(result);
   }, [searchOne, searchTwo]);
 
+  useEffect(() => {
+
+  }, [])
+
   // if a score cell doesn't have a number, give it more padding
   scoreCells.forEach((cell) => {
     if (cell.innerHTML === " ") cell.classList.add("more-padding");
@@ -416,12 +420,16 @@ function NewFSDatabase({ fsHistories, rikishi }) {
   // defined so that mobile users see the 'sorry' message
   const mobileScreen = window.matchMedia("(max-width: 600px)");
 
-  return (
+  return viewState === 'loading'  ? (
+    <main>
+      <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>
+    </main>
+  ) : (
     <main>
       {mobileScreen.matches ? (
-        <h4 id="sorry">
+        <p id="sorry">
           sorry, this database looks a lot better on a computer!
-        </h4>
+        </p>
       ) : (
         ""
       )}
