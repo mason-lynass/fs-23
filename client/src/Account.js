@@ -12,7 +12,7 @@ function Account({
   clap,
   teams,
   goodTeamNames,
-  fsHistories,
+  fantasySumoHistories,
   basho,
 }) {
   const navigate = useNavigate();
@@ -144,7 +144,7 @@ function Account({
               user={user}
               rikishi={rikishi}
               teams={teams}
-              fsHistories={fsHistories}
+              fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
           ) : null}

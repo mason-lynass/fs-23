@@ -478,7 +478,7 @@ function App() {
               clap={clap}
               teams={teams}
               goodTeamNames={goodTeamNames}
-              fsHistories={fsHistories}
+              fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
           }
