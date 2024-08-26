@@ -26,6 +26,8 @@ function PreviousTeams({ user, rikishi, teams, fantasySumoHistories, basho }) {
             r7: 0
         }
 
+        console.log(actualTeam)
+
         // console.log(Object.values(fsHistories[0]).length)
 
         // temp should equal the last row of fsHistories, not including avg_score and rikishi
@@ -92,7 +94,7 @@ function PreviousTeams({ user, rikishi, teams, fantasySumoHistories, basho }) {
         teamScores.r6 = actualTeam[5][0].fsHistories[0][temp]
         teamScores.r7 = team.final_score - teamScores.r1 - teamScores.r2 - teamScores.r3 - teamScores.r4 - teamScores.r5 - teamScores.r6
 
-        // console.log(teamScores)
+        console.log(teamScores)
 
         const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
         const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
