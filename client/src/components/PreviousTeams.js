@@ -1,7 +1,9 @@
-function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
+function PreviousTeams({ user, rikishi, teams, fantasySumoHistories, basho }) {
 
     const userTeams = user.teams
     const oldTeams = userTeams.filter((team) => team.basho !== basho).sort((a, b) => b.basho - a.basho)
+
+    console.log(fantasySumoHistories)
 
     function oneOldTeam(team) {
 
@@ -27,11 +29,11 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
         // console.log(Object.values(fsHistories[0]).length)
 
         // temp should equal the last row of fsHistories, not including avg_score and rikishi
-        let temp = (Object.values(fsHistories[0]).length - 1)
+        let temp = (Object.values(fantasySumoHistories[0]).length - 1)
         let otherTeams = []
 
         // after the splice, this array will only be the values of scores
-        let fsHistoriesArray = Object.values(fsHistories[0])
+        let fsHistoriesArray = Object.values(fantasySumoHistories[0])
         fsHistoriesArray.splice(fsHistoriesArray.length - 2, 2)
 
         // console.log(fsHistoriesArray)
