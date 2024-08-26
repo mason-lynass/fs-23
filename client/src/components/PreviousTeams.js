@@ -3,8 +3,6 @@ function PreviousTeams({ user, rikishi, teams, fantasySumoHistories, basho }) {
     const userTeams = user.teams
     const oldTeams = userTeams.filter((team) => team.basho !== basho).sort((a, b) => b.basho - a.basho)
 
-    console.log(fantasySumoHistories)
-
     function oneOldTeam(team) {
 
         // shikona are the only strings in the object, so filter all strings to get only the wrestler names
@@ -25,8 +23,6 @@ function PreviousTeams({ user, rikishi, teams, fantasySumoHistories, basho }) {
             r6: 0,
             r7: 0
         }
-
-        console.log(actualTeam)
 
         // console.log(Object.values(fsHistories[0]).length)
 
