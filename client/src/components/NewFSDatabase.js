@@ -421,6 +421,8 @@ function NewFSDatabase({ fsHistories, rikishi }) {
   const mobileScreen = window.matchMedia("(max-width: 600px)");
 
   return viewState === 'loading'  ? (
+    // do something like usersCleanup in userRankings to add a bunch of k/v pairs for each rikishi Object,
+    // so that it doesn't have to recalculate and format everything with each sort and re-render
     <main>
       <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>
     </main>
