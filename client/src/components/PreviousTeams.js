@@ -78,6 +78,8 @@ function PreviousTeams({ user, rikishi, teams, fantasySumoHistories, basho }) {
         // use this to access fsHistories at the appropriate tournament
         temp = `b${temp}`
 
+        console.log(actualTeam)
+
         teamScores.r1 = actualTeam[0][0].fsHistories[0][temp]
         teamScores.r2 = actualTeam[1][0].fsHistories[0][temp]
         teamScores.r3 = actualTeam[2][0].fsHistories[0][temp]
