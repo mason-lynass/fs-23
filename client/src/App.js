@@ -21,12 +21,12 @@ import Database from "./Database";
 import Account from "./Account";
 import Terminology from "./Terminology";
 import UserRankings from "./UserRankings";
-import NewFSDatabase from "./components/NewFSDatabase";
+// import NewFSDatabase from "./components/NewFSDatabase";
 // import DbTest from './components/DbTest';
 // import HowMany from './components/HowMany';
 
 function App() {
-  const basho = 2024.07;
+  const basho = 2024.09;
   const [user, setUser] = useState(null);
   const [rikishi, setRikishi] = useState([]);
   const [teams, setTeams] = useState([]);
