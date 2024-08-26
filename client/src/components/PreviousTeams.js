@@ -37,43 +37,47 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
         // console.log(fsHistoriesArray)
 
         if (team.basho === 2023.01) {
-            temp = temp - 9
+            temp = 202301
             otherTeams = [...teams].filter((team) => team.basho === 2023.01)
         }
         else if (team.basho === 2023.03) {
-            temp = temp - 8
+            temp = 202303
             otherTeams = [...teams].filter((team) => team.basho === 2023.03)
         }
         else if (team.basho === 2023.05) {
-            temp = temp - 7
+            temp = 202305
             otherTeams = [...teams].filter((team) => team.basho === 2023.05)
         }
         else if (team.basho === 2023.07) {
-            temp = temp - 6
+            temp = 202307
             otherTeams = [...teams].filter((team) => team.basho === 2023.07)
         }
         else if (team.basho === 2023.09) {
-            temp = temp - 5
+            temp = 202309
             otherTeams = [...teams].filter((team) => team.basho === 2023.09)
         }
         else if (team.basho === 2023.11) {
-            temp = temp - 4
+            temp = 202311
             otherTeams = [...teams].filter((team) => team.basho === 2023.11)
         }
         else if (team.basho === 2024.01) {
-            temp = temp - 3
+            temp = 202401
             otherTeams = [...teams].filter((team) => team.basho === 2024.01)
         }
         else if (team.basho === 2024.03) {
-            temp = temp - 2
+            temp = 202403
             otherTeams = [...teams].filter((team) => team.basho === 2024.03)
         }
         else if (team.basho === 2024.05) {
-            temp = temp - 1
+            temp = 202405
             otherTeams = [...teams].filter((team) => team.basho === 2024.05)
         }
+        else if (team.basho === 2024.07) {
+            temp = 202407
+            otherTeams = [...teams].filter((team) => team.basho === 2024.07)
+        }
         
-        console.log(temp)
+        // console.log(temp)
 
         // use this to access fsHistories at the appropriate tournament
         temp = `b${temp}`
@@ -86,7 +90,7 @@ function PreviousTeams({ user, rikishi, teams, fsHistories, basho }) {
         teamScores.r6 = actualTeam[5][0].fsHistories[0][temp]
         teamScores.r7 = team.final_score - teamScores.r1 - teamScores.r2 - teamScores.r3 - teamScores.r4 - teamScores.r5 - teamScores.r6
 
-        console.log(teamScores)
+        // console.log(teamScores)
 
         const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score)
         const teamPosition = sortedOtherTeams.findIndex((team) => team.user.username === user.username) + 1
