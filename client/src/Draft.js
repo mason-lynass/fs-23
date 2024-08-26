@@ -376,13 +376,13 @@ function Draft({
   console.log(rikishi)
 
   // turn this back on when it's time to draft (it's not right now)
-  // return (
-  // (rikishiLoaded === true) ?
-  // areYouLoggedIn()
-  // : <p style={{ textAlign: 'center'}}>loading...</p>
-  // )
+  return (
+  (rikishiLoaded === true) ?
+  areYouLoggedIn()
+  : <p style={{ textAlign: 'center'}}>loading...</p>
+  )
 
-  return <Hello />;
+  // return <Hello />;
 }
 
 export default Draft;
