@@ -373,8 +373,6 @@ function Draft({
     );
   }
 
-  console.log(rikishi)
-
   // turn this back on when it's time to draft (it's not right now)
   return (
   (rikishiLoaded === true) ?
