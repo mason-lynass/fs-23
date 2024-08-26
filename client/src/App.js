@@ -448,10 +448,10 @@ function App() {
       .then((r) => setFantasySumoHistories(r));
   }, []);
 
-  if (rikishi.length > 0 && fsHistories.length > 0) {
+  if (rikishi.length > 0 && fantasySumoHistories.length > 0) {
     rikishi.forEach((rikishi) => {
       Object.assign(rikishi, {
-        fsHistories: fsHistories.filter(
+        fsHistories: fantasySumoHistories.filter(
           (h) => h.rikishi.shikona === rikishi.shikona
         ),
       });
