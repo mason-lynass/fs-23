@@ -1,174 +1,119 @@
-function PreviousTeams({ user, rikishi, teams, fantasySumoHistories, basho }) {
-  const userTeams = user.teams;
-  const oldTeams = userTeams
-    .filter((team) => team.basho !== basho)
-    .sort((a, b) => b.basho - a.basho);
+import { useMemo, useCallback } from "react";
 
-  console.log(fantasySumoHistories);
+function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
+    const oldTeams = useMemo(() => {
+        return user.teams
+          .filter((team) => team.basho !== basho)
+          .sort((a, b) => b.basho - a.basho);
+      }, [user.teams, basho]);
 
-  function oneOldTeam(team) {
-    // shikona are the only strings in the object, so filter all strings to get only the wrestler names
+  // Memoize the getFilteredTeams function to filter teams by basho
+  const getFilteredTeams = useCallback((teamBasho) => {
+    return teams.filter((team) => team.basho === teamBasho);
+  }, [teams]);
 
-    function isString(value) {
-      return typeof value === "string";
-    }
-    const OTRikishiStrings = Object.values(team).filter(isString);
+  // Move isString function outside to avoid re-creation
+  const isString = (value) => typeof value === "string";
 
+  // Memoize the rendering of each previous team
+  const allPrevTeams = useMemo(() => {
+    return oldTeams.map((team) => {
+      // Filter out the string values (rikishi names) from the team object
+      const OTRikishiStrings = Object.values(team).filter(isString);
 
-    console.log(OTRikishiStrings)
-    let actualTeam = [];
-    for (let i = 0; i < 7; i++) {
-      let target = [...fantasySumoHistories].filter(
-        (f) => f.rikishi.shikona === OTRikishiStrings[i]
-      )[0];
-      actualTeam.push(target);
-    }
+      // Get the actual team details from fantasySumoHistories
+      const actualTeam = OTRikishiStrings.map((shikona) =>
+        fantasySumoHistories.find((f) => f.rikishi.shikona === shikona)
+      );
 
-    if (
-        fantasySumoHistories.length === 0
-      )
+      // Skip if fantasySumoHistories is empty
+      if (fantasySumoHistories.length === 0) {
         return <div id="fullOneTeam"></div>;
+      }
 
-    const teamScores = {
-      r1: 0,
-      r2: 0,
-      r3: 0,
-      r4: 0,
-      r5: 0,
-      r6: 0,
-      r7: 0,
-    };
+      // Calculate the teamScores
+      const temp = `b${team.basho.toString().replace('.', '')}`;
+      const teamScores = {
+        r1: actualTeam[0]?.[temp] || 0,
+        r2: actualTeam[1]?.[temp] || 0,
+        r3: actualTeam[2]?.[temp] || 0,
+        r4: actualTeam[3]?.[temp] || 0,
+        r5: actualTeam[4]?.[temp] || 0,
+        r6: actualTeam[5]?.[temp] || 0,
+        r7:
+          team.final_score -
+          (
+            (actualTeam[0]?.[temp] || 0) +
+            (actualTeam[1]?.[temp] || 0) +
+            (actualTeam[2]?.[temp] || 0) +
+            (actualTeam[3]?.[temp] || 0) +
+            (actualTeam[4]?.[temp] || 0) +
+            (actualTeam[5]?.[temp] || 0)
+          ),
+      };
 
-    console.log(actualTeam)
+      // Get other teams from the same basho
+      const otherTeams = getFilteredTeams(team.basho);
 
-    // temp should equal the last row of fsHistories, not including avg_score and rikishi
-    let temp;
-    let otherTeams = [];
+      // Sort other teams by final_score
+      const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score);
 
-    // console.log(fsHistoriesArray)
-
-    if (team.basho === 2023.01) {
-      temp = 202301;
-      otherTeams = [...teams].filter((team) => team.basho === 2023.01);
-    } else if (team.basho === 2023.03) {
-      temp = 202303;
-      otherTeams = [...teams].filter((team) => team.basho === 2023.03);
-    } else if (team.basho === 2023.05) {
-      temp = 202305;
-      otherTeams = [...teams].filter((team) => team.basho === 2023.05);
-    } else if (team.basho === 2023.07) {
-      temp = 202307;
-      otherTeams = [...teams].filter((team) => team.basho === 2023.07);
-    } else if (team.basho === 2023.09) {
-      temp = 202309;
-      otherTeams = [...teams].filter((team) => team.basho === 2023.09);
-    } else if (team.basho === 2023.11) {
-      temp = 202311;
-      otherTeams = [...teams].filter((team) => team.basho === 2023.11);
-    } else if (team.basho === 2024.01) {
-      temp = 202401;
-      otherTeams = [...teams].filter((team) => team.basho === 2024.01);
-    } else if (team.basho === 2024.03) {
-      temp = 202403;
-      otherTeams = [...teams].filter((team) => team.basho === 2024.03);
-    } else if (team.basho === 2024.05) {
-      temp = 202405;
-      otherTeams = [...teams].filter((team) => team.basho === 2024.05);
-    } else if (team.basho === 2024.07) {
-      temp = 202407;
-      otherTeams = [...teams].filter((team) => team.basho === 2024.07);
-    }
-
-    // console.log(temp)
-
-    // use this to access fsHistories at the appropriate tournament
-    temp = `b${temp}`;
-
-    console.log(actualTeam);
-
-    teamScores.r1 = actualTeam[0][temp];
-    teamScores.r2 = actualTeam[1][temp];
-    teamScores.r3 = actualTeam[2][temp];
-    teamScores.r4 = actualTeam[3][temp];
-    teamScores.r5 = actualTeam[4][temp];
-    teamScores.r6 = actualTeam[5][temp];
-    teamScores.r7 =
-      team.final_score -
-      teamScores.r1 -
-      teamScores.r2 -
-      teamScores.r3 -
-      teamScores.r4 -
-      teamScores.r5 -
-      teamScores.r6;
-
-    console.log(teamScores);
-
-    const sortedOtherTeams = otherTeams.sort(
-      (a, b) => b.final_score - a.final_score
-    );
-    const teamPosition =
-      sortedOtherTeams.findIndex(
-        (team) => team.user.username === user.username
+      // Get the team's position among the sorted teams
+      const teamPosition = sortedOtherTeams.findIndex(
+        (sortedTeam) => sortedTeam.user.username === user.username
       ) + 1;
 
-    
-
-    return (
-      <div id="fullOneTeam">
-        <div>
-          <h3>{team.basho}</h3>
-          <div id="oneTeamRank">
-            <h2>{team.final_score} points</h2>
-            <hr></hr>
-            <h2>#{teamPosition} out of</h2>
-            <h2>{otherTeams.length} teams</h2>
+      return (
+        <div id="fullOneTeam" key={team.basho}>
+          <div>
+            <h3>{team.basho}</h3>
+            <div id="oneTeamRank">
+              <h2>{team.final_score} points</h2>
+              <hr />
+              <h2>#{teamPosition} out of</h2>
+              <h2>{otherTeams.length} teams</h2>
+            </div>
+          </div>
+          <div id="oneTeam">
+            <div>
+              <p>{team.r1}</p>
+              <p>{teamScores.r1}</p>
+            </div>
+            <div>
+              <p>{team.r2}</p>
+              <p>{teamScores.r2}</p>
+            </div>
+            <div>
+              <p>{team.r3}</p>
+              <p>{teamScores.r3}</p>
+            </div>
+            <div>
+              <p>{team.r4}</p>
+              <p>{teamScores.r4}</p>
+            </div>
+            <div>
+              <p>{team.r5}</p>
+              <p>{teamScores.r5}</p>
+            </div>
+            <div>
+              <p>{team.r6}</p>
+              <p>{teamScores.r6}</p>
+            </div>
+            <div>
+              <p>{team.r7}</p>
+              <p>{teamScores.r7}</p>
+            </div>
           </div>
         </div>
-        <div id="oneTeam">
-          <div>
-            <p>{team.r1}</p>
-            <p>{teamScores.r1}</p>
-          </div>
-          <div>
-            <p>{team.r2}</p>
-            <p>{teamScores.r2}</p>
-          </div>
-          <div>
-            <p>{team.r3}</p>
-            <p>{teamScores.r3}</p>
-          </div>
-          <div>
-            <p>{team.r4}</p>
-            <p>{teamScores.r4}</p>
-          </div>
-          <div>
-            <p>{team.r5}</p>
-            <p>{teamScores.r5}</p>
-          </div>
-          <div>
-            <p>{team.r6}</p>
-            <p>{teamScores.r6}</p>
-          </div>
-          <div>
-            <p>{team.r7}</p>
-            <p>{teamScores.r7}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  function allPrevTeams() {
-    return oldTeams.map((team) => {
-      return <>{oneOldTeam(team)}</>;
+      );
     });
-  }
+  }, [oldTeams, fantasySumoHistories, getFilteredTeams, user.username]);
 
   return (
     <div>
       <hr></hr>
       <h3>Check out your previous teams:</h3>
-      <div>{teams.length > 0 ? allPrevTeams() : ""}</div>
+      <div>{teams.length > 0 ? allPrevTeams : ""}</div>
     </div>
   );
 }

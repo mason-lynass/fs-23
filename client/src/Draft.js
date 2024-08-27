@@ -18,7 +18,6 @@ function Draft({
   tachiai,
   clap,
   rankSort,
-  fsHistories,
   basho,
 }) {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import "./CSS/index.css";
 import "./CSS/media.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSound } from "use-sound";
 
@@ -31,7 +31,6 @@ function App() {
   const [rikishi, setRikishi] = useState([]);
   const [teams, setTeams] = useState([]);
   const [teamsLoaded, setTeamsLoaded] = useState(false);
-  const [fsHistories, setFsHistories] = useState([]);
   const [fantasySumoHistories, setFantasySumoHistories] = useState([])
 
   const [clap] = useSound(Clap);
@@ -79,345 +78,6 @@ function App() {
     return sortedRikishi;
   }
 
-  // this is really all of the team names as of 3/7/24
-  const goodTeamNames = [
-    "mason",
-    "bill",
-    "lex",
-    "bbrockmann1",
-    "jimmy",
-    "acorn",
-    "Joseph",
-    "jlynass",
-    "nemalie",
-    "Ann",
-    "emplexus",
-    "Hidenotora",
-    "heavenhouse",
-    "Yamashiro",
-    "Wamahada",
-    "Seitos",
-    "Tetsuba",
-    "Bunbukuchagama",
-    "Kanashisasu",
-    "Dreiden",
-    "blackroseyagami",
-    "Kohakuho",
-    "Hami",
-    "Terunozuna",
-    "BeskarBeast",
-    "Nondescriptusername",
-    "sumo-api",
-    "Gaijingai",
-    "N00bonicplague",
-    "maysteve21@gmail.com",
-    "Yoshinochin",
-    "Izzy",
-    "ahecardona",
-    "liebesleet",
-    "duuudeman@gmail.com",
-    "Fuss",
-    "Hatt",
-    "SkipJam",
-    "existentialcats",
-    "Dannyfnlanza",
-    "yurble",
-    "ExtractionWiz",
-    "Mokuseinoisu",
-    "Flynch",
-    "HoberMallow27",
-    "Gusoyama",
-    "VikingTomi",
-    "Flohru",
-    "Dannybo",
-    "ljvd",
-    "mcquello",
-    "BrycinHuckeba",
-    "Bulldoza",
-    "meatslab",
-    "wockhardt",
-    "cubistpepe",
-    "MitchThor",
-    "bransby",
-    "dalebcooper2",
-    "Sumofan811",
-    "mkmeese42@gmail.com",
-    "Joosh",
-    "Ajoyham",
-    "clashplaids",
-    "meep",
-    "Cur_ceph",
-    "lonewolf",
-    "Pmwilkins",
-    "SeattleSumoRiley",
-    "mateg0re",
-    "Alexh51",
-    "jreign",
-    "ArmenOzeki",
-    "Torafujii",
-    "exposrule",
-    "justme",
-    "Mattador",
-    "BobLobLaw",
-    "The_Dark_Reach",
-    "Saturn's_slammers",
-    "baneheart74",
-    "Mumrikishi",
-    "Matsunofuji",
-    "MacLacakop",
-    "chung",
-    "Melreds",
-    "StrictTime",
-    "Sezhed",
-    "Beeftank",
-    "Squidsie",
-    "Dankneeton",
-    "viski",
-    "Bomotosho",
-    "Dr.judo",
-    "VelasKirk",
-    "Ga",
-    "Tummydrumming",
-    "Lucyviolin27",
-    "Salvor",
-    "Gneiss1",
-    "Parzival",
-    "Terunozilla",
-    "Mondage",
-    "HoustonAstros",
-    "Paul.k@email.com",
-    "Devaskator",
-    "Kotodylan",
-    "Hi5",
-    "shiftoob",
-    "dand",
-    "hekanymous",
-    "Lenny_Shark",
-    "Mowse",
-    "codymelhorn",
-    "zen",
-    "imaginethings",
-    "catower",
-    "feor",
-    "norton",
-    "texaskevin",
-    "KappyKaiju",
-    "PatatoKen",
-    "serban.7000",
-    "Polyglotninaritai",
-    "bervad",
-    "Shiawasekiwi",
-    "Flosspark",
-    "Jimbo",
-    "Rikitaro",
-    "Flexus27",
-    "Bubba",
-    "不死鳥島",
-    "W4EMBMB",
-    "Sirron",
-    "nhc1112",
-    "Wxf",
-    "kj4lcd@gmail.com",
-    "Tamanoinu",
-    "Kiamster",
-    "Atti1xboy",
-    "Hrsh",
-    "give_pizza_chance",
-    "Itchynotoe",
-    "ellevee",
-    "Andreas",
-    "Seitoss",
-    "Dephire",
-    "pecor",
-    "bulldoza",
-    "Lx",
-    "Hisui",
-    "KnottsScary",
-    "hotstepdad",
-    "Hänschi",
-    "thatguy88",
-    "AlinaAlpaka",
-    "Monolith",
-    "mcar7491",
-    "Aderb94",
-    "Tater",
-    "Maddie",
-    "DYLAN473messi",
-    "bisoh",
-    "Autopilot",
-    "Wakinnebis",
-    "金不死鳥島",
-    "Kuniumi",
-    "kukulumutxun",
-    "bigsumobren",
-    "SumoInMyVeins",
-    "coletata23",
-    "Antimo",
-    "Behizain",
-    "OSAKIHAKI",
-    "Rendezvous",
-    "namakemono",
-    "SexyEnufBigfoot",
-    "20andy02",
-    "Joseavv4",
-    "Amerikajin",
-    "Peachmomma",
-    "Bongcena420",
-    "JokicInator15",
-    "Chuzzy",
-    "DutchSumoLover",
-    "OishiiDashi😋",
-    "KMSHEYA",
-    "KDSHeya",
-    "RjSoToxic",
-    "DemenciaChess",
-    "MattGrubb",
-    "Ikkemensch",
-    "Caninndar",
-    "MrChiki",
-    "davidrossow",
-    "SumoShane",
-    "ben@cedargroupak.com",
-    "sands",
-    "Steve_Da_OG",
-    "russellhanson",
-    "Donkey",
-    "Andrasoyama",
-    "Verseau",
-    "Hsumo",
-    "Hsumoho",
-    "KappyKaiju3",
-    "srprins",
-    "sam",
-    "CPmotoharu",
-    "dustyjduncan",
-    "diogenesofindy",
-    "t4bk3y",
-    "Miyam",
-    "vengaryu",
-    "inverse_cramer",
-    "maltagoya",
-    "smartestmoronx19",
-    "BinaryGamez",
-    "SANTAKEISHO",
-    "Rubak5050",
-    "Stoshoryu",
-    "hbsnirp",
-    "sydneyprins",
-    "Gadjira",
-    "chriscarr",
-    "Tidusmiller",
-    "DanielSun",
-    "SaruNoTe",
-    "Ninjoid",
-    "pnguetta",
-    "LiviuszBp",
-    "koolio",
-    "NikkoBarato",
-    "Tochinofuji",
-    "Lex",
-    "Areku",
-    "Erno",
-    "InfernoWing2",
-    "Woodstock-99",
-    "Hobbobgob",
-    "JaquieDaytona",
-    "Jackbean",
-    "gaylordbuttsex",
-    "kasvot05",
-    "zgwolfe",
-    "BriGuy",
-    "Davefuji",
-    "akaoni",
-    "TonyM",
-    "Kjetil",
-    "ejb12sc",
-    "HoboapeV2",
-    "jaquiedaytona",
-    "singleTfuji",
-    "Bombadil",
-    "justme2",
-    "YohaneLynass",
-    "MaxPower",
-    "meszi222",
-    "Bradizaro",
-    "ManUFan9225",
-    "Slothbjj",
-    "tweedledeedum",
-    "Andranofuji",
-    "mumnuts",
-    "stevenschneider",
-    "Bornobear",
-    "Tazman",
-    "Kmd1210",
-    "Mitakrumi",
-    "Mawatari",
-    "byakkoorii",
-    "cransford13",
-    "sheldenthegirl",
-    "Xabel",
-    "LauraSumo",
-    "HOSHORYUUUUUUU!",
-    "FatherDaB",
-    "Bette",
-    "sergentmajor",
-    "moldingham@yahoo.com",
-    "NessaSan",
-    "H",
-    "glorfunk",
-    "SloppyJoe",
-    "frodo_sagbag",
-    "WakatakaPetah",
-    "Varlash91",
-    "Kevoh",
-    "slimey",
-    "ballerscuba",
-    "DocZoidberg",
-    "Zatoichi888",
-    "Lumpyfranklin",
-    "woodyakc@outlook.com",
-    "TJMPDX",
-    "sackanutz",
-    "Rodsumo",
-    "my_style_of_sumo",
-    "GODZUKI",
-    "Akagitsune",
-    "Nikkerdoodle54",
-    "Vardist",
-    "millersbrewers",
-    "FullestJ",
-    "drmarioxtreme",
-    "stavro",
-    "ozeki.run",
-    "ExploratorySurgery",
-    "HikingIllini",
-    "Cam_Clayton",
-    "EnnGeeOhh",
-    "Matthiass",
-    "spiduur",
-    "SumoMcSumoFace",
-    "vitorpepe",
-    "Joseiho",
-    "Jampalma",
-    "TVFrank",
-    "WobbleWeeble",
-    "gbuttersnaps",
-    "Snake12",
-    "zdw",
-    "papoiyasu",
-    "Pentar",
-    "LUCKYKHOLE",
-    "someanna",
-    "j21jwc",
-    "thepersephonies",
-    "Marmoris",
-    "Xenthea",
-    "Jazum",
-    "FastCash",
-    "andonishiki",
-    "SumoMaster696969",
-  ];
-
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -439,14 +99,12 @@ function App() {
         setTeams(teams);
         setTeamsLoaded(true);
       });
-    // new
-    fetch("/fs_histories")
-      .then((r) => r.json())
-      .then((r) => setFsHistories(r));
     fetch("/fantasy_sumo_histories")
       .then((r) => r.json())
       .then((r) => setFantasySumoHistories(r));
   }, []);
+
+  const sortedRikishi = useMemo(() => rankSort(rikishi), [rikishi]);
 
   if (rikishi.length > 0 && fantasySumoHistories.length > 0) {
     rikishi.forEach((rikishi) => {
@@ -477,7 +135,6 @@ function App() {
               rikishi={rikishi}
               clap={clap}
               teams={teams}
-              goodTeamNames={goodTeamNames}
               fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
@@ -486,7 +143,6 @@ function App() {
         <Route path="/rules" element={<Rules />} />
         <Route path="/terminology" element={<Terminology />} />
         <Route path="/team-rankings" element={<UserRankings />} />
-        {/* <Route path="/fsh-test" element={<NewFSDatabase fsHistories={fantasySumoHistories} rikishi={rikishi} />} /> */}
         <Route
           path="/draft"
           element={
@@ -497,7 +153,6 @@ function App() {
               tachiai={tachiai}
               clap={clap}
               rankSort={rankSort}
-              fsHistories={fsHistories}
               basho={basho}
             />
           }
@@ -510,7 +165,6 @@ function App() {
               teams={teams}
               teamsLoaded={teamsLoaded}
               rankSort={rankSort}
-              goodTeamNames={goodTeamNames}
               basho={basho}
             />
           }
@@ -519,8 +173,7 @@ function App() {
           path="/database"
           element={
             <Database
-              rikishi={rankSort(rikishi, true)}
-              fsHistories={fsHistories}
+              rikishi={rankSort(sortedRikishi, true)}
               fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
