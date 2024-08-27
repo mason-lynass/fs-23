@@ -1,11 +1,10 @@
 import "./CSS/database.css";
 import { useEffect, useState } from "react";
 import StatsAndInfo from "./components/StatsAndInfo";
-import DbTest from "./components/DbTest";
 import UserRankings from "./UserRankings";
 import NewFSDatabase from "./components/NewFSDatabase";
 
-function Database({ rikishi, fsHistories, fantasySumoHistories }) {
+function Database({ rikishi, fantasySumoHistories }) {
   const [viewState, setViewState] = useState("Rikishi Stats & Info");
   const [dbRikishi, setDBRikishi] = useState([]);
   const [rikishiLoaded, setRikishiLoaded] = useState(false);
@@ -26,7 +25,6 @@ function Database({ rikishi, fsHistories, fantasySumoHistories }) {
       if (viewState === "Rikishi Stats & Info") {
         return <StatsAndInfo dbRikishi={dbRikishi} />;
       } else if (viewState === "Fantasy Sumo Stats") {
-        // return <DbTest rikishi={rikishi} fsHistories={fsHistories} />;
         return <NewFSDatabase rikishi={rikishi} fsHistories={fantasySumoHistories} />
       } else if (viewState === "User Rankings") {
         return <UserRankings />;
@@ -48,12 +46,7 @@ function Database({ rikishi, fsHistories, fantasySumoHistories }) {
         Click on a column header (basho, average score, kinboshi, etc.) to sort
         by that column
       </p>
-      {dbRikishi.length > 0 ? <>{visibleTable()}</> : <h2>loading...</h2>}
-      {/* {viewState === false && dbRikishi.length > 0 ? (
-        <StatsAndInfo dbRikishi={dbRikishi} />
-      ) : (
-        <DbTest rikishi={rikishi} fsHistories={fsHistories} />
-      )} */}
+      {dbRikishi.length > 0 ? <>{visibleTable()}</> : <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>}
     </div>
   ) : (
     <h2>loading...</h2>

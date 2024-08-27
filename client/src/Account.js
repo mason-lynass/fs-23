@@ -4,6 +4,7 @@ import PreviousTeams from "./components/PreviousTeams";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import { useNavigate } from "react-router-dom";
+import { useMemo, useCallback } from "react";
 
 function Account({
   user,
@@ -11,13 +12,12 @@ function Account({
   rikishi,
   clap,
   teams,
-  goodTeamNames,
   fantasySumoHistories,
   basho,
 }) {
   const navigate = useNavigate();
 
-  function handleDeleteTeam() {
+  const handleDeleteTeam = useCallback(() => {
     const toDelete = user.teams.find((e) => e.basho === basho).id;
     fetch(`/teams/${toDelete}`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -31,33 +31,51 @@ function Account({
         });
       }
     });
-  }
+  }, [user, basho, navigate, setUser]);
 
-  function isString(value) {
-    return typeof value === "string";
-  }
+  const currentTeam = useMemo(() => {
+    if (user && user.teams) return user.teams.find((e) => e.basho === basho);
+  }, [user, basho]);
 
-  function currentBashoTeam() {
-    // otherTeams is all teams with valid usernames for the current basho
-    // const otherTeams = [...teams].filter((team) => team.basho === basho && goodTeamNames.includes(team.user.username))
-    const otherTeams = [...teams].filter((team) => team.basho === basho);
-    const sortedOtherTeams = otherTeams.sort(
-      (a, b) => b.final_score - a.final_score
-    );
-    // find this team's position by finding its index in all teams, sorted by final score
-    const teamPosition =
-      sortedOtherTeams.findIndex(
-        (team) => team.user.username === user.username
-      ) + 1;
+  const CTRikishiStrings = useMemo(() => {
+    return currentTeam ? Object.values(currentTeam).filter((value) => typeof value === "string") : [];
+  }, [currentTeam]);
 
-    const currentTeam = user.teams.find((e) => e.basho === basho);
-    const CTRikishiStrings = Object.values(currentTeam).filter(isString);
-    const actualTeam = rikishi.filter((r) =>
-      CTRikishiStrings.includes(r.shikona)
-    );
+  const actualTeam = useMemo(() => {
+    return rikishi.filter((r) => CTRikishiStrings.includes(r.shikona));
+  }, [rikishi, CTRikishiStrings]);
 
-    const indivPoints = actualTeam.map((r) => r.fs_current);
-    const totalPoints = indivPoints.reduce((a, b) => a + b, 0);
+  const indivPoints = useMemo(() => {
+    return actualTeam.map((r) => r.fs_current);
+  }, [actualTeam]);
+
+  const totalPoints = useMemo(() => {
+    return indivPoints.reduce((a, b) => a + b, 0);
+  }, [indivPoints]);
+
+  const otherTeams = useMemo(() => {
+    return teams.filter((team) => team.basho === basho);
+  }, [teams, basho]);
+
+  const sortedOtherTeams = useMemo(() => {
+    return [...otherTeams].sort((a, b) => b.final_score - a.final_score);
+  }, [otherTeams]);
+
+  const teamPosition = useMemo(() => {
+    if (user && user.username) 
+    return sortedOtherTeams.findIndex(
+      (team) => team.user.username === user.username
+    ) + 1;
+  }, [sortedOtherTeams, user]);
+
+  const renderCurrentBashoTeam = useCallback(() => {
+    if (!currentTeam) {
+      return (
+        <p id="NoTeam">
+          You haven't drafted a team yet for the upcoming tournament
+        </p>
+      );
+    }
 
     return (
       <div>
@@ -69,7 +87,6 @@ function Account({
                 <img src={obj.image_url} alt="" />
                 <h3 className="AORrank">{obj.current_rank}</h3>
                 <h3 className="AORshikona">{obj.shikona}</h3>
-                {/* change this every basho */}
                 <h3 className="AORscore">
                   {obj.fs_current !== null ? obj.fs_current : "0"}
                 </h3>
@@ -97,7 +114,6 @@ function Account({
             after you draft your team.
           </h4>
         </div>
-        {/* turn this off during the tournament */}
         <div id="Redraft">
           <h4>
             If you need to redraft before the tournament starts, if someone is
@@ -107,21 +123,9 @@ function Account({
         </div>
       </div>
     );
-  }
+  }, [currentTeam, actualTeam, totalPoints, teamPosition, otherTeams, handleDeleteTeam]);
 
-  function renderCurrentBashoTeam() {
-    if (user.teams.find((e) => e.basho === basho) === undefined) {
-      return (
-        <p id="NoTeam">
-          You haven't drafted a team yet for the upcoming tournament
-        </p>
-      );
-    } else {
-      return currentBashoTeam();
-    }
-  }
-
-  function renderAccountPage() {
+  const renderAccountPage = useCallback(() => {
     if (user === null) {
       return (
         <div>
@@ -133,13 +137,11 @@ function Account({
         </div>
       );
     } else {
-      const oldTeams = user.teams.filter((e) => e.basho !== basho);
-
       return (
         <div id="AccountPage">
           <h2 id="AccountHello">Hello, {user.username}!</h2>
           {renderCurrentBashoTeam()}
-          {oldTeams.length > 0 ? (
+          {user.teams.length > 0 && (
             <PreviousTeams
               user={user}
               rikishi={rikishi}
@@ -147,11 +149,11 @@ function Account({
               fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
-          ) : null}
+          )}
         </div>
       );
     }
-  }
+  }, [user, clap, setUser, renderCurrentBashoTeam, rikishi, teams, fantasySumoHistories, basho]);
 
   return <>{renderAccountPage()}</>;
 }

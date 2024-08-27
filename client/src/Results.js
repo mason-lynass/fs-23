@@ -6,7 +6,7 @@ import Hello from "./components/Hello"
 import MobileResultsContainer from "./components/MobileResultsContainer"
 import DesktopResultsContainer from "./components/DesktopResultsContainer"
 
-function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames, basho }) {
+function Results({ rikishi, teams, teamsLoaded, rankSort, basho }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
@@ -53,12 +53,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames, basho }
         })
 
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
-
-        // uses "goodTeamNames" from App.js
-        // const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
         const goodTeams = teamsHiToLo
-        // console.log(teamsHiToLo)
-        // console.log(goodTeams)
 
         return (
             (teamsLoaded === false) ?
@@ -107,11 +102,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, goodTeamNames, basho }
 
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
 
-        // uses "goodTeamNames" from App.js
-        // const goodTeams = teamsHiToLo.filter((team) => goodTeamNames.includes(team.user.username))
         const goodTeams = teamsHiToLo
-        // console.log(teamsHiToLo)
-        // console.log(goodTeams)
 
         return (
             (teamsLoaded === false) ?

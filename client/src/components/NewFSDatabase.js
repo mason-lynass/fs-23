@@ -1,40 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import "../CSS/database.css";
 
 function NewFSDatabase({ fsHistories, rikishi }) {
   // const [fsHistories, setFsHistories] = useState([])
   const [viewState, setViewState] = useState("default");
-  const [scoreCells, setScoreCells] = useState([]);
   const [searchOne, setSearchOne] = useState("");
   const [searchTwo, setSearchTwo] = useState("");
   const [newRikishi, setNewRikishi] = useState([]);
   const [retiredState, setRetiredState] = useState(true);
   const [rikishiInfoOpen, setRikishiInfoOpen] = useState(false);
   const [targetRikishi, setTargetRikishi] = useState(null);
+  
+  const tdRefs = useRef([]);
+  tdRefs.current = [];
 
-  // one fsHistories are loaded, update newRikishi and scoreCells
+  // one fsHistories are loaded, update newRikishi
   useEffect(() => {
     if (fsHistories.length > 0) {
-      setScoreCells(document.querySelectorAll("td"));
       setNewRikishi(fsHistories);
     }
   }, [fsHistories]);
 
-  // search functionality, running fsHistories through filterBySearch
   useEffect(() => {
-    let result = fsHistories;
-    result = filterBySearch(result);
-    setNewRikishi(result);
-  }, [searchOne, searchTwo]);
-
-  useEffect(() => {
-
-  }, [])
-
-  // if a score cell doesn't have a number, give it more padding
-  scoreCells.forEach((cell) => {
-    if (cell.innerHTML === " ") cell.classList.add("more-padding");
-  });
+    tdRefs.current.forEach((cell) => {
+      if (cell && cell.innerHTML.trim() === "") {
+        cell.classList.add("more-padding");
+      }
+    });
+  }, [fsHistories])
 
   // switch for the retired checkbox
   function handleRetired() {
@@ -55,7 +48,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
     setSearchTwo(e.target.value);
   }
 
-  const filterBySearch = (r) => {
+  const filterBySearch = useCallback(() => {
     return fsHistories.filter((history) => {
       if (searchOne !== "" && searchTwo !== "") {
         const one = history.rikishi.shikona
@@ -78,27 +71,39 @@ function NewFSDatabase({ fsHistories, rikishi }) {
           .includes(searchTwo.toLowerCase());
       } else return history;
     });
-  };
+  }, [searchOne, searchTwo, fsHistories]);
+
+    // search functionality, running fsHistories through filterBySearch
+    useEffect(() => {
+      let result = fsHistories;
+      result = filterBySearch(result);
+      setNewRikishi(result);
+    }, [fsHistories, searchOne, searchTwo, filterBySearch]);
 
   // fsHistories sort definitions
-  const averageSort = [...newRikishi].sort(
-    (a, b) => b.avg_fantasy_sumo_score - a.avg_fantasy_sumo_score
-  );
-  const shikonaSort = [...newRikishi].sort((a, b) =>
-    a.rikishi.shikona.localeCompare(b.rikishi.shikona)
-  );
-  const totalSort = [...newRikishi].sort(
-    (a, b) => b.total_points - a.total_points
-  );
-
-  function xSort(x) {
+  const averageSort = useMemo(() => {
+    return [...newRikishi].sort(
+      (a, b) => b.avg_fantasy_sumo_score - a.avg_fantasy_sumo_score
+    );
+  }, [newRikishi]);
+  
+  const shikonaSort = useMemo(() => {
+    return [...newRikishi].sort((a, b) =>
+      a.rikishi.shikona.localeCompare(b.rikishi.shikona)
+    );
+  }, [newRikishi]);
+  
+  const totalSort = useMemo(() => {
+    return [...newRikishi].sort((a, b) => b.total_points - a.total_points);
+  }, [newRikishi]);
+  
+  const xSort = useCallback((x) => {
     return [...newRikishi].sort((a, b) => b[x] - a[x]);
-  }
+  }, [newRikishi]);
 
   // adding and removing classes to highlight a clicked column header
   function setHighlight(target) {
     if (fsHistories.length > 0) {
-      // const columns = document.querySelectorAll(".dbtest-basho" && ".dbtest-basho-image" && ".dbtest-rikishi-name" && ".dbtest-basho-avg")
       const columns = document.querySelectorAll(".highlight");
       columns.forEach((col) => {
         if (col.classList.contains("DBStatsActive")) {
@@ -116,7 +121,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
   }
 
   // returns fsHistories sorted in a certain way, based on value of viewState
-  function FSRikishiSwitch() {
+  const FSRikishiSwitch = useMemo(() => {
     switch (viewState) {
       case "default": {
         return AllHistories(averageSort);
@@ -134,7 +139,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         return AllHistories(xSort(viewState));
       }
     }
-  }
+  }, [viewState, averageSort, shikonaSort, totalSort, xSort]);
 
   function openRikishiInfo(targetRikishi) {
     const rikishi = targetRikishi[0];
@@ -240,10 +245,17 @@ function NewFSDatabase({ fsHistories, rikishi }) {
       Object.entries(history).filter(([key]) => key.includes("b"))
     );
     const justTheHistoryValues = Object.values(justTheHistoryEntries).reverse();
-
-    return justTheHistoryValues.map((score) => {
+  
+    return justTheHistoryValues.map((score, index) => {
       if (score === null) score = " ";
-      return <td className="dbtest-one-score">{score}</td>;
+      return (
+        <td
+          ref={(el) => (tdRefs.current[index] = el)}
+          className="dbtest-one-score"
+        >
+          {score}
+        </td>
+      );
     });
   }
 
@@ -263,6 +275,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
               className="dbtest-rikishi-image"
               src={image}
               alt={"picture of" + history.rikishi.shikona}
+              loading="lazy"
             ></img>
             <h4
               onClick={() => handleRikishiOpenClick(history)}
@@ -284,138 +297,111 @@ function NewFSDatabase({ fsHistories, rikishi }) {
   }
 
   // logic to show the basho in the correct format "2024.05" from one fsHistory
-  function AllBashoRows() {
+  const bashoRowsArray = useMemo(() => {
     if (fsHistories.length > 0) {
-      // populate rows with integers for each basho key in fsHistory, then reverse
+      // Populate rows with integers for each basho key in fsHistory, then reverse
       let rows = [];
       for (let i = 1; i < Object.keys(fsHistories[0]).length - 1; i++) {
         rows.push(i);
       }
       const reverseOrder = rows.reverse();
 
-      // basically converting the integers in reverseOrder to the correct format
+      // Convert the integers in reverseOrder to the correct format
       let bashoRowsArray = [];
       for (const basho of reverseOrder) {
         let year = 2024;
-
         if (basho >= 374) {
-          year = year - Math.floor((reverseOrder.length - basho) / 6);
+          year -= Math.floor((reverseOrder.length - basho) / 6);
           switch (basho % 6) {
-            case 0: {
+            case 0:
               bashoRowsArray.push([basho, year + ".01"]);
               break;
-            }
-            case 1: {
+            case 1:
               bashoRowsArray.push([basho, year + ".03"]);
               break;
-            }
-            case 2: {
+            case 2:
               bashoRowsArray.push([basho, year + ".05"]);
               break;
-            }
-            case 3: {
+            case 3:
               bashoRowsArray.push([basho, year + ".07"]);
               break;
-            }
-            case 4: {
+            case 4:
               bashoRowsArray.push([basho, year + ".09"]);
               break;
-            }
-            case 5: {
+            case 5:
               bashoRowsArray.push([basho, year + ".11"]);
               break;
-            }
-            default: {
-              console.log("we don't use this case, how did you get here?");
-            }
+            default:
+              console.log("Unexpected case in basho calculation");
           }
-        }
-
-        // i think this had to be offset by one because there was no tournament due to COVID?
-        if (basho < 374 && basho > 320) {
-          year = year - Math.floor((reverseOrder.length - (basho - 1)) / 6);
-
+        } else if (basho < 374 && basho > 320) {
+          year -= Math.floor((reverseOrder.length - (basho - 1)) / 6);
           switch (basho % 6) {
-            case 1: {
+            case 1:
               bashoRowsArray.push([basho, year + ".01"]);
               break;
-            }
-            case 2: {
+            case 2:
               bashoRowsArray.push([basho, year + ".03"]);
               break;
-            }
-            case 3: {
+            case 3:
               bashoRowsArray.push([basho, year + ".05"]);
               break;
-            }
-            case 4: {
+            case 4:
               bashoRowsArray.push([basho, year + ".07"]);
               break;
-            }
-            case 5: {
+            case 5:
               bashoRowsArray.push([basho, year + ".09"]);
               break;
-            }
-            case 0: {
+            case 0:
               bashoRowsArray.push([basho, year + ".11"]);
               break;
-            }
-            default: {
-              console.log("we don't use this case, how did you get here?");
-            }
+            default:
+              console.log("Unexpected case in basho calculation");
           }
-        }
-
-        // another offset for that time that they cancelled the basho to investigate match fixing
-        if (basho > 0 && basho <= 320) {
-          year = year - Math.floor((reverseOrder.length - (basho - 2)) / 6);
-
+        } else if (basho > 0 && basho <= 320) {
+          year -= Math.floor((reverseOrder.length - (basho - 2)) / 6);
           switch (basho % 6) {
-            case 2: {
+            case 2:
               bashoRowsArray.push([basho, year + ".01"]);
               break;
-            }
-            case 3: {
+            case 3:
               bashoRowsArray.push([basho, year + ".03"]);
               break;
-            }
-            case 4: {
+            case 4:
               bashoRowsArray.push([basho, year + ".05"]);
               break;
-            }
-            case 5: {
+            case 5:
               bashoRowsArray.push([basho, year + ".07"]);
               break;
-            }
-            case 6: {
+            case 6:
               bashoRowsArray.push([basho, year + ".09"]);
               break;
-            }
-            case 1: {
+            case 1:
               bashoRowsArray.push([basho, year + ".11"]);
               break;
-            }
-            default: {
-              console.log("we don't use this case, how did you get here?");
-            }
+            default:
+              console.log("Unexpected case in basho calculation");
           }
         }
       }
-      return bashoRowsArray.map((x) => {
-        const theID = `b${x[1].split('.').join('')}`
-        return (
-          <th
-            key={x}
-            id={theID}
-            className="dbtest-basho highlight"
-            onClick={handleViewState}
-          >
-            {x[1]}
-          </th>
-        );
-      });
+      return bashoRowsArray;
     }
+    return [];
+  }, [fsHistories]); // Dependency array ensures recalculation only when fsHistories changes
+
+  // Rendering the basho rows
+  function AllBashoRows() {
+    return bashoRowsArray.map((x) => {
+      const theID = `b${x[1].split('.').join('')}`;
+      return (
+        <th key={x[0]} id={theID} className="dbtest-basho highlight" onClick={handleViewState}>
+          {x[1]}
+        </th>
+      );
+    });
   }
+
+  console.log(fsHistories[0])
 
   // defined so that mobile users see the 'sorry' message
   const mobileScreen = window.matchMedia("(max-width: 600px)");
@@ -503,7 +489,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
           </div>
           {AllBashoRows()}
         </thead>
-        <tbody id="dbtest-all-histories">{FSRikishiSwitch()}</tbody>
+        <tbody id="dbtest-all-histories">{FSRikishiSwitch}</tbody>
       </table>
       {rikishiInfoOpen === true ? openRikishiInfo(targetRikishi) : ""}
     </main>
