@@ -1,6 +1,10 @@
 import OneTeamMobile from "./OneTeamMobile"
 
-function MobileResultsContainer({ goodTeams, rikishi }) {
+function MobileResultsContainer({ goodTeams, rikishi, user }) {
+
+    const yourTeam = [...goodTeams].filter((team) => team.user.username === user.username)[0]
+    const otherTeams = [...goodTeams].filter((team) => team.user.username !== user.username)
+
     return (
         <div className='resultsContainer'>
             <div className='teamsTop'>
@@ -14,8 +18,11 @@ function MobileResultsContainer({ goodTeams, rikishi }) {
                 <p className="smallerColumn">7</p>
                 <h3 className="total">Total:</h3>
             </div>
+            <div id='yourTeam'>
+                <OneTeamMobile team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
+            </div>
             <div id="teamsContainer">
-                {goodTeams.map((team) => {
+                {otherTeams.map((team) => {
                     return (
                         <OneTeamMobile team={team} key={team.id} rikishi={rikishi} />
                     )

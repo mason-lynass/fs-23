@@ -387,7 +387,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
       return bashoRowsArray;
     }
     return [];
-  }, [fsHistories]); // Dependency array ensures recalculation only when fsHistories changes
+  }, [fsHistories]); // recalculation only when fsHistories changes
 
   // Rendering the basho rows
   function AllBashoRows() {
