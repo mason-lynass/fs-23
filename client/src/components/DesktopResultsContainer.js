@@ -1,12 +1,28 @@
 import OneTeam from "./OneTeam";
 
 function DesktopResultsContainer({ goodTeams, rikishi, user }) {
-  const yourTeam = [...goodTeams].filter(
-    (team) => team.user.username === user.username
-  )[0];
-  const otherTeams = [...goodTeams].filter(
-    (team) => team.user.username !== user.username
-  );
+  
+    let yourTeam;
+  let otherTeams = goodTeams;
+
+  if (user.username) {
+    yourTeam = [...goodTeams].filter(
+      (team) => team.user.username === user.username
+    )[0];
+    otherTeams = [...goodTeams].filter(
+      (team) => team.user.username !== user.username
+    );
+  }
+
+  function showYourTeam() {
+    if (user.username) {
+      return (
+        <div id="yourTeam">
+          <OneTeam team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
+        </div>
+      );
+    }
+  }
 
   return (
     <div className="resultsContainer">
@@ -21,9 +37,7 @@ function DesktopResultsContainer({ goodTeams, rikishi, user }) {
         <p className="smallerColumn">juryo</p>
         <h3 className="total">Total:</h3>
       </div>
-      <div id="yourTeam">
-        <OneTeam team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
-      </div>
+      {showYourTeam()}
       <div id="teamsContainer">
         {otherTeams.map((team) => {
           return <OneTeam team={team} key={team.id} rikishi={rikishi} />;
