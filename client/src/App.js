@@ -104,6 +104,10 @@ function App() {
       .then((r) => setFantasySumoHistories(r));
   }, []);
 
+  useEffect(() => {
+    setUser(user)
+  }, [user])
+
   const sortedRikishi = useMemo(() => rankSort(rikishi), [rikishi]);
 
   if (rikishi.length > 0 && fantasySumoHistories.length > 0) {
