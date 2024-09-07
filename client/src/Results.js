@@ -6,7 +6,7 @@ import Hello from "./components/Hello"
 import MobileResultsContainer from "./components/MobileResultsContainer"
 import DesktopResultsContainer from "./components/DesktopResultsContainer"
 
-function Results({ rikishi, teams, teamsLoaded, rankSort, basho }) {
+function Results({ rikishi, teams, teamsLoaded, rankSort, basho, user }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
@@ -65,7 +65,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, basho }) {
                         <button id='resultsButton' onClick={changeViewState}>{viewState === true ? "rikishi results" : "team results"}</button>
                     </div>
                     {viewState === true ? 
-                    <DesktopResultsContainer goodTeams={goodTeams} rikishi={rikishi} />
+                    <DesktopResultsContainer goodTeams={goodTeams} rikishi={rikishi} user={user} />
                      :
                     <RikishiResults basho={basho} rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
                     }
@@ -114,7 +114,7 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, basho }) {
                         <button id='resultsButton' onClick={changeViewState}>{viewState === true ? "rikishi results" : "team results"}</button>
                     </div>
                     {viewState === true ? 
-                    <MobileResultsContainer goodTeams={goodTeams} rikishi={rikishi} />
+                    <MobileResultsContainer goodTeams={goodTeams} rikishi={rikishi} user={user} />
                      :
                     <RikishiResults basho={basho} rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
                     }

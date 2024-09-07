@@ -166,6 +166,7 @@ function App() {
               teamsLoaded={teamsLoaded}
               rankSort={rankSort}
               basho={basho}
+              user={user}
             />
           }
         />
