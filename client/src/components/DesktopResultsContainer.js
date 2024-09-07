@@ -5,7 +5,7 @@ function DesktopResultsContainer({ goodTeams, rikishi, user }) {
     let yourTeam;
   let otherTeams = goodTeams;
 
-  if (user.username) {
+  if (user !== null && user.username) {
     yourTeam = [...goodTeams].filter(
       (team) => team.user.username === user.username
     )[0];
@@ -15,7 +15,7 @@ function DesktopResultsContainer({ goodTeams, rikishi, user }) {
   }
 
   function showYourTeam() {
-    if (user.username) {
+    if (user !== null && user.username) {
       return (
         <div id="yourTeam">
           <OneTeam team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
