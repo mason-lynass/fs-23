@@ -1,35 +1,49 @@
-import OneTeamMobile from "./OneTeamMobile"
+import OneTeamMobile from "./OneTeamMobile";
 
 function MobileResultsContainer({ goodTeams, rikishi, user }) {
+  let yourTeam;
+  let otherTeams = goodTeams;
 
-    const yourTeam = [...goodTeams].filter((team) => team.user.username === user.username)[0]
-    const otherTeams = [...goodTeams].filter((team) => team.user.username !== user.username)
+  if (user.username) {
+    yourTeam = [...goodTeams].filter(
+      (team) => team.user.username === user.username
+    )[0];
+    otherTeams = [...goodTeams].filter(
+      (team) => team.user.username !== user.username
+    );
+  }
 
-    return (
-        <div className='resultsContainer'>
-            <div className='teamsTop'>
-                <h2 className="teamName">team name</h2>
-                <p className="smallerColumn">1</p>
-                <p className="smallerColumn">2</p>
-                <p className="smallerColumn">3</p>
-                <p className="smallerColumn">4</p>
-                <p className="smallerColumn">5</p>
-                <p className="smallerColumn">6</p>
-                <p className="smallerColumn">7</p>
-                <h3 className="total">Total:</h3>
-            </div>
-            <div id='yourTeam'>
-                <OneTeamMobile team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
-            </div>
-            <div id="teamsContainer">
-                {otherTeams.map((team) => {
-                    return (
-                        <OneTeamMobile team={team} key={team.id} rikishi={rikishi} />
-                    )
-                })}
-            </div>
+  function showYourTeam() {
+    if (user.username) {
+      return (
+        <div id="yourTeam">
+          <OneTeamMobile team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
         </div>
-    )
+      );
+    }
+  }
+
+  return (
+    <div className="resultsContainer">
+      <div className="teamsTop">
+        <h2 className="teamName">team name</h2>
+        <p className="smallerColumn">1</p>
+        <p className="smallerColumn">2</p>
+        <p className="smallerColumn">3</p>
+        <p className="smallerColumn">4</p>
+        <p className="smallerColumn">5</p>
+        <p className="smallerColumn">6</p>
+        <p className="smallerColumn">7</p>
+        <h3 className="total">Total:</h3>
+      </div>
+      {showYourTeam()}
+      <div id="teamsContainer">
+        {otherTeams.map((team) => {
+          return <OneTeamMobile team={team} key={team.id} rikishi={rikishi} />;
+        })}
+      </div>
+    </div>
+  );
 }
 
-export default MobileResultsContainer
+export default MobileResultsContainer;
