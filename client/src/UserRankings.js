@@ -136,7 +136,7 @@ function UserRankings() {
         const nagoya2024 =
           user.teams.filter((t) => t.basho === 2024.07)[0] || "";
         const aki2024 =
-          user.teams.filter((t) => t.basho === 2024.07)[0] || "";
+          user.teams.filter((t) => t.basho === 2024.09)[0] || "";
 
         return (
           <div className="oneTeamTR" key={user.username}>
