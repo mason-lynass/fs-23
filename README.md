@@ -32,5 +32,6 @@ https://github.com/mason-lynass/fs-23
 
 ### To start locally:
 
-`npm run --prefix client
-rails s (on port 4000)`
+`npm run --prefix client`
+
+`rails s (on port 4000)`
