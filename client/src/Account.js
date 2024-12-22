@@ -79,7 +79,7 @@ function Account({
 
     return (
       <div>
-        <h3>Here's your team for the November tournament:</h3>
+        <h3>Here's your team for the January tournament:</h3>
         <div id="AccountTeam">
           <div id="ATRikishi">
             {actualTeam.map((obj) => (
@@ -114,13 +114,13 @@ function Account({
             after you draft your team.
           </h4>
         </div>
-        {/* <div id="Redraft">
+        <div id="Redraft">
           <h4>
             If you need to redraft before the tournament starts, if someone is
             injured or you've changed your mind:{" "}
           </h4>
           <button onClick={handleDeleteTeam}>DELETE TEAM</button>
-        </div> */}
+        </div>
       </div>
     );
   }, [currentTeam, actualTeam, totalPoints, teamPosition, otherTeams, handleDeleteTeam]);
