@@ -9,12 +9,19 @@ class TeamsController < ApplicationController
         render json: Team.find(params[:id])
     end
 
-    def create 
-        team = Team.create!(team_params)
-        if team.valid? 
-            render json: team, status: :created
+    def create
+        # this stuff is new as of Jan 2025
+        existing_team = Team.find_by(user_id: session[:user_id], basho: params[:basho])
+
+        if existing_team
+            render json: existing_team, status: :ok
         else
-            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            team = Team.create!(team_params)
+            if team.valid? 
+                render json: team, status: :created
+            else
+                render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            end
         end
     end
 
