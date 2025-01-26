@@ -2,19 +2,6 @@ import "./CSS/userrankings.css";
 import { useEffect, useState } from "react";
 
 function UserRankings() {
-  // get all of the users
-  // they already have teams with percentile values, so we don't need to calculate that
-  // users also already have total_percentiles, so we don't need to calculate that
-  // what we need to calculate is the average_percentile, which is just total_percentile / number of teams
-  //
-
-  // get all of the teams - this comes from a prop
-  // go through all of the teams and create user objects for each username
-  // organize all of the teams into bashos
-  // for each basho, find the team with the highest score - set this score as a variable to reference
-  // for each team in the basho, calculate the % of highest score, assign that value to the user object "score202401" for example
-  // once you've done this for every basho, add up each user's scores and divide it by their number of bashos - save this as a value "averageRank"
-  // sort users by average rank, display the number of bashos, display their % of highest score in a table
 
   const [usersLoaded, setUsersLoaded] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
@@ -54,7 +41,7 @@ function UserRankings() {
       let average = 0;
       let weightedAverage = 0;
       if (parseFloat(total) > 0) {
-        average = (parseFloat(total) / u.teams.length).toFixed(2); // something like this
+        average = (parseFloat(total) / u.teams.length).toFixed(2);
         weightedAverage = (
           parseFloat(average) +
           0.1 * (u.teams.length - 1)
@@ -87,7 +74,6 @@ function UserRankings() {
       if (sortState === "default") {
         sortedUsers = allUsers.sort(
           (a, b) =>
-            //   parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
             parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
         );
       } else if (sortState === "TRUsername")
@@ -139,6 +125,8 @@ function UserRankings() {
           user.teams.filter((t) => t.basho === 2024.09)[0] || "";
         const kyushu2024 =
           user.teams.filter((t) => t.basho === 2024.11)[0] || "";
+        const hatsu2025 =
+          user.teams.filter((t) => t.basho === 2025.01)[0] || "";
 
         return (
           <div className="oneTeamTR" key={user.username}>
@@ -146,6 +134,7 @@ function UserRankings() {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
+            <p>{hatsu2025 !== "" ? hatsu2025.percentile : ""}</p>
             <p>{kyushu2024 !== "" ? kyushu2024.percentile : ""}</p>
             <p>{aki2024 !== "" ? aki2024.percentile : ""}</p>
             <p>{nagoya2024 !== "" ? nagoya2024.percentile : ""}</p>
@@ -190,6 +179,9 @@ function UserRankings() {
           >
             weighted average
           </h3>
+          <p className="TRCol" id="2025.01" onClick={handleSortState}>
+            2025.01
+          </p>
           <p className="TRCol" id="2024.11" onClick={handleSortState}>
             2024.11
           </p>
