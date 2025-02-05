@@ -309,7 +309,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
       // Convert the integers in reverseOrder to the correct format
       let bashoRowsArray = [];
       for (const basho of reverseOrder) {
-        let year = 2024;
+        let year = 2025;
         if (basho >= 374) {
           year -= Math.floor((reverseOrder.length - basho) / 6);
           switch (basho % 6) {
@@ -332,7 +332,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
               bashoRowsArray.push([basho, year + ".11"]);
               break;
             default:
-              console.log("Unexpected case in basho calculation");
+              console.log("");
           }
         } else if (basho < 374 && basho > 320) {
           year -= Math.floor((reverseOrder.length - (basho - 1)) / 6);
@@ -356,7 +356,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
               bashoRowsArray.push([basho, year + ".11"]);
               break;
             default:
-              console.log("Unexpected case in basho calculation");
+              console.log("");
           }
         } else if (basho > 0 && basho <= 320) {
           year -= Math.floor((reverseOrder.length - (basho - 2)) / 6);
@@ -380,7 +380,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
               bashoRowsArray.push([basho, year + ".11"]);
               break;
             default:
-              console.log("Unexpected case in basho calculation");
+              console.log("");
           }
         }
       }
@@ -400,8 +400,6 @@ function NewFSDatabase({ fsHistories, rikishi }) {
       );
     });
   }
-
-  console.log(fsHistories[0])
 
   // defined so that mobile users see the 'sorry' message
   const mobileScreen = window.matchMedia("(max-width: 600px)");
