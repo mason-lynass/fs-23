@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_28_083555) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_05_040150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -419,6 +419,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_083555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total_points"
+    t.integer "b202501"
+    t.integer "b202503"
+    t.integer "b202505"
+    t.integer "b202507"
+    t.integer "b202509"
+    t.integer "b202511"
     t.index ["rikishi_id"], name: "index_fantasy_sumo_histories_on_rikishi_id"
   end
 

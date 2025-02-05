@@ -2,26 +2,27 @@ import OneTeam from "./OneTeam";
 
 function DesktopResultsContainer({ goodTeams, rikishi, user }) {
   
-    let yourTeam;
+  let yourTeam = null;
   let otherTeams = goodTeams;
 
   if (user !== null && user.username) {
-    yourTeam = [...goodTeams].filter(
+    yourTeam = goodTeams.find(
       (team) => team.user.username === user.username
-    )[0];
-    otherTeams = [...goodTeams].filter(
+    );
+    otherTeams = goodTeams.filter(
       (team) => team.user.username !== user.username
     );
   }
 
   function showYourTeam() {
-    if (user !== null && user.username) {
+    if (user && user.username && yourTeam) {
       return (
         <div id="yourTeam">
           <OneTeam team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
         </div>
       );
     }
+    return null
   }
 
   return (
