@@ -2,18 +2,14 @@ import "./CSS/results.css"
 import { useEffect, useState } from "react"
 import RikishiResults from "./components/RikishiResults"
 import Hello from "./components/Hello"
-// import ResultsNav from './components/ResultsNav'
 import MobileResultsContainer from "./components/MobileResultsContainer"
 import DesktopResultsContainer from "./components/DesktopResultsContainer"
 
-function Results({ rikishi, teams, newTeams, teamsLoaded, rankSort, basho, user }) {
+function Results({ rikishi, newTeams, teamsLoaded, rankSort, basho, user }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
     const [viewState, setViewState] = useState(true)
-
-    // CHANGE
-    const currentTeams = newTeams
 
     useEffect(() => {
         setResultsRikishi(rikishi)
@@ -27,11 +23,9 @@ function Results({ rikishi, teams, newTeams, teamsLoaded, rankSort, basho, user 
         setViewState(!viewState)
     }
 
-    console.log(newTeams)
-
     function renderTeamsNormal() {
 
-        const allTeamsAsObjects = currentTeams.map((team) => {
+        const allTeamsAsObjects = newTeams.map((team) => {
             const teamRikishi = ([
                 team.r1,
                 team.r2,
@@ -71,7 +65,7 @@ function Results({ rikishi, teams, newTeams, teamsLoaded, rankSort, basho, user 
 
     function renderTeamsMobile() {
 
-        const allTeamsAsObjects = currentTeams.map((team) => {
+        const allTeamsAsObjects = newTeams.map((team) => {
             const teamRikishi = ([
                 team.r1,
                 team.r2,

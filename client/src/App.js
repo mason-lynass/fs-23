@@ -29,8 +29,8 @@ function App() {
   const basho = 2025.01;
   const [user, setUser] = useState(null);
   const [rikishi, setRikishi] = useState([]);
-  const [teams, setTeams] = useState([]);
-  const [teamsLoaded, setTeamsLoaded] = useState(false);
+  const [oldTeams, setOldTeams] = useState([]);
+  const [oldTeamsLoaded, setOldTeamsLoaded] = useState(false);
   const [newTeams, setNewTeams] = useState([]);
   const [newTeamsLoaded, setNewTeamsLoaded] = useState(false);
   const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
@@ -95,11 +95,11 @@ function App() {
         const sorted = rankSort(r);
         setRikishi(sorted);
       });
-    fetch("/teams")
+    fetch("/old_teams")
       .then((r) => r.json())
       .then((teams) => {
-        setTeams(teams);
-        setTeamsLoaded(true);
+        setOldTeams(teams);
+        setOldTeamsLoaded(true);
       });
     fetch("/new_teams")
       .then((r) => r.json())
@@ -146,7 +146,7 @@ function App() {
               setUser={setUser}
               rikishi={rikishi}
               clap={clap}
-              teams={teams}
+              oldTeams={oldTeams}
               newTeams={newTeams}
               fantasySumoHistories={fantasySumoHistories}
               basho={basho}
@@ -175,9 +175,9 @@ function App() {
           element={
             <Results
               rikishi={rikishi}
-              teams={teams}
+              teams={oldTeams}
               newTeams={newTeams}
-              teamsLoaded={teamsLoaded}
+              teamsLoaded={oldTeamsLoaded}
               rankSort={rankSort}
               basho={basho}
               user={user}

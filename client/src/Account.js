@@ -11,7 +11,8 @@ function Account({
   setUser,
   rikishi,
   clap,
-  teams,
+  oldTeams,
+  newTeams,
   fantasySumoHistories,
   basho,
 }) {
@@ -34,32 +35,29 @@ function Account({
   }, [user, basho, navigate, setUser]);
 
   const currentTeam = useMemo(() => {
-    if (user && user.teams) return user.teams.find((e) => e.basho === basho);
+    if (user && user.teams){
+      console.log(Object.values(user.new_team))
+      return user.new_team;
+    } 
   }, [user, basho]);
 
-  const CTRikishiStrings = useMemo(() => {
-    return currentTeam ? Object.values(currentTeam).filter((value) => typeof value === "string") : [];
+  
+
+  const justRikishi = useMemo(() => {
+    return currentTeam ? Object.values(currentTeam).filter((value) => value && typeof(value) === 'object') : [];
   }, [currentTeam]);
 
-  const actualTeam = useMemo(() => {
-    return rikishi.filter((r) => CTRikishiStrings.includes(r.shikona));
-  }, [rikishi, CTRikishiStrings]);
-
   const indivPoints = useMemo(() => {
-    return actualTeam.map((r) => r.fs_current);
-  }, [actualTeam]);
+    return justRikishi.map((r) => r.fs_current);
+  }, [justRikishi]);
 
   const totalPoints = useMemo(() => {
     return indivPoints.reduce((a, b) => a + b, 0);
   }, [indivPoints]);
 
-  const otherTeams = useMemo(() => {
-    return teams.filter((team) => team.basho === basho);
-  }, [teams, basho]);
-
   const sortedOtherTeams = useMemo(() => {
-    return [...otherTeams].sort((a, b) => b.final_score - a.final_score);
-  }, [otherTeams]);
+    return [...newTeams].sort((a, b) => b.final_score - a.final_score);
+  }, [newTeams]);
 
   const teamPosition = useMemo(() => {
     if (user && user.username) 
@@ -82,7 +80,7 @@ function Account({
         <h3>Here's your team for the January tournament:</h3>
         <div id="AccountTeam">
           <div id="ATRikishi">
-            {actualTeam.map((obj) => (
+            {justRikishi.map((obj) => (
               <div className="AccountOneRikishi" key={obj.id}>
                 <img src={obj.image_url} alt="" />
                 <h3 className="AORrank">{obj.current_rank}</h3>
@@ -102,7 +100,7 @@ function Account({
               <>
                 <hr></hr>
                 <h2>#{teamPosition} out of</h2>
-                <h2>{otherTeams.length} teams</h2>
+                <h2>{newTeams.length} teams</h2>
               </>
             )}
           </div>
@@ -123,7 +121,9 @@ function Account({
         </div> */}
       </div>
     );
-  }, [currentTeam, actualTeam, totalPoints, teamPosition, otherTeams, handleDeleteTeam]);
+  }, [currentTeam, totalPoints, teamPosition, handleDeleteTeam]);
+
+  console.log(oldTeams, newTeams)
 
   const renderAccountPage = useCallback(() => {
     if (user === null) {
@@ -145,7 +145,7 @@ function Account({
             <PreviousTeams
               user={user}
               rikishi={rikishi}
-              teams={teams}
+              teams={oldTeams}
               fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
@@ -153,7 +153,7 @@ function Account({
         </div>
       );
     }
-  }, [user, clap, setUser, renderCurrentBashoTeam, rikishi, teams, fantasySumoHistories, basho]);
+  }, [user, clap, setUser, renderCurrentBashoTeam, rikishi, oldTeams, fantasySumoHistories, basho]);
 
   return <>{renderAccountPage()}</>;
 }

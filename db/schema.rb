@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_05_183819) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_06_031930) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -624,6 +624,30 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_05_183819) do
     t.index ["user_id"], name: "index_new_teams_on_user_id"
   end
 
+  create_table "old_teams", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "r1_id", null: false
+    t.bigint "r2_id", null: false
+    t.bigint "r3_id", null: false
+    t.bigint "r4_id", null: false
+    t.bigint "r5_id", null: false
+    t.bigint "r6_id", null: false
+    t.bigint "r7_id", null: false
+    t.float "basho"
+    t.integer "final_score"
+    t.decimal "percentile", precision: 3, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["r1_id"], name: "index_old_teams_on_r1_id"
+    t.index ["r2_id"], name: "index_old_teams_on_r2_id"
+    t.index ["r3_id"], name: "index_old_teams_on_r3_id"
+    t.index ["r4_id"], name: "index_old_teams_on_r4_id"
+    t.index ["r5_id"], name: "index_old_teams_on_r5_id"
+    t.index ["r6_id"], name: "index_old_teams_on_r6_id"
+    t.index ["r7_id"], name: "index_old_teams_on_r7_id"
+    t.index ["user_id"], name: "index_old_teams_on_user_id"
+  end
+
   create_table "rikishis", force: :cascade do |t|
     t.string "shikona"
     t.string "image_url"
@@ -681,5 +705,13 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_05_183819) do
   add_foreign_key "new_teams", "rikishis", column: "r6_id"
   add_foreign_key "new_teams", "rikishis", column: "r7_id"
   add_foreign_key "new_teams", "users"
+  add_foreign_key "old_teams", "rikishis", column: "r1_id"
+  add_foreign_key "old_teams", "rikishis", column: "r2_id"
+  add_foreign_key "old_teams", "rikishis", column: "r3_id"
+  add_foreign_key "old_teams", "rikishis", column: "r4_id"
+  add_foreign_key "old_teams", "rikishis", column: "r5_id"
+  add_foreign_key "old_teams", "rikishis", column: "r6_id"
+  add_foreign_key "old_teams", "rikishis", column: "r7_id"
+  add_foreign_key "old_teams", "users"
   add_foreign_key "teams", "users"
 end
