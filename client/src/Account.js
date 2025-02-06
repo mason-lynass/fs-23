@@ -4,18 +4,29 @@ import PreviousTeams from "./components/PreviousTeams";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import { useNavigate } from "react-router-dom";
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useEffect, useState } from "react";
 
 function Account({
   user,
   setUser,
   rikishi,
   clap,
-  oldTeams,
   newTeams,
   fantasySumoHistories,
   basho,
 }) {
+  const [oldTeams, setOldTeams] = useState([]);
+  const [oldTeamsLoaded, setOldTeamsLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch("/old_teams")
+      .then((r) => r.json())
+      .then((teams) => {
+        setOldTeams(teams);
+        setOldTeamsLoaded(true);
+      });
+  }, []);
+
   const navigate = useNavigate();
 
   const handleDeleteTeam = useCallback(() => {
@@ -35,16 +46,15 @@ function Account({
   }, [user, basho, navigate, setUser]);
 
   const currentTeam = useMemo(() => {
-    if (user && user.teams){
-      console.log(Object.values(user.new_team))
-      return user.new_team;
-    } 
+    if (user && user.teams) return user.new_team;
   }, [user, basho]);
 
-  
-
   const justRikishi = useMemo(() => {
-    return currentTeam ? Object.values(currentTeam).filter((value) => value && typeof(value) === 'object') : [];
+    return currentTeam
+      ? Object.values(currentTeam).filter(
+          (value) => value && typeof value === "object"
+        )
+      : [];
   }, [currentTeam]);
 
   const indivPoints = useMemo(() => {
@@ -60,10 +70,12 @@ function Account({
   }, [newTeams]);
 
   const teamPosition = useMemo(() => {
-    if (user && user.username) 
-    return sortedOtherTeams.findIndex(
-      (team) => team.user.username === user.username
-    ) + 1;
+    if (user && user.username)
+      return (
+        sortedOtherTeams.findIndex(
+          (team) => team.user.username === user.username
+        ) + 1
+      );
   }, [sortedOtherTeams, user]);
 
   const renderCurrentBashoTeam = useCallback(() => {
@@ -123,8 +135,6 @@ function Account({
     );
   }, [currentTeam, totalPoints, teamPosition, handleDeleteTeam]);
 
-  console.log(oldTeams, newTeams)
-
   const renderAccountPage = useCallback(() => {
     if (user === null) {
       return (
@@ -141,7 +151,7 @@ function Account({
         <div id="AccountPage">
           <h2 id="AccountHello">Hello, {user.username}!</h2>
           {renderCurrentBashoTeam()}
-          {user.teams.length > 0 && (
+          {user.teams.length > 0 && oldTeams.length > 0 && (
             <PreviousTeams
               user={user}
               rikishi={rikishi}
@@ -153,7 +163,16 @@ function Account({
         </div>
       );
     }
-  }, [user, clap, setUser, renderCurrentBashoTeam, rikishi, oldTeams, fantasySumoHistories, basho]);
+  }, [
+    user,
+    clap,
+    setUser,
+    renderCurrentBashoTeam,
+    rikishi,
+    oldTeams,
+    fantasySumoHistories,
+    basho,
+  ]);
 
   return <>{renderAccountPage()}</>;
 }

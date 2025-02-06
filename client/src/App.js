@@ -20,23 +20,17 @@ import Results from "./Results";
 import Database from "./Database";
 import Account from "./Account";
 import Terminology from "./Terminology";
-import UserRankings from "./UserRankings";
-// import NewFSDatabase from "./components/NewFSDatabase";
-// import DbTest from './components/DbTest';
-// import HowMany from './components/HowMany';
 
 function App() {
-  const basho = 2025.01;
+  const basho = 2025.03;
   const [user, setUser] = useState(null);
   const [rikishi, setRikishi] = useState([]);
-  const [oldTeams, setOldTeams] = useState([]);
-  const [oldTeamsLoaded, setOldTeamsLoaded] = useState(false);
   const [newTeams, setNewTeams] = useState([]);
   const [newTeamsLoaded, setNewTeamsLoaded] = useState(false);
   const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
 
   const [clap] = useSound(Clap);
-  const [hyoshigi] = useSound(Hyoshigi);
+  const [hyoshigi] = useSound(Hyoshigi, { volume: 0.5 });
   const [tachiai] = useSound(Hakkeyoi, { volume: 0.5 });
 
   function rankSort(wrestlers, highest) {
@@ -95,12 +89,6 @@ function App() {
         const sorted = rankSort(r);
         setRikishi(sorted);
       });
-    fetch("/old_teams")
-      .then((r) => r.json())
-      .then((teams) => {
-        setOldTeams(teams);
-        setOldTeamsLoaded(true);
-      });
     fetch("/new_teams")
       .then((r) => r.json())
       .then((teams) => {
@@ -146,7 +134,6 @@ function App() {
               setUser={setUser}
               rikishi={rikishi}
               clap={clap}
-              oldTeams={oldTeams}
               newTeams={newTeams}
               fantasySumoHistories={fantasySumoHistories}
               basho={basho}
@@ -155,7 +142,6 @@ function App() {
         />
         <Route path="/rules" element={<Rules />} />
         <Route path="/terminology" element={<Terminology />} />
-        <Route path="/team-rankings" element={<UserRankings />} />
         <Route
           path="/draft"
           element={
@@ -175,9 +161,8 @@ function App() {
           element={
             <Results
               rikishi={rikishi}
-              teams={oldTeams}
               newTeams={newTeams}
-              teamsLoaded={oldTeamsLoaded}
+              teamsLoaded={newTeamsLoaded}
               rankSort={rankSort}
               basho={basho}
               user={user}

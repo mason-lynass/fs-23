@@ -39,7 +39,7 @@ class NewTeamsController < ApplicationController
   private
   
   def team_params
-      params.permit(:user_id, :r1, :r2, :r3, :r4, :r5, :r6, :r7, :basho)
+      params.permit(:user_id, :r1_id, :r2_id, :r3_id, :r4_id, :r5_id, :r6_id, :r7_id, :basho)
   end
 
   def render_unprocessable_entity_response

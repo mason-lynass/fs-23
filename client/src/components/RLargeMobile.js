@@ -17,41 +17,41 @@ function RLargeMobile({ clickedRikishi, userTeam, setUserTeam, handleCloseMobile
     function handleAddToTeam(rikishi) {
         if (rikishi.current_rank === "Y" || rikishi.current_rank === "O" || rikishi.current_rank === "S" || rikishi.current_rank === "K") {
             if (userTeam.r1 === "") {
-                setUserTeam({ ...userTeam, r1: rikishi.shikona })
-            } else if (userTeam.r1 !== "" && userTeam.r1 !== rikishi.shikona) {
-                setUserTeam({ ...userTeam, r6: rikishi.shikona })
+                setUserTeam({ ...userTeam, r1: rikishi })
+            } else if (userTeam.r1 !== "" && userTeam.r1 !== rikishi) {
+                setUserTeam({ ...userTeam, r6: rikishi })
             }
         }
         if (rikishi.current_rank === "M1" || rikishi.current_rank === "M2" || rikishi.current_rank === "M3" || rikishi.current_rank === "M4") {
             if (userTeam.r2 === "") {
-                setUserTeam({ ...userTeam, r2: rikishi.shikona })
-            } else if (userTeam.r2 !== "" && userTeam.r2 !== rikishi.shikona) {
-                setUserTeam({ ...userTeam, r6: rikishi.shikona })
+                setUserTeam({ ...userTeam, r2: rikishi })
+            } else if (userTeam.r2 !== "" && userTeam.r2 !== rikishi) {
+                setUserTeam({ ...userTeam, r6: rikishi })
             }
         }
         if (rikishi.current_rank === "M5" || rikishi.current_rank === "M6" || rikishi.current_rank === "M7" || rikishi.current_rank === "M8") {
             if (userTeam.r3 === "") {
-                setUserTeam({ ...userTeam, r3: rikishi.shikona })
-            } else if (userTeam.r3 !== "" && userTeam.r3 !== rikishi.shikona) {
-                setUserTeam({ ...userTeam, r6: rikishi.shikona })
+                setUserTeam({ ...userTeam, r3: rikishi })
+            } else if (userTeam.r3 !== "" && userTeam.r3 !== rikishi) {
+                setUserTeam({ ...userTeam, r6: rikishi })
             }
         }
         if (rikishi.current_rank === "M9" || rikishi.current_rank === "M10" || rikishi.current_rank === "M11" || rikishi.current_rank === "M12") {
             if (userTeam.r4 === "") {
-                setUserTeam({ ...userTeam, r4: rikishi.shikona })
-            } else if (userTeam.r4 !== "" && userTeam.r4 !== rikishi.shikona) {
-                setUserTeam({ ...userTeam, r6: rikishi.shikona })
+                setUserTeam({ ...userTeam, r4: rikishi })
+            } else if (userTeam.r4 !== "" && userTeam.r4 !== rikishi) {
+                setUserTeam({ ...userTeam, r6: rikishi })
             }
         }
         if (rikishi.current_rank === "M13" || rikishi.current_rank === "M14" || rikishi.current_rank === "M15" || rikishi.current_rank === "M16" || rikishi.current_rank === "M17") {
             if (userTeam.r5 === "") {
-                setUserTeam({ ...userTeam, r5: rikishi.shikona })
-            } else if (userTeam.r5 !== "" && userTeam.r5 !== rikishi.shikona) {
-                setUserTeam({ ...userTeam, r6: rikishi.shikona })
+                setUserTeam({ ...userTeam, r5: rikishi })
+            } else if (userTeam.r5 !== "" && userTeam.r5 !== rikishi) {
+                setUserTeam({ ...userTeam, r6: rikishi })
             }
         }
         if (rikishi.current_rank === "J") {
-            setUserTeam({ ...userTeam, r7: rikishi.shikona })
+            setUserTeam({ ...userTeam, r7: rikishi })
         }
         handleCloseMobileCard()
     }
