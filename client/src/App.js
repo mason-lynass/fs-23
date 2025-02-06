@@ -31,7 +31,9 @@ function App() {
   const [rikishi, setRikishi] = useState([]);
   const [teams, setTeams] = useState([]);
   const [teamsLoaded, setTeamsLoaded] = useState(false);
-  const [fantasySumoHistories, setFantasySumoHistories] = useState([])
+  const [newTeams, setNewTeams] = useState([]);
+  const [newTeamsLoaded, setNewTeamsLoaded] = useState(false);
+  const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
 
   const [clap] = useSound(Clap);
   const [hyoshigi] = useSound(Hyoshigi);
@@ -99,14 +101,20 @@ function App() {
         setTeams(teams);
         setTeamsLoaded(true);
       });
+    fetch("/new_teams")
+      .then((r) => r.json())
+      .then((teams) => {
+        setNewTeams(teams);
+        setNewTeamsLoaded(true);
+      });
     fetch("/fantasy_sumo_histories")
       .then((r) => r.json())
       .then((r) => setFantasySumoHistories(r));
   }, []);
 
   useEffect(() => {
-    setUser(user)
-  }, [user])
+    setUser(user);
+  }, [user]);
 
   const sortedRikishi = useMemo(() => rankSort(rikishi), [rikishi]);
 
@@ -139,6 +147,7 @@ function App() {
               rikishi={rikishi}
               clap={clap}
               teams={teams}
+              newTeams={newTeams}
               fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
@@ -167,6 +176,7 @@ function App() {
             <Results
               rikishi={rikishi}
               teams={teams}
+              newTeams={newTeams}
               teamsLoaded={teamsLoaded}
               rankSort={rankSort}
               basho={basho}

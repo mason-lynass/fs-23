@@ -12,25 +12,25 @@ function OneTeamMobile({ team }) {
         <div className='oneTeam'>
             <h2>{username}</h2>
             <div className="smallerColumn">
-                <p>{team[0].fs_current}</p>
+                <p>{team.r1.fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[1].fs_current}</p>
+                <p>{team.r2.fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[2].fs_current}</p>
+                <p>{team.r3.fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[3].fs_current}</p>
+                <p>{team.r4.fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[4].fs_current}</p>
+                <p>{team.r5.fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[5].fs_current}</p>
+                <p>{team.r6.fs_current}</p>
             </div>
             <div className="smallerColumn">
-                <p>{team[6].fs_current}</p>
+                <p>{team.r7.fs_current}</p>
             </div>
             <h3 className="total">{team.scoreSum}</h3>
         </div>

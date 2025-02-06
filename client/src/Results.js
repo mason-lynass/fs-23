@@ -6,13 +6,14 @@ import Hello from "./components/Hello"
 import MobileResultsContainer from "./components/MobileResultsContainer"
 import DesktopResultsContainer from "./components/DesktopResultsContainer"
 
-function Results({ rikishi, teams, teamsLoaded, rankSort, basho, user }) {
+function Results({ rikishi, teams, newTeams, teamsLoaded, rankSort, basho, user }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
     const [viewState, setViewState] = useState(true)
 
-    const currentTeams = teams.filter((team) => team.basho === basho)
+    // CHANGE
+    const currentTeams = newTeams
 
     useEffect(() => {
         setResultsRikishi(rikishi)
@@ -26,6 +27,8 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, basho, user }) {
         setViewState(!viewState)
     }
 
+    console.log(newTeams)
+
     function renderTeamsNormal() {
 
         const allTeamsAsObjects = currentTeams.map((team) => {
@@ -38,22 +41,15 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, basho, user }) {
                 team.r6,
                 team.r7])
 
-            const newRikishiObjects = teamRikishi.map((tR) => {
-                return resultsRikishi.filter((r) => r.shikona === tR)[0]
-            })
-
-            const ROScores = newRikishiObjects.map((r) => r.fs_current)
-
             let scoreSum = 0
-            for (const item of ROScores) { scoreSum += item }
+            for (const item of teamRikishi) { scoreSum += item.fs_current }
 
-            const teamWTotal = { ...newRikishiObjects, scoreSum: scoreSum, user: team.user, id: team.id }
+            const teamWTotal = { ...team, scoreSum: scoreSum }
 
             return (teamWTotal)
         })
 
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
-        const goodTeams = teamsHiToLo
 
         return (
             (teamsLoaded === false) ?
@@ -65,9 +61,9 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, basho, user }) {
                         <button id='resultsButton' onClick={changeViewState}>{viewState === true ? "rikishi results" : "team results"}</button>
                     </div>
                     {viewState === true ? 
-                    <DesktopResultsContainer goodTeams={goodTeams} rikishi={rikishi} user={user} />
+                    <DesktopResultsContainer goodTeams={teamsHiToLo} user={user} />
                      :
-                    <RikishiResults basho={basho} rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
+                    <RikishiResults basho={basho} rikishi={resultsRikishi} rikishiLoaded={rikishiLoaded} teams={newTeams} teamsLoaded={teamsLoaded}/>
                     }
                 </div>
         )
@@ -85,24 +81,15 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, basho, user }) {
                 team.r6,
                 team.r7])
 
-            const newRikishiObjects = teamRikishi.map((tR) => {
-                return resultsRikishi.filter((r) => r.shikona === tR)[0]
-            })
-
-            // change this every basho (maybe not now?)
-            const ROScores = newRikishiObjects.map((r) => r.fs_current)
-
-            let scoreSum = 0
-            for (const item of ROScores) { scoreSum += item }
-
-            const teamWTotal = { ...newRikishiObjects, scoreSum: scoreSum, user: team.user, id: team.id }
-
-            return (teamWTotal)
+                let scoreSum = 0
+                for (const item of teamRikishi) { scoreSum += item.fs_current }
+    
+                const teamWTotal = { ...team, scoreSum: scoreSum }
+    
+                return (teamWTotal)
         })
 
         const teamsHiToLo = [...allTeamsAsObjects].sort((a, b) => b.scoreSum - a.scoreSum)
-
-        const goodTeams = teamsHiToLo
 
         return (
             (teamsLoaded === false) ?
@@ -114,9 +101,9 @@ function Results({ rikishi, teams, teamsLoaded, rankSort, basho, user }) {
                         <button id='resultsButton' onClick={changeViewState}>{viewState === true ? "rikishi results" : "team results"}</button>
                     </div>
                     {viewState === true ? 
-                    <MobileResultsContainer goodTeams={goodTeams} rikishi={rikishi} user={user} />
+                    <MobileResultsContainer goodTeams={teamsHiToLo} user={user} />
                      :
-                    <RikishiResults basho={basho} rikishi={rikishi} teams={teams} teamsLoaded={teamsLoaded}/>
+                    <RikishiResults basho={basho} rikishi={resultsRikishi} teams={newTeams} teamsLoaded={teamsLoaded} rikishiLoaded={rikishiLoaded}/>
                     }
                 </div>
         )
