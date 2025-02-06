@@ -1,30 +1,28 @@
 import { useMemo, useCallback } from "react";
 
 function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
-    const oldTeams = useMemo(() => {
-        return user.teams
-          .filter((team) => team.basho !== basho)
-          .sort((a, b) => b.basho - a.basho);
-      }, [user.teams, basho]);
 
   // Memoize the getFilteredTeams function to filter teams by basho
   const getFilteredTeams = useCallback((teamBasho) => {
     return teams.filter((team) => team.basho === teamBasho);
   }, [teams]);
 
-  // Move isString function outside to avoid re-creation
   const isString = (value) => typeof value === "string";
 
   // Memoize the rendering of each previous team
   const allPrevTeams = useMemo(() => {
-    return oldTeams.map((team) => {
+    return teams.map((team) => {
+      console.log(team)
       // Filter out the string values (rikishi names) from the team object
-      const OTRikishiStrings = Object.values(team).filter(isString);
+
+      const rikishiObjects = Object.values(team).filter((value) => value && typeof(value) === 'object')
 
       // Get the actual team details from fantasySumoHistories
-      const actualTeam = OTRikishiStrings.map((shikona) =>
-        fantasySumoHistories.find((f) => f.rikishi.shikona === shikona)
+      const actualTeam = rikishiObjects.map((r) =>
+        fantasySumoHistories.find((f) => f.rikishi.shikona === r.shikona)
       );
+
+      console.log(actualTeam)
 
       // Skip if fantasySumoHistories is empty
       if (fantasySumoHistories.length === 0) {
@@ -76,38 +74,38 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
           </div>
           <div id="oneTeam">
             <div>
-              <p>{team.r1}</p>
+              <p>{team.r1.shikona}</p>
               <p>{teamScores.r1}</p>
             </div>
             <div>
-              <p>{team.r2}</p>
+              <p>{team.r2.shikona}</p>
               <p>{teamScores.r2}</p>
             </div>
             <div>
-              <p>{team.r3}</p>
+              <p>{team.r3.shikona}</p>
               <p>{teamScores.r3}</p>
             </div>
             <div>
-              <p>{team.r4}</p>
+              <p>{team.r4.shikona}</p>
               <p>{teamScores.r4}</p>
             </div>
             <div>
-              <p>{team.r5}</p>
+              <p>{team.r5.shikona}</p>
               <p>{teamScores.r5}</p>
             </div>
             <div>
-              <p>{team.r6}</p>
+              <p>{team.r6.shikona}</p>
               <p>{teamScores.r6}</p>
             </div>
             <div>
-              <p>{team.r7}</p>
+              <p>{team.r7.shikona}</p>
               <p>{teamScores.r7}</p>
             </div>
           </div>
         </div>
       );
     });
-  }, [oldTeams, fantasySumoHistories, getFilteredTeams, user.username]);
+  }, [fantasySumoHistories, getFilteredTeams, user.username]);
 
   return (
     <div>
