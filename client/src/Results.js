@@ -5,7 +5,7 @@ import Hello from "./components/Hello"
 import MobileResultsContainer from "./components/MobileResultsContainer"
 import DesktopResultsContainer from "./components/DesktopResultsContainer"
 
-function Results({ rikishi, newTeams, teamsLoaded, rankSort, basho, user }) {
+function Results({ rikishi, newTeams, teamsLoaded, rankSort, user }) {
 
     const [rikishiLoaded, setRikishiLoaded] = useState(false)
     const [resultsRikishi, setResultsRikishi] = useState([])
@@ -57,7 +57,7 @@ function Results({ rikishi, newTeams, teamsLoaded, rankSort, basho, user }) {
                     {viewState === true ? 
                     <DesktopResultsContainer goodTeams={teamsHiToLo} user={user} />
                      :
-                    <RikishiResults basho={basho} rikishi={resultsRikishi} rikishiLoaded={rikishiLoaded} teams={newTeams} teamsLoaded={teamsLoaded}/>
+                    <RikishiResults rikishi={resultsRikishi} rikishiLoaded={rikishiLoaded} teams={newTeams} teamsLoaded={teamsLoaded}/>
                     }
                 </div>
         )
@@ -97,7 +97,7 @@ function Results({ rikishi, newTeams, teamsLoaded, rankSort, basho, user }) {
                     {viewState === true ? 
                     <MobileResultsContainer goodTeams={teamsHiToLo} user={user} />
                      :
-                    <RikishiResults basho={basho} rikishi={resultsRikishi} teams={newTeams} teamsLoaded={teamsLoaded} rikishiLoaded={rikishiLoaded}/>
+                    <RikishiResults rikishi={resultsRikishi} teams={newTeams} teamsLoaded={teamsLoaded} rikishiLoaded={rikishiLoaded}/>
                     }
                 </div>
         )

@@ -7,9 +7,11 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
     return teams.filter((team) => team.basho === teamBasho);
   }, [teams]);
 
+  const usersOldTeams = user.old_teams.sort((a,b) => b.basho - a.basho)
+
   // Memoize the rendering of each previous team
   const allPrevTeams = useMemo(() => {
-    return user.old_teams.map((team) => {
+    return usersOldTeams.map((team) => {
       // Filter out the string values (rikishi names) from the team object
 
       const rikishiObjects = Object.values(team).filter((value) => value && typeof(value) === 'object')
@@ -18,8 +20,6 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
       const actualTeam = rikishiObjects.map((r) =>
         fantasySumoHistories.find((f) => f.rikishi.shikona === r.shikona)
       );
-
-      console.log(actualTeam)
 
       // Skip if fantasySumoHistories is empty
       if (fantasySumoHistories.length === 0) {
