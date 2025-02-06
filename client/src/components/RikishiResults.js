@@ -2,7 +2,7 @@ import MResults from "./MResults"
 import JResults from "./JResults"
 import HowMany from "./HowMany"
 
-function RikishiResults({ rikishi, teams, teamsLoaded, basho }) {
+function RikishiResults({ rikishi, teams, teamsLoaded, rikishiLoaded }) {
 
     const alphaSort = [...rikishi].sort((a, b) => a.shikona.localeCompare(b.shikona))
 
@@ -26,7 +26,7 @@ function RikishiResults({ rikishi, teams, teamsLoaded, basho }) {
                     <JResults JRikishi={JRikishi} />
                 </div>
             </div>
-            <HowMany teams={teams} teamsLoaded={teamsLoaded} basho={basho}/>
+            <HowMany teams={teams} teamsLoaded={teamsLoaded} rikishi={rikishi} rikishiLoaded={rikishiLoaded}/>
         </div>
 
     )

@@ -1,6 +1,6 @@
 import OneTeam from "./OneTeam";
 
-function DesktopResultsContainer({ goodTeams, rikishi, user }) {
+function DesktopResultsContainer({ goodTeams, user }) {
   
   let yourTeam = null;
   let otherTeams = goodTeams;
@@ -18,7 +18,7 @@ function DesktopResultsContainer({ goodTeams, rikishi, user }) {
     if (user && user.username && yourTeam) {
       return (
         <div id="yourTeam">
-          <OneTeam team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
+          <OneTeam team={yourTeam} key={yourTeam.id} />
         </div>
       );
     }
@@ -41,7 +41,7 @@ function DesktopResultsContainer({ goodTeams, rikishi, user }) {
       {showYourTeam()}
       <div id="teamsContainer">
         {otherTeams.map((team) => {
-          return <OneTeam team={team} key={team.id} rikishi={rikishi} />;
+          return <OneTeam team={team} key={team.id} />;
         })}
       </div>
     </div>

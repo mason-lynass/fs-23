@@ -1,6 +1,6 @@
 import OneTeamMobile from "./OneTeamMobile";
 
-function MobileResultsContainer({ goodTeams, rikishi, user }) {
+function MobileResultsContainer({ goodTeams, user }) {
   let yourTeam;
   let otherTeams = goodTeams;
 
@@ -17,7 +17,7 @@ function MobileResultsContainer({ goodTeams, rikishi, user }) {
     if (user !== null && user.username) {
       return (
         <div id="yourTeam">
-          <OneTeamMobile team={yourTeam} key={yourTeam.id} rikishi={rikishi} />
+          <OneTeamMobile team={yourTeam} key={yourTeam.id} />
         </div>
       );
     }
@@ -39,7 +39,7 @@ function MobileResultsContainer({ goodTeams, rikishi, user }) {
       {showYourTeam()}
       <div id="teamsContainer">
         {otherTeams.map((team) => {
-          return <OneTeamMobile team={team} key={team.id} rikishi={rikishi} />;
+          return <OneTeamMobile team={team} key={team.id} />;
         })}
       </div>
     </div>
