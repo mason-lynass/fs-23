@@ -7,12 +7,9 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
     return teams.filter((team) => team.basho === teamBasho);
   }, [teams]);
 
-  const isString = (value) => typeof value === "string";
-
   // Memoize the rendering of each previous team
   const allPrevTeams = useMemo(() => {
-    return teams.map((team) => {
-      console.log(team)
+    return user.old_teams.map((team) => {
       // Filter out the string values (rikishi names) from the team object
 
       const rikishiObjects = Object.values(team).filter((value) => value && typeof(value) === 'object')
