@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :old_teams, only: [:index, :show]
   resources :new_teams, only: [:index, :show, :create, :destroy]
   resources :fantasy_sumo_histories, only: [:index, :show]
   resources :teams, only: [:index, :show, :create, :destroy]
