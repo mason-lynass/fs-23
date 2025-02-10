@@ -1,6 +1,6 @@
 class RikishisController < ApplicationController
-    def index 
-        render json: Rikishi.all 
+    def index
+        render json: Rikishi.all
     end
 
     def show
