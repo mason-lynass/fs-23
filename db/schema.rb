@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_06_031930) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_10_212147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -663,11 +663,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_06_031930) do
     t.integer "gino_sho"
     t.integer "kinboshi"
     t.integer "fs_current"
-    t.integer "FS_history", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "retired"
-    t.index ["FS_history"], name: "index_rikishis_on_FS_history"
   end
 
   create_table "teams", force: :cascade do |t|
