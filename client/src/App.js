@@ -100,6 +100,8 @@ function App() {
       .then((r) => setFantasySumoHistories(r));
   }, []);
 
+  console.log(fantasySumoHistories)
+
   useEffect(() => {
     setUser(user);
   }, [user]);
