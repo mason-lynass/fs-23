@@ -3,7 +3,7 @@ class FantasySumoHistory < ApplicationRecord
 
     def avg_fantasy_sumo_score
         # Get only the non-null bXXXXXX columns present in the object
-        bashos = attributes.select { |k, v| k.match?(/^b\d{6}$/) && !v.nil? }.values
+        bashos = (self[:data] || {}).select { |k, v| k.match?(/^b\d{6}$/) && !v.nil? }.values
 
         return nil if bashos.empty?
 

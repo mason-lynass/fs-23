@@ -509,7 +509,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
 
   const xSort = useCallback(
     (x) => {
-      return [...newRikishi].sort((a, b) => b[x] - a[x]);
+      return [...newRikishi].sort((a, b) => (b[x] || 0) - (a[x] || 0));
     },
     [newRikishi]
   );
