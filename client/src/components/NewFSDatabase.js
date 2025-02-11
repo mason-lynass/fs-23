@@ -11,6 +11,8 @@ function NewFSDatabase({ fsHistories, rikishi }) {
   const [rikishiInfoOpen, setRikishiInfoOpen] = useState(false);
   const [targetRikishi, setTargetRikishi] = useState(null);
 
+  console.log(fsHistories)
+
   // no 201203, 202103
   const bashosArray = [
     "202511",
