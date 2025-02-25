@@ -89,7 +89,7 @@ function StatsAndInfo({ dbRikishi }) {
         setHighlight(target)
     }
 
-    const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "J", "MS", "i"]
+    const rankOrder = ["Y", "O", "S", "K", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17","M18", "J", "MS", "i"]
 
     // default is sort by age, then kinboshi, then yusho, then highest rank, then current rank
     // so that by default, retired rikishi show up on the bottom, and they're sorted by highest rank, then yusho, then kinboshi, then age
