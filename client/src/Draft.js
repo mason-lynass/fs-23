@@ -206,7 +206,7 @@ function Draft({
   function renderAlreadyDrafted() {
     return (
       <div id="DraftAD">
-        <p>You already have a team, silly!</p>
+        <p>You already have a team!</p>
         <button onClick={goToTeam}>check out your team</button>
       </div>
     );
@@ -353,10 +353,13 @@ function Draft({
   }
 
   function ADCheck() {
-    return user.teams.some((e) => e.basho === basho)
+    return user.new_team
+    // user.teams.some((e) => e.basho === basho)
       ? renderAlreadyDrafted()
       : renderDraftPage();
   }
+
+  console.log(user, basho)
 
   function areYouLoggedIn() {
     return user !== null ? (

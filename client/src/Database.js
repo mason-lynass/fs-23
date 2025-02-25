@@ -49,7 +49,7 @@ function Database({ rikishi, fantasySumoHistories }) {
       {dbRikishi.length > 0 ? <>{visibleTable()}</> : <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>}
     </div>
   ) : (
-    <h2>loading...</h2>
+    <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>
   );
 }
 
