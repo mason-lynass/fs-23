@@ -9,6 +9,12 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
 
   const usersOldTeams = user.old_teams.sort((a,b) => b.basho - a.basho)
 
+  function loadingMessage () {
+    return (
+      <p>loading previous teams...</p>
+    )
+  }
+
   // Memoize the rendering of each previous team
   const allPrevTeams = useMemo(() => {
     return usersOldTeams.map((team) => {
@@ -108,7 +114,7 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
     <div>
       <hr></hr>
       <h3>Check out your previous teams:</h3>
-      <div>{teams.length > 0 ? allPrevTeams : ""}</div>
+      <div>{teams.length > 0 ? allPrevTeams : loadingMessage()}</div>
     </div>
   );
 }

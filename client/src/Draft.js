@@ -9,7 +9,7 @@ import RikishiLarge from "./components/RikishiLarge";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import RLargeMobile from "./components/RLargeMobile";
-import Hello from "./components/Hello";
+// import Hello from "./components/Hello";
 
 function Draft({
   user,
@@ -178,11 +178,11 @@ function Draft({
   }
   if (userTeam.r5 !== "" && userTeam.r6 !== "") {
     document
-      .querySelectorAll(`#M13, #M14, #M15, #M16, #M17`)
+      .querySelectorAll(`#M13, #M14, #M15, #M16, #M17, #M18`)
       .forEach((e) => e.classList.add("greyed"));
   } else {
     document
-      .querySelectorAll(`#M13, #M14, #M15, #M16, #M17`)
+      .querySelectorAll(`#M13, #M14, #M15, #M16, #M17, #M18`)
       .forEach((e) => e.classList.remove("greyed"));
   }
   if (userTeam.r7 !== "" && userTeam.r6 !== "") {
@@ -373,13 +373,13 @@ function Draft({
   }
 
   // turn this back on when it's time to draft (it's not right now)
-  // return (
-  // (rikishiLoaded === true) ?
-  // areYouLoggedIn()
-  // : <p style={{ textAlign: 'center'}}>loading...</p>
-  // )
+  return (
+  (rikishiLoaded === true) ?
+  areYouLoggedIn()
+  : <p style={{ textAlign: 'center'}}>loading...</p>
+  )
 
-  return <Hello />;
+  // return <Hello />;
 }
 
 export default Draft;

@@ -217,12 +217,6 @@ GEM
     zeitwerk (2.7.1)
 
 PLATFORMS
-<<<<<<< HEAD
-  ruby
-  x86_64-darwin-20
-  x86_64-darwin-21
-  x86_64-linux
-=======
   aarch64-linux-gnu
   aarch64-linux-musl
   arm-linux-gnu
@@ -232,7 +226,6 @@ PLATFORMS
   x86_64-darwin
   x86_64-linux-gnu
   x86_64-linux-musl
->>>>>>> 5311fc7f55e7a29f1b74cc30f579dc60442e7d03
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.12)
