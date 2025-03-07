@@ -31,7 +31,7 @@ class Rack::Attack
 
   # Log blocked requests
   ActiveSupport::Notifications.subscribe("rack.attack") do |name, start, finish, request_id, req|
-    if req.env['rack.attack.match_type'] == :blocklist
+    if req.is_a?(Rack::Request) && req.env['rack.attack.match_type'] == :blocklist
       Rails.logger.warn "Blocked request: #{req.ip} - #{req.path} - #{req.user_agent}"
     end
   end
