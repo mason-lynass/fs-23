@@ -4,6 +4,12 @@ function Hello() {
             {/*  when it's time to draft */}
             <p>I'm actively working on an error with account login! Thanks for emailing me if you found my address!</p><br/>
             <hr/><br/><p> The draft is open!<br/><br/> The next tournament begins on March 9th, so make sure you draft before then!</p>
+            <br/>
+            <hr style={{width: '100px', margin: '5px auto'}}/>
+            <br/>
+            <p>I'm actively working on an error with account login! Thanks for emailing me if you found my address!</p>
+            <br/>
+            <p>If you created multiple accounts / teams to get around the login bug and you want to consolidate, or if you notice any other unusual site behavior, feel free to email me - mklynass93 [at] gmail.com</p>
 
             {/* when the tournament is live */}
             {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the next tournament.</p>  */}
