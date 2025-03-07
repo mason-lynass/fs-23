@@ -2,7 +2,8 @@ function Hello() {
     return (
         <div id="hello">
             {/*  when it's time to draft */}
-            <p> The draft is open!<br/><br/> The next tournament begins on March 9th, so make sure you draft before then!</p>
+            <p>I'm actively working on an error with account login! Thanks for emailing me if you found my address!</p><br/>
+            <hr/><br/><p> The draft is open!<br/><br/> The next tournament begins on March 9th, so make sure you draft before then!</p>
 
             {/* when the tournament is live */}
             {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the next tournament.</p>  */}
