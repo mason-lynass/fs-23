@@ -31,7 +31,7 @@ function Account({
 
   const handleDeleteTeam = useCallback(() => {
     const toDelete = user.teams.find((e) => e.basho === basho).id;
-    fetch(`/teams/${toDelete}`, { method: "DELETE" }).then((r) => {
+    fetch(`/new_teams/${toDelete}`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
         fetch("/me").then((r) => {
           if (r.ok) {
