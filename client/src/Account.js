@@ -29,8 +29,6 @@ function Account({
 
   const navigate = useNavigate();
 
-  console.log(user)
-
   const handleDeleteTeam = useCallback(() => {
 
     const toDelete = user.new_team.id;
