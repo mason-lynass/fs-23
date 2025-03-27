@@ -107,29 +107,29 @@ function UserRankings() {
         }
 
         const hatsu2023 =
-          user.teams.filter((t) => t.basho === 2023.01)[0] || "";
-        const haru2023 = user.teams.filter((t) => t.basho === 2023.03)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2023.01)[0] || "";
+        const haru2023 = user.old_teams.filter((t) => t.basho === 2023.03)[0] || "";
         const natsu2023 =
-          user.teams.filter((t) => t.basho === 2023.05)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2023.05)[0] || "";
         const nagoya2023 =
-          user.teams.filter((t) => t.basho === 2023.07)[0] || "";
-        const aki2023 = user.teams.filter((t) => t.basho === 2023.09)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2023.07)[0] || "";
+        const aki2023 = user.old_teams.filter((t) => t.basho === 2023.09)[0] || "";
         const kyushu2023 =
-          user.teams.filter((t) => t.basho === 2023.11)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2023.11)[0] || "";
         const hatsu2024 =
-          user.teams.filter((t) => t.basho === 2024.01)[0] || "";
-        const haru2024 = user.teams.filter((t) => t.basho === 2024.03)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2024.01)[0] || "";
+        const haru2024 = user.old_teams.filter((t) => t.basho === 2024.03)[0] || "";
         const natsu2024 =
-          user.teams.filter((t) => t.basho === 2024.05)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2024.05)[0] || "";
         const nagoya2024 =
-          user.teams.filter((t) => t.basho === 2024.07)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2024.07)[0] || "";
         const aki2024 =
-          user.teams.filter((t) => t.basho === 2024.09)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2024.09)[0] || "";
         const kyushu2024 =
-          user.teams.filter((t) => t.basho === 2024.11)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2024.11)[0] || "";
         const hatsu2025 =
-          user.teams.filter((t) => t.basho === 2025.01)[0] || "";
-        const haru2025 = user.teams.filter((t) => t.basho === 2025.03)[0] || "";
+          user.old_teams.filter((t) => t.basho === 2025.01)[0] || "";
+        const haru2025 = user.old_teams.filter((t) => t.basho === 2025.03)[0] || "";
 
         return (
           <div className="oneTeamTR" key={user.username}>
