@@ -13,6 +13,8 @@ function UserRankings() {
       .then((r) => setAllUsers(r.filter((u) => u.teams.length > 0)));
   }, []);
 
+  console.log(allUsers)
+
   useEffect(() => {
     if (allUsers.length > 0) {
       usersCleanup();
