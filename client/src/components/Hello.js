@@ -29,7 +29,9 @@ function Hello() {
       {/* <p>(If you picked someone that's out of the tournament, feel free to email me at mtfujisumo at gmail.com with your team name and new pick.)</p> */}
 
       {/* after the tournament */}
-      <p>Congrats to Wulliwuto and stavro on your joint Fantasy Sumo victory!</p><p> The new rankings will be announced on April 28th, so the draft will be open from April 29th - May 11th.</p><p>Thanks for playing everyone!</p>
+      <p>Congrats to Wulliwuto and stavro on your joint Fantasy Sumo victory!</p><p> The new rankings will be announced on April 28th, so the draft will be open from April 29th - May 11th.</p>
+      <p>If you made a new account to draft a team for the last basho and you want to merge accounts, or if you have any other questions or comments, feel free to email me - mklynass93[at]gmail[dot]com.</p>
+      <p>Thanks for playing everyone!</p>
     </div>
   );
 }
