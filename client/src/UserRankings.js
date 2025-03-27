@@ -41,10 +41,10 @@ function UserRankings() {
       let average = 0;
       let weightedAverage = 0;
       if (parseFloat(total) > 0) {
-        average = (parseFloat(total) / u.teams.length).toFixed(2);
+        average = (parseFloat(total) / u.old_teams.length).toFixed(2);
         weightedAverage = (
           parseFloat(average) +
-          0.1 * (u.teams.length - 1)
+          0.1 * (u.old_teams.length - 1)
         ).toFixed(2);
       }
       u.average_percentile = average;
@@ -60,8 +60,8 @@ function UserRankings() {
       function bashoSort(x) {
         sortedUsers = allUsers.sort((a, b) => {
           let targetBasho = parseFloat(x);
-          let bTeam = b.teams.find((t) => t.basho === targetBasho);
-          let aTeam = a.teams.find((t) => t.basho === targetBasho);
+          let bTeam = b.old_teams.find((t) => t.basho === targetBasho);
+          let aTeam = a.old_teams.find((t) => t.basho === targetBasho);
           let bScore, aScore;
           if (bTeam === undefined) bScore = 0;
           else bScore = bTeam.final_score;
