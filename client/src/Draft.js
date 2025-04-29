@@ -359,8 +359,6 @@ function Draft({
       : renderDraftPage();
   }
 
-  console.log(user, basho)
-
   function areYouLoggedIn() {
     return user !== null ? (
       ADCheck()
