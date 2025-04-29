@@ -1,18 +1,18 @@
 import { useMemo, useCallback } from "react";
 
 function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
-
   // Memoize the getFilteredTeams function to filter teams by basho
-  const getFilteredTeams = useCallback((teamBasho) => {
-    return teams.filter((team) => team.basho === teamBasho);
-  }, [teams]);
+  const getFilteredTeams = useCallback(
+    (teamBasho) => {
+      return teams.filter((team) => team.basho === teamBasho);
+    },
+    [teams]
+  );
 
-  const usersOldTeams = user.old_teams.sort((a,b) => b.basho - a.basho)
+  const usersOldTeams = user.old_teams.sort((a, b) => b.basho - a.basho);
 
-  function loadingMessage () {
-    return (
-      <p>loading previous teams...</p>
-    )
+  function loadingMessage() {
+    return <p>loading previous teams...</p>;
   }
 
   // Memoize the rendering of each previous team
@@ -20,7 +20,9 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
     return usersOldTeams.map((team) => {
       // Filter out the string values (rikishi names) from the team object
 
-      const rikishiObjects = Object.values(team).filter((value) => value && typeof(value) === 'object')
+      const rikishiObjects = Object.values(team).filter(
+        (value) => value && typeof value === "object"
+      );
 
       // Get the actual team details from fantasySumoHistories
       const actualTeam = rikishiObjects.map((r) =>
@@ -33,7 +35,7 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
       }
 
       // Calculate the teamScores
-      const temp = `b${team.basho.toString().replace('.', '')}`;
+      const temp = `b${team.basho.toString().replace(".", "")}`;
       const teamScores = {
         r1: actualTeam[0]?.[temp] || 0,
         r2: actualTeam[1]?.[temp] || 0,
@@ -43,26 +45,27 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
         r6: actualTeam[5]?.[temp] || 0,
         r7:
           team.final_score -
-          (
-            (actualTeam[0]?.[temp] || 0) +
+          ((actualTeam[0]?.[temp] || 0) +
             (actualTeam[1]?.[temp] || 0) +
             (actualTeam[2]?.[temp] || 0) +
             (actualTeam[3]?.[temp] || 0) +
             (actualTeam[4]?.[temp] || 0) +
-            (actualTeam[5]?.[temp] || 0)
-          ),
+            (actualTeam[5]?.[temp] || 0)),
       };
 
       // Get other teams from the same basho
       const otherTeams = getFilteredTeams(team.basho);
 
       // Sort other teams by final_score
-      const sortedOtherTeams = otherTeams.sort((a, b) => b.final_score - a.final_score);
+      const sortedOtherTeams = otherTeams.sort(
+        (a, b) => b.final_score - a.final_score
+      );
 
       // Get the team's position among the sorted teams
-      const teamPosition = sortedOtherTeams.findIndex(
-        (sortedTeam) => sortedTeam.user.username === user.username
-      ) + 1;
+      const teamPosition =
+        sortedOtherTeams.findIndex(
+          (sortedTeam) => sortedTeam.user.username === user.username
+        ) + 1;
 
       return (
         <div id="fullOneTeam" key={team.basho}>
@@ -71,8 +74,14 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
             <div id="oneTeamRank">
               <h2>{team.final_score} points</h2>
               <hr />
-              <h2>#{teamPosition} out of</h2>
-              <h2>{otherTeams.length} teams</h2>
+              {teams.length > 0 ? (
+                <>
+                  <h2>#{teamPosition} of</h2>
+                  <h2>{otherTeams.length} teams</h2>
+                </>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div id="oneTeam">
@@ -108,13 +117,13 @@ function PreviousTeams({ user, teams, fantasySumoHistories, basho }) {
         </div>
       );
     });
-  }, [fantasySumoHistories, getFilteredTeams, user.username]);
+  }, [fantasySumoHistories, getFilteredTeams, user.username, teams.length, usersOldTeams]);
 
   return (
     <div>
       <hr></hr>
       <h3>Check out your previous teams:</h3>
-      <div>{teams.length > 0 ? allPrevTeams : loadingMessage()}</div>
+      <div>{user ? allPrevTeams : loadingMessage()}</div>
     </div>
   );
 }
