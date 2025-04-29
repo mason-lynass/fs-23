@@ -153,7 +153,7 @@ function Account({
         <div id="AccountPage">
           <h2 id="AccountHello">Hello, {user.username}!</h2>
           {renderCurrentBashoTeam()}
-          {user.teams.length > 0 && oldTeams.length > 0 && (
+          {user && user.teams.length > 0 && oldTeams.length > 0 && (
             <PreviousTeams
               user={user}
               rikishi={rikishi}
