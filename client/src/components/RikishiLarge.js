@@ -70,7 +70,7 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
                             <p>Height: {rikishi.height} cm | Weight: {rikishi.weight} kg</p>
                             <p>current rank: {rikishi.current_rank} | highest rank: {rikishi.highest_rank}</p>
                             <p>career stats: Yusho: {rikishi.yusho} | special prizes: {totalSansho} | Kinboshi: {rikishi.kinboshi}</p>
-                            <p>FS points last basho: {rikishi.fsHistories.length > 0 ? rikishi.fsHistories[0].b202501 : "N/A"}</p>
+                            <p>FS points last basho: {rikishi.fsHistories.length > 0 ? rikishi.fsHistories[0].b202503 : "N/A"}</p>
 
                         </div>
                     </div>
