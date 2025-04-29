@@ -48,7 +48,7 @@ function Account({
   }, [user, basho, navigate, setUser]);
 
   const currentTeam = useMemo(() => {
-    if (user && user.teams) return user.new_team;
+    if (user && user.new_team) return user.new_team;
   }, [user, basho]);
 
   const justRikishi = useMemo(() => {
