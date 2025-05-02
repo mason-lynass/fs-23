@@ -44,7 +44,7 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
                 setUserTeam({ ...userTeam, r6: rikishi })
             }
         }
-        if (rikishi.current_rank === "M13" || rikishi.current_rank === "M14" || rikishi.current_rank === "M15" || rikishi.current_rank === "M16" || rikishi.current_rank === "M17") {
+        if (rikishi.current_rank === "M13" || rikishi.current_rank === "M14" || rikishi.current_rank === "M15" || rikishi.current_rank === "M16" || rikishi.current_rank === "M17" || rikishi.current_rank === "M18") {
             if (userTeam.r5 === "") {
                 setUserTeam({ ...userTeam, r5: rikishi })
             } else if (userTeam.r5 !== "" && userTeam.r5 !== rikishi) {

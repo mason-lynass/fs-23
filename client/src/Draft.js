@@ -96,7 +96,9 @@ function Draft({
           rikishi.current_rank === "M13" ||
           rikishi.current_rank === "M14" ||
           rikishi.current_rank === "M15" ||
-          rikishi.current_rank === "M16"
+          rikishi.current_rank === "M16" ||
+          rikishi.current_rank === "M17"||
+          rikishi.current_rank === "M18"
       );
       setMRikishi(newRikishi);
     }

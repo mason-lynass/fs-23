@@ -64,7 +64,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai }) {
           <p>M1-M4:</p>
           <p>M5-M8:</p>
           <p>M9-M12:</p>
-          <p>M13-M16:</p>
+          <p>M13+:</p>
           <p>extra (any rank):</p>
           <p>Juryo:</p>
         </div>
