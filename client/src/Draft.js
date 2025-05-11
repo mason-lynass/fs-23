@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -20,6 +21,9 @@ function Draft({
   rankSort,
   basho,
 }) {
+
+  return <Hello />;
+
   const navigate = useNavigate();
   const [rikishiLoaded, setRikishiLoaded] = useState(false);
   const [clickedRikishi, setClickedRikishi] = useState("");
@@ -382,7 +386,7 @@ function Draft({
   : <p style={{ textAlign: 'center'}}>loading...</p>
   )
 
-  // return <Hello />;
+  
 }
 
 export default Draft;
