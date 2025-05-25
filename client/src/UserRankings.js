@@ -128,6 +128,7 @@ function UserRankings() {
         const hatsu2025 =
           user.old_teams.filter((t) => t.basho === 2025.01)[0] || "";
         const haru2025 = user.old_teams.filter((t) => t.basho === 2025.03)[0] || "";
+        const natsu2025 = user.old_teams.filter((t) => t.basho === 2025.05)[0] || "";
 
         return (
           <div className="oneTeamTR" key={user.username}>
@@ -135,6 +136,7 @@ function UserRankings() {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
+            <p>{natsu2025 !== "" ? natsu2025.percentile : ""}</p>
             <p>{haru2025 !== "" ? haru2025.percentile : ""}</p>
             <p>{hatsu2025 !== "" ? hatsu2025.percentile : ""}</p>
             <p>{kyushu2024 !== "" ? kyushu2024.percentile : ""}</p>
@@ -181,6 +183,9 @@ function UserRankings() {
           >
             weighted average
           </h3>
+          <p className="TRCol" id="2025.05" onClick={handleSortState}>
+            2025.05
+          </p>
           <p className="TRCol" id="2025.03" onClick={handleSortState}>
             2025.03
           </p>
