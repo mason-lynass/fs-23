@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai }) {
+function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState("");
 
@@ -15,7 +15,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai }) {
       // is it making new new_team ids correctly?
       body: JSON.stringify({
         // basho: userTeam.basho,
-        basho: 2025.03,
+        basho: basho,
         r1_id: userTeam.r1.id,
         r2_id: userTeam.r2.id,
         r3_id: userTeam.r3.id,

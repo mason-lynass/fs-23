@@ -228,6 +228,7 @@ function Draft({
             user={user}
             setUser={setUser}
             tachiai={tachiai}
+            basho={basho}
           />
           <div id="DraftFilters">
             <div id="DraftSearch">
@@ -298,6 +299,7 @@ function Draft({
             user={user}
             setUser={setUser}
             tachiai={tachiai}
+            basho={basho}
           />
           <RikishiLarge
             userTeam={userTeam}
