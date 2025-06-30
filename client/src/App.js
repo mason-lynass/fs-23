@@ -22,7 +22,7 @@ import Account from "./Account";
 import Terminology from "./Terminology";
 
 function App() {
-  const basho = 2025.05;
+  const basho = 2025.07;
   const [user, setUser] = useState(null);
   const [rikishi, setRikishi] = useState([]);
   const [newTeams, setNewTeams] = useState([]);
