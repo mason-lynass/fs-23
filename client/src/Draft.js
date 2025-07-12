@@ -22,7 +22,7 @@ function Draft({
   basho,
 }) {
 
-  return <Hello />;
+  // return <Hello />;
 
   const navigate = useNavigate();
   const [rikishiLoaded, setRikishiLoaded] = useState(false);
