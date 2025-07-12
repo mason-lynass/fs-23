@@ -5,7 +5,7 @@ function Hello() {
       <p>
         The draft is open!
         <br />
-        <br /> The next tournament begins on May 11th, so make sure you draft
+        <br /> The next tournament begins on July 13th, so make sure you draft
         before then!
       </p>
       <br />
