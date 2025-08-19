@@ -26,13 +26,15 @@
   padding: 5px 10px;
   margin: 10px auto;
   width: fit-content;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   border-radius: 50px;
 }
 
 #DBSubMenu button {
   font-size: 20px;
   height: 40px;
+  padding: 0 10px;
+  border-radius: 10px;
 }
 
 #DBViewState {
@@ -331,6 +333,10 @@ main {
   border-radius: 20px;
 }
 
+#dbtest-filters input {
+  width: 150px;
+}
+
 #retired-checkbox {
   background-color: white;
   padding: 5px 10px;
@@ -430,7 +436,7 @@ thead,
   width: 40px;
   margin: 0;
   vertical-align: bottom;
-  padding: 18px 5px;
+  padding: 17.5px 5px;
   font-size: 10px;
   flex-shrink: 0;
   text-align: center;
@@ -498,7 +504,7 @@ tbody div th .dbtest-rikishi-image {
 .dbtest-basho-avg,
 .dbtest-basho-total,
 .dbtest-rikishi-total {
-  width: 70px;
+  width: 75px;
   flex-shrink: 0;
   text-align: center;
   margin: auto;
