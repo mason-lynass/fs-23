@@ -6,7 +6,7 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import { useNavigate } from "react-router-dom";
 import { useMemo, useCallback, useEffect, useState } from "react";
-import { API_URL } from "./App"
+import { API_URL } from "./App";
 
 function Account({
   user,
