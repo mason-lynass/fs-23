@@ -4,7 +4,6 @@ import "./CSS/media.css";
 import { useState, useEffect, useMemo } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSound } from "use-sound";
-import { Analytics } from "@vercel/analytics/react";
 
 import BG1 from "./images/sumo-background-1.webp";
 
@@ -185,7 +184,6 @@ function App() {
           }
         />
       </Routes>
-      <Analytics />
     </div>
   );
 }
