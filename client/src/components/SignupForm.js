@@ -1,6 +1,7 @@
 import "../CSS/signup.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { API_URL } from "../App";
 
 function SignupForm({ setUser, clap }) {
 
@@ -16,7 +17,7 @@ function SignupForm({ setUser, clap }) {
         e.preventDefault()
         setIsLoading(true)
         setErrors([])
-        fetch("/signup", {
+        fetch(`${API_URL}/signup`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -37,61 +38,7 @@ function SignupForm({ setUser, clap }) {
                 r.json().then(err => setErrors(err.errors))
             }
         })
-
-        // try {
-
-        //     const signupConfig = {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body: JSON.stringify({
-        //             username,
-        //             password,
-        //             password_confirmation: passwordConfirmation
-        //         })
-        //     }
-
-        //     const resp = await fetch("/signup", signupConfig)
-        //     const newUser = await resp.json()
-
-        //     const loginConfig = {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body: JSON.stringify({
-        //             username,
-        //             password
-        //         })
-        //     }
-
-        //     const loginResp = await fetch("/login", loginConfig)
-        //     const loggingIn = await loginResp.json().then(r => {
-        //         setIsLoading(false)
-        //         setUser(r)
-        //         navigate("/")
-        //     })
-        //     if (!loginResp.ok) {
-        //         throw loggingIn.errors
-        //     }
-
-        // } catch (error) {
-        //     console.log(error)
-        //     setErrors(error)
-        //     setIsLoading(false)
-        // }
-
-
-
-        // }).then(r => {
-        // setIsLoading(false)
-        // if (r.ok) {
-        //     r.json().then(user => setUser(user))
-        //     console.log("hmmmm")
-        //     navigate("/")
-        // } else {
-        //     r.json().then(err => setErrors(err.errors))
-        // }
     }
-
-
 
     return (
         <div id="SignupFlex">

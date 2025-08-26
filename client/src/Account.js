@@ -6,6 +6,7 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import { useNavigate } from "react-router-dom";
 import { useMemo, useCallback, useEffect, useState } from "react";
+import { API_URL } from "./App";
 
 function Account({
   user,
@@ -20,7 +21,7 @@ function Account({
   const [oldTeamsLoaded, setOldTeamsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch("/old_teams")
+    fetch(`${API_URL}/old_teams`)
       .then((r) => r.json())
       .then((teams) => {
         setOldTeams(teams);
@@ -33,9 +34,9 @@ function Account({
   const handleDeleteTeam = useCallback(() => {
 
     const toDelete = user.new_team.id;
-    fetch(`/new_teams/${toDelete}`, { method: "DELETE" }).then((r) => {
+    fetch(`${API_URL}/new_teams/${toDelete}`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        fetch("/me").then((r) => {
+        fetch(`${API_URL}/me`).then((r) => {
           if (r.ok) {
             r.json().then((user) => {
               setUser(user);

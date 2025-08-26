@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { API_URL } from "../App"
 
 function LoginForm({ setUser, clap }) {
 
@@ -13,7 +14,7 @@ function LoginForm({ setUser, clap }) {
     function handleLoginSubmit(e) {
         e.preventDefault()
         setIsLoading(true)
-        fetch("/login", {
+        fetch(`${API_URL}/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })

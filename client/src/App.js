@@ -21,6 +21,8 @@ import Database from "./Database";
 import Account from "./Account";
 import Terminology from "./Terminology";
 
+export const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
+
 function App() {
   const basho = 2025.07;
   const [user, setUser] = useState(null);
@@ -77,26 +79,26 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((r) => {
+    fetch(`${API_URL}/me`).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user);
         });
       }
     });
-    fetch("/rikishis")
+    fetch(`${API_URL}/rikishis`)
       .then((r) => r.json())
       .then((r) => {
         const sorted = rankSort(r);
         setRikishi(sorted);
       });
-    fetch("/new_teams")
+    fetch(`${API_URL}/new_teams`)
       .then((r) => r.json())
       .then((teams) => {
         setNewTeams(teams);
         setNewTeamsLoaded(true);
       });
-    fetch("/fantasy_sumo_histories")
+    fetch(`${API_URL}/fantasy_sumo_histories`)
       .then((r) => r.json())
       .then((r) => setFantasySumoHistories(r));
   }, []);

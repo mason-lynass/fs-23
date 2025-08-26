@@ -4,7 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3000",
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.13.0",
@@ -40,8 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@craco/craco": "^7.1.0"
   }
 }
