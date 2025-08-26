@@ -4,6 +4,7 @@ import "./CSS/media.css";
 import { useState, useEffect, useMemo } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useSound } from "use-sound";
+import { Analytics } from "@vercel/analytics/react";
 
 import BG1 from "./images/sumo-background-1.webp";
 
@@ -21,7 +22,7 @@ import Database from "./Database";
 import Account from "./Account";
 import Terminology from "./Terminology";
 
-export const API_URL = process.env.REACT_APP_API_URL 
+export const API_URL = process.env.REACT_APP_API_URL;
 // || "http://localhost:3000";
 
 function App() {
@@ -184,6 +185,7 @@ function App() {
           }
         />
       </Routes>
+      <Analytics />
     </div>
   );
 }
