@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
-  ALLOWED_ORIGINS = ['https://www.fantasysumo.net', 'https://fantasysumo.net' 'fs-23-phi.vercel.app']
+  ALLOWED_ORIGINS = ['https://www.fantasysumo.net', 'https://fantasysumo.net', 'fs-23-phi.vercel.app']
 
   before_action :check_origin
 
