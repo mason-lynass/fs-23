@@ -1,7 +1,7 @@
 import "../CSS/signup.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { API_URL } from "./App";
+import { API_URL } from "../App";
 
 function SignupForm({ setUser, clap }) {
 

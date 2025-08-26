@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "./App";
+import { API_URL } from "../App"
 
 function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
   const navigate = useNavigate();
