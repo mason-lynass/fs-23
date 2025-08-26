@@ -1,5 +1,6 @@
 import "./CSS/userrankings.css";
 import { useEffect, useState } from "react";
+import { API_URL } from "./App";
 
 function UserRankings() {
 
@@ -8,7 +9,7 @@ function UserRankings() {
   const [sortState, setSortState] = useState("default");
 
   useEffect(() => {
-    fetch("/users")
+    fetch(`${API_URL}/users`)
       .then((r) => r.json())
       .then((r) => setAllUsers(r.filter((u) => u.old_teams.length > 0)));
   }, []);

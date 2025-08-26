@@ -1,11 +1,12 @@
 import "./CSS/header.css"
 import { Link } from "react-router-dom"
+import { API_URL } from "./App";
 
 function NavBar ({user, setUser, hyoshigi}) {
 
     function handleLogoutClick() {
         if (user) {
-            fetch("/logout", { method: "DELETE" }).then((r) => {
+            fetch(`${API_URL}/logout`, { method: "DELETE" }).then((r) => {
                 if (r.ok) {
                     setUser(null)
                 }

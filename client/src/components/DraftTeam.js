@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "./App";
 
 function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
 
   function handleTeamFormSubmit(e) {
     e.preventDefault();
-    fetch(`/new_teams`, {
+    fetch(`${API_URL}/new_teams`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       // I think this works, but check on it before the draft
@@ -28,7 +29,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
     }).then((r) => {
       if (r.ok) {
         tachiai();
-        fetch("/me")
+        fetch(`${API_URL}/me`)
           .then((r) => r.json())
           .then((user) => {
             setUser(user);
