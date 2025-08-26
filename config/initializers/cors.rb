@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://www.fantasysumo.net'
+    origins 'https://www.fantasysumo.net', 'fs-23-phi.vercel.app'
 
     resource '*',
       headers: :any,
