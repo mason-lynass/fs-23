@@ -18,6 +18,7 @@ function UserRankings() {
     if (allUsers.length > 0) {
       usersCleanup();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allUsers]);
 
   function handleSortState(e) {
@@ -186,52 +187,52 @@ function UserRankings() {
           >
             weighted average
           </h3>
-          <p className="TRCol" id="2025.07" onClick={handleSortState}>
+          <p className="TRCol basho" id="2025.07" onClick={handleSortState}>
             2025.07
           </p>
-          <p className="TRCol" id="2025.05" onClick={handleSortState}>
+          <p className="TRCol basho" id="2025.05" onClick={handleSortState}>
             2025.05
           </p>
-          <p className="TRCol" id="2025.03" onClick={handleSortState}>
+          <p className="TRCol basho" id="2025.03" onClick={handleSortState}>
             2025.03
           </p>
-          <p className="TRCol" id="2025.01" onClick={handleSortState}>
+          <p className="TRCol basho" id="2025.01" onClick={handleSortState}>
             2025.01
           </p>
-          <p className="TRCol" id="2024.11" onClick={handleSortState}>
+          <p className="TRCol basho" id="2024.11" onClick={handleSortState}>
             2024.11
           </p>
-          <p className="TRCol" id="2024.09" onClick={handleSortState}>
+          <p className="TRCol basho" id="2024.09" onClick={handleSortState}>
             2024.09
           </p>
-          <p className="TRCol" id="2024.07" onClick={handleSortState}>
+          <p className="TRCol basho" id="2024.07" onClick={handleSortState}>
             2024.07
           </p>
-          <p className="TRCol" id="2024.05" onClick={handleSortState}>
+          <p className="TRCol basho" id="2024.05" onClick={handleSortState}>
             2024.05
           </p>
-          <p className="TRCol" id="2024.03" onClick={handleSortState}>
+          <p className="TRCol basho" id="2024.03" onClick={handleSortState}>
             2024.03
           </p>
-          <p className="TRCol" id="2024.01" onClick={handleSortState}>
+          <p className="TRCol basho" id="2024.01" onClick={handleSortState}>
             2024.01
           </p>
-          <p className="TRCol" id="2023.11" onClick={handleSortState}>
+          <p className="TRCol basho" id="2023.11" onClick={handleSortState}>
             2023.11
           </p>
-          <p className="TRCol" id="2023.09" onClick={handleSortState}>
+          <p className="TRCol basho" id="2023.09" onClick={handleSortState}>
             2023.09
           </p>
-          <p className="TRCol" id="2023.07" onClick={handleSortState}>
+          <p className="TRCol basho" id="2023.07" onClick={handleSortState}>
             2023.07
           </p>
-          <p className="TRCol" id="2023.05" onClick={handleSortState}>
+          <p className="TRCol basho" id="2023.05" onClick={handleSortState}>
             2023.05
           </p>
-          <p className="TRCol" id="2023.03" onClick={handleSortState}>
+          <p className="TRCol basho" id="2023.03" onClick={handleSortState}>
             2023.03
           </p>
-          <p className="TRCol" id="2023.01" onClick={handleSortState}>
+          <p className="TRCol basho" id="2023.01" onClick={handleSortState}>
             2023.01
           </p>
         </div>

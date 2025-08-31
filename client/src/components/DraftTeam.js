@@ -11,9 +11,6 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
     fetch(`${API_URL}/new_teams`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      // I think this works, but check on it before the draft
-      // userTeam contains r1 - r7 rikishi objects, but we only want to pass integer-type references to the objects' ids
-      // is it making new new_team ids correctly?
       body: JSON.stringify({
         // basho: userTeam.basho,
         basho: basho,

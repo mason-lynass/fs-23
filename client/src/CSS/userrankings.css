@@ -28,7 +28,7 @@
   background-color: rgba(5, 5, 5, 0.1);
 }
 
-.oneTeamTR h2 {
+.oneTeamTR h2, #TRUsername {
   font-size: 16px;
   width: 180px;
   -ms-overflow-style: none;
@@ -51,6 +51,10 @@
 
 #TRHeader, #TRAverage, #TRWeighted, #TRTotal {
     font-size: 14px;
+}
+
+#TRHeaderColumn .basho {
+  font-size: 10px;
 }
 
 #about-box {

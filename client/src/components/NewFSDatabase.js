@@ -552,6 +552,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         return AllHistories(xSort(viewState));
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewState, averageSort, shikonaSort, totalSort, xSort]);
 
   function openRikishiInfo(targetRikishi) {

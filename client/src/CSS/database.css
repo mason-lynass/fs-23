@@ -354,7 +354,7 @@ main {
 }
 
 input {
-  margin: 0px 30px;
+  margin-left: 30px;
 }
 
 table {
@@ -463,6 +463,8 @@ tbody div th .dbtest-rikishi-image {
   text-align: center;
 }
 
+.dbtest-basho-total
+
 .dbtest-rikishi-name {
   width: 118px;
   flex-shrink: 0;
@@ -498,7 +500,7 @@ tbody div th .dbtest-rikishi-image {
 .dbtest-basho-avg,
 .dbtest-basho-total,
 .dbtest-rikishi-total {
-  width: 70px;
+  width: 80px;
   flex-shrink: 0;
   text-align: center;
   margin: auto;
