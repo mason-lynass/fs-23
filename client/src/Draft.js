@@ -362,7 +362,6 @@ function Draft({
 
   function ADCheck() {
     return user.new_team
-    // user.teams.some((e) => e.basho === basho)
       ? renderAlreadyDrafted()
       : renderDraftPage();
   }
