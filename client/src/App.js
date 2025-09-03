@@ -80,26 +80,26 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch(`${API_URL}/me`).then((r) => {
+    fetch(`${API_URL}/me`, { credentials: "include"}).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user);
         });
       }
     });
-    fetch(`${API_URL}/rikishis`)
+    fetch(`${API_URL}/rikishis`, { credentials: "include"})
       .then((r) => r.json())
       .then((r) => {
         const sorted = rankSort(r);
         setRikishi(sorted);
       });
-    fetch(`${API_URL}/new_teams`)
+    fetch(`${API_URL}/new_teams`, { credentials: "include"})
       .then((r) => r.json())
       .then((teams) => {
         setNewTeams(teams);
         setNewTeamsLoaded(true);
       });
-    fetch(`${API_URL}/fantasy_sumo_histories`)
+    fetch(`${API_URL}/fantasy_sumo_histories`, { credentials: "include"})
       .then((r) => r.json())
       .then((r) => setFantasySumoHistories(r));
   }, []);
