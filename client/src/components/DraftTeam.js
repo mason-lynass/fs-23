@@ -5,9 +5,11 @@ import { API_URL } from "../App"
 function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState("");
+  const [submitting, setSubmitting] = useState(false)
 
   function handleTeamFormSubmit(e) {
     e.preventDefault();
+    setSubmitting(true);
     fetch(`${API_URL}/new_teams`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,6 +26,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
         user_id: user.id,
     id: 4 }),
     }).then((r) => {
+      setSubmitting(false)
       if (r.ok) {
         tachiai();
         fetch(`${API_URL}/me`)
@@ -135,7 +138,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
         userTeam.r6 === "" ||
         userTeam.r7 === "" ? null : (
           <form id="FSTeamBottom" onSubmit={handleTeamFormSubmit}>
-            <button type="submit">Submit your team</button>
+            <button type="submit" disabled={submitting}>Submit your team</button>
             {errorMessage()}
             <p id="warning">remember, no edits after you submit!</p>
           </form>

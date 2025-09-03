@@ -7,4 +7,6 @@ class NewTeam < ApplicationRecord
   belongs_to :r5, class_name: 'Rikishi'
   belongs_to :r6, class_name: 'Rikishi'
   belongs_to :r7, class_name: 'Rikishi'
+
+  validates :user_id, uniqueness: { scope: :basho, message: "can only have one team per basho" }
 end
