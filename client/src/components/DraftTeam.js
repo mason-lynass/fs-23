@@ -12,6 +12,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
     setSubmitting(true);
     fetch(`${API_URL}/new_teams`, {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         // basho: userTeam.basho,
@@ -29,7 +30,7 @@ function DraftTeam({ userTeam, setUserTeam, user, setUser, tachiai, basho }) {
       setSubmitting(false)
       if (r.ok) {
         tachiai();
-        fetch(`${API_URL}/me`)
+        fetch(`${API_URL}/me`, {credentials: "include"})
           .then((r) => r.json())
           .then((user) => {
             setUser(user);

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./CSS/account.css";
 import "./CSS/media.css";
@@ -21,7 +22,7 @@ function Account({
   const [oldTeamsLoaded, setOldTeamsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(`${API_URL}/old_teams`)
+    fetch(`${API_URL}/old_teams`, { credentials: "include"})
       .then((r) => r.json())
       .then((teams) => {
         setOldTeams(teams);
@@ -34,9 +35,9 @@ function Account({
   const handleDeleteTeam = useCallback(() => {
 
     const toDelete = user.new_team.id;
-    fetch(`${API_URL}/new_teams/${toDelete}`, { method: "DELETE" }).then((r) => {
+    fetch(`${API_URL}/new_teams/${toDelete}`, { method: "DELETE", credentials: "include" }).then((r) => {
       if (r.ok) {
-        fetch(`${API_URL}/me`).then((r) => {
+        fetch(`${API_URL}/me`, { credentials: "include"}).then((r) => {
           if (r.ok) {
             r.json().then((user) => {
               setUser(user);

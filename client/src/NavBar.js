@@ -6,7 +6,7 @@ function NavBar ({user, setUser, hyoshigi}) {
 
     function handleLogoutClick() {
         if (user) {
-            fetch(`${API_URL}/logout`, { method: "DELETE" }).then((r) => {
+            fetch(`${API_URL}/logout`, { method: "DELETE", credentials: "include" }).then((r) => {
                 if (r.ok) {
                     setUser(null)
                 }
