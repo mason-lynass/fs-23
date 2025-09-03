@@ -19,6 +19,7 @@ function SignupForm({ setUser, clap }) {
         setErrors([])
         fetch(`${API_URL}/signup`, {
             method: "POST",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 username,

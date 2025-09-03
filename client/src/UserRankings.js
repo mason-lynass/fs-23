@@ -9,7 +9,7 @@ function UserRankings() {
   const [sortState, setSortState] = useState("default");
 
   useEffect(() => {
-    fetch(`${API_URL}/users`)
+    fetch(`${API_URL}/users`, {credentials: "include"})
       .then((r) => r.json())
       .then((r) => setAllUsers(r.filter((u) => u.old_teams.length > 0)));
   }, []);

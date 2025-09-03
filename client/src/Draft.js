@@ -123,6 +123,7 @@ function Draft({
     result = filterBySearch(result);
     setDraftRikishi(result);
     setMRikishi(result);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   function handleCardClick(r) {

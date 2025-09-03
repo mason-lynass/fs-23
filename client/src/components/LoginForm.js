@@ -16,6 +16,7 @@ function LoginForm({ setUser, clap }) {
         setIsLoading(true)
         fetch(`${API_URL}/login`, {
             method: "POST",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
         }).then(r => {
