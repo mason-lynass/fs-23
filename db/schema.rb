@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_10_212147) do
+ActiveRecord::Schema[7.0].define(version: 2025_09_03_033902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -621,6 +621,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_10_212147) do
     t.index ["r5_id"], name: "index_new_teams_on_r5_id"
     t.index ["r6_id"], name: "index_new_teams_on_r6_id"
     t.index ["r7_id"], name: "index_new_teams_on_r7_id"
+    t.index ["user_id", "basho"], name: "index_new_teams_on_user_id_and_basho", unique: true
     t.index ["user_id"], name: "index_new_teams_on_user_id"
   end
 
