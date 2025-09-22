@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { API_URL } from "./App";
 
 function UserRankings() {
-
   const [usersLoaded, setUsersLoaded] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
   const [displayedUsers, setDisplayedUsers] = useState([]);
@@ -15,12 +14,13 @@ function UserRankings() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${API_URL}/users/rankings`, {credentials: "include"})
+    fetch(`${API_URL}/users/rankings`, { credentials: "include" })
       .then((r) => {
-        if (!r.ok) throw new Error('Failed to fetch user rankings');
+        if (!r.ok) throw new Error("Failed to fetch user rankings");
         return r.json();
       })
       .then((r) => {
+        console.log(r);
         setAllUsers(r);
         setError(null);
       })
@@ -28,7 +28,10 @@ function UserRankings() {
         setError(err.message);
         setAllUsers([]);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        console.log("done!");
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -39,9 +42,10 @@ function UserRankings() {
 
   useEffect(() => {
     if (usersLoaded) {
+      console.log("update displayed users");
       updateDisplayedUsers();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usersLoaded, currentPage, sortState]);
 
   function updateDisplayedUsers() {
@@ -112,7 +116,6 @@ function UserRankings() {
     target.classList.add("DBStatsActive");
   }
 
-
   function renderPagination() {
     const totalPages = Math.ceil(allUsers.length / usersPerPage);
 
@@ -125,12 +128,12 @@ function UserRankings() {
           key={i}
           onClick={() => setCurrentPage(i)}
           style={{
-            margin: '0 2px',
-            padding: '8px 12px',
-            backgroundColor: currentPage === i ? '#333' : '#f0f0f0',
-            color: currentPage === i ? 'white' : 'black',
-            border: '1px solid #ccc',
-            cursor: 'pointer'
+            margin: "0 2px",
+            padding: "8px 12px",
+            backgroundColor: currentPage === i ? "#333" : "#f0f0f0",
+            color: currentPage === i ? "white" : "black",
+            border: "1px solid #ccc",
+            cursor: "pointer",
           }}
         >
           {i}
@@ -139,16 +142,16 @@ function UserRankings() {
     }
 
     return (
-      <div style={{ textAlign: 'center', margin: '20px 0' }}>
+      <div style={{ textAlign: "center", margin: "20px 0" }}>
         <button
           onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1}
           style={{
-            margin: '0 5px',
-            padding: '8px 12px',
-            backgroundColor: currentPage === 1 ? '#ccc' : '#f0f0f0',
-            border: '1px solid #ccc',
-            cursor: currentPage === 1 ? 'default' : 'pointer'
+            margin: "0 5px",
+            padding: "8px 12px",
+            backgroundColor: currentPage === 1 ? "#ccc" : "#f0f0f0",
+            border: "1px solid #ccc",
+            cursor: currentPage === 1 ? "default" : "pointer",
           }}
         >
           Previous
@@ -158,17 +161,20 @@ function UserRankings() {
           onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
           disabled={currentPage === totalPages}
           style={{
-            margin: '0 5px',
-            padding: '8px 12px',
-            backgroundColor: currentPage === totalPages ? '#ccc' : '#f0f0f0',
-            border: '1px solid #ccc',
-            cursor: currentPage === totalPages ? 'default' : 'pointer'
+            margin: "0 5px",
+            padding: "8px 12px",
+            backgroundColor: currentPage === totalPages ? "#ccc" : "#f0f0f0",
+            border: "1px solid #ccc",
+            cursor: currentPage === totalPages ? "default" : "pointer",
           }}
         >
           Next
         </button>
-        <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
-          Showing {Math.min((currentPage - 1) * usersPerPage + 1, allUsers.length)} - {Math.min(currentPage * usersPerPage, allUsers.length)} of {allUsers.length} users
+        <div style={{ marginTop: "10px", fontSize: "14px", color: "#666" }}>
+          Showing{" "}
+          {Math.min((currentPage - 1) * usersPerPage + 1, allUsers.length)} -{" "}
+          {Math.min(currentPage * usersPerPage, allUsers.length)} of{" "}
+          {allUsers.length} users
         </div>
       </div>
     );
@@ -187,17 +193,20 @@ function UserRankings() {
 
         const hatsu2023 =
           user.old_teams.filter((t) => t.basho === 2023.01)[0] || "";
-        const haru2023 = user.old_teams.filter((t) => t.basho === 2023.03)[0] || "";
+        const haru2023 =
+          user.old_teams.filter((t) => t.basho === 2023.03)[0] || "";
         const natsu2023 =
           user.old_teams.filter((t) => t.basho === 2023.05)[0] || "";
         const nagoya2023 =
           user.old_teams.filter((t) => t.basho === 2023.07)[0] || "";
-        const aki2023 = user.old_teams.filter((t) => t.basho === 2023.09)[0] || "";
+        const aki2023 =
+          user.old_teams.filter((t) => t.basho === 2023.09)[0] || "";
         const kyushu2023 =
           user.old_teams.filter((t) => t.basho === 2023.11)[0] || "";
         const hatsu2024 =
           user.old_teams.filter((t) => t.basho === 2024.01)[0] || "";
-        const haru2024 = user.old_teams.filter((t) => t.basho === 2024.03)[0] || "";
+        const haru2024 =
+          user.old_teams.filter((t) => t.basho === 2024.03)[0] || "";
         const natsu2024 =
           user.old_teams.filter((t) => t.basho === 2024.05)[0] || "";
         const nagoya2024 =
@@ -208,13 +217,16 @@ function UserRankings() {
           user.old_teams.filter((t) => t.basho === 2024.11)[0] || "";
         const hatsu2025 =
           user.old_teams.filter((t) => t.basho === 2025.01)[0] || "";
-        const haru2025 = user.old_teams.filter((t) => t.basho === 2025.03)[0] || "";
-        const natsu2025 = user.old_teams.filter((t) => t.basho === 2025.05)[0] || "";
-        const nagoya2025 = user.old_teams.filter((t) => t.basho === 2025.07)[0] || "";
+        const haru2025 =
+          user.old_teams.filter((t) => t.basho === 2025.03)[0] || "";
+        const natsu2025 =
+          user.old_teams.filter((t) => t.basho === 2025.05)[0] || "";
+        const nagoya2025 =
+          user.old_teams.filter((t) => t.basho === 2025.07)[0] || "";
 
         return (
           <div className="oneTeamTR" key={user.username}>
-            <h2 style={{overflow: 'hidden'}}>{username}</h2>
+            <h2 style={{ overflow: "hidden" }}>{username}</h2>
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
@@ -241,23 +253,25 @@ function UserRankings() {
   }
 
   if (loading || !usersLoaded) {
-    return <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>;
+    return (
+      <h2 style={{ textAlign: "center", margin: "40px auto" }}>loading...</h2>
+    );
   }
 
   if (error) {
     return (
-      <div style={{ textAlign: 'center', margin: '40px auto' }}>
-        <h2 style={{ color: 'red' }}>Error loading users</h2>
+      <div style={{ textAlign: "center", margin: "40px auto" }}>
+        <h2 style={{ color: "red" }}>Error loading users</h2>
         <p>{error}</p>
         <button
           onClick={() => window.location.reload()}
           style={{
-            padding: '10px 20px',
-            backgroundColor: '#333',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
+            padding: "10px 20px",
+            backgroundColor: "#333",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
           }}
         >
           Try Again
