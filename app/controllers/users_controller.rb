@@ -20,14 +20,19 @@ class UsersController < ApplicationController
 
     def rankings
         users = User.includes(:old_teams)
-        .where('EXISTS (SELECT 1 FROM old_teams WHERE old_teams.user_id = users.id)')
-        .select('users.*, 
-                CASE WHEN total_percentile > 0 
-                    THEN ROUND(total_percentile::decimal / old_teams_count, 2)
-                    ELSE 0 END as average_percentile,
-                CASE WHEN total_percentile > 0 
-                    THEN ROUND((total_percentile::decimal / old_teams_count) + 0.1 * (old_teams_count - 1), 2)
-                    ELSE 0 END as weighted_average')
+          .where('EXISTS (SELECT 1 FROM old_teams WHERE old_teams.user_id = users.id)')
+          .select(<<-SQL.squish)
+            users.*,
+            (SELECT COUNT(*) FROM old_teams WHERE old_teams.user_id = users.id) as old_teams_count,
+            CASE WHEN total_percentile > 0
+              THEN ROUND(total_percentile::decimal / (SELECT COUNT(*) FROM old_teams WHERE old_teams.user_id = users.id), 2)
+              ELSE 0
+            END as average_percentile,
+            CASE WHEN total_percentile > 0
+              THEN ROUND((total_percentile::decimal / (SELECT COUNT(*) FROM old_teams WHERE old_teams.user_id = users.id)) + 0.1 * ((SELECT COUNT(*) FROM old_teams WHERE old_teams.user_id = users.id) - 1), 2)
+              ELSE 0
+            END as weighted_average
+          SQL
         render json: users
     end
 
