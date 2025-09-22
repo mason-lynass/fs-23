@@ -283,6 +283,7 @@ function UserRankings() {
 
   return (
     <main>
+      {renderPagination()}
       <div id="team-rankings-box">
         <div className="oneTeamTR" id="TRHeaderColumn">
           <h2 className="TRCol" id="TRUsername">
@@ -354,10 +355,9 @@ function UserRankings() {
             2023.01
           </p>
         </div>
-        {renderPagination()}
         <div>{allTeams()}</div>
-        {renderPagination()}
       </div>
+      {renderPagination()}
       <div id="about-box">
         <p>
           Each basho has a different highest score, so basho scores are
