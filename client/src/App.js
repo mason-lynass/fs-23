@@ -87,7 +87,7 @@ function App() {
         });
       }
     });
-    fetch(`${API_URL}/rikishis`, { credentials: "include"})
+    fetch(`${API_URL}/rikishis/active`, { credentials: "include"})
       .then((r) => r.json())
       .then((r) => {
         const sorted = rankSort(r);
@@ -99,9 +99,6 @@ function App() {
         setNewTeams(teams);
         setNewTeamsLoaded(true);
       });
-    fetch(`${API_URL}/fantasy_sumo_histories`, { credentials: "include"})
-      .then((r) => r.json())
-      .then((r) => setFantasySumoHistories(r));
   }, []);
 
   useEffect(() => {
@@ -110,15 +107,6 @@ function App() {
 
   const sortedRikishi = useMemo(() => rankSort(rikishi), [rikishi]);
 
-  if (rikishi.length > 0 && fantasySumoHistories.length > 0) {
-    rikishi.forEach((rikishi) => {
-      Object.assign(rikishi, {
-        fsHistories: fantasySumoHistories.filter(
-          (h) => h.rikishi.shikona === rikishi.shikona
-        ),
-      });
-    });
-  }
 
   return (
     <div className="App">
@@ -139,7 +127,6 @@ function App() {
               rikishi={rikishi}
               clap={clap}
               newTeams={newTeams}
-              fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
           }
@@ -178,7 +165,6 @@ function App() {
           element={
             <Database
               rikishi={rankSort(sortedRikishi, true)}
-              fantasySumoHistories={fantasySumoHistories}
               basho={basho}
             />
           }

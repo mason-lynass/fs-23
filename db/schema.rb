@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_09_03_033902) do
+ActiveRecord::Schema[7.0].define(version: 2025_09_19_190222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -240,7 +240,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_09_03_033902) do
     t.integer "b199411"
     t.integer "b199501"
     t.integer "b199503"
-    t.integer "b199505"
+    t.integer "b195505"
     t.integer "b199507"
     t.integer "b199509"
     t.integer "b199511"
@@ -590,13 +590,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_09_03_033902) do
     t.integer "b158"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "b159"
-    t.integer "b160"
-    t.integer "b161"
-    t.integer "b162"
-    t.integer "b163"
-    t.integer "b164"
-    t.integer "b165"
     t.index ["rikishi_id"], name: "index_fs_histories_on_rikishi_id"
   end
 
@@ -663,10 +656,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_09_03_033902) do
     t.integer "kanto_sho"
     t.integer "gino_sho"
     t.integer "kinboshi"
-    t.integer "fs_current"
+    t.integer "FS_20233"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "retired"
+    t.boolean "has_fantasy_history", default: false
   end
 
   create_table "teams", force: :cascade do |t|
@@ -682,7 +675,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_09_03_033902) do
     t.integer "final_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "percentile", precision: 3, scale: 2
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
