@@ -6,23 +6,98 @@ function UserRankings() {
 
   const [usersLoaded, setUsersLoaded] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
+  const [displayedUsers, setDisplayedUsers] = useState([]);
   const [sortState, setSortState] = useState("default");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage] = useState(50);
 
   useEffect(() => {
-    fetch(`${API_URL}/users`, {credentials: "include"})
-      .then((r) => r.json())
-      .then((r) => setAllUsers(r.filter((u) => u.old_teams.length > 0)));
+    setLoading(true);
+    fetch(`${API_URL}/users/rankings`, {credentials: "include"})
+      .then((r) => {
+        if (!r.ok) throw new Error('Failed to fetch user rankings');
+        return r.json();
+      })
+      .then((r) => {
+        setAllUsers(r);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setAllUsers([]);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
     if (allUsers.length > 0) {
-      usersCleanup();
+      setUsersLoaded(true);
+    }
+  }, [allUsers]);
+
+  useEffect(() => {
+    if (usersLoaded) {
+      updateDisplayedUsers();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allUsers]);
+  }, [usersLoaded, currentPage, sortState]);
+
+  function updateDisplayedUsers() {
+    let sortedUsers = getSortedUsers();
+    const startIndex = (currentPage - 1) * usersPerPage;
+    const endIndex = startIndex + usersPerPage;
+    setDisplayedUsers(sortedUsers.slice(startIndex, endIndex));
+  }
+
+  function getSortedUsers() {
+    let sortedUsers;
+
+    function bashoSort(x) {
+      sortedUsers = allUsers.sort((a, b) => {
+        let targetBasho = parseFloat(x);
+        let bTeam = b.old_teams.find((t) => t.basho === targetBasho);
+        let aTeam = a.old_teams.find((t) => t.basho === targetBasho);
+        let bScore, aScore;
+        if (bTeam === undefined) bScore = 0;
+        else bScore = bTeam.final_score;
+        if (aTeam === undefined) aScore = 0;
+        else aScore = aTeam.final_score;
+        return bScore - aScore;
+      });
+    }
+
+    if (sortState === "default") {
+      sortedUsers = allUsers.sort(
+        (a, b) =>
+          parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
+      );
+    } else if (sortState === "TRUsername")
+      sortedUsers = allUsers.sort((a, b) => a.username - b.username);
+    else if (sortState === "TRAverage")
+      sortedUsers = allUsers.sort(
+        (a, b) =>
+          parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
+      );
+    else if (sortState === "TRTotal")
+      sortedUsers = allUsers.sort(
+        (a, b) =>
+          parseFloat(b.total_percentile) - parseFloat(a.total_percentile)
+      );
+    else if (sortState === "TRWeighted")
+      sortedUsers = allUsers.sort(
+        (a, b) =>
+          parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
+      );
+    else bashoSort(sortState);
+
+    return sortedUsers;
+  }
 
   function handleSortState(e) {
     setSortState(e.target.id);
+    setCurrentPage(1); // Reset to first page when sorting
     const target = document.getElementById(`${e.target.id}`);
     setHighlight(target);
   }
@@ -37,67 +112,71 @@ function UserRankings() {
     target.classList.add("DBStatsActive");
   }
 
-  function usersCleanup() {
-    allUsers.forEach((u) => {
-      const total = u.total_percentile;
-      let average = 0;
-      let weightedAverage = 0;
-      if (parseFloat(total) > 0) {
-        average = (parseFloat(total) / u.old_teams.length).toFixed(2);
-        weightedAverage = (
-          parseFloat(average) +
-          0.1 * (u.old_teams.length - 1)
-        ).toFixed(2);
-      }
-      u.average_percentile = average;
-      u.weighted_average = weightedAverage;
-    });
-    setUsersLoaded(true);
+
+  function renderPagination() {
+    const totalPages = Math.ceil(allUsers.length / usersPerPage);
+
+    if (totalPages <= 1) return null;
+
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => setCurrentPage(i)}
+          style={{
+            margin: '0 2px',
+            padding: '8px 12px',
+            backgroundColor: currentPage === i ? '#333' : '#f0f0f0',
+            color: currentPage === i ? 'white' : 'black',
+            border: '1px solid #ccc',
+            cursor: 'pointer'
+          }}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    return (
+      <div style={{ textAlign: 'center', margin: '20px 0' }}>
+        <button
+          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+          disabled={currentPage === 1}
+          style={{
+            margin: '0 5px',
+            padding: '8px 12px',
+            backgroundColor: currentPage === 1 ? '#ccc' : '#f0f0f0',
+            border: '1px solid #ccc',
+            cursor: currentPage === 1 ? 'default' : 'pointer'
+          }}
+        >
+          Previous
+        </button>
+        {pages}
+        <button
+          onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+          disabled={currentPage === totalPages}
+          style={{
+            margin: '0 5px',
+            padding: '8px 12px',
+            backgroundColor: currentPage === totalPages ? '#ccc' : '#f0f0f0',
+            border: '1px solid #ccc',
+            cursor: currentPage === totalPages ? 'default' : 'pointer'
+          }}
+        >
+          Next
+        </button>
+        <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
+          Showing {Math.min((currentPage - 1) * usersPerPage + 1, allUsers.length)} - {Math.min(currentPage * usersPerPage, allUsers.length)} of {allUsers.length} users
+        </div>
+      </div>
+    );
   }
 
   function allTeams() {
-    if (usersLoaded === true) {
-      let sortedUsers;
-
-      function bashoSort(x) {
-        sortedUsers = allUsers.sort((a, b) => {
-          let targetBasho = parseFloat(x);
-          let bTeam = b.old_teams.find((t) => t.basho === targetBasho);
-          let aTeam = a.old_teams.find((t) => t.basho === targetBasho);
-          let bScore, aScore;
-          if (bTeam === undefined) bScore = 0;
-          else bScore = bTeam.final_score;
-          if (aTeam === undefined) aScore = 0;
-          else aScore = aTeam.final_score;
-          return bScore - aScore;
-        });
-      }
-
-      if (sortState === "default") {
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
-        );
-      } else if (sortState === "TRUsername")
-        sortedUsers = allUsers.sort((a, b) => a.username - b.username);
-      else if (sortState === "TRAverage")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
-        );
-      else if (sortState === "TRTotal")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.total_percentile) - parseFloat(a.total_percentile)
-        );
-      else if (sortState === "TRWeighted")
-        sortedUsers = allUsers.sort(
-          (a, b) =>
-            parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
-        );
-      else bashoSort(sortState);
-
-      return sortedUsers.map((user) => {
+    if (usersLoaded === true && displayedUsers.length > 0) {
+      return displayedUsers.map((user) => {
         let username = user.username;
 
         // to hide full email addresses
@@ -161,9 +240,33 @@ function UserRankings() {
     }
   }
 
-  return usersLoaded === false ? (
-    <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>
-  ) : (
+  if (loading || !usersLoaded) {
+    return <h2 style={{textAlign: 'center', margin: '40px auto'}}>loading...</h2>;
+  }
+
+  if (error) {
+    return (
+      <div style={{ textAlign: 'center', margin: '40px auto' }}>
+        <h2 style={{ color: 'red' }}>Error loading users</h2>
+        <p>{error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#333',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Try Again
+        </button>
+      </div>
+    );
+  }
+
+  return (
     <main>
       <div id="team-rankings-box">
         <div className="oneTeamTR" id="TRHeaderColumn">
@@ -236,7 +339,9 @@ function UserRankings() {
             2023.01
           </p>
         </div>
+        {renderPagination()}
         <div>{allTeams()}</div>
+        {renderPagination()}
       </div>
       <div id="about-box">
         <p>

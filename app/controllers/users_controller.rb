@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def index 
-        render json: User.all 
+        render json: User.includes(:old_teams).all 
     end
 
     def show
@@ -16,6 +16,19 @@ class UsersController < ApplicationController
         else
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
+    end
+
+    def rankings
+        users = User.includes(:old_teams)
+        .where('EXISTS (SELECT 1 FROM old_teams WHERE old_teams.user_id = users.id)')
+        .select('users.*, 
+                CASE WHEN total_percentile > 0 
+                    THEN ROUND(total_percentile::decimal / old_teams_count, 2)
+                    ELSE 0 END as average_percentile,
+                CASE WHEN total_percentile > 0 
+                    THEN ROUND((total_percentile::decimal / old_teams_count) + 0.1 * (old_teams_count - 1), 2)
+                    ELSE 0 END as weighted_average')
+        render json: users
     end
 
     private
