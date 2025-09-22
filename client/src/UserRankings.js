@@ -31,6 +31,7 @@ function UserRankings() {
       .finally(() => {
         console.log("done!");
         setLoading(false);
+        setUsersLoaded(true);
       });
   }, []);
 
