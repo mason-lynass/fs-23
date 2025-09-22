@@ -122,56 +122,124 @@ function UserRankings() {
 
     if (totalPages <= 1) return null;
 
-    const pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(
-        <button
-          key={i}
-          onClick={() => setCurrentPage(i)}
-          style={{
-            margin: "0 2px",
-            padding: "8px 12px",
-            backgroundColor: currentPage === i ? "#333" : "#f0f0f0",
-            color: currentPage === i ? "white" : "black",
-            border: "1px solid #ccc",
-            cursor: "pointer",
-          }}
-        >
-          {i}
-        </button>
-      );
-    }
+    // Mobile-friendly pagination: show fewer page numbers
+    const getVisiblePages = () => {
+      const delta = 2; // Show 2 pages on each side of current page
+      const range = [];
+      const rangeWithDots = [];
+
+      for (let i = Math.max(2, currentPage - delta);
+           i <= Math.min(totalPages - 1, currentPage + delta);
+           i++) {
+        range.push(i);
+      }
+
+      if (currentPage - delta > 2) {
+        rangeWithDots.push(1, '...');
+      } else {
+        rangeWithDots.push(1);
+      }
+
+      rangeWithDots.push(...range);
+
+      if (currentPage + delta < totalPages - 1) {
+        rangeWithDots.push('...', totalPages);
+      } else {
+        rangeWithDots.push(totalPages);
+      }
+
+      return rangeWithDots;
+    };
+
+    const visiblePages = totalPages <= 7 ?
+      Array.from({length: totalPages}, (_, i) => i + 1) :
+      getVisiblePages();
+
+    const buttonStyle = {
+      margin: "0 1px",
+      padding: "8px 10px",
+      border: "1px solid #ccc",
+      cursor: "pointer",
+      fontSize: "14px",
+      minWidth: "36px",
+    };
+
+    const mobileButtonStyle = {
+      ...buttonStyle,
+      padding: "10px 8px",
+      fontSize: "16px",
+      minWidth: "44px", // Better touch target
+    };
+
+    const isMobile = window.innerWidth <= 768;
+    const currentButtonStyle = isMobile ? mobileButtonStyle : buttonStyle;
 
     return (
-      <div style={{ textAlign: "center", margin: "20px 0" }}>
-        <button
-          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-          disabled={currentPage === 1}
-          style={{
-            margin: "0 5px",
-            padding: "8px 12px",
-            backgroundColor: currentPage === 1 ? "#ccc" : "#f0f0f0",
-            border: "1px solid #ccc",
-            cursor: currentPage === 1 ? "default" : "pointer",
-          }}
-        >
-          Previous
-        </button>
-        {pages}
-        <button
-          onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-          disabled={currentPage === totalPages}
-          style={{
-            margin: "0 5px",
-            padding: "8px 12px",
-            backgroundColor: currentPage === totalPages ? "#ccc" : "#f0f0f0",
-            border: "1px solid #ccc",
-            cursor: currentPage === totalPages ? "default" : "pointer",
-          }}
-        >
-          Next
-        </button>
-        <div style={{ marginTop: "10px", fontSize: "14px", color: "#666" }}>
+      <div style={{
+        textAlign: "center",
+        margin: "20px 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "10px"
+      }}>
+        <div style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "2px"
+        }}>
+          <button
+            onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+            disabled={currentPage === 1}
+            style={{
+              ...currentButtonStyle,
+              backgroundColor: currentPage === 1 ? "#ccc" : "#f0f0f0",
+              cursor: currentPage === 1 ? "default" : "pointer",
+              marginRight: "8px"
+            }}
+          >
+            ‹
+          </button>
+
+          {visiblePages.map((page, index) => (
+            page === '...' ? (
+              <span key={`dots-${index}`} style={{ margin: "0 4px" }}>...</span>
+            ) : (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                style={{
+                  ...currentButtonStyle,
+                  backgroundColor: currentPage === page ? "#333" : "#f0f0f0",
+                  color: currentPage === page ? "white" : "black",
+                }}
+              >
+                {page}
+              </button>
+            )
+          ))}
+
+          <button
+            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+            disabled={currentPage === totalPages}
+            style={{
+              ...currentButtonStyle,
+              backgroundColor: currentPage === totalPages ? "#ccc" : "#f0f0f0",
+              cursor: currentPage === totalPages ? "default" : "pointer",
+              marginLeft: "8px"
+            }}
+          >
+            ›
+          </button>
+        </div>
+
+        <div style={{
+          fontSize: isMobile ? "12px" : "14px",
+          color: "#666",
+          textAlign: "center"
+        }}>
           Showing{" "}
           {Math.min((currentPage - 1) * usersPerPage + 1, allUsers.length)} -{" "}
           {Math.min(currentPage * usersPerPage, allUsers.length)} of{" "}
