@@ -20,16 +20,15 @@ class UsersController < ApplicationController
 
     def rankings
         users = User
-        .joins(:old_teams)
-        .select(<<-SQL.squish)
+          .joins(:old_teams)
+          .select(<<-SQL.squish)
             users.*,
             COUNT(old_teams.id) AS old_teams_count,
             ROUND(users.total_percentile::decimal / COUNT(old_teams.id), 2) AS average_percentile,
-            ROUND((users.total_percentile::decimal / COUNT(old_teams.id)) + 0.1 * (COUNT(old_teams.id) - 1), 2) AS
-    weighted_average
-        SQL
-        .group('users.id')
-        .order('weighted_average DESC')
+            ROUND((users.total_percentile::decimal / COUNT(old_teams.id)) + 0.1 * (COUNT(old_teams.id) - 1), 2) AS weighted_average
+          SQL
+          .group('users.id')
+          .order('weighted_average DESC')
 
         render json: users
     end

@@ -9,7 +9,11 @@ Rails.application.routes.draw do
       get :fantasy_eligible
     end
   end
-  resources :users, only: [:index, :show, :create]
+  resources :users, only: [:index, :show, :create] do
+    collection do
+      get :rankings
+    end
+  end
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
