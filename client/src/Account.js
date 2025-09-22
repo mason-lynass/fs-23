@@ -15,11 +15,12 @@ function Account({
   rikishi,
   clap,
   newTeams,
-  fantasySumoHistories,
   basho,
 }) {
   const [oldTeams, setOldTeams] = useState([]);
   const [oldTeamsLoaded, setOldTeamsLoaded] = useState(false);
+  const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
+  const [fsHistoriesLoaded, setFsHistoriesLoaded] = useState(false);
 
   useEffect(() => {
     fetch(`${API_URL}/old_teams`, { credentials: "include"})
@@ -27,6 +28,14 @@ function Account({
       .then((teams) => {
         setOldTeams(teams);
         setOldTeamsLoaded(true);
+      });
+
+    // Fetch fantasy sumo histories only when Account component loads
+    fetch(`${API_URL}/fantasy_sumo_histories`, { credentials: "include"})
+      .then((r) => r.json())
+      .then((histories) => {
+        setFantasySumoHistories(histories);
+        setFsHistoriesLoaded(true);
       });
   }, []);
 

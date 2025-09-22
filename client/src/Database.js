@@ -3,17 +3,33 @@ import { useEffect, useState } from "react";
 import StatsAndInfo from "./components/StatsAndInfo";
 import UserRankings from "./UserRankings";
 import NewFSDatabase from "./components/NewFSDatabase";
+import { API_URL } from "./App";
 
-function Database({ rikishi, fantasySumoHistories }) {
+function Database({ rikishi }) {
   const [viewState, setViewState] = useState("Rikishi Stats & Info");
   const [dbRikishi, setDBRikishi] = useState([]);
   const [rikishiLoaded, setRikishiLoaded] = useState(false);
   const [pageTitle, setPageTitle] = useState("Rikishi Stats & Info");
+  const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
+  const [fsHistoriesLoaded, setFsHistoriesLoaded] = useState(false);
 
   useEffect(() => {
-    setDBRikishi(rikishi);
-    setRikishiLoaded(true);
-  }, [rikishi]);
+    // Fetch all rikishi for database (including retired)
+    fetch(`${API_URL}/rikishis`, { credentials: "include"})
+      .then((r) => r.json())
+      .then((allRikishi) => {
+        setDBRikishi(allRikishi);
+        setRikishiLoaded(true);
+      });
+
+    // Fetch fantasy sumo histories only when Database component loads
+    fetch(`${API_URL}/fantasy_sumo_histories`, { credentials: "include"})
+      .then((r) => r.json())
+      .then((histories) => {
+        setFantasySumoHistories(histories);
+        setFsHistoriesLoaded(true);
+      });
+  }, []);
 
   function changeViewState(e) {
     setViewState(e.target.textContent)

@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   resources :old_teams, only: [:index, :show]
   resources :new_teams, only: [:index, :show, :create, :destroy]
   resources :fantasy_sumo_histories, only: [:index]
-  resources :rikishis, only: [:index, :show]
+  resources :rikishis, only: [:index, :show] do
+    collection do
+      get :active
+      get :retired
+      get :fantasy_eligible
+    end
+  end
   resources :users, only: [:index, :show, :create]
 
   post "/login", to: "sessions#create"
