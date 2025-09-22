@@ -30,7 +30,7 @@ class UsersController < ApplicationController
           .group('users.id')
           .order('weighted_average DESC')
 
-        render json: users
+        render json: users, each_serializer: UserRankingsSerializer
     end
 
     private
