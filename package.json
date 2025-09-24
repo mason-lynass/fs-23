@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "flyctl": "^1.2.4"
+  }
+}
