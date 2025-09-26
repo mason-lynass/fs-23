@@ -23,7 +23,7 @@ function Hello() {
       {/* <p>(If you picked someone that's out of the tournament, feel free to email me at mtfujisumo at gmail.com with your team name and new pick.)</p> */}
 
       {/* after the tournament */}
-      {/* <p>Congrats to ImBadAtGuessing on your Fantasy Sumo victory! You are good at guessing!</p><p> The new rankings will be announced on September 1st, so the draft will be open from September 2nd - 14th.</p>
+      {/* <p>I won't be able to finalize scores and add final bonus points until Monday evening in the US. Sorry for the delay!</p><p> The new rankings will be announced on October 27th, so the draft will be open from October 28th - November 9th.</p>
       <p>If you made a new account to draft a team for the last basho and you want to merge accounts, or if you have any other questions or comments, feel free to email me - mtfujisumo[at]gmail[dot]com.</p>
       <p>Thanks for playing everyone!</p> */}
     </div>
