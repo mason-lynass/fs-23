@@ -17,15 +17,15 @@ function Hello() {
       </p> */}
 
       {/* when the tournament is live */}
-      <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the next tournament.</p> 
+  {/*  <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the next tournament.</p> */}
 
       {/* if you want to let someone contact you for some reason */}
       {/* <p>(If you picked someone that's out of the tournament, feel free to email me at mtfujisumo at gmail.com with your team name and new pick.)</p> */}
 
       {/* after the tournament */}
-      {/* <p>I won't be able to finalize scores and add final bonus points until Monday evening in the US. Sorry for the delay!</p><p> The new rankings will be announced on October 27th, so the draft will be open from October 28th - November 9th.</p>
+      <p>I won't be able to finalize scores and add final bonus points until Monday evening in the US. Sorry for the delay!</p><p> The new rankings will be announced on October 27th, so the draft will be open from October 28th - November 9th.</p>
       <p>If you made a new account to draft a team for the last basho and you want to merge accounts, or if you have any other questions or comments, feel free to email me - mtfujisumo[at]gmail[dot]com.</p>
-      <p>Thanks for playing everyone!</p> */}
+      <p>Thanks for playing everyone!</p> 
     </div>
   );
 }
