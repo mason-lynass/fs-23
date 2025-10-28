@@ -1,7 +1,5 @@
 function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
 
-    console.log(clickedRikishi)
-
     const rikishi = clickedRikishi
 
     const totalSansho = (clickedRikishi.shukun_sho + clickedRikishi.kanto_sho + clickedRikishi.gino_sho)
