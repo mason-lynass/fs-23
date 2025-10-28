@@ -2,8 +2,6 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
 
     const rikishi = clickedRikishi
 
-    console.log(userTeam)
-
     const totalSansho = (clickedRikishi.shukun_sho + clickedRikishi.kanto_sho + clickedRikishi.gino_sho)
 
     function calculate_age(dob) {
@@ -70,7 +68,7 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
                             <p>Height: {rikishi.height} cm | Weight: {rikishi.weight} kg</p>
                             <p>current rank: {rikishi.current_rank} | highest rank: {rikishi.highest_rank}</p>
                             <p>career stats: Yusho: {rikishi.yusho} | special prizes: {totalSansho} | Kinboshi: {rikishi.kinboshi}</p>
-                            <p>FS points last basho: {rikishi.fsHistories.length > 0 ? rikishi.fsHistories[0].b202507 : "N/A"}</p>
+                            <p>FS points last basho: {rikishi.fsHistories.length > 0 ? rikishi.fsHistories[0].b202509 : "N/A"}</p>
 
                         </div>
                     </div>
