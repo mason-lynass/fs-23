@@ -20,7 +20,6 @@ function UserRankings() {
         return r.json();
       })
       .then((r) => {
-        console.log(r);
         setAllUsers(r);
         setError(null);
       })
@@ -29,7 +28,6 @@ function UserRankings() {
         setAllUsers([]);
       })
       .finally(() => {
-        console.log("done!");
         setLoading(false);
         setUsersLoaded(true);
       });
@@ -292,6 +290,8 @@ function UserRankings() {
           user.old_teams.filter((t) => t.basho === 2025.05)[0] || "";
         const nagoya2025 =
           user.old_teams.filter((t) => t.basho === 2025.07)[0] || "";
+        const aki2025 =
+          user.old_teams.filter((t) => t.basho === 2025.09)[0] || "";
 
         return (
           <div className="oneTeamTR" key={user.username}>
@@ -299,6 +299,7 @@ function UserRankings() {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
+            <p>{aki2025 !== "" ? aki2025.percentile : ""}</p>
             <p>{nagoya2025 !== "" ? nagoya2025.percentile : ""}</p>
             <p>{natsu2025 !== "" ? natsu2025.percentile : ""}</p>
             <p>{haru2025 !== "" ? haru2025.percentile : ""}</p>
