@@ -375,6 +375,9 @@ function UserRankings() {
           >
             weighted average
           </h3>
+          <p className="TRCol basho" id="2025.09" onClick={handleSortState}>
+            2025.09
+          </p>
           <p className="TRCol basho" id="2025.07" onClick={handleSortState}>
             2025.07
           </p>
