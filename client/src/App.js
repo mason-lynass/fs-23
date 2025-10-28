@@ -25,7 +25,7 @@ export const API_URL = process.env.REACT_APP_API_URL;
 // || "http://localhost:3000";
 
 function App() {
-  const basho = 2025.09;
+  const basho = 2025.11;
   const [user, setUser] = useState(null);
   const [rikishi, setRikishi] = useState([]);
   const [newTeams, setNewTeams] = useState([]);
