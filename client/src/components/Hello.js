@@ -2,19 +2,20 @@ function Hello() {
   return (
     <div id="hello">
       {/*  when it's time to draft */}
-      {/* <p>
+      <p>
         The draft is open!
         <br />
-        <br /> The next tournament begins on September 14th, so make sure you draft before then!
+        <br /> The next tournament begins on November 9th, so make sure you
+        draft before then!
       </p>
       <br />
       <hr style={{ width: "100px", margin: "5px auto" }} />
       <br />
       <p>
-        If you've created multiple accounts / teams and
-        you want to consolidate, or if you notice any other unusual site
-        behavior, feel free to email me - mtfujisumo[at]gmail[dot]com
-      </p> */}
+        If you've created multiple accounts / teams and you want to consolidate,
+        or if you notice any other unusual site behavior, feel free to email me
+        - mtfujisumo[at]gmail[dot]com
+      </p>
 
       {/* when the tournament is live */}
   {/*  <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the next tournament.</p> */}
