@@ -4,7 +4,7 @@
 #
 
 app = 'fs-23'
-primary_region = 'sea'
+primary_region = 'sjc'
 console_command = '/rails/bin/rails console'
 
 [build]
