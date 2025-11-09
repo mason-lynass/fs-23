@@ -468,9 +468,7 @@ function NewFSDatabase({ fsHistories, rikishi }) {
           .toLowerCase()
           .includes(searchTwo.toLowerCase());
         // if both searches are in use, return a rikishi history that matches either search
-        if (one === true || two === true) {
-          return history;
-        }
+        return one || two;  // Changed this line
       } else if (searchOne !== "") {
         return history.rikishi.shikona
           .toLowerCase()
@@ -479,7 +477,9 @@ function NewFSDatabase({ fsHistories, rikishi }) {
         return history.rikishi.shikona
           .toLowerCase()
           .includes(searchTwo.toLowerCase());
-      } else return history;
+      } else {
+        return true;  // Changed: return true instead of returning history
+      }
     });
   }, [searchOne, searchTwo, fsHistories]);
 

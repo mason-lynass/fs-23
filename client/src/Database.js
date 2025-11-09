@@ -11,7 +11,7 @@ function Database({ rikishi }) {
   const [rikishiLoaded, setRikishiLoaded] = useState(false);
   const [pageTitle, setPageTitle] = useState("Rikishi Stats & Info");
   const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
-  const [fsHistoriesLoaded, setFsHistoriesLoaded] = useState(false);
+  // const [fsHistoriesLoaded, setFsHistoriesLoaded] = useState(false);
 
   useEffect(() => {
     // Fetch all rikishi for database (including retired)
@@ -27,7 +27,7 @@ function Database({ rikishi }) {
       .then((r) => r.json())
       .then((histories) => {
         setFantasySumoHistories(histories);
-        setFsHistoriesLoaded(true);
+        // setFsHistoriesLoaded(true);
       });
   }, []);
 

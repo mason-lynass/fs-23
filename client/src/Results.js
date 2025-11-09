@@ -17,7 +17,7 @@ function Results({ rikishi, newTeams, teamsLoaded, rankSort, user }) {
             rankSort(rikishi)
             setRikishiLoaded(true)
         }
-    }, [rikishi])
+    }, [rikishi, rankSort])
 
     function changeViewState() {
         setViewState(!viewState)
