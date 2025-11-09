@@ -30,7 +30,7 @@ function App() {
   const [rikishi, setRikishi] = useState([]);
   const [newTeams, setNewTeams] = useState([]);
   const [newTeamsLoaded, setNewTeamsLoaded] = useState(false);
-  const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
+  // const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
 
   const [clap] = useSound(Clap);
   const [hyoshigi] = useSound(Hyoshigi, { volume: 0.5 });
