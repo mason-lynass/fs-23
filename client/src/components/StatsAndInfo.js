@@ -1,5 +1,5 @@
 import SIAllRikishi from "./SIAllRikishi";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 function StatsAndInfo({ dbRikishi }) {
 
@@ -15,12 +15,30 @@ function StatsAndInfo({ dbRikishi }) {
         }
     }, [dbRikishi])
 
+    const filterBySearch = useCallback((r) => {
+        return dbRikishi.filter((rik) => {
+            if (searchOne !== '' && searchTwo !== '') {
+                const one = rik.shikona.toLowerCase().includes(searchOne.toLowerCase())
+                const two = rik.shikona.toLowerCase().includes(searchTwo.toLowerCase())
+                // console.log(one, two, rik)
+                return one || two;
+            }
+            else if (searchOne !== '') {
+                return rik.shikona.toLowerCase().includes(searchOne.toLowerCase())
+            }
+            else if (searchTwo !== '') {
+                return rik.shikona.toLowerCase().includes(searchTwo.toLowerCase())
+            }
+            else return true;
+        })
+    }, [searchOne, searchTwo, dbRikishi])
+
     useEffect(() => {
         // console.log('this')
         let result = dbRikishi
         result = filterBySearch(result)
         setNewRikishi(result)
-    }, [searchOne, searchTwo])
+    }, [searchOne, searchTwo, dbRikishi, filterBySearch])
 
     function handleRetired() {
         if (retiredState === true) {
@@ -37,26 +55,6 @@ function StatsAndInfo({ dbRikishi }) {
     }
     function handleSearchTwo(e) {
         setSearchTwo(e.target.value)
-    }
-
-    const filterBySearch = (r) => {
-        return dbRikishi.filter((rik) => {
-            if (searchOne !== '' && searchTwo !== '') {
-                const one = rik.shikona.toLowerCase().includes(searchOne.toLowerCase())
-                const two = rik.shikona.toLowerCase().includes(searchTwo.toLowerCase())
-                // console.log(one, two, rik)
-                if (one === true || two === true) {
-                    return rik
-                }
-            }
-            else if (searchOne !== '') {
-                return rik.shikona.toLowerCase().includes(searchOne.toLowerCase())
-            }
-            else if (searchTwo !== '') {
-                return rik.shikona.toLowerCase().includes(searchTwo.toLowerCase())
-            }
-            else return rik
-        })
     }
 
     function calculate_age(dob) {
