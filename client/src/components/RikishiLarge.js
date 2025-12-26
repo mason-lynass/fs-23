@@ -2,8 +2,6 @@ function RikishiLarge({ clickedRikishi, userTeam, setUserTeam }) {
 
     const rikishi = clickedRikishi
 
-    console.log(rikishi)
-
     const totalSansho = (clickedRikishi.shukun_sho + clickedRikishi.kanto_sho + clickedRikishi.gino_sho)
 
     function calculate_age(dob) {
