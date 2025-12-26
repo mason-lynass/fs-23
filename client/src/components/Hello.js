@@ -2,10 +2,10 @@ function Hello() {
   return (
     <div id="hello">
       {/*  when it's time to draft */}
-      {/* <p>
+      <p>
         The draft is open!
         <br />
-        <br /> The next tournament begins on November 9th, so make sure you
+        <br /> The next tournament begins on January 11th, so make sure you
         draft before then!
       </p>
       <hr style={{ width: "100px", margin: "5px auto" }} />
@@ -13,7 +13,7 @@ function Hello() {
         If you've created multiple accounts / teams and you want to consolidate,
         or if you notice any other unusual site behavior, feel free to email me
         - mtfujisumo[at]gmail[dot]com
-      </p> */}
+      </p>
 
       {/* when the tournament is live */}
    {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the next tournament.</p> */}
@@ -22,9 +22,9 @@ function Hello() {
       {/* <p>(If you picked someone that's out of the tournament, feel free to email me at mtfujisumo[at]gmail[dot]com with your team name and new pick.)</p> */}
 
       {/* after the tournament */}
-      <p>Congrats to Stoshoryu on your Fantasy Sumo victory!</p><p> The new rankings will be announced on December 22nd, so the draft will be open from December 23rd - January 11th.</p>
+      {/* <p>Congrats to Stoshoryu on your Fantasy Sumo victory!</p><p> The new rankings will be announced on December 22nd, so the draft will be open from December 23rd - January 11th.</p>
       <p>If you made a new account to draft a team for the last basho and you want to merge accounts, or if you have any other questions or comments, feel free to email me - mtfujisumo[at]gmail[dot]com.</p>
-      <p>Thanks for playing everyone!</p> 
+      <p>Thanks for playing everyone!</p>  */}
     </div>
   );
 }
