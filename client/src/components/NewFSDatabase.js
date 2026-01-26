@@ -13,6 +13,12 @@ function NewFSDatabase({ fsHistories, rikishi }) {
 
   // no 201203, 202103
   const bashosArray = [
+    "202611",
+    "202609",
+    "202607",
+    "202605",
+    "202603",
+    "202601",
     "202511",
     "202509",
     "202507",
