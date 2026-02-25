@@ -73,7 +73,7 @@ function RLargeMobile({ clickedRikishi, userTeam, setUserTeam, handleCloseMobile
                         <p> Yusho: {rikishi.yusho}</p>
                         <p> special prizes: {totalSansho}</p>
                         <p>Kinboshi: {rikishi.kinboshi}</p>
-                        <p>FS points last basho: {rikishi.b202511}</p>
+                        <p>FS points last basho: {rikishi.b202601}</p>
 
                     </div>
                 </div>
