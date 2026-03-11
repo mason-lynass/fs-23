@@ -20,7 +20,7 @@ function Hello() {
    <p id='tip-jar'>I added a Ko-fi tip jar - tips offset server & hosting costs for the site. This site will always be free to play, but any donation would make my day :) </p>
 
       {/* if you want to let someone contact you for some reason */}
-      <p>If you picked someone that's out of the tournament, feel free to email me at mtfujisumo[at]gmail[dot]com with your team name and new pick.</p>
+  {/* <p>If you picked someone that's out of the tournament, feel free to email me at mtfujisumo[at]gmail[dot]com with your team name and new pick.</p> */}
 
       {/* after the tournament */}
       {/* <p>Congrats to dustyjduncan on your Fantasy Sumo victory!</p><p> The new rankings will be announced on February 24th, so the draft will be open from February 25th - March 8th.</p>
