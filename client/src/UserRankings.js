@@ -74,24 +74,24 @@ function UserRankings() {
     if (sortState === "default") {
       sortedUsers = allUsers.sort(
         (a, b) =>
-          parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
+          parseFloat(b.weighted_average) - parseFloat(a.weighted_average),
       );
     } else if (sortState === "TRUsername")
       sortedUsers = allUsers.sort((a, b) => a.username - b.username);
     else if (sortState === "TRAverage")
       sortedUsers = allUsers.sort(
         (a, b) =>
-          parseFloat(b.average_percentile) - parseFloat(a.average_percentile)
+          parseFloat(b.average_percentile) - parseFloat(a.average_percentile),
       );
     else if (sortState === "TRTotal")
       sortedUsers = allUsers.sort(
         (a, b) =>
-          parseFloat(b.total_percentile) - parseFloat(a.total_percentile)
+          parseFloat(b.total_percentile) - parseFloat(a.total_percentile),
       );
     else if (sortState === "TRWeighted")
       sortedUsers = allUsers.sort(
         (a, b) =>
-          parseFloat(b.weighted_average) - parseFloat(a.weighted_average)
+          parseFloat(b.weighted_average) - parseFloat(a.weighted_average),
       );
     else bashoSort(sortState);
 
@@ -126,14 +126,16 @@ function UserRankings() {
       const range = [];
       const rangeWithDots = [];
 
-      for (let i = Math.max(2, currentPage - delta);
-           i <= Math.min(totalPages - 1, currentPage + delta);
-           i++) {
+      for (
+        let i = Math.max(2, currentPage - delta);
+        i <= Math.min(totalPages - 1, currentPage + delta);
+        i++
+      ) {
         range.push(i);
       }
 
       if (currentPage - delta > 2) {
-        rangeWithDots.push(1, '...');
+        rangeWithDots.push(1, "...");
       } else {
         rangeWithDots.push(1);
       }
@@ -141,7 +143,7 @@ function UserRankings() {
       rangeWithDots.push(...range);
 
       if (currentPage + delta < totalPages - 1) {
-        rangeWithDots.push('...', totalPages);
+        rangeWithDots.push("...", totalPages);
       } else {
         rangeWithDots.push(totalPages);
       }
@@ -149,9 +151,10 @@ function UserRankings() {
       return rangeWithDots;
     };
 
-    const visiblePages = totalPages <= 7 ?
-      Array.from({length: totalPages}, (_, i) => i + 1) :
-      getVisiblePages();
+    const visiblePages =
+      totalPages <= 7
+        ? Array.from({ length: totalPages }, (_, i) => i + 1)
+        : getVisiblePages();
 
     const buttonStyle = {
       margin: "0 1px",
@@ -173,21 +176,25 @@ function UserRankings() {
     const currentButtonStyle = isMobile ? mobileButtonStyle : buttonStyle;
 
     return (
-      <div style={{
-        textAlign: "center",
-        margin: "20px 0",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "10px"
-      }}>
-        <div style={{
+      <div
+        style={{
+          textAlign: "center",
+          margin: "20px 0",
           display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
+          flexDirection: "column",
           alignItems: "center",
-          gap: "2px"
-        }}>
+          gap: "10px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "2px",
+          }}
+        >
           <button
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
@@ -195,15 +202,17 @@ function UserRankings() {
               ...currentButtonStyle,
               backgroundColor: currentPage === 1 ? "#ccc" : "#f0f0f0",
               cursor: currentPage === 1 ? "default" : "pointer",
-              marginRight: "8px"
+              marginRight: "8px",
             }}
           >
             ‹
           </button>
 
-          {visiblePages.map((page, index) => (
-            page === '...' ? (
-              <span key={`dots-${index}`} style={{ margin: "0 4px" }}>...</span>
+          {visiblePages.map((page, index) =>
+            page === "..." ? (
+              <span key={`dots-${index}`} style={{ margin: "0 4px" }}>
+                ...
+              </span>
             ) : (
               <button
                 key={page}
@@ -216,28 +225,32 @@ function UserRankings() {
               >
                 {page}
               </button>
-            )
-          ))}
+            ),
+          )}
 
           <button
-            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+            onClick={() =>
+              setCurrentPage(Math.min(totalPages, currentPage + 1))
+            }
             disabled={currentPage === totalPages}
             style={{
               ...currentButtonStyle,
               backgroundColor: currentPage === totalPages ? "#ccc" : "#f0f0f0",
               cursor: currentPage === totalPages ? "default" : "pointer",
-              marginLeft: "8px"
+              marginLeft: "8px",
             }}
           >
             ›
           </button>
         </div>
 
-        <div style={{
-          fontSize: isMobile ? "12px" : "14px",
-          color: "#666",
-          textAlign: "center"
-        }}>
+        <div
+          style={{
+            fontSize: isMobile ? "12px" : "14px",
+            color: "#666",
+            textAlign: "center",
+          }}
+        >
           Showing{" "}
           {Math.min((currentPage - 1) * usersPerPage + 1, allUsers.length)} -{" "}
           {Math.min(currentPage * usersPerPage, allUsers.length)} of{" "}
@@ -296,6 +309,8 @@ function UserRankings() {
           user.old_teams.filter((t) => t.basho === 2025.11)[0] || "";
         const hatsu2026 =
           user.old_teams.filter((t) => t.basho === 2026.01)[0] || "";
+        const haru2026 =
+          user.old_teams.filter((t) => t.basho === 2026.03)[0] || "";
 
         return (
           <div className="oneTeamTR" key={user.username}>
@@ -303,6 +318,7 @@ function UserRankings() {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
+            <p>{haru2026 !== "" ? haru2026.percentile : ""}</p>
             <p>{hatsu2026 !== "" ? hatsu2026.percentile : ""}</p>
             <p>{kyushu2025 !== "" ? kyushu2025.percentile : ""}</p>
             <p>{aki2025 !== "" ? aki2025.percentile : ""}</p>
@@ -381,6 +397,9 @@ function UserRankings() {
           >
             weighted average
           </h3>
+          <p className="TRCol basho" id="2026.03" onClick={handleSortState}>
+            2026.03
+          </p>
           <p className="TRCol basho" id="2026.01" onClick={handleSortState}>
             2026.01
           </p>
