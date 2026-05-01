@@ -5,7 +5,7 @@ function Hello() {
       <p>
         Sorry for the delay everyone! The draft is open.
         <br />
-        <br /> The next tournament begins on March 8th, so make sure you
+        <br /> The next tournament begins on May 10th, so make sure you
         draft before then!
       </p>
       <hr style={{ width: "100px", margin: "5px auto" }} />
