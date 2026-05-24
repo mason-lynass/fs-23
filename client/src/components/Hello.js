@@ -16,8 +16,8 @@ function Hello() {
       </p> */}
 
       {/* when the tournament is live */}
-   <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the next tournament.</p>
-   <p id='tip-jar'>I added a Ko-fi tip jar - tips offset server & hosting costs for the site. This site will always be free to play, but any donation would make my day :) </p>
+   {/* <p>The tournament has started, and the draft is closed! The next draft will begin after the banzuke is announced for the next tournament.</p>
+   <p id='tip-jar'>I added a Ko-fi tip jar - tips offset server & hosting costs for the site. This site will always be free to play, but any donation would make my day :) </p> */}
 
       {/* if you want to let someone contact you for some reason */}
   {/* <p>If you picked someone that's out of the tournament, feel free to email me at mtfujisumo[at]gmail[dot]com with your team name and new pick.</p> */}
