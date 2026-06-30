@@ -101,10 +101,6 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    setUser(user);
-  }, [user]);
-
   const sortedRikishi = useMemo(() => rankSort(rikishi), [rikishi]);
 
 
