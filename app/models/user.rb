@@ -1,6 +1,5 @@
 class User < ApplicationRecord
 
-    has_many :teams
     has_many :old_teams
     has_one :new_team
 

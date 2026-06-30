@@ -9,7 +9,6 @@ function Database({ rikishi }) {
   const [viewState, setViewState] = useState("Rikishi Stats & Info");
   const [dbRikishi, setDBRikishi] = useState([]);
   const [rikishiLoaded, setRikishiLoaded] = useState(false);
-  const [pageTitle, setPageTitle] = useState("Rikishi Stats & Info");
   const [fantasySumoHistories, setFantasySumoHistories] = useState([]);
   // const [fsHistoriesLoaded, setFsHistoriesLoaded] = useState(false);
 
@@ -33,7 +32,6 @@ function Database({ rikishi }) {
 
   function changeViewState(e) {
     setViewState(e.target.textContent)
-    setPageTitle(e.target.textContent)
   }
 
   function visibleTable() {
@@ -51,7 +49,7 @@ function Database({ rikishi }) {
   return rikishiLoaded === true ? (
     <div id="DBContainer">
       <div id="DBTop">
-        <h1 id="DBTitle">{pageTitle}</h1>
+        <h1 id="DBTitle">{viewState}</h1>
         <div id="DBSubMenu">
             <button onClick={(e) => changeViewState(e)}>Rikishi Stats & Info</button>
             <button onClick={(e) => changeViewState(e)}>Fantasy Sumo Stats</button>

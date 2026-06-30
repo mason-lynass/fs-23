@@ -5,10 +5,10 @@ function MobileResultsContainer({ goodTeams, user }) {
   let otherTeams = goodTeams;
 
   if (user !== null && user.username) {
-    yourTeam = [...goodTeams].filter(
+    yourTeam = goodTeams.find(
       (team) => team.user.username === user.username
-    )[0];
-    otherTeams = [...goodTeams].filter(
+    );
+    otherTeams = goodTeams.filter(
       (team) => team.user.username !== user.username
     );
   }

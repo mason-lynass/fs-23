@@ -1,12 +1,7 @@
+import { displayUsername } from "../utils";
+
 function OneTeamMobile({ team }) {
-
-    let username = team.user.username
-
-    // to hide full email addresses
-    if (username.includes('@')) {
-        let at = username.indexOf('@')
-        username = username.slice(0, at)
-    }
+    const username = displayUsername(team.user.username);
 
     return (
         <div className='oneTeam'>

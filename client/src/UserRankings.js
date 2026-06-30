@@ -1,9 +1,16 @@
 import "./CSS/userrankings.css";
 import { useEffect, useState } from "react";
 import { API_URL } from "./App";
+import { displayUsername } from "./utils";
+
+const BASHOS = [
+  2026.05, 2026.03, 2026.01,
+  2025.11, 2025.09, 2025.07, 2025.05, 2025.03, 2025.01,
+  2024.11, 2024.09, 2024.07, 2024.05, 2024.03, 2024.01,
+  2023.11, 2023.09, 2023.07, 2023.05, 2023.03, 2023.01,
+];
 
 function UserRankings() {
-  const [usersLoaded, setUsersLoaded] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
   const [displayedUsers, setDisplayedUsers] = useState([]);
   const [sortState, setSortState] = useState("default");
@@ -29,23 +36,15 @@ function UserRankings() {
       })
       .finally(() => {
         setLoading(false);
-        setUsersLoaded(true);
       });
   }, []);
 
   useEffect(() => {
-    if (allUsers.length > 0) {
-      setUsersLoaded(true);
-    }
-  }, [allUsers]);
-
-  useEffect(() => {
-    if (usersLoaded) {
-      console.log("update displayed users");
+    if (!loading) {
       updateDisplayedUsers();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [usersLoaded, currentPage, sortState]);
+  }, [loading, currentPage, sortState]);
 
   function updateDisplayedUsers() {
     let sortedUsers = getSortedUsers();
@@ -55,10 +54,10 @@ function UserRankings() {
   }
 
   function getSortedUsers() {
-    let sortedUsers;
+    let sortedUsers = [...allUsers];
 
     function bashoSort(x) {
-      sortedUsers = allUsers.sort((a, b) => {
+      sortedUsers = sortedUsers.sort((a, b) => {
         let targetBasho = parseFloat(x);
         let bTeam = b.old_teams.find((t) => t.basho === targetBasho);
         let aTeam = a.old_teams.find((t) => t.basho === targetBasho);
@@ -72,24 +71,24 @@ function UserRankings() {
     }
 
     if (sortState === "default") {
-      sortedUsers = allUsers.sort(
+      sortedUsers = sortedUsers.sort(
         (a, b) =>
           parseFloat(b.weighted_average) - parseFloat(a.weighted_average),
       );
     } else if (sortState === "TRUsername")
-      sortedUsers = allUsers.sort((a, b) => a.username - b.username);
+      sortedUsers = sortedUsers.sort((a, b) => a.username - b.username);
     else if (sortState === "TRAverage")
-      sortedUsers = allUsers.sort(
+      sortedUsers = sortedUsers.sort(
         (a, b) =>
           parseFloat(b.average_percentile) - parseFloat(a.average_percentile),
       );
     else if (sortState === "TRTotal")
-      sortedUsers = allUsers.sort(
+      sortedUsers = sortedUsers.sort(
         (a, b) =>
           parseFloat(b.total_percentile) - parseFloat(a.total_percentile),
       );
     else if (sortState === "TRWeighted")
-      sortedUsers = allUsers.sort(
+      sortedUsers = sortedUsers.sort(
         (a, b) =>
           parseFloat(b.weighted_average) - parseFloat(a.weighted_average),
       );
@@ -261,58 +260,9 @@ function UserRankings() {
   }
 
   function allTeams() {
-    if (usersLoaded === true && displayedUsers.length > 0) {
+    if (displayedUsers.length > 0) {
       return displayedUsers.map((user) => {
-        let username = user.username;
-
-        // to hide full email addresses
-        if (username.includes("@")) {
-          let at = username.indexOf("@");
-          username = username.slice(0, at);
-        }
-
-        const hatsu2023 =
-          user.old_teams.filter((t) => t.basho === 2023.01)[0] || "";
-        const haru2023 =
-          user.old_teams.filter((t) => t.basho === 2023.03)[0] || "";
-        const natsu2023 =
-          user.old_teams.filter((t) => t.basho === 2023.05)[0] || "";
-        const nagoya2023 =
-          user.old_teams.filter((t) => t.basho === 2023.07)[0] || "";
-        const aki2023 =
-          user.old_teams.filter((t) => t.basho === 2023.09)[0] || "";
-        const kyushu2023 =
-          user.old_teams.filter((t) => t.basho === 2023.11)[0] || "";
-        const hatsu2024 =
-          user.old_teams.filter((t) => t.basho === 2024.01)[0] || "";
-        const haru2024 =
-          user.old_teams.filter((t) => t.basho === 2024.03)[0] || "";
-        const natsu2024 =
-          user.old_teams.filter((t) => t.basho === 2024.05)[0] || "";
-        const nagoya2024 =
-          user.old_teams.filter((t) => t.basho === 2024.07)[0] || "";
-        const aki2024 =
-          user.old_teams.filter((t) => t.basho === 2024.09)[0] || "";
-        const kyushu2024 =
-          user.old_teams.filter((t) => t.basho === 2024.11)[0] || "";
-        const hatsu2025 =
-          user.old_teams.filter((t) => t.basho === 2025.01)[0] || "";
-        const haru2025 =
-          user.old_teams.filter((t) => t.basho === 2025.03)[0] || "";
-        const natsu2025 =
-          user.old_teams.filter((t) => t.basho === 2025.05)[0] || "";
-        const nagoya2025 =
-          user.old_teams.filter((t) => t.basho === 2025.07)[0] || "";
-        const aki2025 =
-          user.old_teams.filter((t) => t.basho === 2025.09)[0] || "";
-        const kyushu2025 =
-          user.old_teams.filter((t) => t.basho === 2025.11)[0] || "";
-        const hatsu2026 =
-          user.old_teams.filter((t) => t.basho === 2026.01)[0] || "";
-        const haru2026 =
-          user.old_teams.filter((t) => t.basho === 2026.03)[0] || "";
-        const natsu2026 = 
-          user.old_teams.filter((t) => t.basho === 2026.05)[0] || "";
+        const username = displayUsername(user.username);
 
         return (
           <div className="oneTeamTR" key={user.username}>
@@ -320,34 +270,17 @@ function UserRankings() {
             <h3 className="totalTR">{user.average_percentile}</h3>
             <h3 className="totalTR">{user.total_percentile}</h3>
             <h3 className="totalTR">{user.weighted_average}</h3>
-            <p>{natsu2026 !== "" ? natsu2026.percentile : ""}</p>
-            <p>{haru2026 !== "" ? haru2026.percentile : ""}</p>
-            <p>{hatsu2026 !== "" ? hatsu2026.percentile : ""}</p>
-            <p>{kyushu2025 !== "" ? kyushu2025.percentile : ""}</p>
-            <p>{aki2025 !== "" ? aki2025.percentile : ""}</p>
-            <p>{nagoya2025 !== "" ? nagoya2025.percentile : ""}</p>
-            <p>{natsu2025 !== "" ? natsu2025.percentile : ""}</p>
-            <p>{haru2025 !== "" ? haru2025.percentile : ""}</p>
-            <p>{hatsu2025 !== "" ? hatsu2025.percentile : ""}</p>
-            <p>{kyushu2024 !== "" ? kyushu2024.percentile : ""}</p>
-            <p>{aki2024 !== "" ? aki2024.percentile : ""}</p>
-            <p>{nagoya2024 !== "" ? nagoya2024.percentile : ""}</p>
-            <p>{natsu2024 !== "" ? natsu2024.percentile : ""}</p>
-            <p>{haru2024 !== "" ? haru2024.percentile : ""}</p>
-            <p>{hatsu2024 !== "" ? hatsu2024.percentile : ""}</p>
-            <p>{kyushu2023 !== "" ? kyushu2023.percentile : ""}</p>
-            <p>{aki2023 !== "" ? aki2023.percentile : ""}</p>
-            <p>{nagoya2023 !== "" ? nagoya2023.percentile : ""}</p>
-            <p>{natsu2023 !== "" ? natsu2023.percentile : ""}</p>
-            <p>{haru2023 !== "" ? haru2023.percentile : ""}</p>
-            <p>{hatsu2023 !== "" ? hatsu2023.percentile : ""}</p>
+            {BASHOS.map((b) => {
+              const team = user.old_teams.find((t) => t.basho === b);
+              return <p key={b}>{team ? team.percentile : ""}</p>;
+            })}
           </div>
         );
       });
     }
   }
 
-  if (loading || !usersLoaded) {
+  if (loading) {
     return (
       <h2 style={{ textAlign: "center", margin: "40px auto" }}>loading...</h2>
     );
@@ -400,69 +333,11 @@ function UserRankings() {
           >
             weighted average
           </h3>
-          <p className="TRCol basho" id="2026.05" onClick={handleSortState}>
-            2026.05
-          </p>
-          <p className="TRCol basho" id="2026.03" onClick={handleSortState}>
-            2026.03
-          </p>
-          <p className="TRCol basho" id="2026.01" onClick={handleSortState}>
-            2026.01
-          </p>
-          <p className="TRCol basho" id="2025.11" onClick={handleSortState}>
-            2025.11
-          </p>
-          <p className="TRCol basho" id="2025.09" onClick={handleSortState}>
-            2025.09
-          </p>
-          <p className="TRCol basho" id="2025.07" onClick={handleSortState}>
-            2025.07
-          </p>
-          <p className="TRCol basho" id="2025.05" onClick={handleSortState}>
-            2025.05
-          </p>
-          <p className="TRCol basho" id="2025.03" onClick={handleSortState}>
-            2025.03
-          </p>
-          <p className="TRCol basho" id="2025.01" onClick={handleSortState}>
-            2025.01
-          </p>
-          <p className="TRCol basho" id="2024.11" onClick={handleSortState}>
-            2024.11
-          </p>
-          <p className="TRCol basho" id="2024.09" onClick={handleSortState}>
-            2024.09
-          </p>
-          <p className="TRCol basho" id="2024.07" onClick={handleSortState}>
-            2024.07
-          </p>
-          <p className="TRCol basho" id="2024.05" onClick={handleSortState}>
-            2024.05
-          </p>
-          <p className="TRCol basho" id="2024.03" onClick={handleSortState}>
-            2024.03
-          </p>
-          <p className="TRCol basho" id="2024.01" onClick={handleSortState}>
-            2024.01
-          </p>
-          <p className="TRCol basho" id="2023.11" onClick={handleSortState}>
-            2023.11
-          </p>
-          <p className="TRCol basho" id="2023.09" onClick={handleSortState}>
-            2023.09
-          </p>
-          <p className="TRCol basho" id="2023.07" onClick={handleSortState}>
-            2023.07
-          </p>
-          <p className="TRCol basho" id="2023.05" onClick={handleSortState}>
-            2023.05
-          </p>
-          <p className="TRCol basho" id="2023.03" onClick={handleSortState}>
-            2023.03
-          </p>
-          <p className="TRCol basho" id="2023.01" onClick={handleSortState}>
-            2023.01
-          </p>
+          {BASHOS.map((b) => (
+            <p key={b} className="TRCol basho" id={String(b)} onClick={handleSortState}>
+              {b}
+            </p>
+          ))}
         </div>
         <div>{allTeams()}</div>
       </div>

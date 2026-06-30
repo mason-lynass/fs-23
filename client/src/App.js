@@ -150,7 +150,6 @@ function App() {
               rikishi={rikishi}
               newTeams={newTeams}
               teamsLoaded={newTeamsLoaded}
-              rankSort={rankSort}
               basho={basho}
               user={user}
             />
