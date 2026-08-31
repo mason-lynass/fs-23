@@ -10,7 +10,7 @@ import RikishiLarge from "./components/RikishiLarge";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import RLargeMobile from "./components/RLargeMobile";
-import Hello from "./components/Hello";
+// import Hello from "./components/Hello";
 
 function Draft({
   user,
@@ -22,7 +22,7 @@ function Draft({
   basho,
 }) {
 
-  return <Hello />;
+  // return <Hello />;
 
   const navigate = useNavigate();
   const [rikishiLoaded, setRikishiLoaded] = useState(false);
