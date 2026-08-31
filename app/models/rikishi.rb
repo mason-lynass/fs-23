@@ -1,7 +1,7 @@
 class Rikishi < ApplicationRecord
   has_one :fantasy_sumo_history
 
-  def b202605
-    fantasy_sumo_history&.b202605
+  def b202607
+    fantasy_sumo_history&.b202607
   end
 end
